@@ -21,21 +21,18 @@
 title: CSCI 1300 Spring 2025
 email: csci1300@colorado.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  welcome to the workbook. thanks to CTL (link) we do X.
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  This webpage gives public access to general reading material,
+  assignments and recitations for CSCI 1300 at the University
+  of Colorado Boulder.
 baseurl: "/spring-2025-web/" # the subpath of your site, e.g. /blog
 url: "https://cu-csci-1300-intro-programming.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# twitter_username: jekyllrb
+github_username:  SpenceIsCool
 
 # Build settings
-# theme: jekyll-theme-yat
-remote_theme: "jeffreytse/jekyll-theme-yat"
+theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme
 
 # Exclude from processing.
 # The following items will not be processed, by default.
