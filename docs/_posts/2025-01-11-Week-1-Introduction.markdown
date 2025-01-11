@@ -1,9 +1,19 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2025-01-11 12:13:53 -0700
+title:  "Week 1: Introduction"
+date:   2025-01-11 12:58:53 -0700
 categories: jekyll update
 ---
+
+Learning Goals
+This week you will:
+1. Become familiar with the Syllabus, to learn about the structure of the course and its rules
+and policies
+2. Install and become familiar with your Integrated Development Environment (IDE) - Visual
+Studio Code
+3. Be able to identify the parts of a computer and their function in the computer system
+4. Write the ”hello world” program in C++
+
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 Jekyll requires blog post files to be named according to the following format:
