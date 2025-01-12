@@ -1,0 +1,45 @@
+\usepackage{graphicx} % Required for inserting images
+\usepackage[cache=false]{minted}
+\usepackage{amsthm}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage[breakable]{tcolorbox}
+
+\renewcommand{\abstractname}{Learning Goals}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[subsection]
+\tcolorboxenvironment{example}{colframe=blue,breakable,before skip=10pt,after skip=10pt }
+
+\newtheorem{problem}{Problem}[section]
+\newtheorem{multipart}{Problem}[subsection]
+\renewcommand\themultipart{\thesubsection.\alph{multipart}}
+%\newtheorem{sample}{Sample Run}{\proof[subsection]\mbox{}\\*}{\endproof}
+\newtheoremstyle{code}%
+{3pt}    %Space above
+{3pt}    %Space below
+{\ttfamily}       %Body font
+{}       %Indent amount
+{\bfseries}    %Theorem head font
+{}       %Punctuation after theorem head
+{\newline} %Space after theorem head
+{}       %Theorem head spec
+
+\theoremstyle{code}
+
+\newtheorem{sample}{Sample Run}[subsection]
+\tcolorboxenvironment{sample}{colframe=green,breakable,before skip=10pt,after skip=10pt }
+
+\tcolorboxenvironment{abstract}{colframe=black,breakable,before skip=10pt,after skip=10pt }
+
+
+\newtheorem{sampleProject}{Sample Runs}[subsection]
+\tcolorboxenvironment{sampleProject}{colframe=green,breakable,before skip=10pt,after skip=10pt }
+
+
+% \newlist{letterlist}{enumerate*}{1}
+% \setlist*[letterlist,1]{%
+%   label=(\Alph*),
+% }

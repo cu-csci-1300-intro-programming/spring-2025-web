@@ -1,0 +1,111 @@
+%This header file was created and compiled from many sources by Prateek Bhakta, 
+%1/1/2016, with heavy influence from the header files of Chris Peikert.
+\usepackage{amsmath}
+\usepackage[hmargin=1in, vmargin=1in]{geometry}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{mathrsfs}
+\usepackage{amsbsy}
+\usepackage{tabularx}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{textcomp}
+\usepackage{mathtools}
+% \usepackage[amsmath,thmmarks,thref]{ntheorem}
+\usepackage{xspace}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[hypcap=true]{caption}
+\usepackage[hypcap=true]{subcaption}
+\usepackage{hyperref}
+\usepackage{pdfsync}
+\usepackage{microtype}
+\usepackage{multirow,bigdelim}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows,matrix,positioning, decorations.pathreplacing,calc}
+\usepackage[breakable]{tcolorbox}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{minted}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage{etoolbox}
+\renewcommand{\arraystretch}{1.5}
+\setminted{fontsize=\small}
+\usepackage{longtable}
+\usepackage{listings}
+
+\hypersetup{%
+  colorlinks=true,% hyperlinks will be colored
+}
+
+\setlength{\textheight}{9in}
+\setlength{\baselineskip}{0in}
+
+% Generate the header of the homeworks
+\newcommand{\hwheader}[5]{
+  \chead{\LARGE \textbf{#1}}
+
+  \lhead{\small \textbf{#2 }\\#5} %Students / Duedate
+
+  \rhead{\small \textbf{#3 }\\#4} %Course / Instructor
+
+  \setlength{\headheight}{26pt}
+  \setlength{\headsep}{16pt}
+  
+  \headrule
+}
+
+%Theorem environments for various things
+
+\renewcommand{\abstractname}{Learning Goals}
+\tcolorboxenvironment{abstract}{colframe=black,breakable,before skip=10pt,after skip=10pt }
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[subsection]
+\tcolorboxenvironment{example}{colframe=blue,breakable,before skip=10pt,after skip=10pt }
+
+\newtheorem{problem}{Problem}[section]
+\newtheorem{multipart}{Problem}[subsection]
+\renewcommand\themultipart{\thesubsection.\alph{multipart}}
+
+\renewcommand{\ttdefault}{pcr}
+% \makeatletter
+% \DeclareRobustCommand\ttfamily
+%         {\not@math@alphabet\ttfamily\mathtt
+%          \fontfamily\ttdefault\small\selectfont}
+
+\newtheoremstyle{code}%
+{3pt}    %Space above
+{3pt}    %Space below
+{\ttfamily\small}       %Body font
+{}       %Indent amount
+{\bfseries}    %Theorem head font
+{:\vspace{.5cm}}       %Punctuation after theorem head
+{\newline} %Space after theorem head
+{}       %Theorem head spec
+\theoremstyle{code}
+
+\newtheorem{samplecode}{Sample Code}
+\tcolorboxenvironment{samplecode}{colframe=green,breakable,before skip=10pt,after skip=10pt }
+
+\newtheorem{sampleoutput} {Sample Output}[section]
+\tcolorboxenvironment{sampleoutput}{colframe=green,breakable,before skip=10pt,after skip=10pt}
+
+\newtheorem{sample} {Sample Run}[section]
+\tcolorboxenvironment{sample}{colframe=green,breakable,before skip=10pt,after skip=10pt }
+
+\newlist{letterlist}{enumerate*}{1}
+\setlist*[letterlist,1]{%
+  label=(\Alph*),
+}
+
+
+

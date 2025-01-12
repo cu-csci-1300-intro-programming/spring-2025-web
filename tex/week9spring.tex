@@ -1,0 +1,358 @@
+\chapter*{Week 9: File I/O}
+\addcontentsline{toc}{chapter}{Week 9: File I/O}
+\setcounter{chapter}{10}
+\setcounter{section}{0}
+
+\begin{abstract}
+This week you will:
+\begin{enumerate}
+    \item Learn how to write to a file
+
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Background}
+%write section on printing to file
+\subsection{File Output}
+We discussed reading from a file last week. Here, we will show how we can write to a file. First, you define an \mintinline{c++}{ofstream} variable and open the file you would like to write to. Then you can write to the output file using the same operation you used with \mintinline{c++}{cout}, \mintinline{c++}{<<}, and \mintinline{c++}{endl}.
+
+\begin{example}
+    \begin{minted}{c++}
+    
+// Create the output file object
+ofstream file_out;
+// Opening the output file
+file_out.open("output.txt");
+
+// Writing something to the output file
+file_out << "writing a sentence to the output file" << endl;
+
+// Writing the value of the variable to the file
+string test_string = "you can also write the content of the variable";
+file_out << test_string << endl;
+file_out.close();
+    \end{minted}
+\end{example}
+
+The output.txt will have the following content:
+
+\begin{sample}
+writing a sentence to the output file\\
+you can also write the content of the variable
+\end{sample}
+
+\section{PreQuiz}
+
+\begin{problem}
+    What are file streams? How many major steps are involved in working with a file in C++?
+\end{problem}
+
+\begin{problem}
+    The program needs to print all the contents of the file \mintinline{c++}{log.txt} present in the current folder.
+\end{problem}
+
+\begin{minted}{c++}
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main() 
+{
+    // make an input file stream from the file name given above.
+    ifstream file_in("log.txt"); 
+    string text;  
+    while(______________) // FILL IN THIS LINE
+    {      
+        cout << text << endl;
+    }
+    //close the file
+    ________________; // FILL IN THIS LINE
+    return 0;
+}
+\end{minted}
+
+
+\begin{problem}
+    The program needs to write all the contents of the file input.txt to the file output.txt. Assume that both these files are present in the current folder.
+\end{problem}
+
+\begin{minted}{c++}
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main() 
+{
+    // make an input file stream from the file input.txt.
+    _________________; // FILL IN THIS LINE
+    // make an output file stream to the file output.txt.
+    _________________; // FILL IN THIS LINE
+    string text; 
+
+    // read the text from the input file stream.
+    while(getline(file_in, text))
+    {
+        file_out << text << endl;
+    }
+    return 0;
+}
+\end{minted}
+
+\begin{problem}
+The program below reads movie titles and their showtimes from a file named \mintinline{c++}{movies.txt}. Each movie has a title followed by its start and end times. The file looks something like:
+
+\begin{verbatim}
+Inception
+14:00 17:00
+The Matrix
+18:30 21:00
+Interstellar
+10:00 13:30
+Pulp Fiction
+22:00 00:30
+\end{verbatim}
+
+The program loops through every line in the file. If the line starts with a letter, it must be a movie title. If it doesn’t, it must be a line with the showtimes. Fill in the blanks appropriately to complete the program.
+\end{problem}
+
+\begin{minted}[breaklines=true]{c++}
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ifstream file_in;
+    file_in.open("movies.txt");
+
+    string movieTitle;
+    string startTime, endTime;
+    char peek;
+
+    while (!file_in.fail()) {
+        // Peek at the next character
+        file_in.get(peek);
+
+        // Put the character back into the stream
+        ________________; // FILL IN THIS LINE
+
+        if (_____________________) { // FILL IN THIS LINE
+            getline(file_in, movieTitle);
+        } else {
+            file_in >> ________________ >> endTime; // FILL IN THIS LINE
+            file_in.get(peek); // This line clears the newline character
+
+            cout << "Movie: " << movieTitle << endl;
+            cout << "Showtime: " << startTime << " - " << endTime << endl;
+        }
+    }
+
+    return 0;
+}
+\end{minted}
+
+\section{Recitation}
+
+\subsection{Spot The Error}
+\begin{multipart}
+The program is supposed to find the square of all the numbers in an array. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+    #include <iostream>
+    #include <string>
+    using namespace std;
+    
+    void FindSquare(int numbers[]) 
+    {
+        for (int i = 0; i < 14; i++) 
+        {
+            numbers[i] *= numbers[i];
+        }
+        return;
+    }
+    
+    int main()
+    {
+        const int length = 4;
+        int numbers[] = {1, 2, -3, 4};
+    
+        cout << "The contents of the array before changing: ";
+        for (int i = 0; i < length; i++)
+        {
+            cout << numbers[i] << " ";
+        }
+        cout << endl;
+    
+        FindSquare(numbers);
+    
+        cout << "The contents of the array after changing: ";
+        for (int i = 0; i < length; i++)
+        {
+            cout << numbers[i] << " ";
+        }
+    
+        return 0;
+    }
+\end{minted}
+
+% \newpage
+
+\begin{multipart}
+The Louvre Museum wants to determine its busiest day of the week so it can allocate more staff to assist with guided tours. The museum keeps a log of daily visitors in a file called \mintinline{c++}{visitors.txt}. Each line in the file has the following format:
+
+\mintinline{c++}{dayOfWeek <space> visitor1,visitor2,..,visitorN.}
+
+Identify the error(s) and write the correct line(s) of code to fix them.
+\end{multipart}
+
+
+\begin{minted}{c++}
+#include <iostream>
+    #include <string>
+    using namespace std;
+    
+    int main()
+    {
+        ifstream my_file("visitors.txt"); 
+        string full_line;
+        string days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        int vis[5] = {0, 0, 0, 0, 0}; 
+        int i = 0;
+        int traffic = 0;
+        int j = 0;
+    
+        while (getline(my_file, full_line))
+        {
+            for(int i = 0; i < static_cast<int>(full_line.length()); i+=1) 
+            {
+                if(full_line[i] == ' ' && i < static_cast<int>(full_line.length())-1)
+                {
+                    visitors[i]++;
+                }
+                if(full_line[i] == ",") 
+                {
+                    visitors[i]++;
+                }
+            }
+            if (visitors[i] < traffic) 
+            {
+                traffic = visitors[i];
+                j = i;
+            }
+            i++;
+        }
+        cout << days[j] << " is the busiest day of the week at the mueseum." << endl;
+    
+        return 0;
+    }
+\end{minted}
+
+% \newpage
+
+\begin{multipart}
+ The program appends and prepends underscores for every word in the given message string. Assume the message is maximum 4 words. Identify the error(s) in the code below, and write the correct line(s). Note, \mintinline{c++}{split()} is a function from Homework 5.
+\end{multipart}
+
+\begin{minted}{c++}
+    #include <iostream>
+    #include <string>
+    #include <cassert>
+    using namespace std;
+    
+    string appendPrepend(string message)
+    {
+        const int LENGTH = 4;
+        string message_fragments[LENGTH] = {};
+        string empty_word = "";
+        split(message, ' ', message_fragments[], LENGTH) 
+        assert(message_fragments[4] == empty_word) 
+    
+        string answer, word; 
+        for(int i == 0; i < LENGTH; i++)
+        {
+            answer += "_" + message + "_";
+        }
+        int first_word_length = message_fragments[0].length();
+        int second_word_length = message_fragments[1].length();
+        assert(message_fragments[1] = answer.substr(first_word_length+3, second_word_length))
+    
+        return answer;
+    }
+    
+    int main()
+    {
+        cout << "Please enter the string message:" << endl;
+        string message;
+        getline(cin, message);
+        cout << appendPrepend(message);
+    }
+\end{minted}
+
+\newpage 
+
+\subsection{Average Scores per Midterm}
+
+The file \mintinline{c++}{midterms.txt} contains a list of comma-separated scores for three midterms taken by each student in a class. Each line represents one student’s scores for all three midterms. Your task is to compute the average score for each midterm across all students.
+
+To complete this task, you must:
+
+\begin{enumerate}
+    \item Read each line in as a string.
+    \item Use your \mintinline{c++}{split()} function from Homework 5 to separate the scores at the commas.
+    \item Use your \mintinline{c++}{validateDouble()} function from Week 6 to confirm that each score is valid, then use \mintinline{c++}{stod()} to convert them to doubles.
+    \item Accumulate the total score for each midterm and print their averages at the end.
+\end{enumerate}
+
+Example runs:
+
+\begin{sample}
+// If the file contains the following lines: \\
+// 85.5,90.2,78.6 \\
+// 92.0,88.5,79.8 \\
+The average scores per midterm are: \\
+Midterm 1: 88.75 \\
+// (85.5 + 92.0) / 2 = 88.75 \\
+Midterm 2: 89.35 \\
+// (90.2 + 88.5) / 2 = 89.35 \\
+Midterm 3: 79.2 \\
+// (78.6 + 79.8) / 2 = 79.2 \\
+\end{sample}
+
+\begin{sample}
+// If the file contains the following lines: \\
+// 100,98.2,95 \\
+// 85.5,88,90 \\
+// 75.5,85.2,80 \\
+The average scores per midterm are: \\
+Midterm 1: 87.0 \\
+Midterm 2: 90.47 \\
+Midterm 3: 88.33
+\end{sample}
+
+\begin{sample}
+// If the file contains these lines: \\
+// 85.5,abc,78 \\
+// 90,88.5,79.8 \\
+Invalid value detected in Student 1’s scores!
+\end{sample}
+
+
+\newpage
+
+\begin{multipart}
+Write out the steps you would use to solve this problem by hand as pseudocode. 
+\end{multipart}
+
+\vspace{10cm}
+
+\begin{multipart}
+Write three possible lines to test your program. Make sure your examples cover different aspects of your solution. Follow your pseudocode to manually find the result for these inputs, then compare with your program’s output.
+\end{multipart}
+
+\vspace{5cm}
+
+\begin{multipart}
+Implement your solution in C++ using VS Code. Save, compile, and run your program until you get the expected results. Test it with sample runs and edge cases to ensure correctness.
+\end{multipart}

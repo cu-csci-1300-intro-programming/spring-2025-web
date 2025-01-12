@@ -1,0 +1,869 @@
+\chapter*{Project 1: Playlist Manager}
+\addcontentsline{toc}{chapter}{Project 1: Playlist Manager}
+\setcounter{chapter}{5}
+\setcounter{section}{0}
+
+\begin{abstract}
+This project will get you familiar with:
+\begin{enumerate}
+    \item Making menus for applications
+    \begin{itemize}
+        \item Letting a user move forwards and backwards in a menu
+        \item Having multiple levels of menus (nested menus)
+        \item Input validation for menu selections
+    \end{itemize}
+    \item File management
+    \begin{itemize}
+        \item Parsing files, in particular TSV files
+        \item Working with file data 
+        \item Saving changes to files
+    \end{itemize}
+    \item Array iteration
+    \item Search functions
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Introduction}
+In this project you will create a command line tool to maintain a music library and associated playlists. This is built around spotify, so all of the links, artists, titles, etc has been scraped from Spotify. You will be able to actually play these playlists!
+
+There are 13 functions you will have to create that range from easy (a couple lines of code) to conceptually challenging or requiring several lines of code. I have used stars in the Required Functions section of this document to indicate roughly how difficult each one should be. This is not concrete, some things will seem easier or harder to you, it is simply to give you an idea for organizing your time. 
+
+You should submit each function individually on the Project 1 Coderunner with any helper functions you use. We will use this for grading, and this will help you test your code as you go. It is recommended that you work on the functions in the order they are listed, but that is not strictly necessary. 
+
+Once you have completed these functions you will need to use them all in a long main function. This is where you will build your user interface, which will be a series of nested menus. Note: this main function will be hard! Make sure you have ample time for this part. You will be able to test this in coderunner as well.
+
+Once completed, you should put everything into a single cpp file. Make sure this compiles and works on your local machine. You will need to make sure your code is formatted cleanly and is well commented. \textbf{Remember, your homework grade for week 5 comes from the style for this submission}. This means indenting your code, having no lines of code that run off the sides of the screen, using clear and consistent variable names, and commenting your code. 
+
+\subsection{File Structure}
+You will be working with two files: one file will be to store the music library, and one file will be to store all of your playlists. 
+
+Music library files are in a standard format called TSV format (Tab Separated Values). TSV files have all elements of a table separated with a tab character, which is written as \mintinline{c++}{\t}. Music libraries will have one song per line. Each line will have the artist name, a tab, the song title, a tab, the artist genre as stored in Spotify, a tab, and finally, the spotify URL. It will look like this (yes, they can be so long they go off the page):
+
+
+\begin{verbatim}
+Goodnight, Texas \t Hypothermic \t rebel blues \t https://open.spotify.com/track/0qjF1qVQ2L15hG2aZUAWeK
+Robot Koch, Finnegan Tui \t In Between \t wonky \t https://open.spotify.com/track/5KJIJsnEaPdq2DeWlZOtSZ
+Madalen Duke \t Love into a Weapon \t canadian electropop,dark r&b \t https://open.spotify.com/track/2KCJghaTBHIvpUz8uqLQaf
+Hiérophante \t Timeline \t future bass \t https://open.spotify.com/track/40jbcGQJ5oRgnczPYlfh8s
+
+\end{verbatim}
+
+There are a couple music library files available on Canvas that you can use to test things. You can also create your own music library files following the steps at the end of this document.
+
+Playlist files will be easier to work with. Each playlist will begin with its title, followed by a series of integers. These integers will be the \textbf{internal song identification numbers} or Song IDs. This is just which number the song is in your library, where 0 is the first song in the library, 1 is the second song in the library, so on and so forth. This will make it easy to use arrays. A single playlist might look like this:
+
+\begin{verbatim}
+Test Playlist
+1
+4
+10
+2
+\end{verbatim}
+
+This playlist would be titled ``Test Playlist" and would have the second song in your library, followed by the fifth song in your library, followed by the eleventh, and ending with the third song.
+
+Everything will be on its own line in the playlist file. Playlists will be listed one after each other, so they will look like this:
+
+\begin{verbatim}
+Test Playlist
+1
+4
+10
+2
+Second Playlist
+3
+89
+2
+Another Example
+16
+2
+19
+30
+29
+18
+\end{verbatim}
+
+\subsection{Important variables}
+Here is an overview of the significant variables you will need for this project. You are not limited to these variables, but you will need them.
+
+\subsubsection{Global Variables}
+This project will introduce \textbf{Global Variables}. There are only two that you should use, and those are to decide the maximum number of songs you can have as well as the maximum number of playlists. This is to help with debugging as well as to give you flexibility to change the number of songs or playlists you allow in the future. These global variables will be used to control your array size. 
+
+For this project, we will want the following two constant global variables:
+
+\begin{minted}{c++}
+const int MAX_SONGS = 1000;
+const int MAX_PLAYLISTS = 20;
+\end{minted}
+
+The maximum number of songs is both the maximum number of songs in your library and the maximum number in any given playlist. 
+
+You will create functions to read and write these files, as well as make simple changes such as creating a new empty playlist, adding or removing songs, and reordering songs. The bulk of the work will be in creating the UI, which will be a menu for the user to choose which functions to perform on their music library and playlists. 
+
+\subsubsection{Counting Variables}
+You will need to keep track of the number of songs in your library as well as the number of playlists you have. Both of these variables will be integers. You can call them whatever you like in your code, but for the purposes of this write up and all other documentation on the project, these names are used:
+
+\begin{minted}{c++}
+int librarySize; //number of songs in the library
+int numPlaylists; //number of playlists
+\end{minted}
+
+\subsubsection{Array Variables}
+All of the information about our music library and playlists will be read into array variables. There are four arrays associated with the music library:
+
+\begin{itemize}
+    \item \mintinline{c++}{string artists[MAX_SONGS]} will be an array to store the artist names for all the songs in your library. 
+    \item \mintinline{c++}{string titles[MAX_SONGS]} will be an array to store the titles of all the songs in your library.
+    \item \mintinline{c++}{string genres[MAX_SONGS]} will be an array to store the genres of all the songs in your library.
+    \item \mintinline{c++}{string urls[MAX_SONGS]} will be an array to store the spotify URLS for all the songs in your library.
+\end{itemize}
+
+Index values will correspond with a particular song in your library across all of these arrays. We will use the index values to identify which song we are talking about in our code. For example, you could find the artist for song 0 using \mintinline{c++}{artists[0]} and the title using \mintinline{c++}{titles[0]}.
+
+You will use the index values of the songs to organize your playlists as well. There are two arrays for your playlists:
+
+\begin{itemize}
+    \item \mintinline{c++}{string playlistNames[MAX_PLAYLISTS]} is an array of all the playlist titles. 
+    \item \mintinline{c++}{int playlists[MAX_PLAYLISTS][MAX_SONGS]} is a 2D array of the songs in each playlist. The rows correspond to one playlist each, while the columns are the songs in each position in the playlist. Any empty positions in your playlist array will store -1.  
+\end{itemize}
+
+The index values used to get the playlist name will correspond to the row in the \mintinline{c++}{playlists[][]} array. The first index value will correspond with which playlist you are looking at, and the second index value will correspond with which song in the playlist you are looking at. For example, you could get the name of the first playlist using \mintinline{c++}{playlistNames[0]} and the ID of the first song in that playlist using \mintinline{c++}{playlists[0][0]}, or the second song using \mintinline{c++}{playlists[0][1]}. 
+
+The integer values stored in this array will be the index values of the song in your library. So, if the first song of the first playlist \mintinline{c++}{playlists[0][0]} stored the integer value 6, we could find the title of that song using \mintinline{c++}{titles[6]} or, equivalently, \mintinline{c++}{titles[playlists[0][0]]}.
+
+\section{Required Functions}
+Here is a list of all the function prototypes that you will need. These are all available in the starting cpp file on Canvas:
+
+\begin{minted}{c++}
+//Include
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+const int MAX_SONGS = 1000;
+const int MAX_PLAYLISTS = 20;
+
+//Functions
+//Read in the music library, return num songs
+int ReadLibrary(string inputFile, string artists[], 
+    string titles[], string genres[], string urls[]);
+
+//Read in the playlists, return num playlists
+int ReadPlaylists(string inputFile, int playlists[][MAX_SONGS], 
+    string playlistNames[]);
+
+//Make a new playlist
+int NewPlaylist(int numPlaylists, string playlistNames[], 
+    string newName);
+
+//Add a song to the library
+int AddSongLibrary(int librarySize, string newArtist, string newTitle, 
+    string newGenre, string newURL, string artists[], 
+    string titles[], string genres[], string urls[]);
+
+//Add a song to a playlist
+bool AddSongPlaylist(int numPlaylists, int playlists[][MAX_SONGS],
+    int songID, int playlistID);
+
+//Delete a song from a playlist
+bool DeleteSongPlaylist(int numPlaylists, int playlists[][MAX_SONGS], 
+    int songID, int playlistID);
+
+//Delete a song from the library
+int DeleteSongLibrary(int librarySize, string artists[], string titles[], 
+    string genres[], string urls[], int songID, int playlists[][MAX_SONGS]);
+
+//Swap two songs in a playlist
+bool SwapSongs(int numPlaylists, int playlists[][MAX_SONGS], 
+    int songID1, int songID2, int playlistID);
+
+//Move a song to a new location in playlist
+bool MoveSong(int numPlaylists, int playlists[][MAX_SONGS], 
+    int songID, int playlistID, int newLocation);
+
+//find song ID
+int FindSongID(string artists[], string titles[], string genres[],
+    int librarySize);
+
+//Print playlists in a spotify importable way
+void PrintSpotify(int numPlaylists, int playlists[][MAX_SONGS], 
+    int playlistID, string urls[]);
+
+//Print the playlists just with artists+titles
+void PrintPlaylist(int numPlaylists, int playlists[][MAX_SONGS], 
+    int playlistID, string artists[], string titles[]);
+
+//Close the program (save changes)
+void SaveChanges(string libraryFile, string playlistFile, int librarySize, 
+    int numPlaylists, string artists[], string titles[], string genres[], 
+    string urls[], int playlists[][MAX_SONGS], string playlistNames[]);
+
+\end{minted}
+
+A good first step would be to download the starting cpp file from Canvas. Check to make sure everything compiles.
+
+You are allowed to create and use any extra helper functions you would like. I used three helper functions: the split function from your last homework, the integer validation function we made in class, and a search for matching substrings function. These functions are not required, but you may find them useful.
+
+\subsection{ReadLibrary \star \star}
+This function is to read in a library file and populate an array for the artists, titles, genres, and urls. The function declaration should look like this:
+
+\begin{minted}{c++}
+    int ReadLibrary(string inputFile, string artists[], 
+    string titles[], string genres[], string urls[]);
+\end{minted}
+
+\textbf{Return:} the number of songs in the library
+
+You will need to open the provided input file, read in each line, split the line into four sections divided by tabs (hint: the SPLIT function would be helpful here!), and store the song information in the appropriate arrays. 
+
+You do not need to perform validation checks when you open the input file. We will do this in your main function instead. If there is an error reading any line and splitting it into 4 elements, skip the line and state "Error reading line. Song skipped."
+
+\subsection{ReadPlaylists \star \star}
+This function is to read in your playlist file and populate an array of the songs in each playlist, as well as an array of the playlist titles. The function declaration should look like this:
+
+\begin{minted}{c++}
+int ReadPlaylists(string inputFile, int playlists[][MAX_SONGS], 
+    string playlistNames[]);
+\end{minted}
+
+\textbf{Return:} the number of playlists in the file. 
+
+This function will open the playlist file and read in the stored information. You should store each playlist name in the array \mintinline{c++}{playlistNames}, and all subsequently listed songs in the associated row of the \mintinline{c++}{playlists[][]} array. The \mintinline{c++}{playlists[][]} array should have the first coordinate represent which playlist we are accessing, and the second coordinate will represent which song is stored in that position.
+
+Once properly populating these two arrays the function should return the number of playlists read in from the file.
+
+\subsection{NewPlaylist\star}
+
+This function will create a new empty playlist. The function declaration should look like this:
+
+\begin{minted}{c++}
+int NewPlaylist(int numPlaylists, string playlistNames[], 
+    string newName);
+\end{minted}
+
+\textbf{Return:} the new number of playlists.
+
+Since the playlist will be empty when it is created, all we have to do is add the \mintinline{c++}{newName} to our \mintinline{c++}{playlistNames[]} in the first unoccupied spot.
+
+You will need to verify that there is space to do so (i.e., \mintinline{c++}{numPlaylists < MAX_PLAYLISTS}).
+
+\subsection{AddSongLibrary \star}
+This function is to add a song to the end of our music library. The function declaration should look like this:
+
+\begin{minted}{c++}
+int AddSongLibrary(int librarySize, string newArtist, string newTitle, 
+    string newGenre, string newURL, string artists[], 
+    string titles[], string genres[], string urls[]);
+\end{minted}
+
+\textbf{Return:} the new library size
+
+We will need to add the new song information (artist, title, genre, and URL) to the music library arrays in the first unoccupied position. 
+
+You will need to verify there is space to do so (i.e., \mintinline{c++}{librarySize < MAX_SONGS}).
+
+\subsection{AddSongPlaylist \star \star}
+This function is to add a song from the music library to our playlist. The function declaration should look like this:
+
+\begin{minted}{c++}
+bool AddSongPlaylist(int numPlaylists, int playlists[][MAX_SONGS],
+    int songID, int playlistID);
+\end{minted}
+
+\textbf{Return:} whether the song was successfully added or not.
+
+This song will add a song to the end of the appropriate row of our \mintinline{c++}{playlists[][]} array. 
+
+The \mintinline{c++}{songID} is the index of the song in our library.
+
+The \mintinline{c++}{playlistID} is the index of the playlist we are adding the song to in our \mintinline{c++}{playlists[][]} array.
+
+You will need to find the first unoccupied space in this row of our array (i.e. the first place where the value stored is -1) and add our song to that position in our playlist. 
+
+You will need to make sure there is space in that row to add the song. If there is not space, then you should return false.
+
+\subsection{DeleteSongPlaylist \star \star}
+This is remove a song from a particular playlist. The function declaration should look like this:
+
+\begin{minted}{c++}
+bool DeleteSongPlaylist(int numPlaylists, int playlists[][MAX_SONGS], 
+    int songID, int playlistID);
+\end{minted}
+
+\textbf{Return:} whether the song was successfully removed or not
+
+\mintinline{c++}{songID} is the song we are going to try to remove from the playlist that has the index value \mintinline{c++}{playlistID}. 
+
+You will have to search through the appropriate row of the array \mintinline{c++}{playlists[][]} to see if the song is in the playlist. If the song is there, you should remove it and shift all later songs forward so there is no gap in the playlist.
+
+WARNING: there may be more than one instance of that song in the playlist! You will need to remove ALL of them.
+
+If you successfully find and remove one or more instances of the song, you should return true. If you do not find the song, you should return false.
+
+\subsection{DeleteSongLibrary \star \star \star}
+This function will remove a song from your music library. The function declaration should look like this:
+
+\begin{minted}{c++}
+int DeleteSongLibrary(int librarySize, string artists[], string titles[], 
+    string genres[], string urls[], int songID, int playlists[][MAX_SONGS]);
+\end{minted}
+
+\textbf{Return:} new library size
+
+This is a slightly more complicated function. You will need to remove the song stored at the index value associated with \mintinline{c++}{songID} from all four library arrays. You will then need to shift all later songs forward one position so there is no gap in your library. 
+
+You will also have to remove this song from all playlists. Hint: you can use \mintinline{c++}{DeleteSongPlaylist} for this. 
+
+Warning: this will change the index values of other songs in your library! You will have to subtract 1 from all SongIDs that were after the deleted song in your \mintinline{c++}{playlists[][]}.
+
+\subsection{SwapSongs \star \star}
+This function will swap the position of two songs in your library. The function declaration should look like this:
+
+\begin{minted}{c++}
+bool SwapSongs(int numPlaylists, int playlists[][MAX_SONGS], 
+    int songID1, int songID2, int playlistID);
+\end{minted}
+
+\textbf{Return:} Whether the songs were successfully swapped or not.
+
+This function will need to search to make sure both provided songIDs are in the provided playlist. If they are, swap their positions. If there is more than one instance of either song in the playlist, just use the first occurrence. 
+
+Example: If we only had one playlist which stored \mintinline{c++}{{3, 6, 9, 12, 9, 8}} here are a few sample function calls and the associated output:
+
+\begin{sample}
+SwapSongs(1, playlists, 3, 12, 0);
+
+Return value: true
+
+Result array: {12, 6, 9, 3, 9, 8}
+\end{sample}
+
+\begin{sample}
+SwapSongs(1, playlists, 3, 13, 0);
+
+Return value: false
+
+Result array: {3, 6, 9, 12, 9, 8}
+\end{sample}
+
+\begin{sample}
+SwapSongs(1, playlists, 6, 9, 0);
+
+Return value: true
+
+Result array: {3, 9, 6, 12, 9, 8}
+\end{sample}
+
+\subsection{MoveSong \star \star \star}
+This function will move a song in your playlist to a new location. The function declaration should look like this:
+
+\begin{minted}{c++}
+bool MoveSong(int numPlaylists, int playlists[][MAX_SONGS], 
+    int songID, int playlistID, int newLocation);
+\end{minted}
+
+\textbf{Return:} whether or not the song was successfully moved or not.
+
+You will need to move the song provided by \mintinline{c++}{songID} from its current location in the playlist to the index value provided by \mintinline{c++}{newLocation}. You will need to shift all the other songs in the playlist forward/backward as necessary to make sure there are no gaps in your playlist. 
+
+If \mintinline{c++}{newLocation} is past the end of the playlist, just move it to the first unoccupied position in the playlist (i.e. if they give you position 900 but the playlist is only 50 songs long, it should be moved to position 49). 
+
+If there are multiple copies of the song in the playlist, you should move the first copy. If the song is already in that location, return false. 
+
+Example: If we only had one playlist which stored {3, 6, 9, 12, 9, 8} here are a few sample function calls and the associated output:
+
+\begin{sample}
+MoveSong(1, playlists, 3, 0, 2);
+
+Return value: true
+
+Result array: 6, 9, 3, 12, 9, 8
+\end{sample}
+
+\begin{sample}
+MoveSong(1, playlists, 3, 0, 900);
+
+Return value: true
+
+Result array: 6, 9, 12, 9, 8, 3
+\end{sample}
+
+\begin{sample}
+MoveSong(1, playlists, 4, 0, 2);
+
+Return value: false
+
+Result array: 3, 6, 9, 12, 9, 8
+\end{sample}
+
+\begin{sample}
+MoveSong(1, playlists, 9, 0, 0);
+
+Return value: true
+
+Result array: 9, 3, 6, 12, 9, 8
+\end{sample}
+
+\subsection{FindSongID \star \star \star}
+This function is to interface with the user and let them search through your library to find a song. The function declaration should look like this:
+
+\begin{minted}{c++}
+int FindSongID(string artists[], string titles[], string genres[],
+    int librarySize);
+\end{minted}
+
+\textbf{Return:} the song ID
+
+In this function you must give the user the choice of searching for a song by artist, title, or genre. After they make their selection, you should validate the input and ask again until they make a valid selection. 
+
+Once they choose artist, title, or genre, you should let them provide a string. You should then search for any artist, title, or genre that contains that string. NOTE: it should not have to be a perfect match, it should simply contain the string they provided. This will allow them to search by first names, last names, and find songs where there were multiple artists. 
+
+HINT: You may find the algorithm you created for the DNA searching problem on Homework 4 very helpful!
+
+Once you find all of your matches, you should print the song title and the author in an enumerated list, starting from 1 and counting up through the list of matches. The user should be able to choose a number for the song match here, or enter -1 if they do not see the song they were searching for. You should validate the input.
+
+If there were no matches or the user did not find the song they wanted, you should return -1. Otherwise, return the library index value of the song they chose. Note: the list printed for the user will have different numbering than the internal library!
+
+Here are a few sample runs using the library from musiclibrary1.txt:
+\begin{sample}
+Would you like to search by artist (A), title (T), or genre (G)?
+
+\textcolor{red}{A}
+
+What artist would you like to search for?
+
+\textcolor{red}{Madalen}
+
+1: "Love into a Weapon" by Madalen Duke
+
+2: "Dead Or Alive" by Stileto, Madalen Duke
+
+3: "Born Alone, Die Alone" by Madalen Duke
+
+4: "Talk Back" by Madalen Duke
+
+5: "Knew It" by Madalen Duke
+
+6: "Part Goddess Part Gangster" by Madalen Duke
+
+7: "No F. E. A. R." by Madalen Duke
+
+8: "Talking to Myself" by Madalen Duke
+
+9: "Love For You" by SABAI, Madalen Duke
+
+10: "Nothing To Fear" by BURNS, Daughters Of The Deep, Madalen Duke
+
+Which number song is your choice? If none of the above, enter -1. 
+
+\textcolor{red}{2}
+
+\textbf{Return value: 6}
+\end{sample}
+
+\begin{sample}
+Would you like to search by artist (A), title (T), or genre (G)?
+
+\textcolor{red}{G}
+
+What genre would you like to search for?
+
+\textcolor{red}{r\&b}
+
+1: "Dead Or Alive" by Stileto, Madalen Duke
+
+2: "Pretend" by Stileto, Liza
+
+3: "Cravin'" by Stileto, Kendyle Paige
+
+Which number song is your choice? If none of the above, enter -1.
+
+\textcolor{red}{-1}
+
+\textbf{Return value: -1}
+\end{sample}
+
+\begin{sample}
+Would you like to search by artist (A), title (T), or genre (G)?
+
+\textcolor{red}{T}
+
+What title would you like to search for?
+
+\textcolor{red}{Xy}
+
+No matches found.
+
+\textbf{Return value: -1}
+\end{sample}
+
+\subsection{PrintSpotify \star}
+This function is to print all of the spotify URLs in a format such that you could copy and paste them into your spotify application. The function declaration should look like this:
+
+\begin{minted}{c++}
+void PrintSpotify(int numPlaylists, int playlists[][MAX_SONGS], 
+    int playlistID, string urls[]);
+\end{minted}
+
+For this function you should iterate through the indicated playlist to get the song IDs, and then print the corresponding URLS. Each URL should be on their own line. 
+
+Note: you can actually copy and paste this list into an empty spotify playlist and it will work! You'll be able to listen to the whole playlist. 
+
+\begin{sample}
+https://open.spotify.com/track/1lPcz78ga6HOCTzEjoy9EP
+
+https://open.spotify.com/track/0WwnTWkJ0NnVbnRI4GhR4Z
+
+https://open.spotify.com/track/38J0uv51VZ8QjkPbM0F1VA
+
+https://open.spotify.com/track/40jbcGQJ5oRgnczPYlfh8s
+\end{sample}
+
+\subsection{PrintPlaylist \star}
+This function is to print all of the songs in your playlist with the title and the artist. The function declaration should look like this:
+
+\begin{minted}{c++}
+void PrintPlaylist(int numPlaylists, int playlists[][MAX_SONGS], 
+    int playlistID, string artists[], string titles[]);
+\end{minted}
+
+For this function you should iterate through the indicated playlist to get the song IDs, and then print the song titles in quotes followed by the artist. 
+
+\begin{sample}
+"Participation Trophies" by Madelline
+
+"Nothing To Fear" by BURNS, Daughters Of The Deep, Madalen Duke
+
+"Part Goddess Part Gangster" by Madalen Duke
+
+"Timeline" by Hiérophante
+\end{sample}
+
+\subsection{SaveChanges \star \star}
+This function is to save all of the changes you have made to your library and to your playlists into the appropriate files. The function declaration should look like this:
+
+\begin{minted}{c++}
+void SaveChanges(string libraryFile, string playlistFile, int librarySize, 
+    int numPlaylists, string artists[], string titles[], string genres[], 
+    string urls[], int playlists[][MAX_SONGS], string playlistNames[]);
+\end{minted}
+
+You will need to open output streams to the library file and the playlist file, and then print all the information you have stored in the appropriate file format. You should then close the streams at the end.
+
+\section{Menu}
+The menu for the user to navigate our program and actually use all of our functions should be primarily created in your main function, but you are welcome to create and use helper functions as you see fit. 
+
+Here are a few tips for this section:
+\begin{itemize}
+    \item I would recommend storing all menu text as strings to remove clutter and prevent typos. I have provided all strings for you in Section 3.4 below, and there will be a copy/paste friendly version of these on CodeRunner. 
+    \item I would recommend using the \mintinline{c++}{IntegerMenu()} or \mintinline{c++}{CharacterMenu()} functions that we wrote in class for your basic menu input validation. This will significantly reduce your code lines and make debugging much easier.
+    \item Only use getline() to get user input; going back and forth between cin and getline() can cause unusual errors in your code.
+\end{itemize}
+
+\subsection{Opening Sequence \star \star}
+When your program first launches, you will need to create all of the variables outlined in the introduction. Note: You will also need to initialize the integer playlist array to all -1. The string arrays will default to empty strings. You will need to load the appropriate library file and playlist files. 
+
+You should default to two files: \mintinline{c++}{musiclibrary.tsv} for the music library, and \mintinline{c++}{musicplaylists.txt} for the music playlists. If these files do not exist, you should create them. However, you should give the user the choice to open their own files instead. 
+
+You should ask this question first: \mintinline{c++}{Would you like to open the default library? Y/N}
+
+You should verify the user input. If it is invalid, keep asking.
+\begin{itemize}
+    \item If they say yes: try to open \mintinline{c++}{musiclibrary.tsv}. If it fails, create the file and then open it.
+    \item If they say no, ask this question: \mintinline{c++}{What library file would you like to open?} , and accept a filename. Try to open the file; if it fails, ask again, if not, use that file.
+\end{itemize}
+
+Once you know which library file you should be using, you should call the ReadLibrary function. 
+
+After loading the library, it is time to load the playlists. The sequence should be similar.
+
+You should ask this question first: \mintinline{c++}{Would you like to open the default playlists? Y/N}
+
+You should verify the user input. If it is invalid, keep asking.
+\begin{itemize}
+    \item If they say yes: try to open \mintinline{c++}{musicplaylists.txt}. If it fails, create the file and then open it.
+    \item If they say no, ask this question: \mintinline{c++}{What playlist file would you like to open?} , and accept a filename. Try to open the file; if it fails, ask again, if not, use that file.
+\end{itemize}
+
+Once you know which playlist file you should be using, you should call the ReadPlaylists function. 
+
+Once you are done with both, you should print a confirmation statement: \mintinline{c++}{Library and playlists loaded.}
+
+
+Here are a few sample runs for the opening sequence:
+
+\begin{sample}
+Would you like to open the default library? Y/N
+
+\textcolor{red}{Y}
+
+Would you like to open the default playlists? Y/N
+
+\textcolor{red}{Y}
+
+Library and playlists loaded.
+
+\end{sample}
+
+\begin{sample}
+Would you like to open the default library? Y/N
+
+\textcolor{red}{Y}
+
+Would you like to open the default playlists? Y/N
+
+\textcolor{red}{N}
+
+What playlist file would you like to open?
+
+\textcolor{red}{musicplaylists2.txt}
+
+Library and playlists loaded.
+\end{sample}
+
+\begin{sample}
+Would you like to open the default library? Y/N
+
+\textcolor{red}{N}
+
+What playlist file would you like to open?
+
+\textcolor{red}{musiclibrary2.tsv}
+
+Would you like to open the default playlists? Y/N
+
+\textcolor{red}{Y}
+
+Library and playlists loaded.
+\end{sample}
+
+\begin{sample}
+Would you like to open the default library? Y/N
+
+\textcolor{red}{N}
+
+What library file would you like to open?
+
+\textcolor{red}{musiclibrary2.txt}
+
+Cannot open that file. Try again:
+
+\textcolor{red}{musiclibrary2.tsv}
+
+Would you like to open the default playlists? Y/N
+
+\textcolor{red}{Y}
+
+Library and playlists loaded.
+\end{sample}
+
+Once this sequence is done and works, you can move on to the central menu loop. 
+
+\subsection{Central Menu Loop \star \star \star \star \star}
+
+After loading in all the information, you are ready to work with the user to figure out what they want to do with their library/playlists. Below I have outlined the menu. Text in bold should be printed in the menu, text beside it is to clarify what you should do for each branch of the menu:
+
+\begin{enumerate}
+    \item \textbf{Access Music Library}
+        \begin{enumerate}
+            \item \textbf{Add a song to your library} Ask the user for the artist, title, genre, and url for the new song. Then call the \mintinline{c++}{AddSongLibrary} function with this information to add it. 
+            \item \textbf{Remove a song from your library} Use the \mintinline{c++}{FindSongID} function to find the ID of the song they want to remove, then call the \mintinline{c++}{DeleteSongLibrary} function to remove it.
+            \item \textbf{Search your library} Use the \mintinline{c++}{FindSongID} function.
+            \item \textbf{Go back} Break out of this loop and go back to the previous level of the menu.
+        \end{enumerate}
+    \item \textbf{Access Playlists}
+        \begin{enumerate}
+            \item \textbf{Open an existing playlist} Print all the playlist names and have the user select which playlist to open. Then open this menu (same as the next bullet):
+                \begin{enumerate}
+                    \item \textbf{Add a song to your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of the song they want to add to the playlist, and then call \mintinline{c++}{AddSongPlaylist} function to add it. 
+                    \item \textbf{Remove a song from your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of the song they want to remove, and then call \mintinline{c++}{DeleteSongPlaylist} function to remove it. 
+                    \item \textbf{Swap the position of two songs in your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of the first song, and use it again to find the ID of the second song. Then call \mintinline{c++}{SwapSongs} to swap them. 
+                    \item \textbf{Move a song to a new position in your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of song they want to move, and then ask them where they want to move it to. They should either provide a numerical position or the word "end" to add to the end of the playlist. You should then call the \mintinline{c++}{MoveSong} function. If they provide "end", you can simply pass \mintinline{c++}{MAX_SONGS} to the function for the newLocation.
+                    \item \textbf{Print your playlist} Open this menu:
+                        \begin{enumerate}
+                            \item \textbf{Print by artists/titles} call the function \mintinline{c++}{PrintPlaylist}
+                            \item \textbf{Print Spotify Playlist} call the function \mintinline{c++}{PrintSpotify}
+                            \item \textbf{Go back} go back to the previous menu level
+                        \end{enumerate} 
+                    \item \textbf{Go back} go back to the previous menu level
+                \end{enumerate}
+            \item \textbf{Create a new playlist}. Ask them to name a new playlist if you have space to make a new one and use \mintinline{c++}{NewPlaylist} with that name. Then open this menu (same as previous bullet):
+                \begin{enumerate}
+                    \item \textbf{Add a song to your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of the song they want to add to the playlist, and then call \mintinline{c++}{AddSongPlaylist} function to add it. 
+                    \item \textbf{Remove a song from your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of the song they want to remove, and then call \mintinline{c++}{DeleteSongPlaylist} function to remove it. 
+                    \item \textbf{Swap the position of two songs in your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of the first song, and use it again to find the ID of the second song. Then call \mintinline{c++}{SwapSongs} to swap them. 
+                    \item \textbf{Move a song to a new position in your playlist} Use the \mintinline{c++}{FindSongID} function to find the ID of song they want to move, and then ask them where they want to move it to. They should either provide a numerical position or the word "end" to add to the end of the playlist. You should then call the \mintinline{c++}{MoveSong} function. If they provide "end", you can simply pass \mintinline{c++}{MAX_SONGS} to the function for the newLocation.
+                    \item \textbf{Print your playlist} Open this menu:
+                        \begin{enumerate}
+                            \item \textbf{Print by artists/titles} call the function \mintinline{c++}{PrintPlaylist}
+                            \item \textbf{Print Spotify Playlist} call the function \mintinline{c++}{PrintSpotify}
+                            \item \textbf{Go back} go back to the previous menu level
+                        \end{enumerate} 
+                    \item \textbf{Go back} go back to the previous menu level
+                \end{enumerate}
+            \item \textbf{Go back} go back to previous menu level
+        \end{enumerate}
+    \item \textbf{Quit}
+        \begin{enumerate}
+            \item \textbf{Save and quit} Ask this question: \mintinline{c++}{Would you like to save the library to the current location? Y/N}
+                \begin{itemize}
+                    \item Y: Use the library file that you opened earlier.
+                    \item N: Ask the user for the new save location.
+                \end{itemize}Then ask this question: \mintinline{c++}{Would you like to save the playlists to the current location? Y/N}
+                \begin{itemize}
+                    \item Y: Use the playlist file that you opened earlier.
+                    \item N: Ask the user for the new save location.
+                \end{itemize}
+                Then call the the \mintinline{c++}{SaveChanges} function with the appropriate library and playlist file, then return 0.
+            \item \textbf{Quit without saving} Return 0.
+            \item \textbf{Go back} Go back to previous menu level.
+        \end{enumerate}
+\end{enumerate}
+
+Every level of the menu should be inside of a loop that only breaks when the user chooses ``Go back", so the user could add several songs to a playlist or something similar without having to navigate the menu every time. Every level should have input validation, and print "Invalid selection." if the user does not pick a valid menu option. All menus should use numbering starting at 1 for consistency. 
+
+\subsection{Final Program Sample Run}
+
+Here is a sample run for the program.
+
+\begin{sample}
+Would you like to open the default library? Y/N
+
+\textcolor{red}{Y}
+
+Would you like to open the default playlists? Y/N
+
+\textcolor{red}{Y}
+
+Library and playlists loaded.
+
+Select an option:
+
+1. Access Music Library
+
+2. Access Playlists
+
+3. Quit
+
+\textcolor{red}{1}
+
+Select an option:
+
+1. Add a song to your library
+
+2. Remove a song from your library
+
+3. Search your library
+
+4. Go back
+
+\textcolor{red}{1}
+
+What is the artist name?
+
+\textcolor{red}{Ivory Layne}
+
+What is the song title?
+
+\textcolor{red}{Algorhythm}
+
+What is the genre?
+
+\textcolor{red}{nashville singer-songwriter}
+
+What is the spotify URL?
+
+\textcolor{red}{https://open.spotify.com/track/4MWsGfqoy0erAe5zgsrBgl}
+
+Song added.
+
+Select an option:
+
+1. Add a song to your library
+
+2. Remove a song from your library
+
+3. Search your library
+
+4. Go back
+
+\textcolor{red}{3}
+
+Would you like to search by artist (A), title (T), or genre (G)?
+
+\textcolor{red}{A}
+
+What artist would you like to search for?
+
+\textcolor{red}{Ivory}
+
+1: "Algorhythm" by Ivory Layne
+
+Which number song is your choice? If none of the above, enter -1.
+
+\textcolor{red}{1}
+
+1. Add a song to your library
+
+2. Remove a song from your library
+
+3. Search your library
+
+4. Go back
+
+\textcolor{red}{4}
+
+Select an option:
+
+1. Access Music Library
+
+2. Access Playlists
+
+3. Quit
+
+\textcolor{red}{3}
+
+Select an option:
+
+1. Save and Quit
+
+2. Quit without saving
+
+3. Go back
+
+\textcolor{red}{2}
+\end{sample}
+
+\subsection{Menu Strings}
+Here is a copy of the menu strings we will be using. These are also provided in the main() function on the starting cpp file on Canvas. You do not have to use these -- you can type them out with cout statements instead -- but they can save you some headaches while trying to sort out the capitalization, spacing, and punctuation issues while testing in Coderunner.
+
+\begin{minted}[breaklines=true]{c++}
+string menu1 = "Select an option:\n1. Access Music Library\n2. Access Playlists\n3. Quit\n";
+string menu2 = "Select an option:\n1. Add a song to your library\n2. Remove a song from your library\n3. Search your library\n4. Go back\n";
+string menu3 = "Select an option:\n1. Open an existing playlist\n2. Open a new playlist\n3. Go back\n";
+string menu4 = "Select an option:\n1. Add a song to your playlist\n2. Remove a song from your playlist\n3. Swap the position of two songs in your playlist\n4. Move a song to a new position in your playlist\n5. Print your playlist\n6. Go back\n";
+string menu5 = "Select an option:\n1. Save and Quit\n2. Quit without saving\n3. Go back\n";
+\end{minted}
+
+\subsection{Extra Credit: 10 Points}
+For extra credit, you can make an optional additional function to shuffle playlists. This shuffling must be \textbf{random}. This means you will need to read up on and learn the ways to generate random numbers in C++, and use that to create an algorithm to randomize the order of the songs in a playlist. 
+
+As a hint: you may want to start with the functions \mintinline{c++}{srand()} and \mintinline{c++}{rand()} and go from there. Because the reordering is random, we cannot use coderunner to grade this, so you will have to include it in your ZIP submission for this project. Use ample commentary. Partial extra credit will be awarded, so feel free to include this function even if you couldn't get it working perfectly. 
+
+
+
+\section{Extra Information}
+
+\subsection{Making Your Own Library}
+If you would like to make your own data sets from your spotify playlists to use with this project, here are steps to do so:
+
+I used \textcolor{cyan}{\href{https://exportify.net/}{Exportify}:} https://exportify.net/
+
+Exportify links with your spotify account. When you link Exportify with your spotify account you will have the option to download information about each of your spotify playlists. Toggle on "Include Artrists Data" and "Include Album Data" under the settings cog, and then you can download an excel file for each playlist.
+
+There will be a lot of extra information in the file you downloaded, but you can copy just the ``Artist Name(s)", ``Track Name", and ``Artist Genres" into a new excel file, in that order. Finally, you can get all the links for your spotify playlist by highlighting the playlist in your Spotify app and copy/pasting. The order will be maintained between these two lists. 
+
+After collecting and combining these four columns, you can export your data as a Tab Separated Values file (TSV). 
+

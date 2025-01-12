@@ -1,0 +1,281 @@
+\chapter*{Week 8: Recursion and Pass By Reference}
+\addcontentsline{toc}{chapter}{Week 8: Recursion and Pass By Reference}
+\setcounter{chapter}{8}
+\setcounter{section}{0}
+
+\begin{abstract}
+This week will cover:
+\begin{enumerate}
+    \item Recursion
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Background}
+\subsection{Recursion}
+A recursive function is one which calls itself. Recursion can be used to accomplish a repetitive task, like loops. Indeed, it turns out that anything you can do with a loop, you could also do with recursion, and vice versa. However, some algorithms are easier to express with loops, and others are easier to express with recursion. You'll want both in your toolkit to write elegant, simplistic, short code.
+
+Every recursive function includes two parts:
+
+\begin{itemize}
+    \item \textbf{base case:} A simple non-recursive occurrence that can be solved directly. Sometimes, there are multiple base cases.
+    \item \textbf{recursive case:} A more complex occurrence that can be described using smaller chunks of the problem, closer to the base case.
+\end{itemize}
+    
+To write a recursive function, we often use the following format:
+
+\begin{minted}{c++}
+    returnType functionName(arguments)
+    {
+        if (/*baseCase?*/)
+        {
+            return /*baseCase result*/;
+        }
+        else
+        {
+            // some calculations, including a call to functionName
+            // with “smaller” arguments.
+            return /*general result*/
+        }
+    }
+\end{minted}
+
+Consider the following simple recursive function, which calculates the sum of the numbers 1, 2, 3, …, n:
+
+\begin{minted}{c++}
+int sumNumsRecursive(int num)
+{
+    // base case: if the number is 0, we will return 0
+    if(num == 0)
+    {
+        return  0;
+    }
+    else
+    {
+        // recursive case: where we try to find the result of the previous step
+        return num + sumNumsRecursive(num - 1);
+    }
+}
+\end{minted}
+
+The following examples show the final returned value and intermediate recursive function calls.
+
+For example, if \mintinline{c++}{num = 3}.
+recursive call 1: \mintinline{c++}{sumNumsRecursive(3)} will return \mintinline{c++}{3 + sumNumsRecursive(2)} (we are running the else statement since num is 3).
+recursive call 2: When \mintinline{c++}{sumNumsRecursive(2)} is called, it will return \mintinline{c++}{2 + sumNumsRecursive(1)}.
+recursive call 3: Similarly, \mintinline{c++}{sumNumsRecursive(1)} will \mintinline{c++}{return 1 + sumNumsRecursive(0)}.
+recursive call 4: Finally, \mintinline{c++}{sumNumsRecursive(0)} will return 0, by definition of the base case.
+
+Next if we go back the chain and replace \mintinline{c++}{sumNumsRecursive(0)} with 0, we will have \mintinline{c++}{sumNumsRecursive(1) = 1 + 0}. Therefore, \mintinline{c++}{sumNumsRecursive(1) = 1}.
+Similarly, \mintinline{c++}{sumNumsRecursive(2) = 2 + sumNumsRecursive(1)}, where \mintinline{c++}{sumNumsRecursive(1) = 1}. Therefore, \mintinline{c++}{sumNumsRecursive(2) = 2 + 1}; thus, \mintinline{c++}{sumNumsRecursive(2) = 3}.
+Lastly, \mintinline{c++}{sumNumsRecursive(3) = 3 + 3}; the second 3 is the result of \mintinline{c++}{sumNumsRecursive(2)}. Therefore, \mintinline{c++}{sumNumsRecursive(3) = 6}.
+
+Below is the same explanation in a different format.
+
+\begin{verbatim}
+sumNumsRecursive(3) = 3 + sumNumsRecursive(2) // running the else statement
+                    = 3 + 2 + sumNumsRecursive(1) 
+                    // sumNumsRecursive(2) = 2 + sumNumsRecursive(1)
+                    = 3 + 2 + 1 + sumNumsRecursive(0) 
+                    // sumNumsRecursive(1) = 1 + sumNumsRecursive(0)
+                    = 3 + 2 + 1 + 0 
+                    // sumNumsRecursive(0) = 0 (base case)
+                    = 6
+\end{verbatim}
+
+\subsection{Pass By Reference}
+
+In C++, you can pass parameters to functions either by value or by reference. Passing by reference allows you to modify the original variable within the function.
+
+The syntax is:
+
+\begin{minted}
+void functionName(<data_type> &parameter_name)
+{
+    // Function body
+}
+\end{minted}
+
+Example:
+
+\begin{minted}{c++}
+#include <iostream>
+using namespace std;
+
+// Function to increment a number by value
+void incrementByValue(int num)
+{
+    num++;
+}
+
+// Function to increment a number by reference
+void incrementByReference(int &num)
+{
+    num++;
+}
+
+int main()
+{
+    int x = 5;
+
+    cout << "Before increment: " << x << endl;
+    incrementByValue(x); // passing x by value
+    cout << "After increment: " << x << endl;
+
+    cout << "---" << endl;
+
+    cout << "Before increment: " << x << endl;
+    incrementByReference(x); // passing x by reference
+    cout << "After increment: " << x << endl;
+
+    return 0;
+}
+\end{minted}
+
+\begin{sample}
+Before increment: 5
+
+After increment: 5
+
+---
+
+Before increment: 5
+
+After increment: 6
+
+\end{sample}
+
+Key points to remember:
+
+\begin{itemize}
+    \item Parameters passed by reference are indicated by \& in the function declaration.
+    \item Changes made to the reference parameter within the function affect the original variable.
+    \item Pass by reference avoids unnecessary copying of the argument to the parameter variable, which can be more efficient.
+    \item Arrays are passed by reference by default (so there is no preceding \& for an array parameter).
+    \item References cannot be reassigned to refer to a different variable once initialized.
+\end{itemize}
+
+\section{Pre-Recitation Quiz}
+
+\problem What is recursion? Why do we use it?
+
+\problem Spot the error in this recursive function:
+
+\begin{minted}
+int factorial (int n){
+    if (n == 1)
+        return factorial(n);
+    else
+        return 1;
+}
+\end{minted}
+
+\problem What has been the most challenging part of Project 2?
+
+\problem What part of Project 2 are you proudest of?
+
+\section{Recitation}
+
+\subsection{Spot The Error: Championship Edition}
+ This week, we’ll be doing something a little different in recitation. The (simplified) program below was created by an airport to track airplanes that arrive to and depart from the airport. Some of the functionalities are suboptimal while others have bugs in them. The driver file has an auxiliary function to estimate how much your travel time would be depending on the airplane model.
+
+The snippet of code below from Rec8.cpp already has errors; try running the set of cpp files in VS Code to see for yourselves!
+
+\begin{minted}[breaklines=true]{c++}
+#include "Rec14.h"
+
+Airport::Airport()
+{
+    _num_planes = 0;
+}
+
+Airport::Airport(Airplane p1, Airplane p2, Airplane p3)
+{
+    int _num_planes = 3;
+	Airplane _planes[_MAX] = {p1,p2,p3};
+}
+
+void Airport::setNumPlanes(int num_planes)
+{
+    int _num_planes = num_planes; 
+}
+
+int Airport::getNumPlanes() const
+{
+    return _num_planes;
+}
+
+Airplane Airport::getPlane(string id)
+{
+    for (int i = _num_planes; i >= 0; i++) 
+    {
+        if (_planes[i].id == id)
+        {
+            return _planes[i];
+        }
+    }
+    Airplane empty = {"", 0};
+    return empty;
+}
+
+Airport void addPlane(string id, int speed)
+{
+    if (_num_planes < _MAX)
+    {
+        _planes[_num_planes].id = id;
+        _planes[_num_planes].speed = speed;
+        _num_planes++;
+    }
+    else
+    {
+        cout << "Cannot add more planes to the airport!" << endl;
+    }
+}
+
+void removePlane(Airplane p)
+{
+    Airplane plane = getPlane(p.id);
+    int index;
+    if (plane.speed != 0)
+    {
+        for (int i = 0; i < _num_planes; i++) 
+        {
+            if (_planes[i].id == plane.id && _planes[i].speed = plane.speed)
+            {
+                index = i;
+                break;
+            }
+        }
+        for (int i = index; i <_num_planes; i++) 
+        {
+            _planes[i] = _planes[i+1];
+        }
+        _planes[_num_planes-1].id = "";
+        _planes[_num_planes-1].speed = 0;
+    }
+    
+    return;
+}
+\end{minted}
+
+\begin{multipart}
+Your task is to work as a team to BREAK this code. Introduce as many unique compile-time errors as you can, but be sure to keep track of all of the errors you introduce. Keep in mind that the errors you introduce must be unique. Avoid introducing multiples of the same error.
+
+In about 5 minutes, you’ll give your code to another team for them to try and debug. Whichever team catches the most errors wins! Who doesn’t enjoy a little friendly competition?
+
+Keep a list of the bugs your team introduces on a Google Doc, and paste them into the Canvas submission.
+\end{multipart}
+
+\vspace{5cm}
+
+\begin{multipart}
+Now it’s time for you to switch code with your competition. Your team’s job is to identify and fix as many errors as you can before time’s up! Be sure to keep track of all the errors you find. In order to win, your team needs to identify more bugs than the other team.
+
+Keep a list of the bugs you’re able to find and fix.
+\end{multipart}
+
+\vspace{5cm}
+
+\begin{multipart}
+Now, give the list of bugs you found back to the other team. They should do the same for you. Go through the list of bugs the other team found and verify them using your team’s list from earlier. How many bugs did the other team find?
+\end{multipart}

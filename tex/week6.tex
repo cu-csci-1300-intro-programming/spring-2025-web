@@ -1,0 +1,605 @@
+\chapter*{Week 6: Objects Continued}
+\addcontentsline{toc}{chapter}{Week 6: Objects Continued}
+\setcounter{chapter}{7}
+\setcounter{section}{0}
+
+\begin{abstract}
+This week will cover:
+\begin{enumerate}
+    \item Objects
+    \item Header Files
+\end{enumerate}
+    
+\end{abstract}
+
+
+
+\section{Background}
+\subsection{Header and Source Files}
+Creating our own classes with various data members and functions increases the complexity of our program. Putting all of the code for our classes as well as the main functionality of our program into one .cpp file can become confusing for you as a programmer, and we need ways of reducing the visual clutter that this creates. This is why, as we increase the complexity of a program, we might need to create multiple files: header and source files, which capture the \textit{definition} and \textit{implementation} of the class, respectively.
+
+\subsubsection{Header Files}
+
+Header files have .h as their filename extensions. In a header file, we declare one or more of the complex structures (classes) we want to develop. In a class, we define member functions and member attributes. These functions and attributes are the building blocks of the class.
+
+\begin{example}
+    Example File 0: ClassName.h
+    \begin{minted}{c++}
+#include <iostream> 
+using namespace std; 
+class ClassName 
+{ 
+    public: 
+    . 
+    . 
+    . 
+    private: 
+    . 
+    . 
+    . 
+};
+
+    \end{minted}
+\end{example}
+
+\begin{example}
+    Example File 1: IntelligenceAgency.h
+    \begin{minted}{c++}
+#include <iostream> 
+using namespace std; 
+class IntelligenceAgency
+{
+    public:
+        IntelligenceAgency();         // Default constructor
+        IntelligenceAgency(string classifiedIntelligenceInput); // Parameterized const
+        string organization_name;
+        string getClassifiedIntelligence(){return classifiedIntelligence};
+        void setClassifiedIntelligence(string classifiedIntelligenceInput)
+        {classifiedIntelligence=classifiedIntelligenceInput};
+
+    private:
+        string classified_intelligence;
+};
+    \end{minted}
+\end{example}
+
+\subsubsection{Source File}
+
+Source files are recognizable by the .cpp extension. In a source file, we implement the class defined in the header file. Since we are splitting the development of actual code for the class into a definition (header file) and an implementation (source file), we need to link the two somehow.
+
+\begin{minted}{c++}
+//IntelligenceAgency Example
+#include "IntelligenceAgency.h"
+\end{minted}
+
+Or, more generally,
+
+\begin{minted}{c++}
+//General Example
+#include "ClassName.h"
+\end{minted}
+
+In the source file, we will include the header file that defines the class so that the source file is “aware” of where we can retrieve the definition of the class. We must define the class definition in every source that wants to use our user defined data type (our class). When implementing each member function, our source files must tell the compiler that these functions are actually the methods defined in our class definition using the syntax that we showed earlier.
+
+\subsubsection{How To Compile Multiple Files}
+
+Once you create a project with one or more separate classes, it will be necessary to write multiple files (.h and .cpp) and test them before submitting them. You need to compile and execute your code using the command line. Make sure that you start by changing directories so that you are in the folder where your solution’s files are stored. In this example, our folder will be called \textbf{project2}. To change to this directory, use:
+
+\mintinline{bash}{cd project2/}
+
+When compiling from the command line, you need to specify every \mintinline{c++}{.cpp} file in your project. This means that when you call the g++ compiler, you need to explicitly name the files you’re compiling:
+
+\mintinline{bash}{g++ -std=c++17 file1.cpp file2.cpp main.cpp}
+
+The compiling command results in the creation of an executable file. Note that header files (.h) are NOT included in compilation commands. If you did not specify a name for this executable, it will be named \mintinline{c++}{a.out} by default. To execute this file, use the command:
+
+\mintinline{bash}{./a.out}
+
+You can add the \mintinline{bash}{-o} flag to your compiling command to give the output file a name:
+
+\mintinline{bash}{g++ -o myName.out -std=c++17 file1.cpp file2.cpp main.cpp}
+
+And then run it with:
+
+\mintinline{bash}{./myName.out}
+
+At this stage, you may also find it helpful to begin compiling with flags that tell you more information about possible errors in your code. These flags include:
+
+\mintinline{bash}{-Wall}
+
+Wall is short for "Warn All", which will turn on most of the warnings in C++. This will help identify various possible ways your code might go wrong, including array bounds errors and other helpful messages.
+
+\mintinline{bash}{-Werror}
+
+Werror will treat all warnings as errors. This will prevent you from skipping past the possible sources of error in your code, and you will need to make sure all warnings are resolved prior to compiling.
+
+\mintinline{bash}{-Wpedantic}
+
+This flag enables warnings that alert you about language constructs that are not ISO C or ISO C++ standard compliant. This is particularly helpful to identify constructs that may not be uniform in other compilers, which could cause problems with your code on other machines. This will help prevent instances where your code works on your personal computer, but does not work on CodeRunner or on the grader's computer. All together, your command line prompt will look something like this:
+
+\mintinline{bash}{g++ -Wall -Werror -Wpedantic -o myName.out -std=c++17 file1.cpp file2.cpp main.cpp}
+
+\section{Warmup}
+
+\begin{problem}
+    What is a function? Why are functions useful? 
+\end{problem}
+
+\begin{problem}
+    Create a question for the exam this week. Think of things you found particularly tricky or confusing and use that to make a question. Note: none of these questions will ACTUALLY be used for the exam, so don't worry about making the questions too hard! These questions will be compiled into a study guide.
+\end{problem}
+
+\begin{problem}
+    The main() function creates two Animal objects and prints their information. Fill in the blanks below:
+
+\end{problem}
+\begin{minted}{c++}
+
+Animal.h
+
+#ifndef ANIMAL_H
+#define ANIMAL_H
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+    // data member
+    private:  
+        string _name;
+        int _age;
+
+    public:
+        Animal();
+        Animal(string, int);
+
+        string getName() const;
+        int getAge() const;
+
+        void setName(string);
+        void setAge(int);
+};
+#endif
+
+
+Animal.cpp
+
+#include <iostream>
+#include "Animal.h"
+using namespace std;
+
+// default constructor
+Animal::Animal()
+{
+    _name = "unknown";
+    _age = 0;
+}
+
+// parameterized constructor
+Animal::Animal(string name, int age)
+{
+    __________________________
+    __________________________
+}
+
+// getter for name
+__________________________
+{
+    return _name;
+}
+
+// getter for age
+int Animal::getAge() const
+{
+    return _age;
+}
+
+// setter for name
+void Animal::setName(string name)
+{
+    _name = name;
+}
+
+// setter for age
+____________________________________
+{
+    _age = age;
+}
+animalDriver.cpp
+
+#include <iostream>
+#include "Animal.h"
+using namespace std;
+
+int main() {
+
+    // creating an instance of Animal named dog using the default constructor
+    Animal dog;
+
+    cout << dog.getName() << endl;
+    cout << dog.getAge() << endl;
+
+    // create an instance of Animal named cat using the Parameterized constructor
+    ___________________________________
+    cout << cat.getName() << endl;
+    cout << cat.getAge() << endl;  
+
+}
+Expected output:
+
+unknown
+0
+Kitty
+12
+\end{minted}
+
+\section{Recitation}
+
+
+
+\subsection{Galaxy Class}
+Create a class Galaxy by splitting the code into the following files:
+
+A header file Galaxy.h to declare the definition of the class
+An implementation file Galaxy.cpp to implement the class defined in the header
+A driver file GalaxyDriver.cpp that contains the main function
+The Galaxy class comprises of the following attributes:
+
+Data members (private)
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{1.5in}|p{1.5in}|p{3in}}
+        \textbf{Member Type} & \textbf{Member Name} & \textbf{Description} \\ \hline
+        \texttt{string} & \_name & Name of the Galaxy \\
+        \texttt{const static int} & \_MAX\_SIZE & Maximum size of the \_radii array; will be 10 for this question \\
+        \texttt{int[]} & \_radii & Array containing the radius of Planets in the Galaxy. The size of this array is \_MAX\_SIZE \\
+        \texttt{int} & \_current\_size & Number of planets in the \_radii array \\
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+        \textbf{Name} & \textbf{Description} \\ \hline
+        Default Constructor & Creates a new instance of \texttt{Galaxy} by setting \_name to an empty string, \_current\_size to 0 and each radius in the \_radii array to 0 \\
+        \texttt{Galaxy(string)} & Creates a new instance of \texttt{Galaxy} with \_name as the string parameter. The \_current\_size is set to 0 and each radius in the \_radii array is 0 \\
+        \texttt{Galaxy(string, int[], int)} & Creates a new instance of \texttt{Galaxy} with \_name as the string parameter, \_current\_size as the int parameter, and fills the \_radii array. See Function Specification table below for more details \\
+        \texttt{string getName()} & Returns the \_name of the Galaxy \\
+        \texttt{int getCurrentSize()} & Returns the \_current\_size of the Galaxy \\
+        \texttt{void setName(string)} & Sets the \_name to the value of the string parameter \\
+        \texttt{int getRadius(int)} & Returns radius at the provided index in the \_radii array. If the index is greater than or equal to \_current\_size, return -1 \\
+        \texttt{bool addRadius(int)} & Returns true if the new radius can be added to the \_radii array. If the \_current\_size is already equal to \_MAX\_SIZE, return false. See Function Specification table below for more details \\
+        \texttt{double getAverageRadius()} & Calculates and returns the average radius of the Planets in the Galaxy. See Question 2 for more details \\
+    \end{tabular}
+\end{table}
+
+
+
+\subsection*{Function: \texttt{Galaxy(string, int[], int)}}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+        \textbf{Purpose} & This parameterized constructor creates a new instance of the \texttt{Galaxy} class. \\
+        \hline
+        & Set \_name to \texttt{name}. \\
+        & Set \_current\_size to \texttt{arr\_size} if \texttt{arr\_size} doesn't exceed \_MAX\_SIZE. Otherwise, \_current\_size is set to \_MAX\_SIZE (See Error Handling section). \\
+        & Assign the elements from the \texttt{radii[]} array to the \_radii[] array, up to the size indicated by \_current\_size. \\
+        \hline
+        \textbf{Parameters} & \texttt{string name}: The name of the Galaxy \\
+        & \texttt{int radii[]}: Array of radius of Planets in the Galaxy \\
+        & \texttt{int arr\_size}: The size of \texttt{radii[]} array \\
+        \hline
+        \textbf{Return Value} & The constructor doesn't return any value. \\
+        & The constructor should not print anything. \\
+        \hline
+        \textbf{Error Handling/Boundary Conditions} & If \texttt{arr\_size} exceeds \_MAX\_SIZE, only the first \_MAX\_SIZE elements will be stored in the \_radii array. Do NOT print any other statements to showcase this scenario. \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Example}
+
+\textbf{Sample Code:}
+
+\begin{minted}{c++}
+// Assume the proper libraries are included
+// Assume the proper implementation of the class is included
+
+int main()
+{
+    string name = "Andromeda";
+    int arr_size = 8;
+    int radii[arr_size] = {10, 20, 30, 40, 50, 60, 70, 80};
+    Galaxy new_galaxy = Galaxy(name, radii, arr_size);
+}
+\end{minted}
+
+\textbf{The expected contents of the \texttt{new\_galaxy} object created:}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+        \_name & Andromeda \\
+        \hline
+        \_MAX\_SIZE & 10 \\
+        \hline
+        \_current\_size & 8 \\
+        \hline
+        \_radii[] & \{10, 20, 30, 40, 50, 60, 70, 80, 0, 0\} \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Function: \texttt{addRadius(int)}}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+        \textbf{Purpose} & Adds the provided radius to the \_radii array. \\
+        \hline
+        \textbf{Parameters} & \texttt{int radius}: The value of radius to be added \\
+        \hline
+        \textbf{Return Value} & \texttt{bool}: A boolean value indicating whether the new radius was successfully added to the \_radii array. The function should not print anything. \\
+        \hline
+        \textbf{Error Handling/Boundary Conditions} & If \_current\_size is already equal to \_MAX\_SIZE, do not add/modify any contents and return false. \\
+        & If the radius is non-positive, do not add/modify any contents and return false. \\
+        & Return true if none of the above conditions hold true. \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Example}
+
+\textbf{Sample Code:}
+
+\begin{minted}{c++}
+// Assume the proper libraries are included
+// Assume the proper implementation of the Galaxy class is included
+
+int main()
+{
+    string name = "Andromeda";
+    const int ARR_SIZE = 8;
+    int radii[ARR_SIZE] = {10, 20, 30, 40, 50, 60, 70, 80};
+    Galaxy new_galaxy = Galaxy(name, radii, ARR_SIZE);
+    cout << new_galaxy.addRadius(90) << endl;
+}
+\end{minted}
+
+\textbf{The expected return value after the function call:}
+True
+
+\textbf{The expected contents of \texttt{new\_galaxy} object after the function call:}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+        \texttt{\_name} & Andromeda \\
+        \hline
+        \texttt{\_MAX\_SIZE} & 10 \\
+        \hline
+        \texttt{\_current\_size} & 9 \\
+        \hline
+        \texttt{\_radii[]} & \{10, 20, 30, 40, 50, 60, 70, 80, 90, 0\} \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Example 1}
+
+\textbf{Input for the function call:}
+
+\begin{minted}{c++}
+string name = "MilkyWay";
+const int ARR_SIZE = 3;
+int radii[ARR_SIZE] = {10, 20, 30};
+Galaxy new_galaxy = Galaxy(name, radii, ARR_SIZE);
+cout << new_galaxy.addRadius(-40) << endl;
+\end{minted}
+
+\textbf{The expected return value after the function call: false}
+
+
+
+\textbf{The expected contents of \texttt{new\_galaxy} object after the function call:}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+        \texttt{\_name} & MilkyWay \\
+        \hline
+        \texttt{\_MAX\_SIZE} & 10 \\
+        \hline
+        \texttt{\_current\_size} & 3 \\
+        \hline
+        \texttt{\_radii[]} & \{10, 20, 30, 0, 0, 0, 0, 0, 0, 0\} \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Example 2}
+
+\textbf{Input for the function call:}
+
+\begin{minted}{c++}
+string name = "Orion";
+const int ARR_SIZE = 10;
+int radii[ARR_SIZE] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+Galaxy new_galaxy = Galaxy(name, radii, ARR_SIZE);
+cout << new_galaxy.addRadius(40) << endl;
+\end{minted}
+
+\textbf{The expected return value after the function call: false}
+
+
+\textbf{The expected contents of \texttt{new\_galaxy} object after the function call:}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+        \texttt{\_name} & Orion \\
+        \hline
+        \texttt{\_MAX\_SIZE} & 10 \\
+        \hline
+        \texttt{\_current\_size} & 10 \\
+        \hline
+        \texttt{\_radii[]} & \{10, 20, 30, 40, 50, 60, 70, 80, 90, 100\} \\
+    \end{tabular}
+\end{table}
+
+\begin{multipart}
+Imagine what a sample run of your program would look like. Think about at least two examples.
+\end{multipart}
+\vspace{6 cm}
+\begin{multipart}
+Develop your solution in C++ by implementing header and .cpp files. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make sure you test for the values mentioned in the example output, and also test your code on sample test cases inclusive of boundary conditions.
+\end{multipart}
+
+
+\section{Homework}
+
+\subsection{A Circle2D Class}
+Let’s design a class to represent a 2D circle as described below. Organize the class contents into Circle2D.h and Circle2D.cpp files.
+
+The Circle2D class will have the following attributes and methods:
+
+\textbf{Data Members (private)}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c}
+Name & Data Type & Description \\ \hline
+center & Point2D & A Point2D object representing the center of the circle. \\
+radius & double & The radius of the circle \\
+    \end{tabular}
+\end{table}
+
+\textbf{Member Functions (public)}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+Name & Description \\ \hline
+Default Constructor & Set center to the point at the origin and radius to 1.0. \\
+Parameterized Constructor & Set the values of center and radius as provided to the constructor.\\
+Point2D getCenter() & Returns the Point2D object at the center of the circle \\
+double getRadius() & Returns the value of radius data member as a double \\
+void setCenter(Point2D) & Updates the value of center data member to function parameter \\
+void setRadius(double) & Updates the value of radius data member to function parameter only if the parameter value is greater than or equal to 0. Otherwise, setRadius should not change the value of the radius data member. \\
+void print() & Prints the center and radius data members formatted as follows:
+
+\mintinline{c++}{Center: (x,y)}
+
+\mintinline{c++}{Radius: r} \\
+
+double area() & Returns the area of the circle. For simplicity, assume pi = 3.14.
+area = 3.14 * r^2 \\
+bool isPointOnCircle(Point2D) & Returns true if the given point is on the edge of the circle and false otherwise.
+The equation of a circle is given by:
+$radius^2 = (x - center.x)^2 + (y - center.y)^2$
+    \end{tabular}
+\end{table}
+
+\begin{example}
+    Sample main function:
+\begin{minted}{c++}
+Circle2D c1; //calling the default constructor
+c1.display();
+
+//create a Point2D object that is passed to parameterized Circle2D constructor 
+Circle2D c2(Point2D(1,1), 3); 
+c2.display();
+
+c2.setRadius(5);
+c2.display();
+
+c2.setCenterX(Point2D(-1,3));
+c2.display();
+
+//calling some member functions below
+cout << c2.getCenter() << endl;
+cout << c2.getRadius() << endl;
+cout << c2.area() << endl;
+
+Point2D p1(0,1,"R");
+
+cout << c1.isPointOnCircle(p1) << endl; //passing an object to a member function
+
+return 0;
+\end{minted}
+
+Expected output:
+
+\begin{verbatim}
+Center: (0,0)
+Radius: 1
+Center: (1,1)
+Radius: 3
+Center: (1,1)
+Radius: 5
+Center: (-1,3)
+Radius: 5
+-1
+3
+5
+78.5
+1
+\end{verbatim}
+\end{example}
+
+\subsection{Tree}
+Create a class to store information about a Tree. You should store this information:
+
+\textbf{Data Members (private)}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c}
+Name & Data Type & Description \\ \hline
+species & string & A string that stores the species of the tree. \\
+age & int & An integer that stores the age of the tree. \\
+height & double & An integer that stores the height of the tree. \\
+dropsLeaves & bool & A boolean that tells us whether the tree drops its leaves in the winter or not. \\
+    \end{tabular}
+\end{table}
+
+\textbf{Member Functions (public)}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+Name & Description \\ \hline
+Default Constructor & Set age and height to zero, the species to a placeholder string "UNKNOWN SPECIES", and the dropsLeaves bool to false\\
+Parameterized Constructor & Set the values of all four parameters in this order: species, age, height, dropsLeaves.\\
+string getSpecies() & Returns the species \\
+int getAge() & Returns the age of the tree \\
+double getHeight() & Returns the height of the tree \\
+bool getDropsLeaves() & Returns if the tree drops its leaves. \\
+void setSpecies(string newSpecies) & Sets the species string to the provided value. \\
+void oneYear(double growth) & Represents one year of growth, update the height and age accordingly. \\
+    \end{tabular}
+\end{table}
+
+
+\subsection{Forests}
+Create a class to store a bunch of Tree objects and tell you information about the resulting forest. You should build it like this:
+
+\textbf{Data Members (private)}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c}
+Name & Data Type & Description \\ \hline
+trees[1000] & Tree array & An array that stores all the trees in the forest. \\
+numTrees & int & An integer that stores the number of trees in our forest. \\
+    \end{tabular}
+\end{table}
+
+\textbf{Member Functions (public)}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{2in}|p{4in}}
+Name & Description \\ \hline
+Default Constructor & Simply store empty trees in our array and set the numTrees to zero.\\
+Parameterized Constructor & Accept an array of trees to copy over and a number of trees in this order: (int numTreesInput, Tree trees[1000])\\
+int getNumTrees() & Returns the number of trees in our forest. \\
+void addTree(Tree t) & Adds a new tree to our forest and increments the number of trees in our forest if we have space for it. \\
+string getMostCommonSpecies() & Searches through all our trees and returns the most common species of tree in our forest. \\
+double averageAge() & Returns the average age of all trees in our forest. \\
+double averageHeight() & Returns the average height of trees in our forest. \\
+int howManyDropLeaves() & Returns how many of our trees drop their leaves in winter. \\
+void oneYear(double averageGrowth) & Grow every tree in your forest by 1 year using the provided average growth\\
+    \end{tabular}
+\end{table}

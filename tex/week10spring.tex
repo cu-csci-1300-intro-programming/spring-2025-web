@@ -1,0 +1,1089 @@
+\chapter*{Week 10: Structs and Objects}
+\addcontentsline{toc}{chapter}{Week 10: Structs and Objects}
+\setcounter{chapter}{11}
+\setcounter{section}{0}
+
+\begin{abstract}
+This week you will:
+\begin{enumerate}
+    \item Learn how to create structs
+    \item Learn how to access data in structs
+    \item Learn how to write functions that use structs
+    \item Learn the basics of object oriented programming
+    \item Learn about data members, member functions, and constructors.
+
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Background}
+\subsection{Structs}
+
+In C++, we can define a structure using the keyword struct like so:
+
+\begin{minted}{c++}
+struct State
+{
+    string name;
+    int area;
+};                   // <-- semicolon after struct definition
+\end{minted}
+
+This defines a new type, State, that you can use for declaring variables, e.g.
+
+\begin{minted}{c++}
+//create a State variable with no name or area
+State emptyState;
+
+//create a State variable with a name and area
+State colorado{"Colorado", 104094};
+\end{minted}
+
+The variables \mintinline{c++}{emptyState} and \mintinline{c++}{colorado} both have two named attributes, called members - \mintinline{c++}{name} and \mintinline{c++}{area}. We can access each member using dot notation, e.g.
+
+\begin{minted}{c++}
+//set members for empty State
+emptyState.name = "Texas";
+emptyState.area = 268596;
+
+//get members for colorado
+cout << colorado.name << " has an area of " << colorado.area << " square miles." << endl;
+\end{minted}
+
+Expected output:
+
+\begin{verbatim}
+Colorado has an area of 104094 square miles.
+\end{verbatim}
+
+If we want to compare two structs, we cannot do so directly. Instead, we must compare each data member individually to see if they match, e.g.
+
+\begin{minted}{c++}
+//check each data member by one
+if(colorado.name == emptyState.name && colorado.area == emptyState.area)
+{
+    cout << "These are the same state!" << endl;
+}
+else
+{
+    cout << "These are not the same state!" << endl;
+}
+\end{minted}
+
+Expected output:
+
+\begin{verbatim}
+These are not the same state!
+\end{verbatim}
+
+\subsection{Classes}
+When writing complex programs, sometimes the built-in data types (such as int, char, string) don’t offer developers enough functionality or flexibility to solve their problems. A solution is for the developer (you - yes, you!) to create your own custom data types to use, called classes. Classes are user-defined data types, which hold their own data members and member functions, which can be accessed and used by creating an instance of that class. A class is like a blueprint for an object, customized for whatever particular problem the programmer is working on.
+
+String, for example, is a class in C++ which holds data (the characters comprising the string) and supports useful member functions like substr which operate on this data.
+
+Below is an example of the basic definition of a class in C++.
+
+\begin{minted}{c++}
+class ClassName{
+    public:
+        //The public interface
+        //Member functions
+
+    private:
+        //The private data members
+}; //must end with a semicolon
+\end{minted}
+
+\subsection{Anatomy of a Class}
+\subsubsection{Class Name}
+A class is defined in C++ using the keyword \mintinline{c++}{class} followed by the name of the class. The body of the class is defined inside the curly brackets and terminated by a semicolon at the end. This class name will be how you reference any variables or objects you create of that type. For example: 
+
+\mintinline{c++}{ClassName objectName;}
+
+The above line would create a new object (variable) with name \mintinline{c++}{objectName} and of type \mintinline{c++}{ClassName}, and this object would have all the properties that you have defined within the class \mintinline{c++}{ClassName}.
+
+\subsubsection{Access Specifiers}
+Access specifiers in a class are used to set the accessibility of the class members. That is, they restrict access by outside functions to the class members.
+
+Consider the following analogy:
+
+Imagine an intelligence agency like the CIA, that has 10 senior members. Such an organization holds various sorts of information, and needs some way of determining who has access to any given piece of information. Some information concerning classified or dangerous operations may only be accessible to the 10 senior members of the agency, and not directly accessible by any other person. This data would be \textbf{private}.
+
+In a class, like in our intelligence agency, these private data members are only accessible by a class's member functions and not directly accessible by any object or function outside the class.
+
+Some other information may be available to anyone who wants to know about it. This is \textbf{public} data. Even people outside the CIA can know about it, and the agency might release this information through press releases or other means. In terms of our class, this public data can be accessed by any member function of the class, as well as outside functions and objects, even other classes. The public members of a class can be accessed from anywhere in the program using the direct member access operator (.) with the object of that class.
+
+\subsubsection{Data Members and Member Functions}
+Data members are the data variables and member functions are the functions used to manipulate these variables; together, data members and member functions define the properties and behavior of the objects in a Class.
+
+The data members declared in any class definition can be fundamental data types (like \mintinline{c++}{int}, \mintinline{c++}{char}, \mintinline{c++}{float}, etc.), \mintinline{c++}{arrays}, or even other classes.
+
+For example, for string objects, the data member is a \mintinline{c++}{char array[]} that holds all of the individual letters of your string. Some of a string’s member functions that we have used already are functions like \mintinline{c++}{.substr()} and \mintinline{c++}{.length()}.
+
+\subsubsection{Accessing Data Members}
+Keeping with our intelligence agency example, the code below defines a class that holds information for any general agency. In the main function, we then create a new \mintinline{c++}{IntelligenceAgency} object called \mintinline{c++}{CIA}, and we set its \mintinline{c++}{organizationName} to “CIA” by using the access operator (.) and the corresponding data member’s name. However, we cannot access the \mintinline{c++}{classifiedIntelligence} data member in the same way. Not everyone has access to that private data.
+
+Instead, we need to use a member function of the \mintinline{c++}{IntelligenceAgency} class, \mintinline{c++}{getClassifiedIntelligence()}, in order to see that information. This allows us to control the release of private information by our \mintinline{c++}{IntelligenceAgency}.
+
+Additionally, the main function includes four different ways of creating objects with descriptions in the comments next to it.
+
+\begin{minted}[breaklines=true]{c++}
+class IntelligenceAgency
+{
+    public:
+        IntelligenceAgency();         // Default constructor
+        IntelligenceAgency(string classified_intelligence_input); // Parameterized constructor  
+        string organizationName;
+        string getClassifiedIntelligence();
+        void setClassifiedIntelligence(string classifiedIntelligenceInput);
+
+    private:
+        string classifiedIntelligence;
+};
+
+int main()
+{
+    IntelligenceAgency CIA;
+    CIA.organization_name = "CIA";
+    cout << CIA.classifiedIntelligence; // gives an error
+    cout << CIA.getClassifiedIntelligence();
+    
+    // four types of constructor calls
+    IntelligenceAgency abc; // creating an IntelligenceAgency object with the default constructor 
+    IntelligenceAgency xyz = IntelligenceAgency(); // creating an IntelligenceAgency 
+    //object with the default constructor 
+    IntelligenceAgency pqr("PQR"); // creating an IntelligenceAgency 
+    //object with a paramaterized constructor
+    IntelligenceAgency rst = IntelligenceAgency("RST"); // creating an IntelligenceAgency 
+    //object with a paramaterized constructor
+}
+\end{minted}
+
+\subsection{Defining Member Functions}
+You may have noticed that we declared various member functions in our class definition, but we did not specify how they will work when called. The body of the function still needs to be written. The solution is to define a function, such as \mintinline{c++}{getClassifiedIntelligence()}, corresponding to our class’s functions. But how does our program know that these functions are the same as the ones we declared in our class? You as the developer need to explicitly tell the computer that these functions you are defining are the same ones you declared earlier.
+
+\begin{minted}[breaklines=true]{c++}
+string IntelligenceAgency::getClassifiedIntelligence()
+{
+    return classifiedIntelligence;
+}
+void IntelligenceAgency::setClassifiedIntelligence(string classifiedIntelligenceInput)
+{
+    classifiedIntelligence = classifiedIntelligenceInput;
+}
+\end{minted}
+
+We start the definition as we do any function, with the return type. Then, we have to add a specifier \mintinline{c++}{IntelligenceAgency::} that lets our program know that this function and the one we declared inside the class are the same. We can see that this function returns the class’ \mintinline{c++}{classifiedIntelligence} to the user.
+
+Functions like \mintinline{c++}{getClassifiedIntelligence()} are called accessor/getter functions. This is because they retrieve or `get’ the private data members of a class object and return it to the program so that these values may be used elsewhere.
+
+The second function, \mintinline{c++}{setClassifiedIntelligence(string classifiedIntelligenceInput)}, is called a mutator/setter function. These allow functions from other parts of our program to modify or ‘set’ the private data members of our class objects. Getters and setters are the functions that our program uses to interact with the private data members of our class objects.
+
+\subsection{Structs and Classes}
+
+A class can have a struct as a data member, much like how a class could have any other type of data member. It's important to make sure that the class header file (the .h file) can see the definition of the struct. This can be accomplished by defining the struct inside of the .h file, like below:
+
+\begin{minted}{c++}
+// filename: example.h
+struct State
+{
+    string name;
+    int area;
+};                // don't forget the semicolon
+
+class Example
+{
+    private:
+        State my_state_;
+        //other data members
+
+    public:
+        //setter accepts a State parameter
+        void setState(State new_state);
+
+        //getter returns the State member variable
+        State getState();
+
+        //other member methods
+};
+\end{minted}
+
+Any file that includes the .h file shown above will be able to use instances of the State struct, so you will not need to define the State struct anywhere else.
+
+\subsection{When to use Structs vs Classes}
+While structs and classes are similar, there are some key differences between them. When deciding whether you should use one over the other, consider the functionality you'd like to achieve. A good rule of thumb is to ask whether the data type you're defining will need to have any methods or private variables. If it will, then you should create a class. If all members can be public and there are no methods, then a struct may be better.
+
+\section{PreQuiz}
+\begin{problem}
+    True or False: When writing to a file, you must always manually close the file using \mintinline{c++}{file_out.close()} to ensure the data is saved correctly.
+\end{problem}
+
+\begin{problem}
+    True or False: The \mintinline{c++}{.eof()} method for \mintinline{c++}{ifstream} has a void return type.
+\end{problem}
+
+\begin{problem}
+What is the difference between \mintinline{c++}{ifstream} and \mintinline{c++}{iostream}?
+\end{problem}
+
+\begin{problem}
+Fill in the blanks of the following code. The goal of this program is to read the contents of a file input.txt and write them to another file output.txt. Your task is to fill in the blanks to complete the program.
+
+\begin{minted}{c++}
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Declare input file stream
+    ifstream inputFile;
+    
+    // Declare output file stream
+    ofstream outputFile;
+    
+    // Open the input file (input.txt)
+    inputFile.__________("input.txt"); //FILL IN THIS LINE
+
+    // Check if the input file opened successfully
+    if (!inputFile.is_open()) {
+        cout << "Error opening input file!" << endl;
+        return 1;
+    }
+
+    // Open the output file (output.txt)
+    outputFile.__________("output.txt"); //FILL IN THIS LINE
+
+    // Declare a string to hold each line of the file
+    string line;
+
+    // Read the input file line by line
+    while (getline(__________, line)) {
+        // Write each line to the output file
+        outputFile << _________ << endl;
+    }
+
+    // Close both files
+    inputFile.__________();
+    outputFile.__________();
+
+    cout << "File copied successfully!" << endl;
+    return 0;
+}
+
+
+\end{minted}
+\end{problem}
+
+\begin{problem}
+The following is a C++ program that takes user input and writes it to a log file called log.txt. The user will enter multiple lines of text, and the program should save each line to the file. Fill in the blanks of the following code.
+
+\begin{minted}{c++}
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    // Declare an ofstream object for file output
+    ofstream logFile;
+
+    // Open the file "log.txt" for writing
+    logFile.open("log.txt");
+
+    // Check if the file opened successfully
+    if (__________) {
+        cout << "Error opening file!" << endl;
+        return 1;
+    }
+
+    string userInput;
+    cout << "Enter text to log (type 'exit' to stop):" << endl;
+
+    // Keep reading user input until "exit" is entered
+    while (true) {
+        getline(cin, userInput);
+        if (userInput == "exit") {
+            break;
+        }
+
+        // Write the user input to the file
+        logFile << __________ << endl;
+    }
+
+    // Close the log file
+    logFile.__________();
+
+    cout << "Log saved to log.txt." << endl;
+    return 0;
+}
+\end{minted}
+\end{problem}
+\newpage
+
+\section{Recitation}
+\subsection{Spot the Error}
+\begin{multipart}
+The following code writes a string to the file output.txt. Identify and fix the error.
+\end{multipart}
+
+\begin{minted}{c++}
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    sstream file_out;
+    file_out.open("output.txt");
+
+    string message = "Hello, World!";
+    file_out << message << endl;
+
+    return 0;
+}
+
+\end{minted}
+
+
+\begin{multipart}
+The following code intends to write a sentence and a variable's content to a file. Identify and fix the error.
+\end{multipart}
+
+\begin{minted}{c++}
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream file_out;
+    file_out.open("output.txt");
+
+    string test_string = "C++ file handling is fun!";
+    
+    file_out("Writing this sentence to the file") << endl;
+    file_out(test_string) << endl;
+
+    file_out.close();
+    return 0;
+}
+\end{minted}
+
+\begin{multipart}
+The following code should open the file log.txt and write some data into it. Identify and fix the error.
+\end{multipart}
+
+\begin{minted}{c++}
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    iostream file_out.open("log.txt");
+
+    string log_message = "This is a log entry.";
+    file_out << log_message << endl;
+
+    file_out.close();
+    return 0;
+}
+\end{minted}
+
+\newpage
+
+\subsection{Midterm Averages with File Output}
+
+For this assignment, you should create a file named \mintinline{c++}{midterms.txt} with the following contents:
+
+\begin{verbatim}
+85.5,90.2,78.6
+92.0,88.5,79.8
+abc,85.0,90.2
+100,98.2,95
+75.5,85.2,80
+\end{verbatim}
+
+The file \mintinline{c++}{midterms.txt} contains a list of comma-separated scores for three midterms, with each line representing the scores for one student. Your goal is to calculate the **average score for each midterm** across all students and log the results to output files. Additionally, you must handle invalid data entries appropriately using file I/O in C++.
+
+
+In order to do this, you must:
+\begin{enumerate}
+\item  Read each line as a string from the file \mintinline{c++}{midterms.txt}.  
+\item  Use your \mintinline{c++}{split()} function to separate each score at the commas.  
+\item  Use your \mintinline{c++}{validateDouble()} function to ensure each score is a valid double.  
+\item  Accumulate valid scores for each midterm to compute the averages.  
+\item  If any line contains invalid data (e.g., non-numeric values or missing scores), log the entire line into the file \mintinline{c++}{error_log.txt} and continue processing the next line.  
+\item  After processing all valid entries, write the **average scores per midterm**, the number of valid entries, and a completion message to the file \mintinline{c++}{summary.txt}.
+\end{enumerate}
+
+Expected contents of each file:
+\begin{enumerate}
+\item summary.txt:
+    \begin{itemize}
+    \item Write the computed average scores for each midterm.
+    \item Write the number of valid entries processed.
+    \item Write a completion message indicating the process was successful. If no valid entries are found, write the message \mintinline{c++}{"No valid scores processed!"}.
+    \end{itemize}
+    
+\item error\_log.txt:
+    \begin{itemize}
+    \item Log each invalid line with the message \mintinline{c++}{"Invalid entry: "} followed by the contents of the line.
+    \end{itemize}
+\end{enumerate}
+
+For example, given the following input in \mintinline{c++}{midterms.txt}:
+
+\begin{verbatim}
+85.5,90.2,78.6
+92.0,88.5,79.8
+abc,85.0,90.2
+100,98.2,95
+75.5,85.2,80
+\end{verbatim}
+
+The contents of \mintinline{c++}{summary.txt} will be:
+
+\begin{sample}
+Average Scores per Midterm:\\
+Midterm 1: 88.25\\
+Midterm 2: 89.53\\
+Midterm 3: 84.85\\
+
+Number of valid entries: 4\\
+Process completed successfully!
+\end{sample}
+
+The contents of \mintinline{c++}{error_log.txt} will be:
+
+\begin{sample}
+Invalid entry: abc,85.0,90.2
+\end{sample}
+
+If invalid data is found in any line, the program should skip processing that line and log it in \mintinline{c++}{error_log.txt}. The program should still averages from all valid lines. If no valid coordinates are found, write the message \mintinline{c++}{"No valid scores processed!"} to \mintinline{c++}{summary.txt} and skip writing the averages.
+
+\begin{multipart}
+    Write out the steps you would use to solve this problem by hand as pseudocode.
+\end{multipart}
+
+\vspace{8cm}
+
+\begin{multipart}
+    Write three possible lines you can include in your file to later test your program. Try to pick values that will test different aspects of your program. Follow the steps you wrote for these values to find your result, and verify it.
+\end{multipart}
+
+\vspace{5cm}
+
+\begin{multipart}
+    Implement your solution in C++ using VS Code. Save, compile, and run it. Test the program with different input files, including boundary conditions.
+\end{multipart}
+
+\newpage
+
+\section{Homework 7}
+\textbf{Warning: You are not allowed to use global variables for this assignment.}
+
+All function names, return types, and parameters must precisely match those shown. You may not use pass by reference or otherwise modify the function prototypes. You are welcome to create additional functions that may help streamline your code. 
+
+All files used in this assignment are in a zipped folder titled \texttt{'homework\_7\_input\_files.zip'} located in Canvas under the week 10 module.
+
+\subsection{National Park} 
+\textit{This question may require the use of file streams, loops, and arrays.} \newline
+
+Write a C++ program to read a file of national park names and print them to the console in the same order as they appear in the file.
+
+\textbf{Note:} There are 63 national parks in the USA, which is why our \texttt{MAX\_SIZE} is set to 63. \newline
+
+For this question, the answer box on the coderunner is preloaded with the following solution template. You are only required to fill in the appropriate blanks. Additionally, you may use the \texttt{national\_parks\_1.txt} file to test out your code. \textbf{All the files used in this assignment, including \texttt{national\_parks\_1.txt}, are available in Canvas under week 10 module}. You may also create more files for further testing.
+\begin{example}
+\begin{minted}{c++}
+
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+void listNationalParks(string filename)
+{
+    // initialize variables
+    ifstream file_in(filename); // opens a file
+
+    if (file_in.fail())
+    {
+        cout << "Failed to open file." << endl;
+        return;
+    }
+
+    const int MAX_SIZE = 63;
+    string parks[MAX_SIZE];
+
+    string park;
+
+    int idx = 0;
+
+    // Fill in the blank below with code to read from the file into the 'park' variable
+    _______________________________
+    {
+        parks[idx] = park;
+        idx += 1;
+
+        // Fill in the blank below with code to check if you are trying to store more values 
+        // than possible in the parks array
+        __________________________
+        {
+            break;
+        }
+
+    }
+
+    for (int i = 0; i < idx; ++i)
+    {
+        cout << i << ": " << parks[i] << endl;
+    }
+
+    file_in.close();
+}
+
+int main()
+{
+    string filename;
+    cout << "Enter national parks filename" << endl;
+    cin >> filename;
+    listNationalParks(filename);
+    return 0;
+}
+\end{minted}
+\end{example}
+
+\textbf{For Question 1, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and replace the blank with your solution. The answer box is preloaded with the template above.} 
+
+\subsection{Museum Attendance} % the file io museum attendance sheet
+\textit{This question may require the use of file streams, loops, and arrays.} \newline
+
+Your former high school took students on a museum trip. Before boarding the bus, the teachers made a list of all the students' names. After visiting the museum, the teachers asked the students to board the bus and made a new list of all the students' names. Before leaving, the teachers wanted to compare the two lists to make sure no student was left behind. Write a C++ program to help them do this quickly and easily. Your program compares the two attendance sheets and reports if any student is still inside the museum.
+
+\textbf{Note:} The largest file has 24 names; therefore, declare your array with size 30 to ensure it accommodates all test cases.
+
+\newpage
+\begin{longtable}{|p{1.7in}|p{4.3in}|}
+\hline
+\textbf{Function:}  \texttt{compareAttendanceSheet( string, string)} 
+& \mintinline{c++}{void compareAttendanceSheet(string first_attendance_file, } \newline
+\mintinline{c++}{string second_attendance_file)} \\ \hline
+
+\textbf{Purpose:} & Given two attendance sheets, the function will compare and print out any individuals who are present in the first sheet but missing in the second. \\ \hline
+
+\textbf{Parameters:} & 
+\textbf{string} \texttt{first\_attendance\_file} - The first attendance sheet. \newline
+\textbf{string} \texttt{second\_attendance\_file} - The second attendance sheet.
+\\ \hline
+
+\textbf{Return Value:} & 
+N/A. \\ \hline
+
+\textbf{Error Handling:} & 
+- If either file does not exist, print ``Failed to open attendance files". \newline
+- If a name exists in the second\_attendance\_file, it will also be present in the first\_attendance\_file. In other words, no new names are added to the second\_attendance\_file that were not in the first. \newline
+- Hint: The largest file has 24 names; therefore, declare your array with size 30 to ensure it accommodates all test cases.
+\\ \hline
+
+\textbf{Example:} & 
+\begin{example}
+\begin{minted}[breaklines=true]{c++}
+
+
+// This is only an example usage, and you should develop your own main function
+// Assume the proper libraries are included.
+// Assume the proper implementation of compareAttendanceSheet() is included.
+
+int main() {
+    compareAttendanceSheet("example_1.txt", "example_2.txt");
+    return 0;
+}
+\end{minted}
+\end{example}
+\\ \hline
+
+\textbf{Sample Input:} & 
+
+Sample from example\_1.txt:
+
+\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
+Jorden Owen \newline
+Waylon Mccoy \newline
+Dario Harding \newline
+Jameson Odonnell \newline
+Andrew Wilkinson
+\end{tcolorbox}
+
+Sample from example\_2.txt:
+\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
+Jorden Owen \newline
+Waylon Mccoy \newline
+Jameson Odonnell \newline
+Andrew Wilkinson 
+\end{tcolorbox}
+\\ \hline
+
+\textbf{Sample Output:} &
+Students yet to board the bus are \newline
+Dario Harding \newline
+\\ \hline
+\end{longtable}
+
+\textbf{For Question 2, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste compareAttendanceSheet() and any helper function(s) to the answer box!}
+
+
+\begin{sample}
+
+\textcolor{red}{Inputs:}
+Example\_3.txt: \newline
+\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
+Anya Garcia \newline
+Oliver Jones \newline
+Sofia Smith
+\end{tcolorbox}
+
+Example\_4.txt:
+\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
+Anya Garcia \newline
+Sofia Smith \newline
+Oliver Jones
+\end{tcolorbox}
+
+\textcolor{red}{Output:}
+
+Every student has boarded the bus. It's time to leave.
+
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Inputs:}
+
+does\_not\_exist\_1.txt
+
+does\_not\_exist\_2.txt
+
+\textcolor{red}{Output:}
+
+Failed to open attendance files
+
+\end{sample}
+
+\subsection{Compare Trails} % a question that has to use stod and validateInt() or double
+\textit{This question may require the use of file streams, split(), loops, and functions} \newline
+
+Today is your first day as a software engineering intern with the National Park Service. You've started on a busy day, and after the initial meetings, your boss asked you to develop a function to print some statistics about some of the long hikes around the world. You've been given a text file, which contains a list of different hikes. Each line includes the name of a long hike, its length (as a whole number) in miles, and its elevation gain (as a whole number) in feet, each separated by the delimiter ``|".
+
+Hint: The split() function from homework 6 could be helpful. 
+
+\begin{longtable}{|p{1.7in}|p{4.3in}|}
+\hline
+\textbf{Function:}  \texttt{printHikeStats(string)} 
+& \mintinline{c++}{void printHikeStats(string file_name)} \\ \hline
+
+\textbf{Purpose:} & Given a text file that contains information on the trails, the function will print the following: \newline
+- Number of valid lines read from the file. A valid line must contain exactly three fields: the hike name, length (as an integer), and elevation gain (as an integer). \newline
+- Name and the length of the longest hike. \newline
+- Name and the length of the shortest hike. \newline
+- Name and elevation gain per mile of the steepest hike. This number should be rounded to one decimal point (use setprecision). 
+\\ \hline
+
+\textbf{Parameters:} & 
+\textbf{string} \texttt{file\_name} - The file name of the text file. 
+\\ \hline
+
+\textbf{Return Value:} & 
+N/A. \\ \hline
+
+\textbf{Error Handling:} & 
+- If the file does not exist, print ``Could not open file." \newline
+- If there is a tie, choose the first one. 
+\\ \hline
+
+\textbf{Example:} & 
+\begin{example}
+\begin{minted}[breaklines=true]{c++}
+
+
+// This is only an example usage, and you should develop your own main function
+// Assume the proper libraries are included.
+// Assume the proper implementation of printHikeStats() is included.
+
+int main() {
+    printHikeStats("long_hikes.txt");
+    return 0;
+}
+\end{minted}
+\end{example}
+\\ \hline
+
+\textbf{Sample Input:} & 
+Content of long\_hikes.txt:
+
+\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
+The Appalachian Trail|2180|464500 \newline
+The South West Coast Path|630|115000 \newline
+Continental Divide Trail|3100|457000 \newline
+Great Himalayan Trail|1056|289000 \newline
+The Colorado Trail|578|89000 \newline
+The Pacific Crest Trail|2650|824370 
+\end{tcolorbox}
+\\ \hline
+
+\textbf{Sample Output:} &
+Number of lines read: 6. \newline
+Longest hike: Continental Divide Trail at 3100 miles. \newline
+Shortest hike: The Colorado Trail at 578 miles. \newline
+Steepest hike: The Pacific Crest Trail at 311.1 feet gained per mile.
+\\ \hline
+\end{longtable}
+
+\textbf{For Question 3, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste printHikeStats() and any helper function(s) to the answer box!}
+
+\begin{sample}
+Content of hikes\_blanks1.txt:
+
+\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
+The South West Coast Path|630|115000 \newline
+\newline
+\newline
+Continental Divide Trail|3100|457000 \newline
+Great Himalayan Trail|1056|289000 \newline
+\newline
+\end{tcolorbox}
+
+\textcolor{red}{Input}:
+
+hikes\_blanks1.txt
+
+\textcolor{red}{Output}: 
+
+Longest hike: Continental Divide Trail at 3100 miles. \newline
+Shortest hike: The South West Coast Path at 630 miles. \newline
+Steepest hike: Great Himalayan Trail at 273.7 feet gained per mile. 
+\end{sample}
+
+\begin{sample}
+
+\textcolor{red}{Input}:
+
+file\_does\_not\_exist.txt
+
+\textcolor{red}{Output}:
+
+Could not open file. 
+
+\end{sample}
+
+
+\subsection{Restaurant Struct} % struct question
+\textit{This question may require the use of structs and functions.} \newline
+
+You are tasked with designing a program to evaluate restaurants based on a food quality rating, cleanliness rating, and wait time rating, ultimately providing an overall rating. Write a C++ program to accept the name of a restaurant, its food quality rating (0-10), cleanliness rating (0-10), and wait time rating (0-5). Use a function to calculate the overall rating using the function specification and formula given below:
+
+\begin{equation}
+\text{Overall Rating} = 
+0.5 \times \text{food quality} + 
+0.3 \times \text{cleanliness} + 
+0.2 \times \text{wait time}
+\end{equation}
+
+
+You must create a struct named Restaurant with the following attributes: the name of the restaurant, food quality rating, cleanliness rating, wait time rating, and overall rating. 
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Member Type} & \textbf{Member Name} & \textbf{Description} \\ \hline
+    \textbf{}{string} & \texttt{name} & Restaurant's name \\ \hline
+    \textbf{}{int} & \texttt{food\_quality} & Restaurant's food quality rating (0-10) \\ \hline
+    \textbf{}{int} & \texttt{cleanliness} & Restaurant's cleanliness rating (0-10) \\ \hline
+    \textbf{}{int} & \texttt{wait\_time} & Restaurant's wait time rating (0-5) \\ \hline
+    \textbf{}{double} & \texttt{overall} & Restaurant's overall rating \\ \hline
+\end{tabular}
+\end{center}
+
+Next, create a function that will calculate the overall score of each restaurant. 
+
+\newpage
+
+\begin{longtable}{|p{1.7in}|p{4.3in}|}
+\hline
+\textbf{Function:}  \texttt{getOverallRating(Restaurant)} 
+& \mintinline{c++}{double getOverallRating(Restaurant restaurant)} \\ \hline
+
+\textbf{Purpose:} & Given a object of type \texttt{Restaurant}, calculate its overall rating. \\ \hline
+
+\textbf{Parameters:} & 
+\textbf{Restaurant} \texttt{restaurant} - A \texttt{Restaurant} object that contains all the information of the object.
+\\ \hline
+
+\textbf{Return Value:} & The overall rating of the restaurant. The function should not print anything.
+\\ \hline
+
+\textbf{Error Handling:} & 
+- If any of the ratings in \texttt{restaurant} are not within its bound, return -1. The rating bounds are: food quality (0-10), cleanliness (0-10), wait time (0-5) 
+\\ \hline
+
+\textbf{Example:} & 
+\begin{example}
+\begin{minted}[breaklines=true]{c++}
+
+
+// This is only an example usage, and you should develop your own main function
+// Assume the proper libraries are included.
+// Assume the proper implementation of getOverallRating() and Restaurant struct is included.
+
+int main() {
+    Restaurant r; 
+    r.name = "McDonalds";
+    r.food_quality = 4;
+    r.cleanliness = 7;
+    r.wait_time = 5;
+
+    r.overall = getOverallRating(r);
+
+    if(r.overall == -1)
+    {
+        cout << "Invalid rating(s) entered." << endl;
+    }
+    else
+    {
+        cout << "Restaurant: " << r.name << " Overall: " << r.overall << endl;
+    }
+    return 0;
+}
+\end{minted}
+\end{example}
+\\ \hline
+
+\textbf{Sample Output:} &
+Restaurant: McDonalds Overall: 5.1
+\\ \hline
+\end{longtable}
+
+\textbf{For Question 4, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste Restaurant struct, getOverallRating(), and any helper function(s) to the answer box!}
+
+\begin{sample}
+The sample inputs will be given in the order of name, food quality, cleanliness, and wait time, respectively. \newline
+\textcolor{red}{Input:} 
+
+Aloy Thai \newline
+9 \newline
+8 \newline
+3
+
+\textcolor{red}{Output:}
+
+Restaurant: Aloy Thai Overall: 6.8
+
+\end{sample}
+
+\begin{sample}
+The sample inputs will be given in the order of name, food quality, cleanliness, and wait time, respectively. \newline
+\textcolor{red}{Input:} 
+
+Invalid \newline
+2 \newline
+3 \newline
+-1
+
+\textcolor{red}{Output:}
+
+Invalid rating(s) entered.
+
+\end{sample}
+
+\subsection{List of Restaurants} % the restaurant
+\textit{This question may require the use of file streams, split(), loops, arrays, and structs.} \newline
+
+In this question, we will use the same \texttt{struct} for \texttt{Restaurant} from Question 4. You will be given a file, which contains the name of the restaurant, followed by its food quality, cleanliness rating, and wait time rating, all separated by \texttt{\textasciitilde}. The task will be to evaluate the best restaurant from within the list.
+
+\subsubsection{Part A:}
+First, write a function that reads the restaurant details from a file and populates the required array for further analysis. 
+
+Hint: The split() function from homework 6 could be helpful. 
+
+\newpage
+
+\begin{longtable}{|p{1.7in}|p{4.3in}|}
+\hline
+\textbf{Function:}  \texttt{readRestaurantDetails( string, Restaurant[], const int)} 
+& \mintinline{c++}{int readRestaurantDetails(string filename, Restaurant } \newline
+\mintinline{c++}{restaurant[], const int MAX_RESTAURANTS)} \\ \hline
+
+\textbf{Purpose:} & Read all the restaurant details from a given file and calculate the overall rating for all restaurants. \\ \hline
+
+\textbf{Parameters:} & 
+\textbf{string} \texttt{filename} - The text file that contains all the details of the restaurants. \newline
+\textbf{Restaurant[]} \texttt{restaurants} - The array that will be populated with all the restaurant objects. \newline
+\textbf{const int} \texttt{MAX\_RESTAURANTS} - The maximum number of restaurants that can be present in the file containing restaurant details. 
+\\ \hline
+
+\textbf{Return Value:} & If successful (function parameters are correct), return the number of restaurants added to the array. \newline
+The function should not print anything. 
+\\ \hline
+
+\textbf{Error Handling:} & 
+- If the file does not exist, -1 is returned. \newline
+- If there is an incorrect number of attributes for a given line of the file, skip the line.
+\\ \hline
+
+\textbf{Example:} & 
+\begin{example}
+\begin{minted}[breaklines=true]{c++}
+
+
+// This is only an example usage, and you should develop your own main function
+// Assume the proper libraries are included.
+// Assume the proper implementation of readRestaurantDetails(), getOverallRating(), and Restaurant struct is included.
+
+int main()
+{
+    Restaurant restaurants[30];
+
+    int res_size = readRestaurantDetails("restaurants.txt", restaurants, 30);
+
+    // Checking if the file was opened correctly
+    if (res_size == -1)
+    {
+        cout << "Failed to open file." << endl;
+    }
+    else
+    {
+        for (int i = 0; i < res_size; ++i) {
+            cout << "Restaurant: " << restaurants[i].name << " ";
+            cout << "Ratings: ";
+            cout << restaurants[i].food_quality << " ";
+            cout << restaurants[i].cleanliness<< " ";
+            cout << restaurants[i].wait_time << " ";
+            cout << "Overall: ";
+            cout << restaurants[i].overall << " ";
+            cout << endl;
+        }
+    }
+}
+\end{minted}
+\end{example}
+\\ \hline
+
+\textbf{Sample Output:} &
+Restaurant: Wendys Ratings: 6 3 2 Overall: 4.3 \newline
+Restaurant: Chick-fil-a Ratings: 9 5 5 Overall: 7 \newline
+Restaurant: Snarfburger Ratings: 10 4 3 Overall: 6.8 \newline
+Restaurant: Cosmo's Pizza Ratings: 7 3 2 Overall: 4.8
+\\ \hline
+\end{longtable}
+
+\newpage
+\subsubsection{Part B:}
+Then, create a feature where we can find the best restaurant according to your criteria. The possible options are: \newline \newline
+Option 1: ``Food Quality" \newline
+Option 2: ``Cleanliness" \newline
+Option 3: ``Wait Time" \newline
+Option 4: ``Overall"
+
+\begin{longtable}{|p{1.7in}|p{4.3in}|}
+\hline
+\textbf{Function:}  \texttt{getBest(Restaurant[], int, string)} 
+& \mintinline{c++}{int getBest(Restaurant restaurants[], int arr_size, string metric)} \newline
+ \\ \hline
+
+\textbf{Purpose:} & Given an array, the function will find and return the index of the best restaurant according to the metric. \\ \hline
+
+\textbf{Parameters:} & 
+\textbf{Restaurant[]} \texttt{restaurants} - The array that has been populated with the details of all the restaurants. \newline
+\textbf{int} \texttt{arr\_size} - The maximum number of restaurants that are present in the restaurants array. \newline
+\textbf{string} \texttt{metric} - The metric used to find the best restaurant. 
+\\ \hline
+
+\textbf{Return Value:} & 
+If successful (function parameters are correct), return the index of the best restaurant according to the metric. The function should not print anything.
+\\ \hline
+
+\textbf{Error Handling:} & 
+- If the metric is not a valid option (not ``Food Quality," ``Cleanliness," ``Wait Time," or ``Overall"), -1 is returned. \newline
+- If the line does not have exactly four attributes—name, food quality, cleanliness, and wait time—skip the line. \newline
+- If there is a tie, choose the first one.  \newline
+- Note: in this assignment, a higher wait time rating means a shorter wait, which indicates better service. For example, a wait time rating of 5 indicates excellent service with minimal wait. 
+\\ \hline
+
+\textbf{Example:} & 
+\begin{example}
+\begin{minted}[breaklines=true]{c++}
+
+
+// This is only an example usage, and you should develop your own main function
+// Assume the proper libraries are included.
+// Assume the proper implementation of getBest(), readRestaurantDetails(), getOverallRating(), and Restaurant struct is included.
+
+int main()
+{
+    Restaurant restaurants[30];
+
+    int arr_size = readRestaurantDetails("restaurants.txt", restaurants, 30);
+
+    // Checking if the file was opened correctly
+    if (arr_size == -1)
+    {
+        cout << "Failed to open file." << endl;
+    }
+    else if (arr_size == 0)
+    {
+        cout << "Empty file." << endl;
+    }
+    else
+    {
+        int idx = getBest(restaurants, arr_size, "Food Quality");
+
+        if (idx == -1)
+        {
+            cout << "Invalid metric." << endl;
+        }
+        else
+        {
+            cout << "Restaurant: " << restaurants[idx].name << " ";
+            cout << "Ratings: ";
+            cout << restaurants[idx].food_quality << " ";
+            cout << restaurants[idx].cleanliness << " ";
+            cout << restaurants[idx].wait_time << " ";
+            cout << "Overall: ";
+            cout << restaurants[idx].overall << " ";
+            cout << endl;
+        }
+    }
+}
+\end{minted}
+\end{example}
+\\ \hline
+
+\textbf{Sample Output:} &
+Restaurant: Snarfburger Ratings: 10 4 3 Overall: 6.8
+\\ \hline
+\end{longtable}
+
+\textbf{For Question 5, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the Restaurant struct, getOverallRating(), readRestaurantDetails(), getBest(), and any helper function(s) to the answer box!}
+
+\begin{sample}
+
+The content of restaurants\_1.txt:
+\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
+Wendys~6~3~2 \newline
+Chick-fil-a~9~5~5 \newline
+McDonalds~2~2~2~2 \newline
+Snarfburger~10~4~3 \newline
+Cosmo's Pizza~7~3~2 \newline
+Pizza Hut~1~2
+\end{tcolorbox}
+
+\textcolor{red}{Input}:
+
+restaurants\_1.txt \newline
+Cleanliness
+
+\textcolor{red}{Output}:
+
+Restaurant: Chick-fil-a Ratings: 9 5 5 Overall: 7
+
+\end{sample}
