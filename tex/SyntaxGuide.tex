@@ -1,0 +1,331 @@
+\chapter*{Appendix C: Syntax Guide}
+\addcontentsline{toc}{chapter}{Appendix C: Syntax Guide}
+\setcounter{chapter}{18}
+\setcounter{section}{0}
+
+This syntax guide was designed with heavy inspiration from the Coding with Harry C++ syntax guide.
+
+\section{Basics}
+
+The basic start for a C++ program is:
+\begin{minted}{c++}
+    #include <iostream>
+    using namespace std;
+    
+    int main() {
+        return 0;
+    }
+\end{minted}
+
+Declaring variables:
+\begin{minted}{c++}
+    bool my_bool;
+    bool my_bool_initialized = false;
+    char my_char;
+    char my_char_initialized = 'A';
+    int my_int;
+    int my_int_initialized = 1;
+    double my_double;
+    double my_double_initialized = 3.5;
+    float my_float;
+    float my_float_initialized = -2.1;
+    string my_string;
+    string my_string_initialized = "Hello!";
+\end{minted}
+
+Terminal output:
+\begin{minted}{c++}
+    cout << [statement to print];
+    cout << variable_contents;
+    cout << "Hello!";
+\end{minted}
+
+Terminal input:
+\begin{minted}{c++}
+    cin >> variable_input;
+    getline(cin, string_input);
+\end{minted}
+
+Comments:
+\begin{minted}{c++}
+    // It's a single line comment
+    
+    /* It's a multi-linecomment*/
+\end{minted}
+
+Compiling:
+\begin{minted}{bash}
+    g++ -Wall -Werror -Wpedantic -std=c++17 file1.cpp file2.cpp ...
+\end{minted}
+
+\section{Decisions}
+Decisions are decided based off of boolean values. In this guide, any time \mintinline{c++}{< condition >} appears, it should be replaced fully (including the angle brackets) with something that expresses to a boolean value. 
+
+If statements:
+\begin{minted}{c++}
+    if ( < condition > ){
+        //code
+    }
+\end{minted}
+
+If-Else statements:
+\begin{minted}{c++}
+    if ( < condition > ){
+        //code
+    }
+    else {
+        //more code
+    }
+\end{minted}
+
+If-Else-If statements:
+\begin{minted}{c++}
+    if ( < condition > ){
+        //code
+    }
+    else if ( < condition2 > ){
+        //more code
+    }
+\end{minted}
+
+Integer switch statements. The case values can vary:
+\begin{minted}{c++}
+    switch(integer_variable){
+        case 1:
+            //commands
+            break;
+        case 2:
+            //commands
+            break;
+        //any further cases
+        default:
+            //commands
+    }
+\end{minted}
+
+Character switch statements. The case values can vary:
+\begin{minted}{c++}
+    switch(character_variable){
+        case 'A':
+            //commands
+            break;
+        case 'B':
+            //commands
+            break;
+        //any further cases
+        default:
+            //commands
+    }
+\end{minted}
+
+\section{Functions}
+Functions are small packages of code that can be called multiple times. The general format of a function requires a return type (which is a data type), a function name, and a list of parameter inputs, like so:
+
+\begin{minted}{c++}
+    <return type> FunctionName(<parameter 1>, <parameter 2>, ...);
+\end{minted}
+
+There can only be one return type and it must be a data type. It can be any data type you have seen so far, or it can also be "void" which means the function returns nothing. There can be as many parameters as you like, and they must be written as \mintinline{c++}{<parameter i> = <data type of parameter i> <name of parameter i>}. 
+
+Function prototypes are just the function declaration followed by a semicolon.Here are a few function prototype examples:
+
+\begin{minted}{c++}
+    int AddNumbers(int numOne, int numTwo);
+    void PrintMenu(string menu);
+    double calcCircum(double radius);
+\end{minted}
+
+When implementing the function, it is instead written with brackets:
+
+\begin{minted}{c++}
+    <return type> FunctionName(<parameter list>){
+        /* code for function */
+        return <something of return type>;
+    }
+\end{minted}
+
+When calling the function, you provide the list of arguments:
+
+\begin{minted}{c++}
+    int sum = AddNumbers(firstVal, secondVal);
+    sum = (4, 5);
+\end{minted}
+
+\section{Strings}
+
+Declaring strings:
+
+\begin{minted}{c++}
+string my_string = "Hello World";
+\end{minted}
+
+Getting the length of strings:
+
+\begin{minted}{c++}
+int string_length = myString.length();
+\end{minted}
+
+Appending two strings:
+
+\begin{minted}{c++}
+string first_name = "Harry ";
+string last_name = "Potter";
+string full_name = first_name.append(last_name);
+\end{minted}
+
+Accessing or changing characters:
+\begin{minted}{c++}
+char first_character = my_string[0];
+my_string[1] = 'a'; //my_string now stores "Hallo World"
+\end{minted}
+
+\section{Loops}
+While loops repeat code as long as a condition is true:
+
+\begin{minted}{c++}
+while (< condition >)
+{
+/* code block to be executed */
+}
+\end{minted}
+
+Do-While loops will execute the block of code, and then execute it again as long as a condition is true:
+
+\begin{minted}{c++}
+do
+{
+/* code block to be executed */
+} while (< condition >);
+\end{minted}
+
+For loops will execute a block of code a given number of times. This is done by creating a variable, modifying that variable and go until a particular condition is false. 
+
+\begin{minted}{c++}
+for (<create and initialize variable>; <condition>; <modify variable>){
+    /* code block to be executed */
+}
+\end{minted}
+
+For example, to count from 0 to 9:
+
+\begin{minted}
+for (int i = 0; i < 10; i++){
+    /* code block to be executed */
+}
+\end{minted}
+
+The keyword break terminates a loop:
+
+\begin{minted}{c++}
+    break;
+\end{minted}
+
+The keyword continue skips the rest of the current iteration of the loop:
+
+\begin{minted}{c++}
+    continue;
+\end{minted}
+
+\section{Objects}
+
+To define a class:
+
+\begin{minted}{c++}
+class Class_Name {
+    public: // Access specifier
+        // member functions
+
+    private:
+        //data members
+};
+\end{minted}
+
+To create an object of that class:
+
+\begin{minted}{c++}
+Class_Name object_name;
+\end{minted}
+
+Constructors describe how a new object's data members should be initialized. It does not have a return type. It must match the class name.
+\begin{minted}{c++}
+class Class_Name {
+    public: // Access specifier
+        Class_Name(); //default constructor
+        Class_Name(<parameter list>); //parameterized constructor
+
+    private:
+        //data members
+};
+\end{minted}
+
+To call a member function on a particular object:
+
+\begin{minted}
+    Class_Name object_name;
+    object_name.functionName();
+\end{minted}
+
+\section{Libraries}
+To use a library you need to know the library name and include it.
+
+\begin{minted}{c++}
+#include<LibraryName>
+#include "libraryFileYouWrote.h"
+\end{minted}
+
+\subsection{Math}
+The library is called \mintinline{c++}{<cmath>}.
+
+The square root function:
+
+\begin{minted}{c++}
+double square_root = sqrt(169);
+\end{minted}
+
+The power function (returns the value of x raised to the power y):
+\begin{minted}{c++}
+double power = pow(x, y);
+\end{minted}
+
+\subsection{File I/O}
+The library is called \mintinline{c++}{<fstream>}.
+
+Creating and writing to a text file:
+
+\begin{minted}{c++}
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+// Create and open a text file
+ofstream my_file("filename.txt");
+
+// Write to the file
+my_file << "File Handling in C++";
+
+// Close the file
+my_file.close();
+}
+\end{minted}
+
+Opening a file and reading one line:
+
+\begin{minted}{c++}
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+// Open a file to read from
+ifstream my_file("filename.txt");
+
+string file_line; 
+
+getline(my_file, file_line); //stores the first line in the file in file_line
+
+// Close the file
+my_file.close();
+}
+\end{minted}
+

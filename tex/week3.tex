@@ -1,0 +1,1019 @@
+\chapter*{Week 3: Functions}
+\addcontentsline{toc}{chapter}{Week 3: Functions}
+\setcounter{chapter}{3}
+\setcounter{section}{0}
+
+\begin{abstract}
+This week will cover:
+\begin{enumerate}
+    \item Learn how functions work:
+    \begin{itemize}
+        \item Input parameters
+        \item Return statements
+    \end{itemize}
+    \item Learn about Strings and their associated functions
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Background}
+The primary focus of this week is boolean logic and conditional statements. 
+
+\subsection{Functions}
+``Functions" in the context of math may be familiar, especially when formatted like this:
+$$f(x) = x^2 + 5$$
+
+Here we have labeled our function $f$, and it is a function of the variable $x$. You might have seen some where the functions are functions on multiple variables:
+
+$$g(x,y) = x^2+y^3$$
+
+Functions in computer science are similar, but we can abstract them further so they apply to more than just numbers. 
+
+A function is a named block of code which is used to perform a particular task. The power of functions lies in the capability to perform that task anywhere in the program without requiring the programmer to repeat that code many times. This also allows us to group portions of our code around concepts, making programs more organized. You can think of a function as a mini-program.
+
+There are two types of functions:
+
+\begin{itemize}
+    \item Library functions
+    \item User-defined functions
+\end{itemize}
+
+Library functions refer to pre-existing functions that you can use but did not write yourself. In order to use a library function, you must include the library that contains the function. For example, the C++ math library provides a \mintinline{c++}{sqrt()} function to calculate the square root of a number. To use the \mintinline{c++}{sqrt()} function, you must include the cmath library at the top of your program, e.g. \mintinline{c++}{#include<cmath>}. Libraries other than the built-in C++ libraries can be found online.
+
+C++ allows programmers to define their own functions. These are called user-defined functions. Every valid C++ program has at least one function, the \mintinline{c++}{main()} function.
+
+We pass values to functions via parameters. In general, the parameters should be all the information needed for the function to do its work. When that work is complete, we would like to use the result in other code. The function can return one value of the specified return type. A function may also return nothing, in which case its return type is void.
+
+Here is the syntax for a function definition:
+
+\begin{minted}{c++}
+returnType FunctionName(parameterList)
+{
+    //function body
+}
+\end{minted}
+
+\begin{itemize}
+    \item The \mintinline{c++}{returnType} is the data type that the function returns
+    \item \textcolor{blue}{\mintinline{c++}{FunctionName}} is the actual name of the function
+    \item \mintinline{c++}{parameterList} refers to the type, order, and number of the parameters of a function. A parameter is like a placeholder. When a function is invoked, you pass a value to the parameter. This value is referred to as actual parameter or argument. Note: this can be a list of multiple items separated by commas. 
+    \item \mintinline{c++}{//function body} contains a collection of statements that define what the function does. The statements inside the function body are executed when a function is called.
+\end{itemize}
+
+This may not immediately look like the functions you have seen in math, but they are actually quite close. Here is an example of the functions above written in C++:
+
+\begin{example}
+    The function $f(x) = x^2 + 5$ written in C++:
+
+    \begin{minted}{c++}
+double f(double x){
+    return (x*x+5);
+}
+    \end{minted}
+\end{example}
+
+\begin{example}
+    The function $g(x,y) = x^2+y^3$ written in C++:
+
+    \begin{minted}{c++}
+double g(double x, double y){
+    return (x*x+y*y*y);
+} 
+    \end{minted}
+\end{example}
+
+I used \mintinline{c++}{double} for the parameters and the return type because these functions in math would probably use decimals, but you could also use integers if you only wanted to use whole numbers. We can also use functions inside of other functions. Instead of just multiplying variables by themselves to do the exponents, we could use the \mintinline{c++}{pow} function from \mintinline{c++}{cmath}:
+
+\begin{example}
+    The function $f(x) = x^2 + 5$ written using cmath:
+
+    \begin{minted}{c++}
+#include<cmath>
+
+double f(double x){
+    return pow(x, 2)+5;
+}
+    \end{minted}
+\end{example}
+
+\begin{example}
+    The function $g(x,y) = x^2+y^3$ written using cmath:
+
+    \begin{minted}{c++}
+#include<cmath>
+
+double g(double x, double y){
+    return pow(x, 2) + pow(y, 3);
+} 
+    \end{minted}
+\end{example}
+
+If you wanted to then use these functions to perform some calculations, you could use any value of $x$ and $y$. You could use constant values, or you could use variables. Here are examples of ways you could use the function:
+
+\begin{example}
+    Examples of calling the function $g(x,y)$:
+
+    \begin{minted}{c++}
+#include<cmath>
+#include<iostream>
+
+using namespace std;
+
+double g(double x, double y){
+    return pow(x, 2) + pow(y, 3);
+} 
+
+int main(){
+    double firstValue = g(4.0, 5.0);
+    double secondValue = g(2, 3); 
+    double myX, myY;
+
+    cout << "What value would you like for X?" << endl;
+    cin >> myX;
+    cout << "What value would you like for Y?" << endl;
+    cin >> myY;
+    cout << "The result would be " << g(myX, myY) << endl;
+
+    return 0;
+}
+
+    \end{minted}
+\end{example}
+
+A function has its own \textbf{scope}. That means that the parameters of the function, as well as local variables declared within the function body, are not accessible outside the function. This is useful because it allows us to solve a small problem in a self-contained way. Parameter values and local variables disappear from memory when the function completes its execution. We can illustrate the order in which code executes with this example:
+
+\begin{example}
+    An example with a simple function:
+\begin{minted}[xleftmargin=20pt, linenos]{c++}
+#include <iostream>
+using namespace std;
+
+//funtion to add two numbers
+int Sum( int numOne, int numTwo)
+{
+    int result = numOne + numTwo;
+    return result;
+}
+
+//main function
+int main()
+{
+    //declare parameter value
+    int parameterVar = 1;
+    
+    //call the function
+    int sumResult = Sum(parameterVar, 99);
+    
+    cout << "The sum is " << sumResult << endl;
+    
+    return 0;
+}    
+\end{minted}
+\end{example}
+
+The code will begin executing in the main function -- in this case, the first step is declaring a variable in line 15. When the program execution reaches line 18, the main function will pause, and the first line in the body of the \mintinline{c++}{Sum()} function will begin running. After the line return result; is reached, \mintinline{c++}{Sum()} will stop running, and the main program will resume execution where it left off. In this case, when \mintinline{c++}{main()} resumes execution, the return value of \mintinline{c++}{Sum()} will be stored in \mintinline{c++}{int sumResult}, and then the last two lines of the main function will run.
+
+Functions can do more than just perform calculations; they can also perform operations on other variables, or they can be used to prevent yourself from copy/pasting the same code multiple times in your program. They do not even always need parameters. For example, if you wanted to write out a selection menu, you could write a function to print the menu so you do not have to type it out every time. In these cases, the parenthesis can be empty, like they are for our main functions. 
+
+As a general note: the function names $f$ and $g$ are not very good function names. You should generally pick better (clearer) names, and you should choose a naming style to be consistent. The naming style you choose should be different from how you name variables, so it is easier to read your code. I like to start my functions with capitals while I start my variables with lower case, but you could choose a different style. 
+
+Examples of function names I might use: \mintinline{c++}{CircleArea(), SumList(), FindCapitalLetters()}
+
+\subsection{Strings}
+
+In C++, a \mintinline{c++}{string} is a data type that represents sequences of characters instead of a numeric value (such as \mintinline{c++}{int} or \mintinline{c++}{float}). A string literal can be defined using double-quotes. So \mintinline{c++}{"Hello, world!"}, \mintinline{c++}{"3.1415"}, and \mintinline{c++}{"int i"} are all strings. We can access the character at a particular location within a string by using square brackets, which enclose an index which you can think of as the address of the character within the string. Importantly, strings in C++ are indexed starting from zero. This means that the first character in a string is located at index 0, the second character has index 1, and so on. For example:
+
+\begin{minted}{c++}
+string s = "Hello, world!";
+cout << s[0] << endl;  //prints the character 'H' to the screen
+cout << s[2] << endl;  //prints the character 'l' to the screen
+cout << s[9] << endl;  //prints the character 'r' to the screen
+cout << s[12] << endl; //prints the character '!' to the screen
+    
+\end{minted}
+
+Note that when a character in a string is accessed with square brackets, the character has type char. For example:
+
+\begin{minted}{c++}
+string str = "Example"; //this is a string
+char c = str[1]; //this is a char
+\end{minted}
+
+There are many useful standard functions available in C++ to manipulate strings. One of the simplest is \mintinline{c++}{length()}. We can use this function to determine the number of characters in a string. 
+
+\begin{minted}{c++}
+string s = "Hello, world!";
+int s_length = s.length();
+cout << s_length << endl; //This line will print 13 to the screen    
+\end{minted}
+
+Notice how the length function is called.
+
+The correct way:
+
+\begin{minted}{c++}
+    s.length()
+\end{minted}
+
+Common incorrect ways:
+
+\begin{minted}{c++}
+    length(s)
+    s.length 
+\end{minted}
+
+Another useful function available for strings is \mintinline{c++}{substr()}. This function allows us to access a subset, or a small portion, of a longer string. The substring function takes two arguments:
+
+\begin{itemize}
+    \item The starting index of the substring you would like to capture
+    \item The length of the substring you would like to capture (optional)
+\end{itemize}
+
+Note that the second argument is optional. If you don't pass a second argument to subtring, then the function will print the entirety of the string, beginning with the character at the position specified in the first argument. Note that \mintinline{c++}{substr()} always returns a variable of type \mintinline{c++}{string}, regardless of the length of the substring.
+
+For example, consider the code below:
+
+\begin{example}
+    Substring example code:
+
+\begin{minted}{c++}
+string str = "Coding is fun!";
+cout << str.substr(0, 6) << endl;
+cout << str.substr(6) << endl;
+cout << str.substr(1, 1) << endl; //prints a string of length one
+\end{minted}
+\end{example}
+
+This will ouput the following:
+
+\begin{minted}{c++}
+Coding
+ is fun!
+o
+\end{minted}
+
+
+Note: The second line of output begins with a space.
+
+Both \mintinline{c++}{length()} and \mintinline{c++}{substr()} are special kinds of functions associated with objects, usually called methods, which we will discuss later in the course.
+
+\subsection{Testing Code}
+You must naturally test your code to make sure that it works correctly, and that it works correctly \textbf{all} the time. This may seem like a very difficult task, but there are several steps you can take to make sure you start correctly.
+
+\begin{itemize}
+    \item Come up with a handful of test cases to use on your program. 
+    \item Consider the ways a user could use your program incorrectly. Use this to develop additional test cases.
+    \item Consider extreme values, or "boundary conditions". Use these boundary conditions to develop yet more test cases.
+    \item Test each part of your program independently. This is called \textit{Unit Testing}. Do you have individual functions? Test each of them. Do you have major steps in your main function? Test each of them.
+\end{itemize}
+
+Boundary conditions are significant for many complex problems, and should test the extreme limits of what your problem may be applied to. Example: Are you supposed to examine a string? What happens if that string is empty? What happens if that string is thousands of digits long? 
+
+You should develop test cases for each boundary condition you can come up with. If there are several components to your program, you may need to identify boundary conditions for each of these components. Testing these boundary conditions of these pieces individually -- whether they are functions or just blocks of code in your main function -- is often easier than testing every independent combination of them. 
+
+Consider a program where you have 4 functions, and each function has 3 boundary conditions. To test each boundary condition for each of the 4 functions, you would need 12 tests. If however you only tested the program as a whole, you might need to check each combination of boundary conditions, which would end up becoming $3^4 = 81$ different tests. This is part of why \textbf{unit testing} is valuable. 
+
+As you develop extra functions, you should start by using your \mintinline{c++}{main} function to test these functions.There will be 3 different types of test cases you should be expected to write depending on the return type of the function. Listed below is how we expect you to test different types of functions. The process will be different for if you are testing a \mintinline{c++}{void} function, non-void functions that return an \mintinline{c++}{int} or \mintinline{c++}{bool}, and non-void functions that return a \mintinline{c++}{double}.
+
+\subsubsection{Testing Void Functions}
+
+For void functions that have printed output (i.e. functions that use cout to print to the terminal), call the testing function in the main function. Your tests should include the expected output in comments. For these functions you will want to make sure that all expected outputs are successfully printed.
+
+See the example code below:
+
+\begin{example}
+    This is testing a function that prints whether a grade is passing or not. 
+    \begin{minted}{c++}
+    void CheckGrade(char grade){
+        switch(grade){
+            case 'a':
+            case 'b':
+            case 'c':
+                cout << "You passed!" << endl;
+                break;
+            case 'd':
+                cout << "You did not pass, but you were close." << endl;
+                break;
+            case 'f':
+                cout << "You failed." << endl;
+                break;
+            default:
+                cout << "That is not a valid grade." << endl;
+        }
+    }        
+
+    int main(){
+        CheckGrade('b'); //Should output "You passed!"
+        CheckGrade('d'); //Should output "You did not pass, but you were close."
+        CheckGrade('f'); //Should output "You failed."
+        CheckGrade('m'); //Should output "That is not a valid grade."
+    }
+    \end{minted}
+
+\end{example}
+
+\subsubsection{Testing Integer/Boolean Functions}
+
+For non-void functions that return a \mintinline{c++}{bool} or \mintinline{c++}{int}, use an \mintinline{c++}{assert} statement from the \mintinline{c++}{cassert} header (\mintinline{c++}{#include <cassert>}) with a conditional expression.
+
+Assert tests contain a conditional expression which will be true unless there is a bug in the program. If the conditional expression evaluates to false, then your program will terminate and show an error message.
+
+For immediate purposes, functions that return a \mintinline{c++}{bool} or \mintinline{c++}{int} can be compared to a specific value using the equality operator \mintinline{c++}{==}.
+
+Your test will look something like this:
+
+\mintinline{c++}{assert(<function call> == <value to compare to>);}
+
+\begin{itemize}
+    \item \mintinline{c++}{<function call>} is where you will call the function you want to test with its function parameters.
+    \item \mintinline{c++}{<value to compare to>} is the value you expect the function to return.
+    \item \mintinline{c++}{==} is the equality operator, and it compares the equality of both sides of itself.
+\end{itemize}
+
+See the sample code below:
+
+\begin{example}
+    The below code shows examples of how to test integer functions with a simple addition function:
+    \begin{minted}{c++}
+    #include <iostream>
+    #include <cassert>
+    using namespace std;
+    
+    int AddInts(int num1, int num2)
+    {
+        // add num1 and num2 before returning
+        return num1 + num2;
+    }
+    
+    int main()
+    {
+        // test 1 for AddInts
+        assert(addInts(5, 6) == 11);
+        // test 2 for AddInts
+        assert(addInts(10, 10) == 20);
+    }
+    \end{minted}
+\end{example}
+
+\subsubsection{Testing Double Functions}
+For non-void functions that return a double, use an \mintinline{c++}{assert} statement from the \mintinline{c++}{cassert} header (\mintinline{c++}{#include <cassert>}) with a conditional expression and include the following function in your program:
+
+\begin{example}
+    This is a required function to successfully test Double functions in C++:
+    \begin{minted}{c++}
+        /**
+         * doublesEqual will test if two doubles are equal to each 
+         * other within two decimal places.
+         */
+        bool doublesEqual(double a, double b, const double epsilon = 1e-2)
+        {
+            double c = a - b;
+            return c < epsilon && -c < epsilon;
+        }
+    \end{minted}
+\end{example}
+
+Because the \mintinline{c++}{double} type holds so much precision, it will be hard to compare the equality of a function that returns a \mintinline{c++}{double} with another \mintinline{c++}{double} value. To overcome this challenge, we can compare \mintinline{c++}{double} values within a certain range of precision or decimal places. The function above compares the equality of two values \mintinline{c++}{a} and \mintinline{c++}{b} up to two decimal places. This function returns \mintinline{c++}{true} if the values \mintinline{c++}{a} and \mintinline{c++}{b} are equal with each other up to two decimal places.
+
+You will be expected to use this function in conjunction with assert statements to test functions that return the type double.
+
+Your test will look something like this:
+
+\mintinline{c++}{assert(doublesEqual(<function call>, <value to compare to>));}
+
+\begin{itemize}
+    \item \mintinline{c++}{<function call>} is where you will call the function you want to test with its function parameters
+    \item \mintinline{c++}{<value to compare to>} is the double value you expect the function to return.
+\end{itemize}
+
+See the sample code below:
+
+\begin{example}
+    This is code to test a function that finds the reciprocal of a value (i.e., divides 1 by that number).
+    \begin{minted}{c++}
+        #include <iostream>
+        #include <cassert>
+        using namespace std;
+        /**
+         * doublesEqual will test if two doubles are equal to each other within 
+         * two decimal places.
+         */
+        bool doublesEqual(double a, double b, const double epsilon = 1e-2)
+        {
+            double c = a - b;
+            return c < epsilon && -c < epsilon;
+        }
+        /**
+         * reciprocal returns the value of 1 divided by the number 
+         * passed into the function.
+         */
+        double reciprocal(int num)
+        {
+            return 1.0 / num;
+        }
+        int main()
+        {
+            // test 1 for reciprocal
+            assert(doublesEqual(reciprocal(6), 0.16));
+            // test 2 for reciprocal
+            assert(doublesEqual(reciprocal(12), 0.083));
+        }
+    \end{minted}
+\end{example}
+
+\subsubsection{General Testing Tips}
+You will certainly come to a time in your coding career when your code does not work, and you just cannot figure out \textit{why}.
+
+In these times, there are a few possible options. First, your algorithm may be incorrect. If that is the case no amount of code testing will help you, and you will need to go back and think through how to solve the problem. If your algorithm is correct but your code is not, here are two tips:
+\begin{enumerate}
+    \item If your code does not compile, start commenting out sections of your code. Keep going until it compiles, even if you have to go all the way back to an empty main function. Then, you can uncomment sections of your code until it fails to compile again. This will help you pinpoint \textit{where} the issue is in your code, and once you know where it is you will be able to see \textit{what} it is. 
+    \item If your code compiles but has unexpected runtime errors, add output statements periodically throughout your code. When your program fails, you will know where your code stopped running based on which output statements failed to print.
+    \item If your code compiles and runs completely but the output is incorrect, go back through your code and print out the significant variables at each step in your code. You can then compare this to the test cases you worked out by hand and see where the code output differs from your algorithm.
+\end{enumerate}
+
+\section{Warmup}
+\begin{problem}
+    What is a function? Why are functions useful? 
+\end{problem}
+
+\begin{problem}
+    Create a question for the exam this week. Think of things you found particularly tricky or confusing and use that to make a question. Note: none of these questions will ACTUALLY be used for the exam, so don't worry about making the questions too hard! These questions will be compiled into a study guide.
+\end{problem}
+
+\begin{problem}
+    Fill in the blank(s) for the code below:
+    \begin{minted}{c++}
+        ______ Multiply(double num1, double num2){
+            return num1 * num2;
+        }
+    \end{minted}
+\end{problem}
+\begin{problem}
+    Fill in the blank(s) for the code below:
+    \begin{minted}{c++}
+        int IntegerDivision(______ num1, _____ num2){
+            return num1/num2;
+        }
+    \end{minted}
+\end{problem}
+\begin{problem}
+    Fill in the blank(s) for the code below:
+    \begin{minted}{c++}
+        #include <iostream>
+        #include <string>
+        using namespace std;
+        
+        string DateOfBirth(string year, string month, string date) {
+            return month + "-" + date + "-"+ year;
+        }
+        int main() {
+            string year, month, date;
+        
+            cout << "Enter your year of birth: ";
+            cin >> year;
+        
+            cout << "Enter your month of birth: ";
+            cin >> month;
+        
+            cout << "Enter your date of birth: ";
+            cin >> date;
+        
+            // Fill the line below with the appropriate function call
+            string date_of_birth = ___________________________________________;
+        
+            cout << "Your date of birth is: " << date_of_birth << endl;
+        
+            return 0;
+        }
+
+    \end{minted}
+\end{problem}
+\begin{problem}
+    Fill in the blank(s) for the code below:
+    \begin{minted}{c++}
+        #include <iostream>
+        #include <string>
+        using namespace std;
+        
+        int main() {
+            
+            string sentence = "The quick brown fox jumps over the lazy dog.";
+        
+            // 1. Print 'b'
+            cout << sentence[____] << endl; 
+        
+            // 2. Determine the length of the string and store it in a variable
+            int length = sentence.________();
+            cout << "The length of the sentence is: " << length << endl;
+        
+            // 3. Capture and print the substring "brown fox"
+            string word = sentence.substr(____, ____);
+            cout << "The phrase is: " << word << endl;
+        
+            return 0;
+        }
+
+    \end{minted}
+\end{problem}
+
+
+% \begin{problem}
+%     Fill in the blank(s) for the code below:
+%     \begin{minted}{c++}
+%         #include <iostream>
+%         #include <string>
+%         #include <cassert>
+%         using namespace std;
+        
+%         string dateOfBirth(string year, string month, string date)
+%         {
+%             return month + "-" + date + "-"+ year;
+%         }
+        
+%         int main()
+%         {
+        
+%             // Fill the line below with the appropriate assert statement
+        
+%             assert(dateOfBirth("1913", "7", "23") _______________________);
+        
+%             assert(_________________________________________ "12-09-1906");
+        
+%             assert(______________________________________________________);
+%             return 0;
+%         }
+    
+
+%     \end{minted}
+% \end{problem}
+
+\begin{problem}
+    Spot the error(s). This is a program to merge a first name and a last name. It must return that merged name to the main function that prints it. 
+    \begin{minted}{c++}
+        #include <iostream>
+        #include <string>
+        using namespace std;
+        
+        double MakeName(string firstname, string lastname)
+        {
+            string merged_name = firstname + " " + lastname;
+        }
+        
+        int main()
+        {
+           string full_name = MakeName("Jack","Dumbledore");
+           cout << full_name << endl;
+        }
+
+    \end{minted}
+\end{problem}
+
+\begin{problem}
+    Spot the error(s). The program below will calculate and display the length of the hypotenuse of a right triangle given the length of two sides. This is done by calling the function calculateHypotenuse.
+
+
+    \begin{minted}{c++}
+        #include <iostream>
+        #include <cmath>
+        using namespace std;
+        
+        int main()
+        {
+            double hypotenuse = CalculateHypotenuse(5, 6);
+            cout << hypotenuse << endl;
+            return 0;
+        }
+        
+        int CalculateHypotenuse(int side1, int side2)
+        {
+            cout << "Enter side 1: " << endl;
+            cin >> side1;
+            cout << "Enter side 2: " << endl;
+            cin >> side2;
+        
+            double hypotenuse = sqrt(pow(side1, 2) + pow(side2, 2));
+        
+            return 0;
+        }
+
+    \end{minted}
+\end{problem}
+
+% \begin{problem}
+%     The program below will display the average of three values by calling the function findMean. Identify the error(s) in the code below, and write the correct line(s).
+
+%     \begin{minted}{c++}
+%         #include<iostream>
+%         using namespace std;
+        
+%         int findMean(int a, int b, int c){
+%             int mean =(a+b+c)/3.0;
+%             return mean;
+%          }
+        
+        
+%         int main()
+%         {
+%             double average = avg(2,5,2);
+%             assert(average==3)
+%             return 0;
+%         }
+%     \end{minted}
+% \end{problem}
+
+
+\section{Recitation}
+
+\subsection{Corn Farm Fertilizer}
+You're a smart farmer looking forward to making money as people flock to stores to buy Corn. To make sure that your crop looks its best, you need to keep the Corn well fertilized. Design two functions to track the amount of fertilizer you purchase and use. Both functions should take in an amount for your current stock of fertilizer and an amount to be used or added into the stock, and then return your new fertilizer levels. Here are two function headers to get you started:
+\begin{minted}{c++}
+double fertilize(double currentStock, double useAmount)
+double restock(double currentStock, double addAmount)
+\end{minted}
+You cannot fertilize Corn with more than what you have in your stock! And you cannot fertilize or restock with a negative amount. If you attempt to do either of these, the initial stock should be returned. Here’s some sample test main functions and the corresponding output:
+
+\begin{sample}
+\begin{minted}{c++}
+
+int main()
+{
+    double stock = 100;
+    double amount = 20.5;
+    double result = restock(stock, amount);
+    cout << result << endl;
+    return 0;
+}
+\end{minted}
+    Output:
+    
+    \textcolor{red}{120.50}
+
+\end{sample}
+
+\begin{sample}
+
+\begin{minted}{c++}
+
+int main(){
+    double stock = 51;
+    double amount = 50;
+    double result = fertilize(stock, amount);
+    cout << result << endl;
+}
+\end{minted}
+
+    Output:
+    
+    \textcolor{red}{1.00}
+ 
+\end{sample}
+
+\begin{sample}
+\begin{minted}{c++}
+
+int main(){
+    double stock = 11.4;
+    double amount = 20;
+    double result = fertilize(stock, amount);
+    cout << result << endl;
+}
+\end{minted}
+    Output:
+    
+    \textcolor{red}{11.4}
+    
+\end{sample}
+
+
+\begin{multipart}
+    Write an algorithm in pseudocode for the program above.
+\end{multipart}
+
+\vspace{1.5cm}
+
+\begin{multipart}
+    Imagine what a sample run of your program would look like. Think about at least two examples
+
+\end{multipart}
+
+\vspace{2cm}
+
+\begin{multipart}
+     Implement your solution in C++ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make you sure you test for the values used in your sample runs, and for the boundary conditions.
+\end{multipart}
+
+\subsection{Final velocity of the rocket}
+Write a C++ program that will calculate the final velocity of a rocket after 10 seconds. The program will ask the user for the initial velocity (m/s) and the fuel type (A, B, C). The rate of acceleration will depend on the type of fuel and the initial velocity.
+
+\vspace{0.5cm}
+If initial velocity is less than 10, then the acceleration rate for each fuel type is as follows
+
+    Fuel type A - 10 (m/s) per second
+    
+    Fuel type B - 20 (m/s) per second
+    
+    Fuel type C - 40 (m/s) per second
+    
+\vspace{0.25cm}
+If initial velocity is greater than or equal to 10 and less than or equal to 40, then the acceleration rate for each fuel type is as follows
+
+    Fuel type A - 7 (m/s) per second
+    
+    Fuel type B - 14 (m/s) per second
+    
+    Fuel type C - 28 (m/s) per second
+    
+\vspace{0.25cm}
+If initial velocity is greater than 40, then the acceleration rate for each fuel type is as follows
+
+    Fuel type A - 2 (m/s) per second
+    
+    Fuel type B - 4 (m/s) per second
+    
+    Fuel type C - 8 (m/s) per second
+
+\begin{sample}
+   Enter the initial velocity:
+   
+\textcolor{red}{70}
+
+   Enter the fuel type:
+   
+\textcolor{red}{C}
+
+   The final velocity is 150 m/s.
+
+   
+
+\end{sample}
+\begin{sample}
+   Enter the initial velocity:
+   
+ \textcolor{red}{5}
+ 
+   Enter the fuel type:
+   
+ \textcolor{red}{A}
+ 
+   The final velocity is 105 m/s.
+
+
+\end{sample}
+
+\begin{multipart}
+    Write an algorithm in pseudocode for the program above.
+\end{multipart}
+
+\vspace{1.5cm}
+
+\begin{multipart}
+    Imagine what a sample run of your program would look like. Think about at least two examples
+
+\end{multipart}
+
+\vspace{2cm}
+
+\begin{multipart}
+     Implement your solution in C++ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make you sure you test for the values used in your sample runs, and for the boundary conditions.
+\end{multipart}
+
+\section{Homework}
+
+\subsection{Travel}
+
+You want to write a program that tells you if you can afford to do a road trip. In order to do this you need to know your budget, how far you are driving, and how many nights you are going to stay. 
+
+You should calculate the expected cost of the trip by how many miles you are traveling, and a rough estimate for how much gas it costs to drive each mile. If we estimate 30 miles/gallon for your car and gas price at \$5.00/gallon, then your road trip will cost you approximately 16 cents per mile -- use this approximation for your calculations.
+
+Then, you can figure out how nice of a hotel you can stay in based on how much money you have left. If you have less than \$20 a night, you cannot afford to go. If you have at least \$20 a night, you can afford to go camping. If you have at least \$50 a night, you can afford a cheap motel. If you have at least \$100 a night, you can afford a nice hotel. 
+
+\begin{sample}
+What is your budget?
+
+\textcolor{red}{500}
+
+How many miles will you drive?
+
+\textcolor{red}{800}
+
+How many nights do you want to spend there?
+
+\textcolor{red}{3}
+
+You can afford to stay in a nice hotel on this trip.
+\end{sample}
+
+\begin{sample}
+What is your budget?
+
+\textcolor{red}{100}
+
+How many miles will you drive?
+
+\textcolor{red}{800}
+
+How many nights do you want to spend there?
+
+\textcolor{red}{3}
+
+This trip is outside your budget.
+\end{sample}
+
+\begin{sample}
+What is your budget?
+
+\textcolor{red}{300}
+
+How many miles will you drive?
+
+\textcolor{red}{1400}
+
+How many nights do you want to spend there?
+
+\textcolor{red}{4}
+
+You can afford to go camping on this trip.
+\end{sample}
+
+You should perform basic input validation for each step of this problem: no negative numbers. 
+
+\subsection{Decide who goes first in Sorry.}
+You are playing a game of monopoly with yourself and 3 friends (4 people total). You need to decide who goes first. In Sorry!, the rule is that the youngest player goes first. 
+
+Have your players each enter a name and a date of birth in the MM/DD/YYYY format, and then determine which player is youngest.
+
+\begin{sample}
+Who are the players?
+
+\textcolor{red}{Annie Bob Charlotte Dan}
+
+What are your dates of birth?
+
+\textcolor{red}{10/02/1999 12/01/2003 11/03/2003 04/19/2002}
+
+Bob is the youngest, so they go first!
+\end{sample}
+
+\begin{sample}
+Who are the players?
+
+\textcolor{red}{Sam Bob Jade Erica}
+
+What are your dates of birth?
+
+\textcolor{red}{01/06/2002 10/31/2004 06/03/2003 07/15/2005}
+
+Erica is the youngest, so they go first!
+\end{sample}
+
+\begin{sample}
+Who are the players?
+
+\textcolor{red}{Sam Bob Jade Erica}
+
+What are your dates of birth?
+
+\textcolor{red}{mm/06/2002 10/31/2004 06/03/2003 07/15/2005}
+
+Invalid Input.
+\end{sample}
+
+You should perform basic input validation on the dates. Each date should be two numbers, one slash, two numbers, one slash, then four numbers. If any of the dates are incorrect, you print \mintinline{c++}{Invalid Input.} and quit the program.
+
+\subsection{Ralphie's Weekly Diet}
+
+There are several big football games coming up, and in preparation, you need to write a program to figure out how to keep Ralphie in good shape. Ralphie needs at least 12.5 MCals (mega-calories) per day, at least 16.5 MCals on game days to fuel up for the run. Ralphie should never be fed more than 35 MCals over two consecutive days. Below is the schedule for the next week:
+\begin{itemize}
+    \item Monday: No game
+    \item Tuesday: No game
+    \item Wednesday: Game day!
+    \item Thursday: No game
+    \item Friday: No game
+    \item Saturday: Game day!
+    \item Sunday: Game day!
+\end{itemize}
+
+\textbf{Implementation Details:} You should write two functions for this program: \mintinline{c++}{CalculateAndDisplayDiet()}, and \mintinline{c++}{main()}. They should follow these specifications:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1.5in}|p{4.5in}|} \hline
+        Function Name: & \mintinline{c++}{void CalculateAndDisplayDiet(int, double)} \\ \hline
+        Purpose: & The function checks how much food Ralphie ate the day before as well as how much he needs, and prints one of two messages:
+        \begin{itemize}
+        \item \texttt{Ralphie was fed too much yesterday!}
+        \item \texttt{Ralphie should be fed at least \{value\} and at most \{value\} MCals of food today.}
+    \end{itemize}\\
+        Parameters: & \begin{itemize}
+    \item \mintinline{c++}{int currentDay}: Integer corresponding to the current day.
+    \item \mintinline{c++}{double previousDaysFeed}: How much Ralphie was fed on the previous day.
+\end{itemize} \\
+        Return type: & void; the function prints to terminal but returns nothing. \\ \hline
+        
+    \end{tabular}
+\end{table}
+
+If feeding Ralphie the minimum amount for the current day would go over the 35 MCal threshold, \mintinline{c++}{CalculateAndDisplayDiet()} should display an error message.
+
+Note: The program does NOT need to account of any calories Ralphie has stored up, all calories Ralphie is fed on are used up on that day.
+
+Your main function should then work as follows:
+
+\begin{enumerate}
+    \item main() should ask the user to enter the current day, and how much Ralphie was fed on the previous day.
+    \begin{itemize}
+        \item Days are represented with numbers with 0 corresponding to Monday, 1 corresponding to Tuesday, and so on.
+        \item main() is responsible for vaildating the input from the user, days (integers) outside the range [0, 6] are not supported, nor is a negative value for the previous days feed.
+    \end{itemize}
+    \item main() should then pass the input to the calculateAndDisplayDiet() function.
+    \item main() is NOT responsible for displaying the result to the user, that should happen within calculateAndDisplayDiet().
+    
+\end{enumerate}
+
+Once you are confident your code works, copy and paste the solution(function and main()) into Coderunner.
+
+\begin{sample}
+What day is it today? Enter a number from 0 to 6:
+
+ \textcolor{red}{2}
+ 
+How much was Ralphie fed yesterday? Enter an amount in MCals:
+
+ \textcolor{red}{12.5}
+ 
+Ralphie should be fed at least 16.50 and at most 22.50 MCals of food today.
+
+\end{sample}
+
+\begin{sample}
+What day is it today? Enter a number from 0 to 6:
+
+ \textcolor{red}{4}
+ 
+How much was Ralphie fed yesterday? Enter an amount in MCals:
+
+ \textcolor{red}{25}
+ 
+Ralphie was fed too much yesterday!
+
+\end{sample}
+
+\begin{sample}
+What day is it today? Enter a number from 0 to 6:
+
+ \textcolor{red}{7}
+ 
+Invalid input!
+
+\end{sample}
+\begin{sample}
+What day is it today? Enter a number from 0 to 6:
+
+ \textcolor{red}{2}
+ 
+How much was Ralphie fed yesterday? Enter an amount in MCals:
+
+ \textcolor{red}{-5}
+ 
+Invalid input for the feed. Please enter a non-negative value.
+
+\end{sample}
+
+\subsection{Is The Third Letter A Vowel?}
+Write a function to determine whether the third character of a string is a vowel. You will need to confirm that the length is 3 or longer in order for this to work.
+
+Your function input should be a string. If the string is shorter than 3 characters, say that the string is not long enough. If the string is 3 characters or longer, print whether or not the third character is a vowel. This should work for both capital and lower case vowels.
+
+You will need to name your function like this (if the name does not match, CodeRunner will not work):
+
+\begin{minted}{c++}
+void VowelCheck(string input){
+
+}
+\end{minted}
+
+You should write a main function to test your code. Once it is correct, copy and paste the function (and only the function) in CodeRunner. Here are some sample input/output combinations:
+
+\begin{sample}
+    Function Input: hello!
+    
+    Function Print Statement: The third character is not a vowel.
+\end{sample}
+
+\begin{sample}
+    Function Input: w
+    
+    Function Print Statement: The string is not long enough.
+\end{sample}
+
+\begin{sample}
+    Function Input: What's up, CSCI 1300?
+
+    Function Print Statement: The third character is a vowel.
+\end{sample}
+
+\begin{sample}
+    Function Input: WHAT!
+
+    Function Print Statement: The third character is a vowel.
+\end{sample}

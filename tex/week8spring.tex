@@ -1,0 +1,1335 @@
+\chapter*{Week 8: File I/O}
+\addcontentsline{toc}{chapter}{Week 8: File I/O}
+\setcounter{chapter}{9}
+\setcounter{section}{0}
+
+\begin{abstract}
+This week you will:
+\begin{enumerate}
+    \item Learn how to open file streams
+    \item Learn how to read files line by line
+    \item Learn how to use get/unget
+
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Background}
+\subsection{File Input/Output}
+So far in class, we've been using the \mintinline{c++}{iostream} standard library. This library has provided us with methods like \mintinline{c++}{cin} and \mintinline{c++}{cout}. \mintinline{c++}{cin} is the method that reads from standard input (i.e. in the terminal via the keyboard) and \mintinline{c++}{cout} is for writing to standard output.
+
+In this background section we'll cover file input, which will allow you to read information from a file. To do this, we'll need to include C++'s fstream library, which is short for "file stream".
+
+\subsubsection{Reading Lines From A File}
+
+\textbf{Step 1. Make a stream object.}
+
+Create an object (a variable) of file stream type. If you want to open a file for reading only, then the ifstream object should be used (short for “input file stream”).
+
+\begin{minted}{c++}
+// create an input file stream object
+ifstream file_input;
+\end{minted}
+
+\textbf{Step 2. Open a file.}
+
+Once you have a file stream object, you need to open the file. To do this, use the ifstream object's \mintinline{c++}{open()} method (function), which takes only one parameter: the file name as a string (surrounded by " " if the file name is given directly).
+
+\begin{minted}{c++}
+// open myTextFile.txt with the file stream object
+file_input.open("myTextFile.txt");
+\end{minted}
+  
+\textbf{Step 3. Checking for open files.}
+
+It is always good practice to check if the file has been opened properly and take an appropriate action if not. To check if a file was successfully opened, you may use the \mintinline{c++}{fail()} or \mintinline{c++}{is_open()} methods.
+
+\mintinline{c++}{fail()}: This method will return a boolean value true if the file failed to open and false otherwise.
+
+\begin{minted}[breaklines=true]{c++}
+if (file_input.fail()) // true when file fails to open
+{
+    cout << "Could not open file." << endl; 
+    return -1; // return to terminate the program; -1 to indicate that the program didn't function as expected
+}
+// do things with the file
+\end{minted}
+
+\mintinline{c++}{is_open()}: This method will return a boolean value true if the file has successfully opened and false otherwise.
+
+\begin{minted}[breaklines=true]{c++}
+if (file_input.is_open()) // true when file opens sucessfully
+{
+    // do things with the file
+}
+else
+{
+    cout << "Could not open file." << endl;        
+}
+\end{minted}
+
+\textbf{Step 4. Read lines from the file.}
+
+To read a line from the file, you can use \mintinline{c++}{getline(file_input, line)} which returns true as long as an additional line has been successfully assigned to the variable line. Once no more lines can be read in, getline returns false. So we can set up a while loop where the condition is the call to getline. 
+
+\mintinline{c++}{.eof()}: This method will return a boolean value true if all the data in the file was processed and false otherwise.
+
+\begin{minted}[breaklines=true]{c++}
+string line = "";
+int line_idx = 0;
+// read each line from the file
+while (!file_input.eof()) // continue looping as long as there is data to be processed in the file
+{
+    // get the next line from the file and store in 'line' variable
+    getline(file_input, line);
+
+    // print each line read from the file
+    cout << line_idx << ": " << line << endl;
+
+    // increment index(count of lines in the file)
+    line_idx++;   
+}
+\end{minted}
+
+\textbf{Step 5. Closing a file.}
+
+When you are finished processing your files, it is recommended to close all the opened files before the program is terminated. You can do this by using the \mintinline{c++}{.close()} function on your file stream object.
+
+\begin{minted}{c++}
+// closing the file
+file_input.close();
+\end{minted}
+
+
+\textbf{Step 6. Putting it all together.}
+If we put all the previous steps together, this is the final piece of code we get.
+
+\begin{minted}[breaklines=true]{c++}
+// create an input file stream object
+ifstream file_input;
+
+// open myTextFile.txt with the file stream object
+file_input.open("myTextFile.txt"); 
+
+// check if file opened successfully
+if (file_input.fail())
+{
+    cout << "Could not open file." << endl;
+    return -1;
+}
+else
+{
+    // do things with the file
+    string line = "";
+    int line_idx = 0;
+
+    // read each line from the file
+    while (!file_input.eof())
+    {
+        // gets line of text from file_input, stores it in line
+        getline(file_input, line);
+
+        // print each line read from the file
+        cout << line_idx << ": " << line << endl;
+
+        // increment index (count of lines in the file)
+        line_idx++;   
+    }
+}
+
+// closing the file
+myTextFile.close();
+\end{minted}
+
+\section{PreQuiz}
+
+\begin{problem}
+    In C++, when declaring 2D arrays, one of the dimensions can be dynamic (determined at runtime), but the other must be fixed at compile time. Which dimension needs to be specified at compile time, and why is this requirement necessary?
+\end{problem}
+
+\begin{problem}
+    How can you access a specific element in a 3D array?
+\end{problem}
+
+\begin{problem}
+    What is the output of the program below? Carefully analyze the \mintinline{c++}{mysteryFunction()} and predict what transformation it performs on the array.
+
+\begin{minted}{c++}
+#include <iostream>
+using namespace std;
+
+void mysteryFunction(int arr[], int size)
+{
+    int temp = arr[0];
+    int i = 0;
+    while (i < size - 1) 
+    {
+        arr[i] = arr[i + 1];
+        i++;
+    }
+    arr[size - 1] = temp;
+}
+
+int main() 
+{
+    const int N = 7;
+    int myArr[N] = {4, 6, 8, 0, 3, 2, 1};
+
+    mysteryFunction(myArr, N);
+
+    cout << "The result is: " << endl;
+    for (int i = 0; i < N; i++) 
+    {
+        cout << myArr[i] << " ";
+    }
+
+    return 0;
+}
+\end{minted}
+\end{problem}
+
+
+\begin{problem}
+    Consider the following code snippet. What are the values of a, b and c?
+
+\begin{minted}{c++}
+const int N=4;
+int matrix[N][N] = {{1, 2, 3, 4}, 
+                    {5, 6, 7, 8}, 
+                    {9, 10, 11, 12}, 
+                    {13, 14, 15, 16}};
+int a = matrix[0][0] + matrix[1][1] + matrix[2][2] + matrix[3][3];
+int b = matrix[0][3] * matrix[3][0];
+int c = matrix[2][3];
+\end{minted}
+\end{problem}
+
+\begin{problem}
+    (a) You have seen function tables designed to convey the information in a function on previous assignments. Now, given the code shown in part b of this question, fill in the following table for the \mintinline{c++}{elementWiseProduct()} function
+\end{problem}
+
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} \newline 
+        elementWiseProduct(int[][], int[][], int, int) & 
+        \\ \hline
+        \textbf{Purpose:}  &.\\ \hline
+        \textbf{Parameters:} &  
+\\ \hline
+        \textbf{Return value:} &  .\\ \hline
+        \textbf{Error handling/} \newline
+        \textbf{Boundary conditions:} & . \\ \hline 
+        \textbf{Example:} & 
+        \begin{example}
+
+        \end{example}
+
+        \begin{sample}
+
+        \end{sample}
+             \\ \hline
+\end{longtable}
+
+(b) Write 4 assert statements to test the function after the function call in the given code.
+
+    \begin{minted}{c++}
+#include <iostream>
+#include <cassert>
+using namespace std;
+
+void elementWiseProduct(int a[][3], int b[][3], int row, int col)
+{
+    for (int i = 0; i < row; i++) 
+    {
+        for (int j = 0; j < col; j++) 
+        {
+            a[i][j] = a[i][j] * b[i][j];
+        }
+    }
+}
+int main() 
+{
+    const int N=2;
+    const int M=3;
+
+    int matrix1[N][M] = {
+        {1,2,3},
+        {2,3,1}
+    };
+    int matrix2[N][M] = {
+        {2,3,1},
+        {2,3,1}
+    };
+
+    // Call the elementWiseProduct function with the two matrices
+    elementWiseProduct(matrix1, matrix2, N, M);
+
+    // Display the result matrix
+    cout << "The result is: "<< endl;
+    for (int i = 0; i < 2; i++) 
+    {
+        for (int j = 0; j < 3; j++) 
+        {
+            cout << matrix1[i][j] << " ";
+        }
+        cout << '\n';
+    }
+
+    // include assert statements here
+    assert(_________________________________);
+    assert(_________________________________);
+    assert(_________________________________);
+    assert(_________________________________);
+
+    return 0;
+}
+
+    \end{minted}
+
+\section{Recitation}
+
+\subsection{Spot The Error}
+\begin{multipart}
+The program below intends to calculate and print the average temperature for a week. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+    #include <iostream>
+    #include <string>
+    using namespace std;
+
+    int main() {
+    int days = 5;
+    double temperatures[days] = {72.5, 75.0, 68.4, 80.1, 79.3, 66.2};
+    double total = 0;
+
+    for (int i = 0; i < days; i++) {
+        total += temperatures[i];
+    }
+
+    int avgTemp = total / 5.0;
+    cout << "Average Temperature = " << avgTemp << endl;
+
+    return 0;
+}
+\end{minted}
+
+\begin{multipart}
+The program below displays transpose of a given matrix. The transpose of a matrix is simply a flipped version of the original matrix by switching its rows with its columns. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+    #include <iostream>
+    using namespace std;
+    
+    // Function to calculate the transpose of a matrix
+    double transposeMatrix(int matrix[][3], int n, int m) 
+    { 
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = i + 1; j < m; j++)
+            {
+                temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+        return matrix;
+    } 
+    
+    int main() 
+    {
+        const int rows = 3;
+        const int cols = 3;
+        int originalMatrix[rows][cols] = 
+        {
+            {1, 1, 1},
+            {2, 2, 2},
+            {3, 3, 3}
+        };
+    
+        // Calculate the transpose matrix using the function
+        int result[rows][cols] = transposeMatrix(originalMatrix[3][3], rows, cols);
+    
+        // Display the transpose matrix
+        cout << "Transpose Matrix:" << endl;
+        for (int i = 0; i < rows; i++) 
+        {
+            for (int j = 0; j < cols; j++) 
+            {
+                cout << result[i][j] << " ";
+            }
+            cout << endl;
+        }
+    
+        return 0;
+    }
+\end{minted}
+
+\begin{multipart}
+The program below tries to print all the products available in the store. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+    #include <iostream>
+    using namespace std;
+    
+    int main()
+    {
+        int N = 3;
+        char item[] = {"laptop", "mouse", "keyboard", "monitor"};
+    
+        //printing all the items
+        for (int i = 0; i <= N; i++)
+        {
+            cout << "The store has " << items[i] << endl;
+        }
+        return 0;
+    }
+\end{minted}
+
+\begin{multipart}
+The program below prints the names that have a length equal to 5. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+    #include <iostream>
+    #include <string>
+    using namespace std;
+
+    int main() {
+        const int N = 6;
+        string names[N] = {"Alice", "Bob", "David", "Eve", "Frank", "Grace"};
+    for (int i = 0; i < N; i++) {
+        if (names.length()[i] == 5) {
+            cout << names[i] << endl;
+        }
+    }
+    return 0;
+}
+\end{minted}
+
+\subsection{Coding Telephone}
+
+For this activity, you will need to break into groups of approximately 6-8. The basic idea of the game is simple: We will give you some starting piece of code, with a short region of the code marked for "Coding Telephone". The first person in your group will have to translate the code entirely to comments, leaving no actual code in that region behind. They will pass this comment file on to the second person in your group, who will translate the comments back into code. Then the next person will translate the code to comments, so on and so forth until everyone in your group has participated. Then you will attempt to compile your code and run it, and see what happens. Think of it like the game Telephone, but with code.
+
+You will get the starting code from Canvas. The only person who should view this original code is the first person in your group. Make sure to keep the code secret at each stage so others cannot see it. You will each have five minutes to translate your code. During the time you are not coding, you are welcome to work on the other questions in this recitation assignment. 
+
+Once your group has completed the game, work together to answer the following questions:
+
+\begin{multipart}
+    Did your final code compile? If not, what error did it fail with? If this is an easy to fix error, fix it and move on to the next question.
+\end{multipart}
+
+\vspace{6cm}
+
+\begin{multipart}
+    If your code compiled, did it run? If not, what error did it fail with? If so, what did it print?
+\end{multipart}
+
+\vspace{6cm}
+
+\begin{multipart}
+    Compile and run the original code, and compare it with the code you ended with. How did it change? Where were some areas of miscommunication? 
+\end{multipart}
+
+\vspace{6cm}
+
+\textbf{Submit your answers to these questions along with your final Telephone code for this problem on Canvas.}
+
+%Can we get USBs from the department for this? Do students even know how to use USBs anymore, or would it be faster to have them email it to each other?
+
+
+\subsection{Matrix Difference: Space Supply Tracker}
+
+In a futuristic space station, two storage logs track the quantities of essential supplies (like food, water, and oxygen) over time. The difference in these quantities after a supply shipment or consumption needs to be calculated to monitor stock changes.
+
+Write a function that accepts two 2x3 integer arrays as input parameters and displays the difference matrix (displayed in 2 rows). This will help track the change in supplies between two observations.
+
+\mintinline{c++}{void matrixDifference(int a[2][3], int b[2][3])}
+
+Then, create a \mintinline{c++}{main()} function that asks the user to input the values for each matrix (one for the "before" and one for the "after" state). Store these in two arrays and pass them to \mintinline{c++}{matrixDifference()}.
+
+\textbf{Example Output} (red is user input):
+
+\begin{sample}
+Enter values for the first observation, one row at a time:\\
+\textcolor{red}{10 20 30}\\
+\textcolor{red}{40 50 60}\\
+Enter values for the second observation, one row at a time:\\
+\textcolor{red}{7 14 21}\\
+\textcolor{red}{35 45 55}\\
+The difference in supplies is:\\
+3 6 9\\
+5 5 5\\
+\end{sample}
+
+
+\begin{multipart}
+    Write out the steps you would use to solve this problem by hand as pseudocode. 
+\end{multipart}
+
+\newpage
+
+\begin{multipart}
+Pick possible inputs for your program. Choose as many inputs as you think you need to thoroughly test your program. Follow the steps you wrote for these values to find your result, and verify it.
+\end{multipart}
+
+\vspace{14cm}
+
+\begin{multipart}
+Implement your solution in C++ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make you sure you test for the values used in your sample runs, and for the boundary conditions.
+\end{multipart}
+
+\section{Homework}
+
+\textbf{Warning: You are not allowed to use global variables for this project.}
+
+All function names, return types, and parameters must precisely match those shown. You may not use pass by reference or otherwise modify the function prototypes. You are welcome to create additional functions that may help streamline your code. 
+
+\subsection{Most Abundant species}
+
+A species is considered the most abundant if it is observed more frequently than any other species in a study. Write a function named \mintinline{c++}{mostAbundantSpecies()} that identifies the most abundant species in an array, then prints the species name, its frequency, and the positions where it was recorded. Assume there is always a definitive answer, and the array is non-empty. If two or more species have the same frequency, select the one that appears last in the array.
+
+Note: You do not need sorting to solve this.
+
+% \textbf{Function:} Print the word with the highest frequency, its count, and its index positions in the array
+% \begin{quote}
+% \begin{itemize}
+%     \item \textbf{Name:} \mintinline{c++}{MostPopularWord()}
+%     \item \textbf{Parameters (your function should accept these parameters IN THIS ORDER):}
+%         \begin{itemize}
+%             \item \mintinline{c++}{arr} String array: array of words.
+%             \item \mintinline{c++}{arrSize} int: The number of elements stored in the array
+%         \end{itemize}
+%     \item \textbf{Return Value:} void
+% \end{itemize}
+% \end{quote}
+
+
+
+\newpage
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} mostAbundantSpecies(string[], const int) & \mintinline{c++}{void mostAbundantSpecies(string species[], const int SPECIES_SIZE)}
+        \\ \hline
+        \textbf{Purpose:}  & Print the species with the highest frequency, its count, and the positions it was recorded in the array.\\ \hline
+        \textbf{Parameters:} &  
+        \textbf{string} \texttt{species}: Array of species name \newline
+        \textbf{const int} \texttt{SPECIES\_SIZE}: The size of species array
+\\ \hline
+        \textbf{Return value:} & - The function should print the most abundant species, its count, and its index positions in the array. \newline
+        - The function doesn't return any value to the main function. \\ \hline
+\textbf{Error Handling/ Boundary Conditions:} &  - If two or more species have the same frequency, the species that appears last in the array will be considered the most abundant; see sample run 4.1.3. 
+\newline
+- You may assume the species[] array is always non-empty. 
+\\ \hline
+        \textbf{Example:} & 
+        \begin{example}
+        \begin{minted}[breaklines=true]{c++}
+
+// Assume the proper libraries are included
+// Assume the proper implementation of mostAbundantSpecies() is included
+
+int main()
+{
+    const int SPECIES_SIZE = 4;
+    string species[SPECIES_SIZE] = {"sparrow", "robin", "eagle", "eagle"};
+    mostAbundantSpecies(species, SPECIES_SIZE);
+    return 0;
+}
+        \end{minted}
+        \end{example}
+
+        \begin{sample}
+The most popular species: eagle \newline
+Frequency: 2 \newline
+Found at pos: 2 3 \newline
+        \end{sample}
+             \\ \hline
+\end{longtable}
+
+\textbf{For Question 1, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste mostAbundantSpecies() and any helper function(s) to the answer box!} 
+
+\begin{sample}
+    \textcolor{red}{Test code:}
+    \begin{minted}{c++}
+    const int SPECIES_SIZE = 5;
+    string species[SPECIES_SIZE] = {"sparrow", "robin", "sparrow", "robin", "sparrow"};
+
+\end{minted}
+\textcolor{red}{Output:}
+
+The most popular word: sparrow
+
+Frequency: 3
+
+Found at pos: 0 2 4
+
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+    \begin{minted}{c++}
+    const int SPECIES_SIZE = 5;
+    string species[SPECIES_SIZE] = {"zebra", "giraffe", "giraffe", "zebra", "lion"};
+
+\end{minted}
+\textcolor{red}{Output:}
+
+The most popular species: zebra
+
+Frequency: 2
+
+Found at pos: 0 3
+
+
+\textcolor{red}{Explanation:}
+
+The last species that appeared with a frequency of 2 is "zebra" at index 3. Therefore, based on our rules, that is the word that will be displayed. 
+\end{sample}
+
+
+\subsection{Bird sightings}
+
+Victor has recently taken up birdwatching as a relaxing hobby. Each day, he records the number of birds he spots during his morning walks. After a few weeks of regular birdwatching, Victor wants to analyze his data to gain insights into the patterns of bird activity he’s observed.
+
+To assist him, Victor needs two (2) functions written in C++ that will help him understand the trends and changes in the number of bird sightings over time.
+
+\newline
+\textbf{Function 1:} Victor is curious about how the total number of bird sightings has increased over time. This function will calculate the cumulative sum of his daily bird sightings, showing him the total number of birds he has spotted since he started tracking.
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} \newline 
+        birdSightingsCumulativeSum( int[], const int, int[]) & \mintinline[breaklines=true]{c++}{void birdSightingsCumulativeSum(int daily_sightings[], const int NUM_DAYS, int cumulative_sightings[])}
+        \\ \hline
+        \textbf{Purpose:}  & Calculates the cumulative sum of the daily bird sightings and records the running total in the cumulative_sightings array. The cumulative sum represents the total number of birds Victor has spotted up to each respective day, providing a running total of his overall birdwatching progress. The function should not print anything.\\ \hline
+        \textbf{Parameters:} &  
+        \textbf{int} \texttt{daily\_sightings[]}: array of Victor's daily bird sightings. \newline
+        \textbf{const int} \texttt{NUM\_DAYS}: Size of daily\_sightings array and cumulative\_sightings array\newline
+        \textbf{int} \texttt{cumulative\_sightings[]}: Array to be filled with victor's cumulative bird sightings.
+\\ \hline
+        \textbf{Return value:} &  The function doesn't return any value. \newline 
+        \\ \hline
+        \textbf{Example:} & 
+        \begin{example}
+        \begin{minted}[breaklines=true]{c++}
+
+// Assume the proper libraries are included
+// Assume the proper implementation of birdSightingsCumulativeSum() is included
+
+int main()
+{
+    const int NUM_DAYS = 5;
+    int daily_sightings[NUM_DAYS] = {8, 5, 10, 3, 7};
+    int cumulative_steps[NUM_DAYS];
+    birdSightingsCumulativeSum(daily_sightings, NUM_DAYS, cumulative_sightings);
+    // We are printing the contents of the cumulative_steps array here.
+    return 0;
+}
+        \end{minted}
+        \end{example}
+
+        \begin{sample}
+8\newline
+13\newline
+23\newline
+26\newline
+33
+        \end{sample}
+             \\ \hline
+\end{longtable}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}{c++}
+const int NUM_DAYS = 3;
+int daily_sightings[NUM_DAYS] = {15, 5, 8};
+int cumulative_sightings[NUM_DAYS];
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+15
+20
+28
+\end{minted}
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}[breaklines=true]{c++}
+const int NUM_DAYS = 4;
+int daily_sightings[NUM_DAYS] = {12, 7, 20, 10};
+int cumulative_sightings[NUM_DAYS];
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+12
+19
+39
+49
+\end{minted}
+\end{sample}
+
+\textbf{Function 2:} Victor is also curious about how consistent he has been with his daily bird sightings. This function will calculate the mean of his daily bird sightings and return the deviation for each day, showing him whether he spotted more or fewer birds than his usual average.
+
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} \newline 
+        birdSightingsDeviation(const int[], const int, const int) & \mintinline[breaklines=true]{c++}{double birdSightingsDeviation(const int daily_sightings[], const int NUM_DAYS, const int OPTIMAL_SIGHTINGS)}
+        \\ \hline
+        \textbf{Purpose:}  & Calculates the mean of daily bird sightings and returns the deviation
+deviation =  mean - optimal sightings count \newline
+The function should not print anything.
+
+\\ \hline
+        \textbf{Parameters:} &  
+        \textbf{int} \texttt{daily\_sightings[]}: Array of Victor’s daily bird sightings. \newline
+        \textbf{const int} \texttt{NUM\_DAYS}: Size of daily\_sightings array\newline
+        \textbf{const int} \texttt{OPTIMAL\_SIGHTINGS}: Desired number of bird sightings per day.
+\\ \hline
+        \textbf{Return value:} &  The function will return a \mintinline{c++}{double}, which is the calculated deviation \newline 
+
+\\ \hline
+        \textbf{Example:} & 
+        \begin{example}
+        \begin{minted}[breaklines=true]{c++}
+
+// Assume the proper libraries are included
+// Assume the proper implementation of stepCountDeviation() is included
+
+int main()
+{
+    const int NUM_DAYS = 5;
+    int daily_steps[NUM_DAYS] = {5000, 4000, 5000, 2000, 4000};
+    const int OPTIMAL_STEP_COUNT = 5000;
+    double deviation = stepCountDeviation(daily_steps, NUM_DAYS, OPTIMAL_STEP_COUNT);
+    // We are printing the deviation up to 3 decimal places
+    cout << fixed << setprecision(3) << deviation << endl;
+    return 0;
+}
+        \end{minted}
+        \end{example}
+
+        \begin{sample}
+-1000.000
+        \end{sample}
+        Explanation: mean = (5000 + 4000 + 5000 + 2000 + 4000)/5 = 4000 \newline 
+deviation = mean - OPTIMAL\_STEP\_COUNT = 4000 - 5000 = -1000
+             \\ \hline
+\end{longtable}
+
+\textbf{For Question 2, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste stepCountCumulativeSum(),  stepCountDeviation(), and any helper function(s) to the answer box!} 
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}{c++}
+const int NUM_DAYS = 3;
+int daily_steps[NUM_DAYS] = {10000, 2000, 6000};
+const int OPTIMAL_STEP_COUNT = 5000;
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+1000.000
+\end{minted}
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}[breaklines=true]{c++}
+const int NUM_DAYS = 4;
+int daily_steps[NUM_DAYS] = {4000, 2000, 8000, 3000};
+const int OPTIMAL_STEP_COUNT = 750;
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+3500.000
+\end{minted}
+\end{sample}
+
+\subsection{Normal Weight Range}
+
+As a fitness coach, you need to monitor your clients' weights to ensure they are within a healthy range, defined as being between 50 kg and 100 kg. To simplify this task, write a function printNormalWeights() that takes two arrays: one with client names and another with their weights. The function will print the names and weights of clients who fall within the healthy range.
+
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} \newline 
+        printNormalWeights (string, int, int) & \mintinline[breaklines=true]{c++}{void printNormalWeights(string clients[], int weights[], const int NUM_CLIENTS)}
+        \\ \hline
+        \textbf{Purpose:}  & Prints out the clients with weights within the normal range, which is between 50 kg and 100 kg, both inclusive. You may assume that both clients[] and weights[] arrays will be the same size. \\ \hline
+        \textbf{Parameters:} &  
+        \textbf{string} \texttt{clients[]}: Array of strings which contains the clients's names. \newline
+        \textbf{int} \texttt{weights[]}: Array of integers which contains their weights \newline
+        \textbf{const int} \texttt{NUM\_CLIENTS}: An integer representing the number of elements in the clients and weights arrays
+\\ \hline
+        \textbf{Return value:} &  
+        - The function doesn't return any value.\newline 
+        - The function prints all clients whose weights are within the specified range.\\ \hline
+         \textbf{Error handling/ Boundary conditions:} &  
+         - You may assume that the clients[] array and weights[] array are non-empty\newline 
+        - You may also assume that the size of the clients[] array and weights[] array are always equal\\ \hline
+        \textbf{Example:} & 
+        \begin{example}
+        \begin{minted}[breaklines=true]{c++}
+
+// Assume the proper libraries are included
+// Assume the proper implementation of printNormalWeights() is included
+
+int main() 
+{
+    
+    string clients[3] = {"Alice", "Bob", "Charlie"};
+    int weights[3] = {60, 45, 100};
+    
+    printNormalWeights(clients, weights, 3);
+        
+    return 0;
+}
+        \end{minted}
+        \end{example}
+
+        \begin{sample}
+
+Alice 60 \newline
+Charlie 100 \newline
+        \end{sample}
+             \\ \hline
+\end{longtable}
+
+\textbf{For Question 3, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste printNormalWeights() and any helper function(s) to the answer box!} 
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}{c++}
+string clients[4] = {"John", "Mike", "Sara", "Anna"};
+int weights[4] = {50, 80, 101, 99};
+printNormalWeights(clients, weights, 4);
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+John 50
+Mike 80
+Anna 99
+\end{minted}
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}[breaklines=true]{c++}
+string clients[6] = {"Laura", "James", "Emily", "Liam", "Sophia", "Noah"};
+int weights[6] = {100, 49, 51, 48, 52, 99};
+printNormalWeights(clients, weights, 6);
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+Laura 100
+Emily 51
+Sophia 52
+Noah 99
+\end{minted}
+\end{sample}
+
+\subsection{Best Time to Buy and Sell Artwork}
+
+Art trading is a lucrative business that involves buying paintings and selling them at a higher price in the future. You want to maximize your profit by selecting a single day to purchase a painting and a different day in the future to sell it.
+
+
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} \newline 
+        maxProfit(int[], const int) & \mintinline[breaklines=true]{c++}{int maxProfit(int prices[], const int NUM_DAYS)}
+        \\ \hline
+        \textbf{Purpose:}  & Find the maximum profit achieved from buying and selling a painting. The function should not print anything. \\ \hline
+        \textbf{Parameters:} &  
+        \textbf{int} \texttt{prices[]}: Array of painting prices on each day. \newline
+        \textbf{const int} \texttt{NUM\_DAYS}: The size of prices array
+\\ \hline
+        \textbf{Return value:} &  It should return the maximum profit achieved from one painting trade. \\ \hline
+        \textbf{Error handling/} \newline
+        \textbf{Boundary conditions:} & - Return 0 if no profit can be achieved. 
+        \newline - You may assume that the \texttt{prices[]} array is always non-empty
+        \\ \hline 
+        \textbf{Example:} & 
+        \begin{example}
+        \begin{minted}[breaklines=true, frame = none]{c++}
+        
+// Assume the proper libraries are included
+// Assume the proper implementation of maxProfit() is included
+
+int main()
+{
+    const int NUM_DAYS = 6;
+    int prices[NUM_DAYS] = {5000, 2000, 4000, 1000, 4500, 3000};
+    int profit = maxProfit(prices, NUM_DAYS);
+    cout << "Maximum profit: " << profit << endl;
+    return 0;
+}
+        \end{minted}
+        \end{example}
+
+        \begin{sample}
+Maximum Profit: 3500
+        \end{sample}
+
+        \textcolor{red}{Explanation:} 
+        
+        Buy on day 4 (price = 1000) and sell on day 5 (price = 4500), profit = 4500 - 1000 = 3500.
+\newline Note: Buying on day 4 and selling on day 3 is not allowed because you must buy before you sell.
+
+             \\ \hline
+\end{longtable}
+
+\textbf{For Question 4, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste maxProfit() and any helper function(s) to the answer box!}  
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}{c++}
+const int NUM_DAYS = 5;
+int prices[NUM_DAYS] = {5000, 4000, 3000, 2000, 1000};
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+Maximum Profit: 0
+\end{minted}
+\textcolor{red}{Explanation:} 
+
+In this case, no profitable transactions are possible, and the max profit = 0.
+\end{sample}
+
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}[breaklines=true]{c++}
+const int NUM_DAYS = 6;
+int prices[NUM_MONTHS] = {5000, 2500, 3000, 1000, 3000, 1000};
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+Maximum Profit: 2000
+\end{minted}
+\textcolor{red}{Explanation:} 
+
+Buy on DAY 4 (price = 1000) and sell on DAY 5 (price = 3000), profit = 3000 - 1000 = 2000.
+\end{sample}
+
+
+
+\subsection{Parsing Sensor Data}
+
+When analyzing data from sensors, it is common to break a text string of recorded values into individual pieces using a delimiter. Write a function split() that takes a string of sensor data, splits it at every occurrence of a delimiter, and populates an array of strings with the split pieces, up to a specified maximum number of entries.
+
+
+\newpage
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} \newline 
+        split(string, char, string[], const int) & \mintinline[breaklines=true]{c++}{int split(string input_string, char separator, string arr[], const int ARR_SIZE)}
+        \\ \hline
+        \textbf{Purpose:}  & Break a string of sensor readings into individual values using the given delimiter and populate the array with these values. The function does not print anything.\\ \hline
+        \textbf{Parameters:} &  
+        \textbf{string} \texttt{input\_string}: The string containing sensor data separated by a delimiter. \newline
+        \textbf{char} \texttt{separator}: The delimiter marking the position where the string should be split.\newline
+        \textbf{string} \texttt{arr[]}: The array to store the individual sensor values after splitting.\newline
+        \textbf{const int} \texttt{ARR\_SIZE}: The maximum number of values the array can store.
+\\ \hline
+        \textbf{Return value:} &  
+        - Returns an \mintinline{c++}{int}, indicating the number of pieces the input string was split into.
+        \newline
+        - Populate \mintinline{c++}{arr[]} with the split values
+\\ \hline
+        \textbf{Error Handling/ Boundary Conditions:} & - Return 1 if the delimiter character is not found. Place the entire string in the array as the first element
+        \newline
+        - Return -1 if the string can be split into more pieces than the size of the array. Fill the array with as many pieces as possible. \newline
+        - Return 0 if the input string is empty.
+        \\ \hline
+        \textbf{Example:} & 
+               
+        \begin{example} 
+        \begin{minted}[breaklines=true, frame=none]{c++}
+
+// Assume the proper libraries are included
+// Assume the proper implementation of split() is included
+
+void printArray(string arr[], const int NUM_ELEMENTS)
+{
+    for (int i = 0; i < NUM_ELEMENTS; i++)
+    {
+        cout << "arr[" << i << "]: " << arr[i] << endl;
+    }
+}
+
+int main()
+{
+    string input_string = "TEMP123";
+    char separator = '-';
+    const int ARR_SIZE = 3;
+    string arr[ARR_SIZE];
+    
+    // num_splits is the value returned by split
+    int num_splits = split(input_string, separator, arr, ARR_SIZE);
+    cout << "Function returned value: " << num_splits << endl;
+
+    if (num_splits != -1)
+    {
+        printArray(arr, num_splits);
+    }
+    else
+    {
+        printArray(arr, ARR_SIZE);
+    }
+}
+
+        \end{minted}
+                \end{example} 
+
+\\ \hline
+        \textbf{Sample Run:} &  
+        \begin{sample}
+Function returned value: 1
+
+arr[0]:TEMP123
+        \end{sample}
+
+             \\ \hline
+\end{longtable}
+
+
+\textbf{For Question 5, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste split() and any helper function(s) to the answer box!}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}{c++}
+string testcase = "Sensor1|Sensor2|Sensor3";
+char separator = '|';
+const int ARR_SIZE = 3;
+string arr[ARR_SIZE];
+
+// num_splits is the value returned by split
+int num_splits = split(testcase, separator, arr, ARR_SIZE);
+cout << "Function returned value: " << num_splits << endl;
+
+for (int i = 0; i < ARR_SIZE; i++)
+{
+    cout << "arr[" << i << "]: " << arr[i] << endl;
+}
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+Function returned value: 3  
+arr[0]: Sensor1  
+arr[1]: Sensor2  
+arr[2]: Sensor3  
+\end{minted}
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}[breaklines=true]{c++}
+string testcase = "Data1,Data2,Data3,Data4,Data5,Data6,Data7";
+char separator = ',';
+const int ARR_SIZE = 5;
+string arr[ARR_SIZE];
+
+// num_splits is the value returned by split
+int num_splits = split(testcase, separator, arr, ARR_SIZE);
+cout << "Function returned value: " << num_splits << endl;
+
+for (int i = 0; i < ARR_SIZE; i++)
+{
+    cout << "arr[" << i << "]: " << arr[i] << endl;
+}
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+Function returned value: -1  
+arr[0]: Data1  
+arr[1]: Data2  
+arr[2]: Data3  
+arr[3]: Data4  
+arr[4]: Data5 
+\end{minted}
+
+\textcolor{red}{Explanation:}
+
+The string contains more pieces than the array can store. The function fills the array with the first 5 values and returns -1 to indicate the overflow
+
+\end{sample}
+
+\subsection{Space Exploration Crew Efficiency}
+
+You are assisting the Space Exploration Program in evaluating the performance of crew members during training simulations. Each crew member is scored on 10 critical tasks. Your task is to identify the first crew member whose average score falls below a defined threshold. Write a function minAverg() that returns the index of the first crew member whose average score is less than or equal to the threshold.
+
+\newpage
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+        \textbf{Function:} \newline 
+        minAverg(int, int, double) & \mintinline[breaklines=true]{c++}{int minAverg(int scores[][10], const int NUM_CREW, double threshold)}
+        \\ \hline
+        \textbf{Purpose:}  & A function to return the index of a crew member whose average performance score is less than or equal to the threshold.\\ \hline
+        \textbf{Parameters:} &  
+        \textbf{int} \texttt{scores[][10]}: A 2D integer array with 10 columns representing scores for 10 critical tasks. \newline
+        \textbf{const int} \texttt{NUM\_CREW}: An integer representing the number of crew members (rows in the array). \newline
+        \textbf{double} \texttt{threshold}: A floating-point value representing the performance threshold for low average scores.
+ 
+\\ \hline
+        \textbf{Return value:} &  The function returns an \mintinline{c++}{int} representing the index of the first crew member with a low average score that is less than or equal to the threshold. \\ \hline
+        \textbf{Error handling/
+Boundary conditions:} &  
+- The function returns -1 if there is no average score that is less than or equal to the threshold \newline 
+- You may assume that the score[] array is non-empty
+\\ \hline
+        \textbf{Example:} & 
+        \begin{example}
+        \begin{minted}[breaklines=true]{c++}
+
+// Assume the proper libraries are included
+// Assume the proper implementation of minAverg() is included
+
+int main()
+{
+    int scores[2][10] = {
+         {90, 85, 88, 92, 86, 89, 84, 91, 87, 90},  
+         {10, 15, 20, 10, 5, 15, 10, 20, 5, 10}          
+    };
+    cout << "returned crew index: " <<  minAverg(scores, 2, 10.0);
+    return 0;
+}
+        \end{minted}
+        \end{example}
+
+        \begin{sample}
+returned crew index: 1
+        \end{sample}
+             \\ \hline
+\end{longtable}
+
+\textbf{For Question 6, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste minAverg() and any helper function(s) to the answer box!} 
+
+% Develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the whole program into the answer box! 
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}{c++}
+int scores[3][10] = {
+      {5, 10, 15, 20, 5, 10, 15, 20, 5, 10},
+      {15, 15, 15, 15, 15, 15, 15, 15, 15, 50},  
+      {30, 30, 30, 30, 30, 5, 30, 30, 30, 30}
+};
+cout << "returned student index: " <<  minAverg(scores, 3, 25.0);
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+returned crew index: 0
+\end{minted}
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}[breaklines=true]{c++}
+    int scores[4][10] = {
+    {70, 75, 80, 65, 60, 85, 90, 88, 78, 72}, 
+    {50, 55, 60, 65, 70, 50, 45, 55, 65, 60},
+    {15, 10, 20, 12, 18, 15, 17, 10, 19, 11},  
+    {90, 95, 85, 88, 92, 100, 110, 105, 115, 98},
+};
+cout << "returned crew index: " <<  minAverg(scores,4,40.0);
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+returned student index: 2
+\end{minted}
+\end{sample}
+
+\begin{sample}
+\textcolor{red}{Test code:}
+\begin{minted}[breaklines=true]{c++}
+int scores[5][10] = { 
+    { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },
+    { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },
+    { 10, 10, 15, 10, 10, 10, 10, 10, 10, 10 },
+    { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },
+    { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 }
+};
+cout << "returned crew index: " << minAverg(scores, 5, 12.0);
+\end{minted}
+\textcolor{red}{Output:}
+\begin{minted}{c++}
+returned crew index: 0
+\end{minted}
+\end{sample}
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \subsection{Super Bowl Watch Party}
+
+% Your family loves the Super Bowl. Every year, your family hosts three watch parties: your grandparents have one at their house, your parents have one at their house, and your uncle has one at his house. You and your friends all want to watch the event together, but you are all in different locations. You want to figure out how far each individual is from each of the watch parties. You are given two arrays of coordinates; one array shows the city coordinates of the watch parties, and one shows the coordinates of your friends.
+
+
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%     \hline
+%          Watch Party City Locations& x& y\\ \hline
+%     City 1& 2& 10
+% \\ \hline
+%     City 2& 5& 8
+% \\ \hline
+%     City 3& 1& 2\\\hline
+%     \end{tabular}
+% \end{table}
+
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%     \hline
+%          Individual Locations& x& y
+% \\ \hline
+%     Person 1& 2& 10
+% \\ \hline
+%     Person 2& 2& 5
+% \\ \hline
+%     Person 3& 8& 4
+% \\ \hline
+%     Person 4& 5& 8\\ \hline
+%     Person 5& 1& 2\\ \hline
+%     \end{tabular}
+% \end{table}
+% You want to fill in a table of distances between the watch parties and your friends. This requires comparing the location of a particular watch party ($p2$ in the below equation) with the location of a particular friend ($p1$ in the below equation):
+
+% $distance(p1, p2) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+
+% These distances will then be used to fill a table of all the distances. From the above input coordinates, the distance matrix obtained is:
+
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|c|}
+%     \hline
+%          & City 1 & City 2 & City 3 \\ \hline
+%     Person 1 & 0.00 & 3.61 & 8.06 \\ \hline
+%     Person 2 & 5.00 & 4.24 & 3.16 \\ \hline
+%     Person 3 & 8.49 & 5.00 & 7.28 \\ \hline
+%     Person 4 & 3.61 & 0.00 & 7.21 \\ \hline
+%     Person 5 & 8.06 & 7.21 & 0.00 \\ \hline
+%     \end{tabular}
+% \end{table}
+% The first value is calculated as $d(person1, city1) = \sqrt{(2 - 2)^2 + (10 - 10)^2} = 0.00$
+
+% The second value is calculated as $d(person1, city2) = \sqrt{(5 - 2)^2 + (8 - 10)^2} = 3.61$ and so on. 
+
+% Function specifications
+% \begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+%         \textbf{Function:} \newline 
+%         \mintinline[breaklines=true]{c++}{calculateDistanceMatrix( double[], double[], double[],  const int,  const int,  const int,  const int)} & \mintinline[breaklines=true]{c++}{void calculateDistanceMatrix( double distance[][3], double individual_locations[][2], double city_locations[][2], const int I_ROWS,  const int I_COLS,  const int C_ROWS,  const int C_COLS)}
+%         \\ \hline
+%         \textbf{Purpose:}  & Constructs the distance matrix using individual locations and city locations.\\ \hline
+%         \textbf{Parameters:} &  \mintinline{c++}{double distance[][3]}: Empty distance matrix of size I\_ROWS x C\_ROWS. \newline
+%         \mintinline{c++}{double individual_locations[][2]}: Coordinates for clues of size I\_ROWS x I\_COLS \newline
+%         \mintinline{c++}{double city_locations[][2]}: Coordinates for regions of size C\_ROWS x C\_COLS\newline
+%         \mintinline{c++}{const int I_ROWS}:  Number of rows for individual\_locations[][]\newline
+%         \mintinline{c++}{const int I_COLS}: Number of columns for individual\_locations[][], will be 2 for this question.\newline
+%         \mintinline{c++}{const int C_ROWS}: Number of rows for city\_locations[][], will be 3 for this question.\newline
+%         \mintinline{c++}{const int C_COLS}: Number of columns for city\_locations[][], will be 2 for this question.
+% \\ \hline
+%         \textbf{Return value:} &  The function doesn't return any value. \newline 
+%        The function should not print anything. \newline
+%        The function fills out the distance matrix using individual locations and city locations. \\ \hline
+%         \textbf{Example:} & 
+%         \begin{example}
+%         \begin{minted}[breaklines=true]{c++}
+
+% // Assume the proper libraries are included
+% // Assume the proper implementation of calculateDistanceMatrix() is included
+
+% int main()
+% {
+%     const int I_ROWS = 5;
+%     const int I_COLS = 2;
+%     const int C_ROWS = 3;
+%     const int C_COLS = 2;
+%     double individual_locations[I_ROWS][I_COLS] = {{2, 10}, {2, 5}, {8, 4}, {5, 8}, {1, 2}};
+%     double city_locations[C_ROWS][C_COLS] = {{2, 10}, {5, 8}, {1, 2}};
+%     double distance[I_ROWS][C_ROWS];
+%     calculateDistanceMatrix(distance, individual_locations, city_locations, I_ROWS, I_COLS, C_ROWS, C_COLS);
+%     for (int i = 0; i < I_ROWS; i++)
+%     {
+%         for (int j = 0; j < C_ROWS; j++)
+%         {
+%             cout << fixed << setprecision(2) << distance[i][j] << " ";
+%         }
+%         cout << endl;
+%     }
+%     return 0;
+% }
+%         \end{minted}
+%         \end{example}
+
+%         \begin{sample}
+% 0.00	3.61	8.06 \newline
+% 5.00	4.24	3.16 \newline
+% 8.49	5.00	7.28 \newline
+% 3.61	0.00	7.21 \newline
+% 8.06	7.21	0.00
+%         \end{sample}
+%              \\ \hline
+% \end{longtable}
+
+
+% Develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the whole program into the answer box! 
+% \begin{sample}
+% Test code:
+% \begin{minted}{c++}
+% const int I_ROWS = 3;
+% const int I_COLS = 2;
+% const int C_ROWS = 3;
+% const int C_COLS = 2;
+% double individual_locations[I_ROWS][I_COLS] = {{2, 10}, {8, 4}, {5, 8}};
+% double city_locations[C_ROWS][C_COLS] = {{2, 10}, {5, 8}, {1, 2}};
+% double distance[I_ROWS][C_ROWS];
+% \end{minted}
+% Output:
+% \begin{minted}{c++}
+% 0.00 3.61 8.06
+% 8.49 5.00 7.28
+% 3.61 0.00 7.21
+% \end{minted}
+% \end{sample}
+
+% \begin{sample}
+% Test code:
+% \begin{minted}[breaklines=true]{c++}
+% const int I_ROWS = 4;
+% const int I_COLS = 2;
+% const int C_ROWS = 3;
+% const int C_COLS = 2;
+% double individual_locations[I_ROWS][I_COLS] = {{2, 1}, {2, 3}, {4, 4}, {5, 8}};
+% double city_locations[C_ROWS][C_COLS] = {{1, 2}, {3, 6}, {5, 8}};
+% double distance[I_ROWS][C_ROWS];
+% \end{minted}
+% Output:
+% \begin{minted}{c++}
+% 1.41 5.10 7.62
+% 1.41 3.16 5.83
+% 3.61 2.24 4.12
+% 7.21 2.83 0.00
+% \end{minted}
+% \end{sample}
+
+% \begin{sample}
+% Test code:
+% \begin{minted}[breaklines=true]{c++}
+% const int I_ROWS = 5;
+% const int I_COLS = 2;
+% const int C_ROWS = 3;
+% const int C_COLS = 2;
+% double individual_locations[I_ROWS][I_COLS] = {{2, 10}, {2, 5}, {8, 4}, {5, 8}, {1, 2}};
+% double city_locations[C_ROWS][C_COLS] = {{0, 0}, {5, -1}, {-1, -2}};
+% double distance[I_ROWS][C_ROWS];
+% \end{minted}
+% Output:
+% \begin{minted}{c++}
+% 10.20 11.40 12.37
+% 5.39 6.71 7.62
+% 8.94 5.83 10.82
+% 9.43 9.00 11.66
+% 2.24 5.00 4.47
+% \end{minted}
+% \end{sample}

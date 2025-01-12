@@ -1,0 +1,270 @@
+\chapter*{Project 2: Create a Video Game}
+\addcontentsline{toc}{chapter}{Project 2: Create a Video Game}
+\setcounter{chapter}{8}
+\setcounter{section}{0}
+
+\begin{abstract}
+This project will get you familiar with:
+\begin{enumerate}
+    \item Vectors, complex data storage
+    \begin{itemize}
+        \item Flexible size storage 
+    \end{itemize}
+    \item Objects
+    \begin{itemize}
+        \item Designing objects and complete member function lists
+        \item Making objects that store other objects
+    \end{itemize}
+    \item User interface design
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Introduction}
+In this project you will create a video game. Unlike previous assignments and projects, there is not an answer key. There are no prebuilt test cases, and there are no coderunner questions. Instead, you will simply have a list of requirements and you can fulfill them in whatever creative ways you like. 
+
+This project will be worth more of your grade than any previous assignment. Please take your time, do not procrastinate, and make something you are proud of. Unlike previous assignments, this will be scored out of 200 points and is worth 20\% of your final grade. 
+
+\subsection{Overview}
+You will implement a turn-based, text (adventure) game in C++, or another similar interactive concept. The minimum requirements for the project can be found below. From known games, suggested examples include Monopoly, Final Fantasy, and MUD. Of course, you are encouraged to come up with a novel and unique idea in order to distinguish your project from the others.
+
+For the final project, you are allowed to work with (at most) one other student that is currently in CSCI 1300 this semester. You may also work by yourself if you so choose.
+
+If you choose to work in a group, there are additional requirements. We expect that you will be contributing to the project equally. Both group members must submit a zip file for the project, and the solution files can be the same. Indicate your partner’s name in comments at the top of each code file.
+
+You must create a project proposal due Thursday, July 11. In this proposal you will outline your game concept and how you will fulfill each of the rubric requirements. 
+
+\section{Requirements}
+\subsection{Feature Requirements}
+\begin{itemize}
+    \item The project must have interactive components (ask the player for input values, create menus for choices, and so on). It’s a game! 
+    \item The game must have some Non-Player Characters (NPCs). If you are making a dungeon crawler, you could have members of your exploration party; if you are making an adventure game, you could come across merchants or something in the wild, etc. 
+    \item Game stats should be displayed throughout the game. It’s more exciting and meaningful! Also, these stats help debug the code. What ``game stats" means is up to you; health, inventory, time left to beat the boss, money, etc are all valuable options.
+    \item The project must have some visual component and allow your players to move around providing visual feedback. This can be ascii art or printed tables. This image must update every turn of the game.
+    \item Your project must include some kind of menu. The menu must be reasonably complex, meaning it must have at a minimum:
+        \begin{itemize}
+            \item At least 5 menu options (other than Quit/Exit)
+            \item At least two of these options must have a second layer of menu options
+            \item At least 2 menu options (primary or secondary layer of the menu) should include a random component, at least one each from the following:
+                \begin{itemize}
+                    \item The value of the variable is selected at random from a certain range of values (i.e. select a value at random between 1 and 6)
+                    \item A probability value determines one of the outcomes (e.g. there is a 60\% chance a certain event will occur)
+                \end{itemize}
+        \end{itemize}    
+
+\end{itemize}
+
+\subsection{Implementation Requirements}
+
+\begin{itemize}
+    \item A 2D map (in a dedicated class) or some other form of ascii art update.
+    \item 4+ user defined classes (excluding map class)
+    \begin{itemize}
+        \item At least two classes with 4+ data members.
+        \item At least one class must include an array/vector of objects from a class that you created.
+        \item Appropriate methods for each class (including getters, setters, default constructors, and parametrized constructors as needed)
+    \end{itemize}
+    \item 6+ if-else statements
+    \item 6+ loops (while loops, for loops, do-while, in total)
+    \item 2+ nested loops
+    \item File IO (both reading from a file and writing to a file)
+\end{itemize}
+
+\subsection{Group Requirements}
+In addition to the requirements listed above, if you work in a group you must also implement a sorting algorithm and apply it to a task in your program. You should not use a Library function or any external (to this course) resources to implement the sorting algorithm.
+
+One situation where the sorting functionality would be useful is for a ranking task, for example: ranking the number of turns it took each player to reach a final boss.
+
+Note:
+\begin{itemize}
+    \item If you work in a team and you do not implement a sorting task, 50 points will be deducted from your point total.
+    \item We expect that you will be contributing to the project equally. Both group members must submit a zip file for the project, and the solution files can be the same. Indicate your partner’s name in comments at the top of each code file. Both partners will book an Interview Grading appointment together and TAs will be grading you individually.
+\end{itemize}
+
+\subsection{Extra Credit}
+There will be several opportunities for extra credit in this project. You can do any or all of them.
+\begin{itemize}
+    \item Project Showcase (10 points): show your game in class on Thursday, July 25
+    \item Final Battle (10 points): create a final battle in your game that has distinct options, movements, or art. Make it flashy.
+    \item Persistent Scoreboard (10 points): create a way to track best scores in your game over time, including in subsequent runs of your game. 
+    \item Colorful Art (10 points): use color in your output. You will need to teach yourself how to print colors (or even bold text). \textcolor{cyan}{\href{https://stackoverflow.com/questions/2616906/how-do-i-output-coloured-text-to-a-linux-terminal}{This link}} is a good starting point: https://stackoverflow.com/questions/2616906/how-do-i-output-coloured-text-to-a-linux-terminal
+\end{itemize}
+
+\section{Example Concepts}
+If you are not sure where to start or want to see some concepts from previous semesters, here are a few example game proposals. 
+
+\subsection{Dungeon Escape}
+This version was the recommended game for this course in Fall 2022. This game would fulfill all requirements for this semester. You can see the detailed write-up for that semester on \textcolor{cyan}{\href{https://github.com/CSCI1300-StartingComputing/CSCI1300-Fall2022/blob/main/project/project3/project3.md}{Github:}} https://github.com/CSCI1300-StartingComputing/CSCI1300-Fall2022/blob/main/project/project3/project3.md
+
+\textbf{Basic Idea:} You and your 4 (NPC) friends are going to go through a dungeon fighting enemies and looting for treasure. You will start your adventure with a trip to a merchant to stock up on necessary supplies such as weapons, food, and armor. You will then enter a dungeon (a 12 by 12 grid of rooms). Once you enter the dungeon, you will have 100 turns to defeat the boss and leave. There are three types of rooms: normal rooms, NPC spaces, and monster rooms. If you are in a normal space, each turn you will see a menu with a choice: (1) you can move to an adjacent room, (2) you can investigate your current room and potentially find a key (10\% chance) or treasure (10 \% chance) or a random monster (20 \%) chance (3) Pick a fight, causing a random monster to appear, (4) Cook and eat, (5) Forfeit. If you are in an NPC space, you may be able to buy more supplies or sell any treasure you looted so far. If you are on a Monster Room, you can either open the room with a key or try to solve a riddle to enter the room. In addition, on any turn where you do not move, a spontaneous misfortune may occur: some of your tools may break, your food may spoil, you may get robbed by bandits, etc. You will need to defeat all 5 monster rooms and find the exit before 100 turns, or an evil sorcerer will show up and kill you. 
+
+\textbf{How It Satisfies Feature Requirements:} 
+\begin{itemize}
+    \item Every turn is interactive where the user may choose one of several options. The user has direct influence over whether or not they win the game, it is not strictly chain of events/randomness. 
+    \item There are 4 NPC members in your party that can carry other weapons or supplies, die independently, or help with fights. There is also 1 NPC trader/merchant outside of the dungeon and another NPC trader/merchant inside the dungeon.
+    \item Game stats will be displayed every turn including what the player's inventory is, how hungry they are, how many turns they have left, and how much gold they have.
+    \item There will be a visual component that updates each turn in the Map class, showing all the rooms in the dungeon. Normal unexplored rooms will be marked with a dash, explored rooms will be blank. The monster rooms will be marked with an R, NPC spaces will be marked with an N, the exit will be marked with an E, and your current location will be marked with an X, like this:
+    \begin{verbatim}
+        ------------
+        --N---------
+        --  ---R----
+        --X---------
+        ------------
+        -------R----
+        ------------
+        ------------
+        --R--------R
+        ------------
+        ------------
+        ------E-----
+    \end{verbatim}
+    \item There will be a menu for each turn to decide if you move, loot the room, pick a fight, cook food, or forfeit. The movement menu will have a submenu for which direction you choose to move, and the cook menu will have a submenu for what they would like to cook. When they loot a room, there is a percentage-based chance of the outcome. When they cook food, there is a chance their cookware will break and their food will be ruined.
+\end{itemize}
+
+\textbf{How It Satisfies Minimum Implementation Requirements:}
+\begin{itemize}
+    \item The dungeon map will update each turn
+    \item We will have 4 classes:
+    \begin{itemize}
+        \item Possessions: containing the item name, the item type (cookware, food, armor, weapons), the value
+        \item Players: containing a vector of possessions, a hunger status, health, and a name.
+        \item Monsters: the difficulty to defeat the monster, the name of the monster, the reward for defeating the monster, a weapon the monster is weak to, and a weapon the monster is resistant to
+        \item Party: a collection of players to make up your dungeon party, the party's collective money and number of keys, the number of turns the party has left, a function to print the total inventory and status of the party members, and more.
+    \end{itemize}
+    \item If/Else statements will naturally occur over the course of a complex program.
+    \item There will be a loop for the merchant both before entering the dungeon and inside the dungeon. Inside the dungeon turns will be in a loop of size 100 (for 100 turns), and the second merchant menu loop will be nested inside of it. There will be a loop to fight a monster until either the player or the monster runs out of health, which will be nested inside the main turn loop. There will be a loop to read in the monster file. There will be a loop to print the game result to a file.
+    \item The input file will be a file of monsters.
+    \item The output file will be the end status of the party.
+\end{itemize}
+
+\textbf{Group Requirement:} If in a group, a sorting algorithm could be implemented by 
+\begin{enumerate}
+    \item sorting the players by current health or hunger;
+    \item sorting the scores of recent playthroughs and printing them to a file (would also satisfy the Persistent Scoreboard extra credit)
+\end{enumerate}
+
+\textbf{Extra Credit Ideas:}
+\begin{enumerate}
+    \item To add a final boss, you could have the Evil Sorcerer appear to fight the players when they try to leave the dungeon. This should have some back and forth where the sorcerer makes moves to hurt or kill players, and the players attack to lower his health.
+    \item To add a persistent scoreboard, you can print the recent tries in the game to a file with the number of turns used as the "score"
+    \item You could add color to the map to represent monster rooms or NPC locations, and you could add colorful notifications for when the players lose health (in red).
+\end{enumerate}
+
+\subsection{Island Explorer}
+\textbf{Basic Idea} You are on a quest to become Ruler of the Seas. In order to do this, you and your crew must sail through the seas and find all seven islands and either become their ally or conquer them. Each island will randomly be one of three types: a war type, where you must fight them to conquer them; a money type, where you can buy their allegiance; a quest type, where you must do some small quest to earn their allegiance. As you sail around the seas, each sea tile will be one of three biomes: arctic, located near the north and south; tropical, located near the middle; deep sea, randomly located throughout. Depending on the biome, you may get spontaneously attacked by sea monsters such as Krakens (deep sea), great whales (arctic), or a rare school of sharks (tropical). In tropical tiles, you can also loot the tile to find treasure from shipwrecks. This will be the main way to find money to bribe money type islands. Quest type islands will either require you to carry a message to a neighboring island, or defeat a monster that has been plaguing their island. You need to have allies before Hurricane Season comes, so if you have not won the game before Hurricane Season (100 turns) you lose. If you get defeated by a war type island or a monster sinks your ship, you also lose. 
+
+\textbf{How It Satisfies Feature Requirements:}
+\begin{itemize}
+    \item Each turn the players get to choose whether they sail to a new tile, pick a fight with a monster, or loot the tile (if a tropical tile), etc.  
+    \item There will be seven NPCs, one as the ruler for each island. These NPCs will disclose what type of island nation they are and you will interact with them to try and bribe them with treasures, ask where to go to defeat a monster that has been plaguing them, or begin a war. These will also be the NPCs you can try to trade with to get more supplies for your ship.
+    \item Each turn game stats will be displayed including how many turns worth of supplies are on the ship, which islands are currently allies, how many turns left until Hurricane Season, and weapons on your ship.
+    \item Each turn the game will display the map and where you currently are on it. This map is going to be made out of hexgrids like Civilization or Settlers of Catan, which I will make by alternating rows of slashes and dashes with islands marked with stars or o's depending on if they are allies or not, and your current location marked with an x like this:
+    \begin{verbatim}
+       _       _       _       _       _ 
+     /   \ _ /   \ _ /   \ _ /   \ _ /   \
+     \ _ /***\ _ /   \ _ /   \ _ /   \ _ /
+     /   \*_*/   \ _ /   \ _ /   \ _ /   \
+     \ _ /   \ _ /   \ _ /   \ _ /   \ _ /
+     /   \ _ /   \ _ /   \ _ / x \ _ /   \
+     \ _ /   \ _ /   \ _ /***\ _ /   \ _ /
+     /   \ _ /   \ _ /   \*_*/   \ _ /   \
+     \ _ /ooo\ _ /   \ _ /   \ _ /   \ _ /
+         \o_o/   \ _ /   \ _ /   \ _ /   
+        
+    \end{verbatim}
+    \item There will be a main turn menu with 3 options normally, or 5 options when you are adjacent to an island: 1) sail, 2) search for a monster, 3) rest your crew, 4) (Only if on a tropical tile): loot the tile, 5) (Only if adjacent to an island), talk to the island ruler. When you sail you choose which direction you sail to. When you talk to an island ruler you can either try to sell loot to resupply your ship, or try to make an alliance. The alliance option will either give you a price to buy their allegiance, a mini quest, or say something aggressive like "Over my dead body", inviting you to declare war. When you sail, there is a 10\% chance of being attacked by a monster from the biome you sailed to and a 10\% chance of a storm which will either destroy your supplies or skip three turns. When you loot the tile, there is a 1 in 3 chance of finding some loot item to sell to the next island. 
+\end{itemize}
+
+\textbf{How It Satisfies Minimum Implementation Requirements:}
+\begin{itemize}
+    \item The map will update when you move, and once islands become allies I will change their picture from stars to the letter o.
+    \item There will be four classes:
+    \begin{itemize}
+        \item Ocean tiles, which will store the biome and whether or not it has been looted
+        \item Islands, which will store the type of island it is, whether it is currently an ally, the island's location on the map, and the island's name. Major functions will include an NPC dialogue depending on the type of island, a war function, a bribe function, and a miniquest function.
+        \item Ships, which will store the money you have, how many days of supplies, your current location, and a vector of allied islands.
+        \item Monsters, which will store the monster name, the biome(s) it can appear in, and how difficult they are to defeat.
+    \end{itemize}
+    \item If/Else will naturally occur over the program
+    \item There will be a core gameplay loop, a battle loop for both islands and monsters (nested in the core gameplay loop),  a loop to search through your monsters, a loop to search through the islands and update your list of allies, and a loop to read from your monster input file.
+    \item The monsters will be stored in an input file with their name, their difficulty, and their biomes.
+    \item The final map will be printed to a file
+\end{itemize}
+
+For the group project aspect, you could sort through the list of islands and organize it by allies first, other islands second. You could sort a persistant scoreboard. You could sort the loot on the ship by most valuable to least valuable.
+
+\subsection{Wizard's Chess}
+\textbf{Basic Idea:} You and your friend are playing wizard's chess. You and your friend will take turns playing the game. Wizard's chess has the same general rules as normal chess, except with some unique variety. 
+
+\textbf{How It Satisfies Feature Requirements:}
+\begin{itemize}
+    \item Each turn the players will choose which piece they move. They will then choose when to move it, or if they should use a special ability. Each main piece will have a special ability: the King (or Wizard) can teleport across the map one time per game, the Queen (or Witch) can assassinate one piece of the enemy (excluding the Wizard or Witch), the Knights (or Dragons) can abduct one piece of the enemy per game (make it one of your pieces), the Bishop (or Apprentice) can jump over one piece and continue moving uninterrupted once per game, and the Rook (or Castle) can protect all pieces in an adjacent tile from the Dragons (so they cannot be abducted). 
+    \item The Queen will be an NPC for both sides. The Queen (or the Witch) will be able to bring back up to three pieces per game for a bribe of sweets. The Witch will also occasionally refuse to do what you tell her to do unless you can solve a riddle. The Witch will also be able to assassinate one piece of the enemy per game, which removes the piece from the game entirely (cannot be resurrected). 
+    \item The game stats will be displayed each turn. This includes if the pieces have already used their special ability and how many pieces each player has taken.
+    \item The board will be displayed each turn. The wizard will be marked with a W, the witch with a Q, the dragons with a D, the apprentices with an A, the castle with a C, and the pawns with a P. The team that moves first will have capitals, the team that moves second will have lowercase letters. The board will look like this:
+    \begin{verbatim}
+        8 C D A W Q A D C
+        7 P P P P P P P P
+        6 - - - - - - - -
+        5 - - - - - - - -
+        4 - - - - - - - -
+        3 - - - - - - - -
+        2 p p p p p p p p
+        1 c d a w q a d c
+          A B C D E F G H
+    \end{verbatim}
+    \item The movement menu will give you the choice of what type of piece you want to move (6 types of pieces, 6 menu options if all pieces are still on the table) or if you want to surrender. Once you select the piece, the submenu will open with the places your piece could move or the special ability if it has not been used for that piece. When you move a piece normally, there is a 10 \% chance that a pixie will appear and undo the move you just made. When you move a pawn, there is a 1 in 4 chance that you get an extra turn. When you move the witch, there is a 20 \% chance she will demand the answer to a riddle before she moves; if you answer wrong, you lose your turn.
+\end{itemize}
+
+\textbf{How It Satisfies Minimum Implementation Requirements:}
+\begin{itemize}
+    \item The chess board will update each time.
+    \item There will be these seven classes. All 6 piece classes are similar but will have different code for their special abilities and movements:
+    \begin{itemize}
+        \item Witch Class: for the witch NPC behavior. Stores how many ressurrects she has as well as where she is, which player she belongs to, etc. Special functions for posing riddles or resurrecting other pieces.
+        \item Piece Class: stores the piece location (row as 1 var, column as 1 var), whether the piece has used its special ability, what type of piece it is (all except witch), and which player the piece belongs to.
+        \item Player Class: stores the list of pieces you currently have as a vector, and then the witch pieces separately.
+        \item Board Class: stores two player characters, shows the board, etc.
+    \end{itemize}
+    \item Loops will include the central turn loop, a loop for the movement menu with input validation (nested in the central turn loop), a loop for the pieces to check if movements are valid, a loop to print the board, a loop with input validation for the communication with the Witch (nested in the queen movement menu), a loop to read riddles from a file, and a loop to print the final chessboard to a file.
+    \item The file input will be a list of riddles and solutions for interactions with the Witch.
+    \item The output file will be a file saving the final chessboard when the game ends.
+\end{itemize}
+
+For the group aspect, you could sort your pieces array based on pieces that are removed from the board vs still in play, or you could have a persistent scoreboard that sorts players by how frequently they have won (i.e. 1st place: John Doe with 21 Victories; 2nd place: Ron Weasley with 18 Victories...) 
+
+For extra credit, you could color the pieces of the board to show which team they are on instead of using capitalization and add colored squares to the board, make a persistent scoreboard, or add a final battle between the two wizards when there is a "Check mate". 
+\section{Rubric}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{p{1.5in}|p{1.5in}|p{1.5in}|p{1.5in}}\hline \hline
+        General Requirements (60 points total) & (\textbf{20}) No Compilation Errors\\
+         & (\textbf{20}) No Runtime Errors \\
+         & (\textbf{20}) No Logic Errors  \\ \hline \hline
+        %\rule{3.25in}{.1mm}
+        Feature Requirements (80 points total) & (\textbf{20}) Interactive Components \\
+        & (\textbf{10}) At least one NPC \\
+        & (\textbf{10}) Game stats are displayed each turn \\
+        & (\textbf{15})Visual Component \\ \cline{2-3} 
+        & Menu & (\textbf{8})At least 5 menu options excluding quit/exit\\
+        & & (\textbf{7})At least two options open a second menu \\ \cline{3-4}
+        & & At least two options have a randomness component &(\textbf{5}) A value out of a range \\
+        & & & (\textbf{5})A value out of a percent \\ \hline \hline
+        Minimum Implementation Requirements (60 points) & (\textbf{10}) Updating Map or Art \\ \cline{2-3}
+        & (\textbf{10}) 4+ User defined classes  & (\textbf{5})Two classes have 4+ data members \\
+        & & (\textbf{5})At least one class has an array/vector of objects from another class you created \\
+        & & (\textbf{5})Appropriate methods for each class \\ \cline{2-3}
+        & (\textbf{5}) 6+ if-else statements \\
+        & (\textbf{5})6+ loops \\
+        & (\textbf{5})2+ nested loops \\
+        & (\textbf{5})At least one input file is read from \\
+        & (\textbf{5})At least one file is read to \\ \hline \hline
+        Group Requirements (-50 points) & If a sorting algorithm IS NOT IMPLEMENTED you will lose 50 points. \\ \hline \hline
+        Extra Credit (40 points) & (\textbf{10}) Project Showcase \\
+        & (\textbf{10}) Final Battle \\
+        & (\textbf{10}) Persistent Scoreboard \\
+        & (\textbf{10}) Colorful Art \\
+        
+    \end{tabular}
+\end{table}
+

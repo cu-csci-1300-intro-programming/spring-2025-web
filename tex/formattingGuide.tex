@@ -1,0 +1,87 @@
+\chapter*{Appendix B: Formatting Guide}
+\addcontentsline{toc}{chapter}{Appendix B: Formatting Guide}
+\setcounter{chapter}{17}
+\setcounter{section}{0}
+
+\section{Naming Conventions}
+Give variables descriptive names, such as \mintinline{c++}{first_name} or \mintinline{c++}{homework_score}. Avoid one-letter names like \mintinline{c++}{a} or \mintinline{c++}{x}, except for loop counter variables such as \mintinline{c++}{i}.
+
+\begin{example}
+    Poor variable names would be:
+    \begin{minted}{c++}
+int thing = 16;
+double a = 2.2;
+string x = "Michael";
+    \end{minted}
+    Better variable names would be:
+    \begin{minted}{c++}
+int cups_per_gallon = 16;
+double lbs_per_kilo = 2.2;
+string first_name = "Michael";
+    \end{minted}
+\end{example}
+
+
+\section{Whitespace}
+"Whitespace" refers to all of the empty space you can use to organize your code including new lines, indentation, and extra spacing. Good whitespace usage helps reduce the strain on the reader's eyes. The compiler ignores whitespace, which allows you can place things anywhere and format them however you want. To maximize readability, there are a few guidelines for whitespace usage. 
+
+\textbf{Indentation}: Increase your indentation by one increment of each brace ``\{" and decrease it once on each closing brace ``\}". Use Tab to increase indent and Shift+Tab to decrease indentation. You can also increase indent for multiple lines by highlighting them and pressing CTRL+] on Windows and CMD+] on Macs, and decrease the indent for multiple lines by highlighting them and pressing CTRL+[ on Windows and CMD+ [ on Macs.
+
+\textbf{New Lines}: You should use one blank line to separate blocks of code. You can separate sections of code based on the tasks they are meant to complete. You should also put any brackets on their own lines to help visually break up your code.
+
+\begin{example}
+    Here is a poor example of whitespace usage:
+    \begin{minted}{c++}
+    int main(){int number = 0;
+    if(number < 5){
+    cout << "Less than 5" << endl;
+    }else{
+    cout << "Greater than 5" << endl;
+    }
+    number++;
+    }
+    \end{minted}
+    Here is a better example of whitespace usage:
+    \begin{minted}{c++}
+    int main()
+    {
+        int number = 0;
+        if(number < 5)
+        {
+            cout << "Less than 5" << endl;
+        }
+        else
+        {
+            cout << "Greater than 5" << endl;
+        }
+        number++;
+    }
+    \end{minted}
+\end{example}
+
+
+\section{Commenting}
+Your code should be well-commented. Use comments to explain what you are doing, especially if you have a complex code section. These comments are intended to help other developers understand how your code works. Comments can also help you remember your own code if you have to go back and read it a week or a month after writing it. Single-line comments should begin with two forward slashes (//). Multi-line comments begin with one forward slash and an asterisk (/* ... comments here ... */).
+
+\begin{example}
+    Here is a single line comment:
+\begin{minted}{c++}
+    // CSCI 1300 Fall 2024
+\end{minted}
+    Here is a multi-line comment:
+    \begin{minted}{c++}
+    /*
+    Algorithm:
+    Input: two numbers
+    Output: sum of input numbers
+    
+    1. Ask the user to enter a number
+    Save in variable number_1
+    2. Ask the user to enter a number
+    Save in variable number_2
+    3. Compute sum
+    sum = number_1 + number_2
+    4. Display sum to user
+    */
+    \end{minted}
+\end{example}

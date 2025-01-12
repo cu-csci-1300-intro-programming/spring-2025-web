@@ -1,0 +1,494 @@
+\chapter*{Week 6: Arrays}
+\addcontentsline{toc}{chapter}{Week 6: Arrays}
+\setcounter{chapter}{6}
+\setcounter{section}{0}
+
+\begin{abstract}
+This week you will:
+\begin{enumerate}
+    \item Learn how to make arrays of any data type
+
+\end{enumerate}
+    
+\end{abstract}
+
+\section{Background}
+
+An array is a data structure which can store other data types like double, int, char, and boolean, and string. Arrays have both a type and a size.
+
+\subsection{Making and Using Arrays}
+
+\textbf{How to declare arrays}
+\begin{minted}{c++}
+// data_type array_name[declared_size];
+bool myBooleans[10];
+string myStrings[15];
+int myInts[7];
+\end{minted}
+
+\textbf{How to initialize arrays (method 1)}
+\begin{minted}{c++}
+bool myBooleans[4] = {true, false, true, true};
+\end{minted}
+
+If you do not declare the size inside the square brackets, the array size will be set to however many entries you provide on the right.
+
+\begin{minted}{c++}
+bool myBooleans[] = {true, false, true}; // size = 3
+\end{minted}
+
+Note: the size specified in the brackets needs to match the number of elements you wrote in the curly brackets.
+
+\begin{example}
+    When the specified size is larger than the actual number of elements, the elements provided in the curly brackets will be the first several elements in the array, while the additional elements will be filled with default values. If it’s an integer/double array, the default values are zero, while if it’s a string array, the default values are empty strings.
+    \begin{minted}{c++}
+#include <iostream>
+using namespace std;
+int main()
+{
+    int intArray[5] = {1,2,3};
+    for (int i = 0; i < 5; i ++)
+    {
+        cout << intArray[i] << " ";
+    }
+}
+    \end{minted}
+
+    Output:
+
+    \mintinline{c++}{1 2 3 0 0}
+\end{example}
+
+\begin{example}
+    When the specified size is smaller than the actual number of elements, there will be a compilation error.
+
+    \begin{minted}{c++}
+#include <iostream>
+using namespace std;
+int main()
+{
+    int intArray[3] = {1,2,3,4,5};
+}
+    \end{minted}
+
+    Output:
+
+    \begin{minted}{c++}
+error: excess elements in array initializer
+int intArray[3] = {1,2,3,4,5};
+                         ^
+1 error generated.
+    \end{minted}
+\end{example}
+
+\textbf{How to Initialize Arrays (Method 2)} You can also initialize elements one by one using a for loop:
+
+\begin{minted}{c++}
+int myInts[10];
+for (int i = 0; i < 10; i++)
+{
+    myInts[i] = i;
+}
+//{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+\end{minted}
+
+\textbf{How to Access Elements in an Array} We have essentially already had practice with accessing elements in an array, as in C++, string is basically an array of characters. You can access elements in arrays using the same syntax you used for strings:
+
+\begin{minted}{c++}
+string greetings[] = {"hello", "hi", "hey", "what’s up?"};
+cout << greetings[3] << endl;
+\end{minted}
+
+Arrays and strings can also be iterated through in the same way.
+
+\begin{example}
+    Iterating through an array:
+    \begin{minted}{c++}
+string greetings[] = {"hello", "hi", "hey", "what’s up?"};
+int size = 4;
+for (int i = 0; i < size; i++)
+{
+    cout << greetings[i] << endl;
+}
+    \end{minted}
+
+    Iterating through a string:
+    \begin{minted}{c++}
+string greeting = "Hello world!";
+for (int i = 0; i < greeting.length(); i++){
+    cout << greeting[i] << ", " << endl;
+}
+    \end{minted}
+\end{example}
+
+\section{PreQuiz}
+
+\begin{problem}
+    How does a ``do-while" loop differ from a ``while" loop?
+\end{problem}
+
+\begin{problem}
+What kind of loop is this loop an example of? Hint: You don't want to run this code on your machine.
+\begin{minted}{c++}
+#include <iostream>
+
+int main() {
+    for (int i = 1; i > 0; i++) {
+        std::cout << "We are in the loop!" << std::endl;
+    }
+    return 0;
+}
+\end{minted}
+\end{problem}
+
+\begin{problem}
+    You have practiced using for loops. Now, given the code below, complete the following table for the \texttt{calculateFactorial()} function. The function calculates the factorial of a given number and returns the result.
+    
+\begin{minted}[breaklines=true]{c++}
+#include <iostream>
+#include <cassert>
+using namespace std;
+
+int calculateFactorial(int n)
+{
+    if (n >= 0)
+    {
+        int factorial = 1;
+        for(int i = 1; i <= n; i++)
+        {
+            factorial *= i;
+        }
+        return factorial;
+    }
+    return -1; // Indicates invalid input
+}
+\end{minted}
+    
+\newpage
+    
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+    \textbf{Function:} \newline 
+    calculateFactorial(int) & \\ \hline
+    \textbf{Purpose:}  & \\ \hline
+    \textbf{Parameters:} &   \\ \hline
+    \textbf{Return value:} & \\ \hline
+    \textbf{Error handling/} \newline
+    \textbf{Boundary conditions:} & \\ \hline
+    \textbf{Example:} & 
+    % \begin{example}
+    \begin{minted}{c++}    
+int main()
+{
+    int result = calculateFactorial(5);
+    cout << "Factorial of 5 is: " << result << endl;
+    return 0;
+}
+    \end{minted}
+    % \end{example}
+    
+    \begin{sample}
+    Factorial of 5 is: 120
+    \end{sample}
+             \\ \hline
+    \end{longtable}
+\end{problem}
+
+\begin{problem}
+    Write 5 \texttt{assert} statements for the \texttt{calculateFactorial()} function shown in the previous question.
+\end{problem}
+
+
+\begin{problem}
+    The program aims to count how many times a clock strikes during an exam. The clock strikes every 15 minutes, and the total duration of the exam is 120 minutes.
+
+    \begin{itemize}
+        \item How many iterations does the \texttt{for} loop perform?
+        \item How many times does the \texttt{if} condition evaluate to true?
+    \end{itemize}
+
+    \begin{minted}{c++}
+#include <iostream>
+using namespace std;
+
+int countClockStrikes(int total_minutes)
+{
+    int count = 0;
+    for (int minute = 1; minute <= total_minutes; minute ++)
+    {
+        // Check if the minute is a quarter-hour mark
+        if (minute % 15 == 0)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    int exam_duration = 120;
+    int strikes = countClockStrikes(exam_duration);
+    cout << "The clock strikes " << strikes << " times during the exam." << endl;
+    return 0;
+}
+    \end{minted}
+\end{problem}
+
+
+\section{Recitation}
+
+\subsection{Spot The Error}
+\begin{multipart}
+The program intends to prints all even numbers from 2 to N (both inclusive). Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+    #include <iostream>
+    using namespace std;
+    
+    void printEvenNumbers(int N)
+    {
+        int i = 1;   
+        while (i <= N)
+        {
+            if (i % 2 == 0)
+            {
+                cout << i << " ";
+            }
+            i = i + 2;
+        }
+        return 0;
+    }
+    
+    int main()
+    {
+        int number;
+        cout << "Enter a number: " << endl;
+        cin >> number;
+        printEvenNumbers(number);
+        return 0;
+    }
+\end{minted}
+
+\begin{multipart}
+    The following program simulates the process of filling your car's fuel tank at a gas station. The pump continues to run until the fuel level reaches the tank's capacity. However, there are some logical errors in the code. Identify the error(s) and write the corrected line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int fuel_level = 7;    // Initial fuel level in liters
+    int tank_capacity = 60;  // Maximum capacity of the fuel tank in liters
+
+    cout << "Starting to fuel your car..." << endl;
+
+    while (fuel_level != tank_capacity)
+    {
+        cout << "Pump is running. Fuel level: " << fuel_level << " liters." << endl;
+        fuel_level += 5;  
+    }
+
+    cout << "Pump stopped. Final fuel level: " << fuel_level << " liters." << endl;
+
+    return 0;
+}
+\end{minted}
+
+\begin{multipart}
+The program intends to verify if two strings match, prompting the user to re-type the string until it matches the initial string. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() 
+{
+    string initial_string;
+    string retype_string;
+
+    cout << "Enter your string: ";
+    cin >> initial_string;
+
+    cout << "Enter your string again: ";
+    cin >> retype_string;
+
+    if (retype_string = initial_string) 
+    {
+        cout << "Your strings do not match. Try again: " << endl;
+        cin >> retype_string;
+    }
+
+    cout << "Your strings match!!!!" << endl;
+    return 0;
+}
+\end{minted}
+
+\begin{multipart}
+The program intends to find the sum of all even numbers from 1 to N (inclusive) and prints the result. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+#include <iostream>
+using namespace std;
+
+int totalSum(int n)
+{
+    int result = 0;
+    for(i = 1; i <= n; i + 1)
+    {
+        if (n % 2 == 0){
+            result += n;
+        }
+    }
+    return result;
+}
+
+int main() 
+{
+    int n;
+    cout << "Enter a positive integer (n): ";
+    cin >> n;
+
+    int result = totalSum(n);
+    cout << "Sum of numbers from 1 to " << n << " is: " << result << endl;
+
+    return 0;
+}
+\end{minted}
+
+\begin{multipart}
+The program intends to calculate the product of numbers entered by the user until a negative number is encountered. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+\begin{minted}{c++}
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    int num;
+    int product = 0;
+
+    do 
+    {
+        cout << "Enter a number (enter a negative number to stop): ";
+        cin >> number;
+        if (number >= 0) 
+        {
+            product *= number;
+        }
+
+    }while number >= 0;
+
+    cout << "Product of the entered numbers: " << sum << endl;
+    return 0;
+}
+\end{minted}
+
+\newpage 
+
+\subsection{Valid Double}
+Design a function \mintinline{c++}{validateDouble} that accepts a string input and determines if it represents a valid double by iterating through the string. Valid doubles can start with a negative and can have up to one decimal point. Your program should ask the user to input a double, store it as a string and then invoke the \mintinline{c++}{validateDouble} function to check its validity. The program should then print whether the string is a valid double or not. (Negative double are also valid doubles. You can reuse some parts of your  \mintinline{c++}{validateInt} function from recitation 5).
+    \begin{longtable}{|p{1.7in}|p{4.3in}|} \hline
+        \textbf{Function:} \newline 
+        validateDouble(string) & \mintinline{c++}{bool validateDouble(string input)}\\ \hline
+        \textbf{Purpose:}  &Iterate through a string and verify if it is a valid double or not. \\ \hline
+        \textbf{Parameters:} &  \hangindent=1cm \textbf{input} - The string to be verified \\ \hline
+        \textbf{Return value:} &  It returns true is the string is a valid double. Otherwise returns false.  \\ \hline
+        \textbf{Error handling/} \newline
+        \textbf{Boundary conditions:} & If length of input = 0, false is returned  \\ \hline
+        \textbf{Example:} & 
+        \begin{example}
+\begin{minted}[breaklines=true]{c++}
+
+// Assume the proper libraries are included.
+// Assume the proper implementation of validateDouble() is included.
+
+int main()
+{
+    string number;
+    cout << "Enter the double : " << endl;
+    getline(cin, number);
+    if(!validateDouble(number))
+    {
+        cout << "The entered string is not a valid double!!" << endl;
+    }
+    else
+    {
+        cout << "The entered string is a valid double!!" << endl;
+    }
+    return 0;
+}
+            \end{minted}
+        \end{example}
+
+        \begin{sample}
+    Enter the double :\\
+    -123.4\\
+    The entered string is a valid double!!
+        \end{sample}
+             \\ \hline
+    \end{longtable}
+
+Here are a few additional sample runs:
+
+\begin{sample}
+Enter the double :
+
+\textbf{-12}
+
+The entered string is a valid double!!
+\end{sample}
+
+\begin{sample}
+Enter the double :
+
+\textbf{23.56e}
+
+The entered string is not a valid double!!
+\end{sample}
+
+\begin{sample}
+Enter the double :
+
+\textbf{32 56}
+
+The entered string is not a valid double!!
+\end{sample}
+
+\begin{sample}
+Enter the double :
+
+\textbf{-.}
+
+The entered string is not a valid double!!
+\end{sample}
+
+\begin{multipart}
+Write out the steps you would use to solve this problem by hand as pseudocode. Stating your modifications to your validateInt is also sufficient.
+\end{multipart}
+
+\vspace{8cm}
+
+\begin{multipart}
+Pick three possible inputs for your program. Try to pick values that will test different aspects of your function. Follow the steps you wrote for these values to find your result, and verify it.
+\end{multipart}
+
+\vspace{10cm}
+
+\begin{multipart}
+Translate each of the sample inputs and expected outputs you created into assert statements.
+\end{multipart}
+
+\vspace{8cm} 
+
+\begin{multipart}
+ Implement your solution in C++ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make sure you test for the values used in your sample runs, and for the boundary conditions.
+\end{multipart}
+
+
+%no homework this week
