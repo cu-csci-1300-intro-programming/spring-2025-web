@@ -7,6 +7,7 @@ bundle exec jekyll serve --livereload # read result for server location
 ## Editing
 - basically only write the _posts.
 - _config.yaml is the settings of the webpage.
+- Anything in the root `docs` folder might get put on the top navigation. If something is WIP or to be used later, please put it in the `_ignoreForNow` folder.
 
 ## VSCode recommended plugins
 - Liquid Language Support
