@@ -186,187 +186,28 @@ Here is a snapshot of a basic "Hello World" program from the course textbook,  B
 {% include img.html src='hello_world_16.png' alt='hello world code in C++ with annotations every program has a main function; the statements of a function are enclosed in braces; every prgram includes one or more headers for required services such as input/output. every program that uses standard services requires the std directive. replace the Hello world statement when you write your own programs. each statement ends witha  semicolon.' caption='' %}
 
 
-### Variables and Operators
-This week we learned about variables and basic arithmetic operators in computer science. 
-
-Variables in computer science are similar to variables you have seen in other math and science courses. A **variable** is a value that can change, depending on conditions or on information passed to the program.
-
-A computer stores variables differently depending on the type of information they are meant to contain, so we must declare the type of variable. This table will tell you the names of different types of variables in C++:
-
-| Type of variable | Declaration in `C++` | Size | Description | `Example` |
-| --- | --- | --- | --- | --- |
-| Integer | `int` | 2 or 4 bytes | a number that has no decimal value | `-42` |
-| Float | `float` | 4 bytes | a number that has short decimal values | `2.98` |
-| Double | `double` | 8 bytes | a number that can have longer decimals | `2.98<...>` |
-| Character | `char` | 1 byte | stores a single letter/character using ASCII values | `'h'` |
-| Boolean | `bool` | 1 byte | stores either True or False | `true` |
-
-In order to create and use a variable, you must declare it using the appropriate declaration from the above table and then give it a name. You may also provide it an initial value, but this is not required to create a variable. Some examples include:
-
-{% highlight c++ %}
-// Here is an example of declaring variables:
-int myNumber = 0;
-double myDecimal = 3.1415;
-char myEmptyChar;
-{% endhighlight %}
-
-After declaring variables, you can access them without repeating their data type. You can also perform basic operations, including the ones listed in this table:
-
-| `Operator` | Description | `Example` |
-| --- | --- | --- |
-| `+` | Adds together two values | `x + y` |
-| `+=` | Adds to itself and stores the new value| `x += y` |
-| `-` | Subtracts one value from another | `x - y` |
-| `*` |	Multiplies two values | `x * y` |
-| `/` | Divides one value by another | `x / y` |
-| `%` | Modulus; this returns the division remainder | `x % y` |
-| `++` | Increment; this increases the value of a variable by 1 | `++x` |
-| `--` | Decrement; this decreases the value of a variable by 1 | `-` |
-
-{% highlight c++ %}
-// Here is an example of declaring variables and using operators:
-int myNumber = 4;
-int mySecondNumber = 5;
-int mySum = myNumber+mySecondNumber;
-int myThirdNumber = 6;
-mySum = mySum + myThirdNumber;
-int myFourthNumber = 7;
-mySum += myFourthNumber;
-// By the end of this code, the variable `mySum`
-// would contain `4+5+6+7`, or rather, `22`.
-{% endhighlight %}
-
-
-### Terminal Input and Output
-
-It is important to be able to take input from the user or to print output to the terminal as your program runs. You can do this using `cin` and `cout` for input and output, respectively. 
-
-The Hello World program you have seen provides an example of using `cout` to display output.
-
-{% highlight c++ %}
-// EXAMPLE: Hello World for C++:
-#include <iostream>
-
-using namespace std;
-
-int main() {
-    cout << "Hello, world!" << endl;
-    
-    return 0;
-}
-{% endhighlight %}
-
-
-You can similarly ask the user for a particular value and store that value in a variable using `cin`:
-
-
-{% highlight c++ %}
-// EXAMPLE: An example of collecting user input to sum two integer variables and then printing their sum
-#include <iostream>
-
-using namespace std;
-
-int main() {
-    int firstNum;
-    int secondNum;
-    cout << "Please provide one number:" << endl;
-    cin >> firstNum;
-    cout << "Please provide a second number:" << endl;
-    cin >> secondNum;
-    cout << "The sum of these two numbers is " << firstNum + secondNum << endl;
-
-    return 0;
-}
-{% endhighlight %}
-
-
-### Pseudocode and Algorithms
-
-Pseudocode is used to develop algorithms. An algorithm is a procedure for solving a problem.
-
-An algorithm describes actions to be executed and the order in which those actions are to be executed. In other words, an algorithm is merely the sequence of steps taken to solve a problem; like a recipe. An algorithm is not computer code. Algorithms are just the instructions which provide a clear path for you to write the computer code.
-
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #000000; background-color: #eebb00; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
-  <b>An algorithm for adding two numbers together:</b>
-  <ol>
-    <li>Step 1: Start</li>
-    <li>Step 2: Declare variables <code>num1</code>, <code>num2</code>, and <code>sum</code>.</li>
-    <li>Step 3: Read values <code>num1</code> and <code>num2</code>.</li>
-    <li>Step 4: Add <code>num1</code> and <code>num2</code> and assign the result to <code>sum</code>.</li>
-    <li>Step 5: Display <code>sum</code></li>
-    <li>Step 6: Stop</li>
-  </ol>
-</div>
-
-
-The main difference between an algorithm and pseudocode is that an algorithm is a step by step procedure to solve a given problem while pseudocode is a method of writing an algorithm. In other words, an algorithm is how to solve a problem while pseudocode is how to implement that solution. 
-
-| Algorithm | Pseudocode |
-| --- | --- |
-| An unambiguous specification of how to solve a problem. | An informal high-level description of the operating principle of a computer program or other algorithm. |
-| Helps to simplify and understand the problem. | A method of developing an algorithm. |
-
-
-Pseudocode is informal language that helps programmers develop algorithms (or recipes). Although there are no hard and fast rules for pseudocode, there are some suggestions to help make pseudocode more understandable and easy to read.
-
-For instance, consider indenting all statements showing a "dependency”, like statements that use: While, do, for, if.
-
-Several keywords are often used to indicate common input, output, and processing operations.
-
-| Term | A Few Equivalent Terms |
-| --- | --- |
-| Input: |  READ, OBTAIN, GET |
-| Output: |  PRINT, DISPLAY, SHOW |
-| Compute: |  COMPUTE, CALCULATE, DETERMINE |
-| Initialize: |  SET, INITIALIZE |
-| Add one: | INCREMENT, BUMP |
-
-
-For looping and selection, the keywords that you might consider writing include:
-1. Do While...
-1. Do Until...
-1. Case...
-1. If… then...
-1. Call ... with (parameters)
-1. Call
-1. Return ....
-1. Return
-1. When
-
-Try to indicate the end of loops and iteration by using scope terminators.
-For instance use `if… (statements) ... endif`.
-
-Other words you may find useful while writing pseudocode include: Generate, Compute, Process, set, reset, increment, compute, calculate, add, sum, multiply, subtract, divide, print, display, input, output, edit, test, etc.
-
-Be sure to indent if the indentation fosters understanding. Being clear is the purpose of pseudocode, and a very desirable goal to strive for.
-
-Here are some examples of pseudocode:
-
-{% highlight c++ %} 
-// Will a grade pass?
-/**
- * If students course grade is lower than  60
- *    Then Print, "Failed"
- * else
- *     If students exam grade is lower than  67
- *         Then Print, "Failed"
- *     else
- *         Print, "Passed"
- *     endif
- * endif
- */
-{% endhighlight %}    
 
 
 
-{% highlight c++ %} 
-// How do you find the area of a rectangle?
-  // Read the length of the rectangle
-  // Read the width of the rectangle
-  // Compute the area of the rectangle as length times width.
-{% endhighlight %}    
 
-You should write pseudocode whenever you are addressing problems in computer science. This allows you space to determine how to solve a problem without worrying about syntax and formatting, instead of having to figure out everything all at once. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Warm Up
 You will need to install and become familiar with the software we will be using this semester. Follow the appropriate installation guides in [Appendix A](/spring-2025-web/jekyll/update/2025/01/10/Appendix-A.html) for your particular computer (Windows or Mac) to install VS Code.
