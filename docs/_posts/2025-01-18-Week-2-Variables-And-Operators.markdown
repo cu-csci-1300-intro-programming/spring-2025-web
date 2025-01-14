@@ -82,7 +82,7 @@ mySum += myFourthNumber;
 
 
 &nbsp;&nbsp;&nbsp;
-## Characters
+### Characters
 
 Characters are a variable type that is made of a single byte, which means they can encode for a fairly limited number of characters. We can identify which characters we can store using an ASCII table shown below. 
 
