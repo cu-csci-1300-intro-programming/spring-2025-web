@@ -316,3 +316,242 @@ You should write pseudocode whenever you are addressing problems in computer sci
 
 
 
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Homework
+You should complete the following homework using VSCode and the skills that you have learned to author, compile, and execute programs. You should build and fix your code using VSCode. Once you believe you have completed the assignment locally, submit your work on Canvas using the appropriate link for the assignment and the "coderunner" tool. 
+
+The coderunner questions match these questions exactly. It will tell you what to do for the problem, give you a few examples of input/output. Give you a space to submit your code.
+
+**Be sure to press the `check` button.** This will run your code against many tests, including some new ones that we didn't give you as examples. If you are failing any of those tests, use the information about the exact test you are failing, **return to VSCode**, and fix the code before continuing to do work on coderunner. 
+
+Be sure to backup your files.
+
+
+&nbsp;&nbsp;&nbsp;
+### Identify and Correct the Errors
+There are several snippets of code below where there is one error. You will need to identify and correct the error so that the code compiles. This code is also available directly in CodeRunner. 
+
+&nbsp;&nbsp;
+#### Problem 4.1.a. Spot the error:
+
+{% highlight c++ %}
+#include <iostream> 
+using namespace std;
+
+int Main()
+{
+    cout << "Hello, World!" << endl;
+    return 0; 
+}
+    {% endhighlight %}
+
+&nbsp;&nbsp;
+#### Problem 4.1.b. Spot the error:
+
+{% highlight c++ %}
+#include <iostream> 
+using namespace std;
+
+int main 
+{
+    cout << "Hello, World!" << endl;
+    return 0; 
+}
+    {% endhighlight %}
+
+&nbsp;&nbsp;
+#### Problem 4.1.c. Spot the error:
+
+    {% highlight c++ %}
+#include <iostream> 
+using namespace std;
+
+int main() 
+{
+    cout << "Hello, World! << endl;
+    return 0; 
+} 
+    {% endhighlight %}
+
+&nbsp;&nbsp;
+#### Problem 4.1.d. Spot the error:
+
+    {% highlight c++ %}
+#include <IOstream> 
+using namespace std;
+
+int main() 
+{
+    cout << "Hello, World!" << endl
+    return 0; 
+} 
+    {% endhighlight %}
+
+&nbsp;&nbsp;
+#### Problem 4.1.e. Spot the error:
+
+    {% highlight c++ %}
+#include <iostream> 
+using namespace;
+int main() 
+{
+    cout << "Hello, World!" < endl; 
+}
+    {% endhighlight %}
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Fahrenheit to Celsius Converter
+
+Create a program that convert temperatures from Fahrenheit to Celsius.
+<div>
+$$\mathbf{Celsius} = (\mathbf{Fahrenheit} - 32) * (5.0 / 9.0)$$
+</div>
+
+**PROTIP**: Don't copy and paste the above equation into your VSCode, it tends to have special characters that cause weird behaviors.
+
+The answer-box in coderunner is pre-loaded with following solution template for this question.
+
+{% highlight c++ %}
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    // declare all the variable
+    double fahrenheit, celsius;
+
+    // prompt the user & get their input
+    cout << "<add question>" << endl; // EDIT THIS LINE TO PROMPT USER
+    cin >> fahrenheit;
+
+    // temperature calculation
+    celsius = <add equation>; // EDIT THIS LINE TO CALCULATE TEMPERATURE
+    // hint: use (5.0/9.0) instead of (5/9)
+
+    cout << "The temperature is " << celsius << " degree Celsius." << endl;
+    return 0;
+}
+{% endhighlight %}
+
+Here are a few sample runs of the program, with user input shown in red:
+
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+
+  <p>What is the temperature in Fahrenheit?</p>
+
+  <p><span style="color:red">32</span></p>
+
+  <p>The temperature is 0 degree Celsius.</p>
+</div>
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Calculate the Falling Time of an Object
+
+Let's build our own programs now. Start by writting comments describing what you want to do. Then move toward an algorithm as psudo code. After that, you are ready to write your code. This one might be a bit tricky.
+
+Create a program that calculates the time for a falling object to hit the ground based on the height from which the object fell. The equation for this is:
+
+<div>
+$$\mathbf{time} = \sqrt{\frac{(2*\mathbf{height})}{9.8}}$$
+</div>
+
+1. **time**: is the amount of time the object fell in seconds.
+1. **height**: is the height the object was dropped from in meters.
+
+**Hint:** the `cmath` library for C++ contains a square root function that you can utilize. 
+
+You should print the time to two decimal places. You can accomplish this by using the `iomanip` library and the `setprecision` function (google is you friend). Here is a sample run of the program:
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+
+  <p>How far did the object fall in meters?</p>
+
+  <p><span style="color:red">4</span></p>
+
+  <p>The object fell for 0.90 seconds.</p>
+</div>
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Volume Of A Fish Tank
+Write a program that calculates the volume of a fish tank. Ask the user for three values: the length, the width, and the height of the tank in inches. Use these values to calculate the total volume of the tank in cubic inches. Then, translate cubic inches into gallons and tell the user how many gallons can fit in the fish tank. Print this capacity to one decimal place.
+
+**Hint:** 1 cubic inch is 0.004329 gallons.
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+  <p>What is the length of the fish tank in inches?</p>
+  <p><span style="color:red">20</span></p>
+  <p>What is the width of the fish tank in inches?</p>
+  <p><span style="color:red">20</span></p>
+  <p>What is the height of the fish tank in inches?</p>
+  <p><span style="color:red">20</span></p>
+  <p>This fish tank has a 34.6 gallon capacity.</p>
+</div>
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Pool Water Management
+You're in charge of maintaining a swimming pool with a minor leak. The pool has some water in it already and needs to be filled up. However, due to the leak, the water level decreases slightly every hour at a constant rate. Write a program takes the hour as an input (as an integer) and predicts the pool's water level over time.
+
+| Pool | Initial water level (inches) | Fill rate (inches/hour) | Leakage rate (inches/hour) |
+| --- | --- | --- | --- |
+| Indoor Pool | 19 | 0.6 | 0.4 |
+| Outdoor Pool | 22 | 0.3 | 0.1 |
+
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+  <p>How many hours have passed?</p>
+  <p><span style="color:red">22</span></p>
+  <p>The indoor pool has 23.4 inches of water, and the outdoor pool has 26.4 inches of water.</p>
+</div>
+
+&nbsp;&nbsp;&nbsp;
+### Barter System
+Bartering is the exchange of goods and services between two or more parties without the use of money. Below is the table of conversion values:
+
+| Items | Values |
+| --- | --- |
+| 1 chicken | 6 avocados |
+| 1 avocado | 2 watermelon |
+| 1 watermelon | 4 potatoes |
+
+
+1 chicken is equal to 6 avocados, 1 avocado is equal to 2 watermelon, and 1 watermelon is equal to 4 potatoes.
+
+Your program should take the number of potatoes as an input(integer) and converts its value to the maximum number of chickens, avocados, watermelons, and potatoes that can be bought. Note that you must buy the highest value item(s) first.
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+  <p>Enter the number of potatoes:</p>
+  <p><span style="color:red">200</span></p>
+  <p>Maximum number of chicken(s) 4, avocado(s) 1, watermelon(s) 0, potato(es) 0</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+  <p>Enter the number of potatoes:</p>
+  <p><span style="color:red">100</span></p>
+  <p>Maximum number of chicken(s) 2, avocado(s) 0, watermelon(s) 1, potato(es) 0</p>
+</div>
+
+
+&nbsp;&nbsp;&nbsp;
+### Entering on coderunner
+Now that you have completed all of the assignment in VSCode, go submit your work via coderunner on Canvas. Be sure to `check` your work and return to VSCode as needed if you need to fix anything. 
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
