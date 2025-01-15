@@ -13,6 +13,8 @@ CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course m
         - e.g. globally `\end{minted}` can be replaced with `{% endhighlight %}` so vim: `:%s/\\end{minted}/{% endhighlight %}/g` should work
         - e.g. `:%s/\\begin{minted}{\(.*\)}/{% highlight \1 %}/g` should work as well.
         - e.g. close, but not quite for inline mints `:%s/\\mintinline{c++}{\(.*\)}/`\1`/g` (NOTE doesn't format correctly in MD)
+        - `:%s/\\section{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\&nbsp;\r## \1/g`
+        - `:%s/\\subsection{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\r### \1/g`
 - confirm that the Table of contents near the top of the page is ordering things as expected. if not, you're missing a `#` in the relevant title. This effects the read order.
 
 
