@@ -463,7 +463,7 @@ Let's build our own programs now. Start by writting comments describing what you
 
 Create a program that calculates the time for a falling object to hit the ground based on the height from which the object fell. The equation for this is:
 
-{% include img.html src='formulas/falltime.png' alt='time is equal to the square-root of two times height quantity over nine-point-eight' caption='' %}
+{% include img.html src='formulas/fallTime.png' alt='time is equal to the square-root of two times height quantity over nine-point-eight' caption='' %}
 
 
 1. **time**: is the amount of time the object fell in seconds.
