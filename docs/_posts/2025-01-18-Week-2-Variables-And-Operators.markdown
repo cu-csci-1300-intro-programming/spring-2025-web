@@ -335,7 +335,8 @@ Be sure to backup your files.
 There are several snippets of code below where there is one error. You will need to identify and correct the error so that the code compiles. This code is also available directly in CodeRunner. 
 
 &nbsp;&nbsp;
-#### Problem 4.1.a. Spot the error:
+#### Problem 1 Spot the error(s):
+**HINT**: there is only one error.
 
 {% highlight c++ %}
 #include <iostream> 
@@ -349,7 +350,7 @@ int Main()
     {% endhighlight %}
 
 &nbsp;&nbsp;
-#### Problem 4.1.b. Spot the error:
+#### Problem 2 Spot the error(s):
 
 {% highlight c++ %}
 #include <iostream> 
@@ -363,7 +364,7 @@ int main
     {% endhighlight %}
 
 &nbsp;&nbsp;
-#### Problem 4.1.c. Spot the error:
+#### Problem 3 Spot the error(s):
 
     {% highlight c++ %}
 #include <iostream> 
@@ -377,7 +378,8 @@ int main()
     {% endhighlight %}
 
 &nbsp;&nbsp;
-#### Problem 4.1.d. Spot the error:
+#### Problem 4 Spot the error(s):
+**HINT**: there are multiple errors
 
     {% highlight c++ %}
 #include <IOstream> 
@@ -391,7 +393,7 @@ int main()
     {% endhighlight %}
 
 &nbsp;&nbsp;
-#### Problem 4.1.e. Spot the error:
+#### Problem 5 Spot the error(s):
 
     {% highlight c++ %}
 #include <iostream> 
@@ -407,7 +409,7 @@ int main()
 
 
 &nbsp;&nbsp;&nbsp;
-### Fahrenheit to Celsius Converter
+### Problem 6 Fahrenheit to Celsius Converter
 
 Create a program that convert temperatures from Fahrenheit to Celsius.
 <div>
@@ -456,7 +458,7 @@ Here are a few sample runs of the program, with user input shown in red:
 
 
 &nbsp;&nbsp;&nbsp;
-### Calculate the Falling Time of an Object
+### Problem 7 Calculate the Falling Time of an Object
 
 Let's build our own programs now. Start by writting comments describing what you want to do. Then move toward an algorithm as psudo code. After that, you are ready to write your code. This one might be a bit tricky.
 
@@ -487,7 +489,7 @@ You should print the time to two decimal places. You can accomplish this by usin
 
 
 &nbsp;&nbsp;&nbsp;
-### Volume Of A Fish Tank
+### Problem 8 Volume Of A Fish Tank
 Write a program that calculates the volume of a fish tank. Ask the user for three values: the length, the width, and the height of the tank in inches. Use these values to calculate the total volume of the tank in cubic inches. Then, translate cubic inches into gallons and tell the user how many gallons can fit in the fish tank. Print this capacity to one decimal place.
 
 **Hint:** 1 cubic inch is 0.004329 gallons.
@@ -507,7 +509,7 @@ Write a program that calculates the volume of a fish tank. Ask the user for thre
 
 
 &nbsp;&nbsp;&nbsp;
-### Pool Water Management
+### Problem 9 Pool Water Management
 You're in charge of maintaining a swimming pool with a minor leak. The pool has some water in it already and needs to be filled up. However, due to the leak, the water level decreases slightly every hour at a constant rate. Write a program takes the hour as an input (as an integer) and predicts the pool's water level over time.
 
 | Pool | Initial water level (inches) | Fill rate (inches/hour) | Leakage rate (inches/hour) |
@@ -523,7 +525,7 @@ You're in charge of maintaining a swimming pool with a minor leak. The pool has 
 </div>
 
 &nbsp;&nbsp;&nbsp;
-### Barter System
+### Problem 10 Barter System
 Bartering is the exchange of goods and services between two or more parties without the use of money. Below is the table of conversion values:
 
 | Items | Values |
@@ -552,6 +554,6 @@ Your program should take the number of potatoes as an input(integer) and convert
 
 &nbsp;&nbsp;&nbsp;
 ### Entering on coderunner
-Now that you have completed all of the assignment in VSCode, go submit your work via coderunner on Canvas. Be sure to `check` your work and return to VSCode as needed if you need to fix anything. 
+Now that you have completed all of the assignment in VSCode, go submit your work via coderunner on Canvas. Be sure to `check` your work and return to VSCode as needed if you need to fix anything. Don't forget to submit this work on coderunner by the deadline to receive credit for this assignment.
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
