@@ -16,6 +16,7 @@ CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course m
         - `:%s/\\section{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\&nbsp;\r## \1/g`
         - `:%s/\\subsection{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\r### \1/g`
 - confirm that the Table of contents near the top of the page is ordering things as expected. if not, you're missing a `#` in the relevant title. This effects the read order.
+- NOTE: that mathjax doesn't always reder the same on the GitHub deployment as it does locally. using `<div>$$<mathjax>$$</div>` to obfuscate doesn't work. `\\[ <mathjax> \\]` seems to work.
 
 
 ## How To: soft deploy

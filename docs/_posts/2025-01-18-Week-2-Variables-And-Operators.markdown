@@ -412,9 +412,7 @@ int main()
 ### Problem 6 Fahrenheit to Celsius Converter
 
 Create a program that convert temperatures from Fahrenheit to Celsius.
-<div>
-$$\mathbf{Celsius} = (\mathbf{Fahrenheit} - 32) * (5.0 / 9.0)$$
-</div>
+\\[ \mathbf{Celsius} = (\mathbf{Fahrenheit} - 32) * (5.0 / 9.0) \\]
 
 **PROTIP**: Don't copy and paste the above equation into your VSCode, it tends to have special characters that cause weird behaviors.
 
@@ -464,9 +462,7 @@ Let's build our own programs now. Start by writting comments describing what you
 
 Create a program that calculates the time for a falling object to hit the ground based on the height from which the object fell. The equation for this is:
 
-<div>
-$$\mathbf{time} = \sqrt{\frac{(2*\mathbf{height})}{9.8}}$$
-</div>
+\\[ \mathbf{time} = \sqrt{\frac{(2*\mathbf{height})}{9.8}} \\]
 
 1. **time**: is the amount of time the object fell in seconds.
 1. **height**: is the height the object was dropped from in meters.
