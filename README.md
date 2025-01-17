@@ -16,6 +16,13 @@ CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course m
         - `:%s/\\section{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\&nbsp;\r## \1/g`
         - `:%s/\\subsection{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\r### \1/g`
 - confirm that the Table of contents near the top of the page is ordering things as expected. if not, you're missing a `#` in the relevant title. This effects the read order.
+- NOTE: that mathjax doesn't always reder the same on the GitHub deployment as it does locally. Use a specific format or load a screenshot and add alt text... noting:
+    - `<div>$$<mathjax>$$</div>` to obfuscate doesn't work on githubs deployment
+    - `\\[ <mathjax> \\]`  to obfuscate doesn't work on githubs deployment
+    - resource: https://stackoverflow.com/questions/77794919/load-mathjax-on-github-page-using-jekyll-without-overwriting-layout
+        - need to explore this further. Due to time we'll use a screen shot
+        
+
 
 
 ## How To: soft deploy
