@@ -64,15 +64,17 @@ You can read file and folder locations by their "pathname", which is just a list
 
 You will need to learn the basic text commands to navigate your computer system using the terminal. Important commands to learn include how to change which folder you are in, how to see the contents of your current folder, and more. Here is a list of commands and their meanings. Note, the `<psudo>` notation using `<` and `>` are not part of the command but only to illustrate where you should insert some other text:
 
-| `command` | **name** | notes |
-| --- | --- | --- |
-| `ls` | **list** | Note, this a lowercase `l`(elle), not an uppercase `i`(eye). This will "list" everything in the current directory. |
-| `cd <location>` | **change directory** | move to the  specified [location]. the location must be a director also known as a folder. |
-| `mkdir <name>` |  **make directory** | make a new directory at your current location using the provided `<name>` | 
-| `cp <from here> <to here>` | **copy** | locate a file `<from here>` and make a copy of it `<to here>`, commonly noted `cp <src> <dst>` or `cp <source> <destination>`. |
-| `mv <from here> <to here>` | **move** | locate a file `<from here>` and move that file `<to here>` do not maintain the file in `<from here>`, commonly noted `mv <src> <dst>` or `mv <source> <destination>`. |
-| `zip <zip file> <listed files>` | **zip** | gather all of the `<listed files>` and compress them to new "zip" file called `<zip file>`. |
-| `rm <file name>` | **remove** | permanently delete the file called `<file name>`. ***Be very careful when using this. It cannot be reversed.*** |
+| `command Linux/Mac` | `command Windows` | **name** | notes |
+| --- | --- | --- | --- |
+| `ls` | `dir` | **list** | Note, this a lowercase `l`(elle), not an uppercase `i`(eye). This will "list" everything in the current directory. |
+| `cd <location>` | `cd <location>` OR `chdir <location>` | **change directory** | move to the  specified [location]. the location must be a director also known as a folder. |
+| `mkdir <name>` |  `md <name>` | **make directory** | make a new directory at your current location using the provided `<name>` | 
+| `cp <from here> <to here>` | `copy <from here> <to here>` | **copy** | locate a file `<from here>` and make a copy of it `<to here>`, commonly noted `cp <src> <dst>` or `cp <source> <destination>`. |
+| `mv <from here> <to here>` | `move <from here> <to here>` | **move** | locate a file `<from here>` and move that file `<to here>` do not maintain the file in `<from here>`, commonly noted `mv <src> <dst>` or `mv <source> <destination>`. |
+| `zip <zip file> <listed files>` | `tar -cvzf <zip file> <listed files>` | **zip** | gather all of the `<listed files>` and compress them to new "zip" file called `<zip file>`. |
+| `rm <file name>` | `del <file name>` | **remove** | permanently delete the file called `<file name>`. ***Be very careful when using this. It cannot be reversed.*** |
+
+**DISCLAIMER**: Jan 17, 2025 the above table was updated with Windows commands, these have not been confirmed as working. They are authored by a "mac user" using google search. If it looks wrong please let us know on EdStem ASAP.
 
 
 &nbsp;&nbsp;&nbsp;
