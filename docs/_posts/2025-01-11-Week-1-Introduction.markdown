@@ -96,17 +96,15 @@ This command creates a file named a.out which is the compiled version of the cod
  ./a.out
 {% endhighlight %}
 
-You have options for more things to add to the compile command:
-1. `-o`: flag to your compiling command to give the output file a name. Additionally, in the near future you may also find it helpful to begin compiling with flags that tell you more information about possible errors in your code. These flags include:
+Additionally, you should begin compiling with flags that tell you more information about possible errors in your code. These flags include:
 1. `-Wall`: Wall is short for "Warn All", which will turn on most of the warnings in C++. This will help identify various possible ways your code might go wrong, including array bounds errors and other helpful messages.
 1. `-Werror`: Werror will treat all warnings as errors. This will prevent you from skipping past the possible sources of error in your code, and you will need to make sure all warnings are resolved prior to compiling.
 1. `-Wpedantic`: This flag enables warnings that alert you about language constructs that are not ISO C or ISO C++ standard compliant. This is particularly helpful to identify constructs that may not be uniform in other compilers, which could cause problems with your code on other machines. This will help prevent instances where your code works on your personal computer, but does not work on CodeRunner or on the grader's computer. 
 
 All together, your command line prompt will look something like this:
 {% highlight bash %}
-g++ -Wall -Werror -Wpedantic -o myName.out -std=c++17 myCodeFile.cpp
+g++ -Wall -Werror -Wpedantic -std=c++17 myCodeFile.cpp
 {% endhighlight %}
-
 
 **Pro Tips**:
 1. <ins>Tab Complete</ins>: if you're typing something in the command line that’s very long, but unique, you can hit tab when you're partially through and it will try to fill in the rest (kind of like autocomplete). If it doesn't, and you press tab twice, it tells you everything it has as options.
