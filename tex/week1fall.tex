@@ -86,7 +86,7 @@ This command creates a file named a.out which is the compiled version of the cod
         ./a.out
 \end{minted}
 
-You can add the \mintinline{bash}{-o} flag to your compiling command to give the output file a name. Additionally, in the near future you may also find it helpful to begin compiling with flags that tell you more information about possible errors in your code. These flags include:
+Additionally, you should begin compiling with flags that tell you more information about possible errors in your code. These flags include:
 
 \mintinline{bash}{-Wall}
 
@@ -100,7 +100,7 @@ Werror will treat all warnings as errors. This will prevent you from skipping pa
 
 This flag enables warnings that alert you about language constructs that are not ISO C or ISO C++ standard compliant. This is particularly helpful to identify constructs that may not be uniform in other compilers, which could cause problems with your code on other machines. This will help prevent instances where your code works on your personal computer, but does not work on CodeRunner or on the grader's computer. All together, your command line prompt will look something like this:
 
-\mintinline{bash}{g++ -Wall -Werror -Wpedantic -o myName.out -std=c++17 myCodeFile.cpp}
+\mintinline{bash}{g++ -Wall -Werror -Wpedantic -std=c++17 myCodeFile.cpp}
 
 Pro Tips:
 \begin{itemize}
