@@ -377,7 +377,10 @@ x is equal to 5
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## PreQuiz
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: [Recitation 3 Pre-quiz](https://canvas.colorado.edu/courses/117869/quizzes)
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes">Recitation 3 Pre-quiz</a>
+</div>
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
