@@ -2,21 +2,25 @@
 CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course material. This was set up initially due to issue with mass access on overleaf, but also due to accessibility concerns of PDFs.
 
 ## Running locally
-`bundle exec jekyll serve --livereload # read result for server location`
+`bundle exec jekyll serve --livereload`
+*  read result for server location
 
 ## How To: prep a new week
-- launch it locally so you can watch it update: `cd <root/docs> ;  bundle install && bundle update && bundle exec jekyll serve --livereload;`
+- launch it locally so you can watch it update: 
+    - `cd <root/docs>;`
+    - `bundle install && bundle update && bundle exec jekyll serve --livereload;`
 - create a new file in `_posts` with form `2025-<MM>-<DDSaturday>-Week-<n>-<title-parts>.markdown`
-- transpose the `tex/week<n>fall.tex` file to this new file. Use a previous version as a sample
+- transpose the `tex/week<n>fall.tex` file to this new file. Use any previous week as a sample
     - PROTIP: Keep the tex info in separate doc. cut and paste as you go. If the markdown doc has tex in it that fails, then jekyll will fail out and you won't see any updates. The errors are hard to read. They're on the terminal running the webpage locally.
-    - BONUS: points if you can make this faster and write a script to do it for you or an AI that is reasonably reliable.
-        - e.g. globally `\end{minted}` can be replaced with `{% endhighlight %}` so vim: `:%s/\\end{minted}/{% endhighlight %}/g` should work
-        - e.g. `:%s/\\begin{minted}{\(.*\)}/{% highlight \1 %}/g` should work as well.
+    - `cd <root>/docs/_ignoreForNow/;`
+    - `./runMe.sh <n>;` where `<n>` is the week of interest
+    - BONUS: if you can get the below to work in the runMe.sh script. currently fails and is commented out. but works on vim
         - e.g. close, but not quite for inline mints `:%s/\\mintinline{c++}{\(.*\)}/`\1`/g` (NOTE doesn't format correctly in MD)
-        - `:%s/\\section{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\&nbsp;\r## \1/g`
-        - `:%s/\\subsection{\(.*\)}/\&nbsp;\&nbsp;\&nbsp;\r### \1/g`
+        - supposedly in sed `.+?` will get the shortest first match for you...
+    - BONUS: if you can make any further updates to the runMe script like inputing the required Jeckyll front info or table translations, or examples/sample translations.
 - confirm that the Table of contents near the top of the page is ordering things as expected. if not, you're missing a `#` in the relevant title. This effects the read order.
-- NOTE: that mathjax doesn't always reder the same on the GitHub deployment as it does locally. Use a specific format or load a screenshot and add alt text... noting:
+- NOTE: that mathjax doesn't always reder the same on the GitHub deployment as it does locally. Use a specific format or load in a screenshot and add alt text...
+    - some notes about things we have tried which work locally but fail on GitHub's deployment
     - `<div>$$<mathjax>$$</div>` to obfuscate doesn't work on githubs deployment
     - `\\[ <mathjax> \\]`  to obfuscate doesn't work on githubs deployment
     - resource: https://stackoverflow.com/questions/77794919/load-mathjax-on-github-page-using-jekyll-without-overwriting-layout
@@ -38,8 +42,9 @@ CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course m
 
 ## Editing
 - basically only write the _posts.
-- _config.yaml is the settings of the webpage.
+- _config.yaml is the settings of the webpage and you should be careful when changing this as it may have unexpected consequences
 - Anything file directly in the `docs` folder beyond a few prespecified files is automatically  put on the top navigation. If something is WIP or to be used later, please put it in the `_ignoreForNow` folder (e.g. if preping a few things early and not ready to publish them)
+
 
 ## VSCode recommended plugins
 - Liquid Language Support
@@ -60,6 +65,7 @@ CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course m
     - source ~/.zshrc
     - gem install --user-install bundler jekyll
     - from there you shouldn't need to follow the tutorial further. for the sake of using this tool locally (to the best of my knowledge, but if I'm wrong, please update the readme)
+
 
 ## Tutorials
 - https://jekyllrb.com/tutorials/video-walkthroughs/ these are a bit dated, but mostly acceptable
