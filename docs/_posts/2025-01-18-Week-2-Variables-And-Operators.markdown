@@ -508,7 +508,7 @@ Write a program that calculates the volume of a fish tank. Ask the user for thre
 
 &nbsp;&nbsp;&nbsp;
 ### Problem 9 Pool Water Management
-You're in charge of maintaining a swimming pool with a minor leak. The pool has some water in it already and needs to be filled up. However, due to the leak, the water level decreases slightly every hour at a constant rate. Write a program takes the hour as an input (as an integer) and predicts the pool's water level over time.
+You're in charge of maintaining a swimming pool with a minor leak. The pool has some water in it already and needs to be filled up. However, due to the leak, the water level decreases slightly every hour at a constant rate. Write a program takes the hour as an input (as an integer or a double - you choose) and predicts the pool's water level over time.
 
 | Pool | Initial water level (inches) | Fill rate (inches/hour) | Leakage rate (inches/hour) |
 | --- | --- | --- | --- |
