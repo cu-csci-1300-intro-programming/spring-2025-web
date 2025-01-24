@@ -418,6 +418,43 @@ The program should prompt the user to enter the temperature in degrees Fahrenhei
 
 Additionally, the program should perform input validation. If the user inputs a non-positive value for temperature (i.e., 0 or a negative number), the program should display "Invalid  temperature." and terminate.
 
+The following template is provided for your convenience:
+
+{% highlight c++ %}
+#include <iostream>
+
+using namespace std;
+
+int main() 
+{
+    // declare all the variables
+    int temperature;
+
+    // prompt the user & get their input
+    cout << "What is the temperature?" << endl;
+    cin >> temperature;
+
+    // input validation: temperature must be positive
+    _____________________________ // FILL IN THIS LINE 
+    {
+        cout << "Invalid temperature." << endl;
+        return 0;
+    }
+    
+    // decide if you need to carry extra water based on the temperature
+    _____________________________ // FILL IN THIS LINE
+    {
+        cout << "You need to carry extra water." << endl;
+    }
+    else
+    {
+        cout << "You don't need extra water." << endl;
+    }
+
+    return 0;
+}
+{% endhighlight %}
+
 example: temp is 75
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
