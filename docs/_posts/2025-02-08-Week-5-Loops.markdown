@@ -1,0 +1,658 @@
+---
+layout: post
+title: "Week 5: Loops"
+date: 2025-01-27 09:00:00 -0700
+categories: jekyll update
+---
+## Learning Goals
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #31708f; background-color: #d9edf7; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+  <b>By the end of this week, you will be able to:</b>
+  <ol>
+    <li>Learn about <mark>while</mark> loops</li>
+    <li>Learn about <mark>do-while</mark> loops</li>
+    <li>Learn about <mark>for</mark> loops</li>
+  </ol>
+</div>
+
+
+**CONTENTS:**
+* Do not remove this line (it will not be displayed)
+{:toc}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Readings
+Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
+1. Monday: 4.1, 4.2
+1. Wednesday: 4.3
+1. Friday: 4.3 (re-read), 4.5, 4.6, 4.8, 4.9
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Background
+Loops are a tool that allows us to repeat a block of code. The number of repetitions is controlled by the conditions of the loop, and can range anywhere from never executing, executing a fixed number of times, or executing an infinite number of times. Loops will execute for as long as their condition is satisfied; once the condition is not true, the loop will stop and the program will continue. The structure of these conditions can vary depending on the type of loop used. There are three main types of loop we use in C++; the while loop, the do-while loop, and the for loop.
+
+
+&nbsp;&nbsp;&nbsp;
+### While Loops
+While loops are the most basic form of loops. Their structure looks like:
+
+{% highlight c++ %}
+while (condition)
+{
+    //code to execute
+}
+{% endhighlight %}
+
+Here, `while` is a C++ reserved word, `condition` should be a Boolean expression that will evaluate to either **`true`** or **`false`**, and the comment between the brackets is where we would add code to execute. If the condition is true, then the specified statement(s) within the loop are executed. After running once, the Boolean expression is re-evaluated. If the condition is true, the specified statement(s) are executed again. This process of evaluation and execution is repeated until the condition becomes **`false`**.
+
+{% highlight c++ %}
+// Here is an example of a while loop 
+// where the condition is based on user input. 
+int userChoice;
+userChoice = 1;
+while (userChoice != 0)
+{
+   cout << "Do you want to see the question again?" << endl; 
+   cout << "Press 0 if no, any other number if yes." << endl;
+   cin >> userChoice;
+}
+{% endhighlight %}
+Entering `0` will terminate the loop, but any other number will cause the loop to execute again. Note how we must initialize the condition before the loop starts. Setting `userChoice = 1` ensures that the while loop will run at least once.
+
+{% highlight c++ %}
+// Here is an example of a while loop 
+// where the condition is based on a counter.
+int i;
+i = 0; 
+while (i < 5)
+{
+    cout << i << endl;
+    i = i + 2;
+}
+{% endhighlight %}
+Notice how you must manually initialize `i=0` and then manually increment `i` by `2` (`i = i + 2`).
+
+&nbsp;&nbsp;&nbsp;
+### Do-While Loops
+The do-while loop is a variant of the while loop. The critical difference with a do-while loop is that the block of code we wish to execute is written before the condition. The structure of a do-while loop looks like this:
+{% highlight c++ %}
+do {
+  // code block to be executed
+}
+while (condition);
+{% endhighlight %}
+
+In a do-while loop, the block of code is executed once before the condition is checked. This means we will never entirely skip a do-while loop. You will often find this type of loop to be useful when gathering user input, like the example shown below.
+
+
+{% highlight c++ %}
+// Here is an example of the while loop from example 1.1.1. rewritten as a do-while loop.
+int userChoice;
+do {
+   cout << "Do you want to see the question again?" << endl; 
+   cout << "Press 0 if no, any other number if yes." << endl;
+   cin >> userChoice;
+}  
+while (userChoice != 0);
+{% endhighlight %}
+
+Note that here we do not have to initialize user choice before the loop begins.
+    
+
+
+&nbsp;&nbsp;&nbsp;
+### For Loops
+You will frequently come across instances where you already know the number of iterations you would like your loop to complete, like the `while (i < 5)` example shown above. In these cases, there is a special loop that has a counter built in rather than needing to keep track on your own. For loops have three elements:
+
+1. **Initialization**: It must initialize a counter variable to a starting value. Note: When initializing your counter, you can choose to either declare a new variable or use an existing variable. If you declare a new variable in your initialization, it will only exist in the **scope** of the loop; this means once the loop concludes, you cannot access that variable again. 
+1. **Condition**: If it is true, then the body of the loop is executed. If it is false, the body of the loop does not execute and jumps to the next statement(s) just after the loop.
+1. **Update**: Updates the counter variable during each iteration
+
+
+The basic structure of a for loop looks like this:
+
+{% highlight c++ %}
+for (initialization; condition; update)
+{
+    //code to execute
+}
+{% endhighlight %}
+
+Here, `for` is a C++ reserved word. 
+
+{% highlight c++ %}
+// Here is a section of code that will 
+// print the word "hello" five times:
+for (int count = 0; count < 5; count++)
+{
+    cout << "hello" << endl;
+}
+{% endhighlight %}
+
+Notice the following three parts of the for loop:
+
+1. count is initialized to 0,
+1. the conditional expression is count < 5
+1. count++ to increment the count value by one
+    
+
+
+{% highlight c++ %}
+// Here is an example that would work e
+// quivalently to the `while (i < 5)` example
+for (int i = 0; i < 5; i = i + 2)
+{
+    cout << i << endl;
+}
+
+// REMINDER of `while (i < 5)` example:
+int i;
+i = 0; 
+while (i < 5)
+{
+    cout << i << endl;
+    i = i + 2;
+}
+{% endhighlight %}
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Common Errors and Debugging Loops
+
+Unique errors with loops include:
+
+
+1. Errors with the loop **syntax** itself, such as your condition or the set of statements in your for loops. Check that you have semicolons `;` and have declared all your variables that you use in this area. 
+1. **infinite loops**, which will frequently present as either a program that never stops running or an error saying something along the lines of memory exceeded or time exceeded. Check your conditions, and make sure the variables that control your condition are updating correctly. 
+1. **incorrect numbers of iterations**, which means you may not be updating your counter correctly or your logic may be incorrect.
+
+Here is a flowchart for helping you figure out (and resolve) what is wrong with your loops:
+
+{% include img.html src='Loop Debugging.png' alt='flowchart detailed below' caption='' %}
+
+Any errors that you may come across either within the bracketed section of your loop or outside of your loop are subject to the same rules as any code we have previously worked with. If you are struggling with errors in those areas, revisit debugging tips from the relevant sections to help you.
+
+The details of the flowchart are written here in text for better accessible technology support:
+
+Does your code compile? 
+1. no: comment out the loop and only the loop. does it comile now? 
+    1. no: You have issues elsewhere in your code. Resolve those and try again. 
+    1. yes: Uncomment your loop. Comment out the executed code between the brackets. Does it compile now? 
+        1. no: there is something wrong with your loop syntax. Check your conditions and brackets. 
+        1. yes: There is something wrong with your code inside the brackets. Resolve those errors first. 
+ 1. yes: Does your code run? 
+    1. no: it quites with an error. add a cout statement immediately before your loo, and a cout statement immediately after your loop. Run again. what happens? 
+        1. neith print: your error is earlier in your code. Resolve those errors and try again.
+        1. only the first statement prints: your error is in your loop. You can add cout statements inside the loop to see which line casues the error. 
+        1. both statements print: your error is after your loop. Resolve those errros and try again..
+    1. yes: but it doesn't stop running: you have an infinite loop in your code. You can add cout statements to each loop to find the culprit, and then check the condition.
+    1. yes: but the output is wrong: Add cout statements to print the variable values at each step. Make sure there are the correct number of steps, adn that each value is changing appropriately.
+    1. yes, and it's correct!: Done!
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## PreQuiz Assignment (due Monday Feb 10 at 9am)
+{% include underConstruction.html caption='we are getting the prequiz ready now' %}
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+## Recitation
+
+{% comment %}
+ADVAIT: please update the recitation details. sample in the _ignorForNow/week5fall.tex. Do me a favore and remind me that I need to update the prequiz thing.
+{% endcomment %}
+
+{% include uc.html caption='we are getting the recitation ready now' %}
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Homework
+You should complete the following homework using VSCode and the skills that you have learned to author, compile, and execute programs. You should build and fix your code using VSCode. Once you believe you have completed the assignment locally, submit your work on Canvas using the appropriate link for the assignment and the "coderunner" tool. 
+
+The coderunner questions match these questions exactly. It will tell you what to do for the problem, give you a few examples of input/output. Give you a space to submit your code.
+
+&nbsp;&nbsp;&nbsp;
+### Encrypting Lowercase Characters
+
+The <a href="https://en.wikipedia.org/wiki/Caesar_cipher" target="_blank">Caesar cipher</a>  shifts each letter by a fixed number of positions within the alphabet. The shift value can be positive or negative and should wrap around the alphabet if necessary. For example, with a shift of 3, `a’ would be replaced by `d’, `b’ would become `e’, and so on. If the shift is -3, `d’ would be replaced by `a’, `e’ would become `b’, etc. For simplicity, we are only encrypting lowercase letters in this question.
+
+{% include img.html src='cipher.png' alt='X maps to A, Y maps to B, Z maps to C, A maps to D, highlighted in blue B maps to E, and so on.' caption='' %}
+
+&nbsp;
+**Note:** Characters like 'a' and 'z' have specific ASCII values that are case-sensitive (`a == 97 && z == 122`). The code uses these values indirectly by operating on character arithmetic rather than directly manipulating ASCII values.
+
+&nbsp;
+Write a program that encrypts lowercase letters using the Caesar cipher. Prompt the user for a letter and a shift value in `main()`, and use the function specification listed below for encryption.
+
+
+&nbsp;
+
+| **Function:** |  `encryptLower(char, int)` <br /> `char encryptLower(char letter, int shift_value)` |
+| **Purpose:** |  Encrypt the letter using the shift value. The function should not print anything. | 
+| **Parameters:** | `char letter` - The letter that is being encrypted. <br /> `int shift_value` - The shift value. |
+| **Return value:** | If successful, returns the newly encrypted letter. |
+| **Error handling && Boundary conditions:** | - If the unencrypted letter is not lowercase, then the unencrypted letter is returned. In other words, return the original letter if it's not lowercase. <br /> - **Hint**: You may use the modulo `%` operation to handle the wrap-around, e.g., if the letter is `a` and the shift value is `-1`, the encrypted letter should result in `z`. |
+
+Example:
+{% highlight c++ %}
+// This is only an example usage, and you should develop your own main function
+// Assume the proper libraries are included.
+// Assume the proper implementation of encryptLower() is included.
+
+int main() {
+    char letter = 'r';
+    char encrypted_letter = encryptLower(letter, 5);
+    cout << "Letter " << letter << " was encrypted to " << encrypted_letter;
+    return 0;
+} {% endhighlight %} 
+
+**Sample Output (from above example):**  Letter `r` was encrypted to `w`. 
+
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the lowercase character to encrypt:</p>
+
+<p><span style="color:red">a</span></p>
+
+<p>Enter the encryption value:</p>
+
+
+<p><span style="color:red">-1</span></p>
+
+<p>Letter a was encrypted to z</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the lowercase character to encrypt:</p>
+
+<p><span style="color:red">f</span></p>
+
+<p>Enter the encryption value:</p>
+
+<p><span style="color:red">-3</span></p>
+<p>Letter f was encrypted to c</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the lowercase character to encrypt:</p>
+
+<p><span style="color:red">a</span></p>
+
+<p>Enter the encryption value:</p>
+
+<p><span style="color:red">5</span></p>
+
+<p>Letter a was encrypted to f</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the lowercase character to encrypt:</p>
+
+<p><span style="color:red">a</span></p>
+
+<p>Enter the encryption value:</p>
+
+<p><span style="color:red">27</span></p>
+
+<p>Letter a was encrypted to b</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the lowercase character to encrypt:</p>
+
+<p><span style="color:red">D</span></p>
+
+<p>Enter the encryption value:</p>
+
+<p><span style="color:red">10</span></p>
+
+<p>Letter D was encrypted to D</p>
+</div>
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Building a Snowman
+
+
+<img alt="girl with orange hair peaking into a key whole speaking do you wanna build a snowman?" loading="lazy" src="https://media2.giphy.com/media/WFJAqzg0hZ6dq/giphy.gif?cid=6c09b95281kxq4ic2box3cd4939w4774s3ptywkqr3c78mau&ep=v1_gifs_search&rid=giphy.gif&ct=g" />
+
+In this problem, you are tasked with simulating the process of three snowballs rolling down a hill to create a snowman. Each snowball must grow to a specific size to form the snowman's head, mid-body, and lower-body. 
+
+Initially, each snowball starts with a size of 1 unit and grows at a variable rate. The growth rate begins at 1 unit per second and increases by 1 unit each second (for example, the snowball grows by 1 unit in the first second, 2 units in the second second, 3 units in the third second, and so on).
+
+You need to calculate the amount of time each snowball will roll to reach the required sizes for the snowman's head, mid-body, and lower-body. Additionally, determine the total time needed for all three snowballs to achieve their respective sizes. 
+
+**Note:** You should check if the size input for each body part is positive in `main()`. If the input is non-positive (i.e., zero or negative), output `"Please enter a positive integer for <section> size:"`, where `<section>` is part of the snowman that received invalid input, and prompt for the input again. This ensures that only valid sizes are accepted for the snowman parts.
+
+| **Function:** | `calculateTime(int)` <br /> `int calculateTime(int target_size)` |
+| **Purpose:** |  The function will calculate the time needed for the snowball to reach each part's specified `target_size`. The function should not print anything. |
+| **Parameters:** | `int target_size` - The desired size that the snowball needs to reach |
+| **Return Value:** | If successful, it returns the time it takes to reach the desired size of the snowball in seconds. |
+| **Error Handling:** | The error handling for desired size will occur in `main()`, which means all `target_size` should be valid. |
+
+Example:
+{% highlight c++ %}
+// This is only an example usage, and you should develop your own main function
+// Assume the proper libraries are included.
+// Assume the proper implementation of calculateTime() is included.
+
+int main() {
+    int head_time = calculateTime(6);
+    cout << "Time to reach head size: " << head_time << " seconds" ;
+    return 0;
+}
+{% endhighlight %}
+
+**Sample Output (from above example):**  `Time to reach head size: 3 seconds`
+
+
+Develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the whole program into the answer box! 
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+
+<p>Enter head size: </p>
+<p><span style="color:red">6</span></p>
+<p>Enter mid-body size: </p>
+<p><span style="color:red">12</span></p>
+
+<p>Enter lower-body size: </p>
+<p><span style="color:red">22</span></p>
+
+
+<p>Time to reach head size: 3 seconds</p>
+
+<p>Time to reach mid-body size: 5 seconds</p>
+
+<p>Time to reach lower-body size: 6 seconds</p>
+
+<p>Total time to create the snowman: 14 seconds</p>
+
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+
+<p>Enter head size: </p>
+<p><span style="color:red">-12</span></p>
+
+<p>Please enter a positive integer for head size:</p>
+
+<p><span style="color:red">12</span></p>
+
+<p>Enter mid-body size: </p>
+<p><span style="color:red">13</span></p>
+
+<p>Enter lower-body size: </p>
+<p><span style="color:red">14</span></p>
+
+
+<p>Time to reach head size: 5 seconds</p>
+
+<p>Time to reach mid-body size: 5 seconds</p>
+
+<p>Time to reach lower-body size: 5 seconds</p>
+
+<p>Total time to create the snowman: 15 seconds</p>
+
+</div>
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Print Collatz Sequence
+
+For this question, you will write a program that prompts the user to enter an integer value between 10 and 500 (both exclusive). Your program should then print out a sequence of numbers between the given value and 1 (inclusive) following the pattern below:
+For a given number a<sub>i</sub>,
+
+
+1. If a<sub>i</sub> is even, then a<sub>i+1</sub> = floor(a<sub>i</sub>/2)
+1. If a<sub>i</sub> is odd, then a<sub>i+1</sub> = 3*a<sub>i</sub> + 1
+
+
+Your program should stop printing numbers once the sequence reaches the value of 1.
+
+If the user enters a number that is not between 10 and 500 (both exclusive), print `Invalid input.` and prompt the user for a number again.
+
+This sequence is referred to as the Collatz sequence. The Collatz Conjecture states that this sequence will eventually reach the value of 1 for any starting number, a fact that has not yet been proven by modern mathematics!
+
+**Note:** floor(x) means that x should be rounded down to the nearest integer.
+
+Develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the whole program into the answer box! 
+
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter a number between 10 and 500:</p>
+<p><span style="color:red">10</span> </p>
+<p>Invalid input.</p>
+<p>Enter a number between 10 and 500: </p>
+<p><span style="color:red">20</span></p>
+<p>10</p>
+<p>5</p>
+
+<p>16</p>
+
+<p>8</p>
+
+<p>4</p>
+
+<p>2</p>
+
+<p>1</p>
+
+<p>Total steps: 7</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter a number between 10 and 500: </p>
+<p><span style="color:red">122</span></p>
+
+<p>61</p>
+
+<p>184</p>
+
+<p>92</p>
+
+<p>46</p>
+
+<p>23</p>
+
+<p>70</p>
+
+<p>35</p>
+
+<p>106</p>
+
+<p>53</p>
+
+<p>160</p>
+
+<p>80</p>
+
+<p>40</p>
+
+<p>20</p>
+
+<p>10</p>
+
+<p>5</p>
+
+<p>16</p>
+
+<p>8</p>
+
+<p>4</p>
+
+<p>2</p>
+
+<p>1</p>
+
+<p>Total steps: 20</p>
+</div>
+
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Potion Crafting
+You are developing a crafting system for an RPG video game where players can create two types of potions: Health Potions and Magic Potions. Each type of potion requires four key ingredients: Tealeaves, Sunflowers, Toadstools, and Pine Needles. However, the quantity of each ingredient needed differs slightly between the two types of potions.
+
+Your task is to write a program that asks the user which potion they would like to prioritize—Health or Magic. If the user enters an invalid number for the type of potion, the program should ask them to re-enter like this: `Invalid input. Please select 1 or 2.` The program will then prompt the user to input the number of each ingredient they currently have (Tealeaves, Sunflowers, Toadstools, and Pine Needles). Based on the available ingredients, calculate how many potions of the priority type can be crafted. Any leftover ingredients should be used to craft as many of the other types of potion as possible. Finally, the program should output how many of the priority potions can be crafted and how many of the other potions can be made with the remaining ingredients.
+
+The ingredient requirements for each type of potion are as follows:
+
+| **Ingredients** | **Amount for Health Potion** | **Amount for Magic Potion**
+| --- |  --- |  --- |
+| Tealeaves | 6 | 2 |
+| Sunflowers | 1 | 3 |
+| Toadstools | 5 | 10 |
+| Pine Needles | 2 | 1  |
+
+
+Develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the whole program into the answer box! 
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Select a potion crafting priority:</p>
+<p>1. Health Potion</p>
+<p>2. Magic Potion</p>
+<p><span style="color:red">2</span></p>
+<p>How many Tealeaves do you have?</p>
+<p><span style="color:red">30</span></p>
+<p>How many Sunflowers do you have?</p>
+<p><span style="color:red">40</span></p>
+<p>How many Toadstools do you have?</p>
+<p><span style="color:red">12</span></p>
+<p>How many Pine Needles do you have?</p>
+<p><span style="color:red">22</span></p>
+<p>You can make 1 Magic potion(s) and 0 Health potion(s).</p>
+</div>
+
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Select a potion crafting priority:</p>
+<p>1. Health Potion</p>
+<p>2. Magic Potion</p>
+<p><span style="color:red">3</span></p>
+<p>Invalid input. Please select 1 or 2.</p>
+<p><span style="color:red">2</span></p>
+<p>How many Tealeaves do you have?</p>
+<p><span style="color:red">10</span></p>
+<p>How many Sunflowers do you have?</p>
+<p><span style="color:red">5</span></p>
+<p>How many Toadstools do you have?</p>
+<p><span style="color:red">8</span></p>
+<p>How many Pine Needles do you have?</p>
+<p><span style="color:red">3</span></p>
+<p>You can make 0 Magic potion(s) and 1 Health potion(s).</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Select a potion crafting priority:</p>
+<p>1. Health Potion</p>
+<p>2. Magic Potion</p>
+<p><span style="color:red">1</span></p>
+<p>How many Tealeaves do you have?</p>
+<p><span style="color:red">10</span></p>
+<p>How many Sunflowers do you have?</p>
+<p><span style="color:red">15</span></p>
+<p>How many Toadstools do you have?</p>
+<p><span style="color:red">19</span></p>
+<p>How many Pine Needles do you have?</p>
+<p><span style="color:red">27</span></p>
+<p>You can make 1 Health potion(s) and 1 Magic potion(s).</p>
+</div>
+
+
+
+&nbsp;&nbsp;&nbsp;
+### Validate Integer
+Design a function `validateInt` that accepts a string input and determines if it represents a valid integer by checking if each character in the string is a valid value. Your program should ask the user to input an integer, store it as a string, and then invoke the `validateInt` function to check its validity. The program should then print whether the string is a valid integer or not. (Negative integers are also valid integers).
+
+
+| **Function:** | `validateInt(string)` <br /> `bool validateInt(string input)` |
+**Purpose:** |  Iterate through a string and verify if it is a valid integer or not. The function should not print anything. |
+**Parameters:** |  `string input` - The string to be verified |
+**Return value:** |  It returns `true` if the string is a valid integer. Otherwise, it returns `false`. |
+**Error handling && Boundary conditions:** | If length of input = 0, `false` is returned  |
+
+
+**Example:** |
+{% highlight c++ %}
+        
+// Assume the proper libraries are included.
+
+// Assume the proper implementation of validateInt() is included.
+
+int main()
+{
+    string number;
+    cout << "Enter the integer : " << endl;
+    getline(cin, number);
+    if(!validateInt(number))
+    {
+        cout << "The entered string is not a valid integer!!" << endl;
+    }
+    else
+    {
+        cout << "The entered string is a valid integer!!" << endl;
+    }
+    return 0;
+}
+{% endhighlight %}
+
+example of running the above code
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the integer :</p>
+
+<p><span style="color:red">1234</span></p>
+
+<p>The entered string is a valid integer!!</p>
+</div>
+
+Develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and **paste just the `validateInt()` function into the answer box!**
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the integer :</p>
+
+<p><span style="color:red">-12</span></p>
+
+<p>The entered string is a valid integer!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the integer :</p>
+
+<p><span style="color:red">23e56</span></p>
+
+<p>The entered string is not a valid integer!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the integer :</p>
+
+<p><span style="color:red">32 56</span></p>
+
+<p>The entered string is not a valid integer!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the integer :</p>
+
+<p><span style="color:red">-</span></p>
+
+<p>The entered string is not a valid integer!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the integer :</p>
+
+<p><span style="color:red">456789</span></p>
+
+<p>The entered string is a valid integer!!</p>
+</div>
+
