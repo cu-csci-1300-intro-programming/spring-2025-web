@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Week 4: Functions"
-date:   2025-01-22 09:00:00 -0700
+title: "Week 4: Functions"
+date: 2025-01-22 09:00:00 -0700
 categories: jekyll update
 ---
 
@@ -23,21 +23,24 @@ categories: jekyll update
 </div>
 
 **CONTENTS:**
-* Do not remove this line (it will not be displayed)
-{:toc}
 
+- Do not remove this line (it will not be displayed)
+  {:toc}
 
 &nbsp;&nbsp;&nbsp;&nbsp;
+
 ## Background
+
 SPWI: readings
 
 &nbsp;&nbsp;&nbsp;
+
 ### Switch Statements
-Switch statements are an easy way to make decisions in a program. We can execute different sections of our code based on the value of a character or integer variable. 
 
-1. If we are building a switch statement around an `int` variable, all of the cases must be defined using numbers. 
-1. If we are building a switch statement around a `char` variable, all of the cases must be defined using characters. This means they must also use single quotes. 
+Switch statements are an easy way to make decisions in a program. We can execute different sections of our code based on the value of a character or integer variable.
 
+1. If we are building a switch statement around an `int` variable, all of the cases must be defined using numbers.
+1. If we are building a switch statement around a `char` variable, all of the cases must be defined using characters. This means they must also use single quotes.
 
 {% include img.html src='switchdiagram.png' alt='flow diagram start line directional to diamond labeled expression one directional line out mutex to N locations each box labeled code block some number each with directional lines out which join to direct to a single end state' caption='' %}
 
@@ -48,47 +51,39 @@ An example of a simple switch statement:
 {% highlight c++ %}
 // Switch statement syntax:
 switch (n){
-     case 1:
-          // code to be executed if n == 1;
-          break;
-     case 2:
-          // code to be executed if n == 2;
-          break;
-     default:
-          // code to be executed if n doesn’t match any cases
+case 1:
+// code to be executed if n == 1;
+break;
+case 2:
+// code to be executed if n == 2;
+break;
+default:
+// code to be executed if n doesn’t match any cases
 }
 {% endhighlight %}
 
 Important notes to keep in mind when using switch statements :
 
-
 1. The expression provided in the switch should result in a constant value otherwise it would not be valid.
-    1. `switch(4)` allowed, allowed for any `int` value (any `int` expression)
-    1. `switch(num)` allowed, were `num` is an `int` variable defined earlier (any `int` expression)
-    1. `switch(a+b)` allowed, where `a` and `b` are `int` variables, which are defined earlier (any `int` expression)
-    1. `switch('c')` allowed (takes the [ASCII Value](https://www.asciitable.com/) of the character `c`, here `99`)
+   1. `switch(4)` allowed, allowed for any `int` value (any `int` expression)
+   1. `switch(num)` allowed, were `num` is an `int` variable defined earlier (any `int` expression)
+   1. `switch(a+b)` allowed, where `a` and `b` are `int` variables, which are defined earlier (any `int` expression)
+   1. `switch('c')` allowed (takes the [ASCII Value](https://www.asciitable.com/) of the character `c`, here `99`)
 1. The `break` statement is used inside the switch to terminate a statement sequence. When a `break` statement is reached, the switch terminates, and the flow of control jumps to the next line following the switch statement.
 1. The `break` statement is optional. If omitted, execution will continue on into the next case. The flow of control will fall through to subsequent cases until a break is reached.
 1. The default statement is optional. Even if the switch case statement does not have a default statement, it would run without any problem.
 
-
 Switch statements are a simple way to make decisions based exclusively on the equivalence of some characters or numbers. They are a simple form of **conditional statement**.
 
-
-
-
-
-
-
-
 &nbsp;&nbsp;&nbsp;
+
 ### Functions
+
 "**Functions**" in the context of math may be familiar, especially when formatted like this:
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
     f(x) = x<sup>2</sup> + 5
 </div>
-
 
 Here we have labeled our function `f`, and it is a function of the variable `x`. You might have seen some where the functions are functions on multiple variables:
 
@@ -98,7 +93,7 @@ Here we have labeled our function `f`, and it is a function of the variable `x`.
 
 Here we have labeled our function `g`, and it is a function of two variables `x` and `y` (reading from left to right).
 
-Functions in computer science are similar, but we can abstract them further so they apply to more than just numbers. 
+Functions in computer science are similar, but we can abstract them further so they apply to more than just numbers.
 
 A function is a named block of code which is used to perform a particular task. The power of functions lies in the capability to perform that task anywhere in the program without requiring the programmer to repeat that code many times. This also allows us to group portions of our code around concepts, making programs more organized. You can think of a function as a mini-program.
 
@@ -106,7 +101,6 @@ There are two types of functions:
 
 1. Library functions
 1. User-defined functions
-
 
 Library functions refer to pre-existing functions that you can use but did not write yourself. In order to use a library function, you must include the library that contains the function. For example, the C++ math library provides a `sqrt()` function to calculate the square root of a number. To use the `sqrt()` function, you must include the cmath library at the top of your program, e.g.`#include<cmath>`. Libraries other than the built-in C++ libraries can be found online.
 
@@ -119,59 +113,52 @@ Here is the syntax for a function definition:
 {% highlight c++ %}
 returnType functionName(parameterList)
 {
-    //function body
+//function body
 }
 {% endhighlight %}
 
-
 1. The `returnType` is the data type that the function returns
-1.  <span style="color:darkRed"><b>`functionName`</b></span> is the actual name of the function
-1. `parameterList` refers to the type, order, and number of the parameters of a function. A parameter is like a placeholder. When a function is invoked, you pass a value to the parameter. This value is referred to as actual parameter or argument. Note: this can be a list of multiple items separated by commas. 
+1. <span style="color:darkRed"><b>`functionName`</b></span> is the actual name of the function
+1. `parameterList` refers to the type, order, and number of the parameters of a function. A parameter is like a placeholder. When a function is invoked, you pass a value to the parameter. This value is referred to as actual parameter or argument. Note: this can be a list of multiple items separated by commas.
 1. `//function body` contains a collection of statements that define what the function does. The statements inside the function body are executed when a function is called.
 
-
 This may not immediately look like the functions you have seen in math, but they are actually quite close. Here is an example of the functions above written in C++:
-
 
 {% highlight c++ %}
 // The function `f(x) = x^2 + 5` written in C++:
 double f(double x){
-    return ( x*x + 5 );
+return ( x\*x + 5 );
 }
 {% endhighlight %}
-
 
 {% highlight c++ %}
 // The function `g(x,y) = x^2+y^3` written in C++:
 double g(double x, double y){
-    return ( x*x + y*y*y );
-} 
+return ( x*x + y*y\*y );
+}
 {% endhighlight %}
 
 I used `double` for the parameters and the return type because these functions in math would probably use decimals (real number), but you could also use integers if you only wanted to use whole numbers. We can also use functions inside of other functions. Instead of just multiplying variables by themselves to do the exponents, we could use the `pow` function from `cmath`. We have seen the `cmath` library before but likely didn't fully understand what it did:
-
 
 {% highlight c++ %}
 // The function `f(x) = x^2 + 5` written using cmath:
 #include<cmath>
 
 double f(double x){
-    return pow(x, 2) +5;
+return pow(x, 2) +5;
 }
 {% endhighlight %}
-
 
 {% highlight c++ %}
 //The function `g(x,y) = x^2+y^3` written using cmath:
 #include<cmath>
 
 double g(double x, double y){
-    return pow(x, 2) + pow(y, 3);
-} 
+return pow(x, 2) + pow(y, 3);
+}
 {% endhighlight %}
 
 If you wanted to then use these functions to perform some calculations, you could use any value of `x` and `y`. You could use constant values, or you could use variables. Here are examples of ways you could use the function:
-
 
 {% highlight c++ %}
 // Examples of calling the function `g(x,y)`:
@@ -181,13 +168,13 @@ If you wanted to then use these functions to perform some calculations, you coul
 using namespace std;
 
 double g(double x, double y){
-    return pow(x, 2) + pow(y, 3);
-} 
+return pow(x, 2) + pow(y, 3);
+}
 
 int main(){
-    double firstValue = g(4.0, 5.0);
-    double secondValue = g(2, 3); 
-    double myX, myY;
+double firstValue = g(4.0, 5.0);
+double secondValue = g(2, 3);
+double myX, myY;
 
     cout << "What value would you like for X?" << endl;
     cin >> myX;
@@ -196,12 +183,12 @@ int main(){
     cout << "The result would be " << g(myX, myY) << endl;
 
     return 0;
+
 }
 
 {% endhighlight %}
 
 A function has its own **scope**. That means that the parameters of the function, as well as local variables declared within the function body, are not accessible outside the function. This is useful because it allows us to solve a small problem in a self-contained way. Parameter values and local variables disappear from memory when the function completes its execution. We can illustrate the order in which code executes with this example:
-
 
 {% highlight c++ %}
 // An example with a simple function:
@@ -211,29 +198,29 @@ using namespace std;
 //funtion to add two numbers
 int sum( int num_one, int num_two)
 {
-    int result = num_one + num_two;
-    return result;
+int result = num_one + num_two;
+return result;
 }
 
 //main function
 int main()
 {
-    //declare parameter value
-    int parameter_var = 1;
-    
+//declare parameter value
+int parameter_var = 1;
+
     //call the function
     int sum_result = sum(parameter_var, 99);
-    
+
     cout << "The sum is " << sum_result << endl;
-    
+
     return 0;
-}    
+
+}  
 {% endhighlight %}
 
 The code will begin executing in the main function -- in this case, the first step is declaring a variable in line 15. When the program execution reaches line 18, the main function will pause, and the first line in the body of the `sum()` function will begin running. After the line `return result;` is reached, `sum()` will stop running, and the main program will resume execution where it left off. In this case, when `main()` resumes execution, the return value of `sum()` will be stored in `int sum_result`, and then the last two lines of the main function will run.
 
 Let us clarify this point with a few changes to the above example
-
 
 {% highlight c++ %}
 // NOTE any comment
@@ -242,63 +229,60 @@ using namespace std;
 
 int sum( int num_one, int num_two)
 {
-    int result = num_one + num_two;
-    return result;
+int result = num_one + num_two;
+return result;
 }
 
 //main function
 int main()
 {
-    // NOTE: a result variable set to 42 in main
-    int result = 42;
+// NOTE: a result variable set to 42 in main
+int result = 42;
 
     int parameter_var = 1;
-    
+
     //call the function
     int sum_result = sum(parameter_var, 99);
 
     // NOTE: an update to result
     result = 75;
-    
+
     cout << "The sum is " << sum_result << endl;
-    
+
     return 0;
-}    
+
+}  
 {% endhighlight %}
 
 In the above example sum-result is still `100`. There are now two variables named `result` one is scoped only to the `sum()` function and happens to get the value `100` at some point in time. That `result` variable has no awareness of the other variable named `result` that is scoped to the `main()` function (starts with value `42` and is later set to `75`).
 
-Functions can do more than just perform calculations; they can also perform operations on other variables, or they can be used to prevent yourself from copy/pasting the same code multiple times in your program. They do not even always need parameters. For example, if you wanted to write out a selection menu, you could write a function to print the menu so you do not have to type it out every time. In these cases, the parenthesis can be empty, like they are for our main functions. 
+Functions can do more than just perform calculations; they can also perform operations on other variables, or they can be used to prevent yourself from copy/pasting the same code multiple times in your program. They do not even always need parameters. For example, if you wanted to write out a selection menu, you could write a function to print the menu so you do not have to type it out every time. In these cases, the parenthesis can be empty, like they are for our main functions.
 
 As a general note: the function names `f` and `g` are not very good function names. You should generally pick better (clearer) names, and you should choose a naming style to be consistent. The naming style you choose should be different from how you name variables, so it is easier to read your code.We recommend using camel case to name your functions, like so:
 
 Examples of function names we might use: `circleArea(), sumList(), findCapitalLetters()`
 
-
-
-
-
-
 &nbsp;&nbsp;&nbsp;
+
 ### Testing Code
+
 You must naturally test your code to make sure that it works correctly, and that it works correctly **all** the time. This may seem like a very difficult task, but there are several steps you can take to make sure you start correctly.
 
-
-1. Come up with a handful of test cases to use on your program. 
+1. Come up with a handful of test cases to use on your program.
 1. Consider the ways a user could use your program incorrectly. Use this to develop additional test cases.
 1. Consider extreme values, or "boundary conditions". Use these boundary conditions to develop yet more test cases.
-1. Test each part of your program independently. This is called "*Unit Testing*". Do you have individual functions? Test each of them. Do you have major steps in your main function? Test each of them.
+1. Test each part of your program independently. This is called "_Unit Testing_". Do you have individual functions? Test each of them. Do you have major steps in your main function? Test each of them.
 
+Boundary conditions are significant for many complex problems, and should test the extreme limits of what your problem may be applied to. Example: Are you supposed to examine a string? What happens if that string is empty? What happens if that string is thousands of digits long?
 
-Boundary conditions are significant for many complex problems, and should test the extreme limits of what your problem may be applied to. Example: Are you supposed to examine a string? What happens if that string is empty? What happens if that string is thousands of digits long? 
+You should develop test cases for each boundary condition you can come up with. If there are several components to your program, you may need to identify boundary conditions for each of these components. Testing these boundary conditions of these pieces individually -- whether they are functions or just blocks of code in your main function -- is often easier than testing every independent combination of them.
 
-You should develop test cases for each boundary condition you can come up with. If there are several components to your program, you may need to identify boundary conditions for each of these components. Testing these boundary conditions of these pieces individually -- whether they are functions or just blocks of code in your main function -- is often easier than testing every independent combination of them. 
-
-Consider a program where you have 4 functions, and each function has 3 boundary conditions. To test each boundary condition for each of the 4 functions, you would need 12 tests. If however you only tested the program as a whole, you might need to check each combination of boundary conditions, which would end up becoming **3<sup>4</sup> = 81** different tests. This is part of why **unit testing** is valuable. 
+Consider a program where you have 4 functions, and each function has 3 boundary conditions. To test each boundary condition for each of the 4 functions, you would need 12 tests. If however you only tested the program as a whole, you might need to check each combination of boundary conditions, which would end up becoming **3<sup>4</sup> = 81** different tests. This is part of why **unit testing** is valuable.
 
 As you develop extra functions, you should start by using your `main` function to test these functions. There will be 3 different types of test cases you should be expected to write depending on the return type of the function. Listed below is how we expect you to test different types of functions. The process will be different for if you are testing a `void function`, non-void functions that return an `int` or `bool`, and non-void functions that return a `double`.
 
 &nbsp;&nbsp;
+
 #### Testing Void Functions
 
 For void functions that have printed output (i.e. functions that use cout to print to the terminal), call the testing function in the main function. Your tests should include the expected output in comments. For these functions you will want to make sure that all expected outputs are successfully printed.
@@ -306,36 +290,35 @@ For void functions that have printed output (i.e. functions that use cout to pri
 See the example code below:
 
 {% highlight c++ %}
-// This is testing a function that prints whether a grade is passing or not. 
+// This is testing a function that prints whether a grade is passing or not.
 void checkGrade(char grade){
-    switch(grade){
-        case 'a':
-        case 'b':
-        case 'c':
-            cout << "You passed!" << endl;
-            break;
-        case 'd':
-            cout << "You did not pass, but you were close." << endl;
-            break;
-        case 'f':
-            cout << "You failed." << endl;
-            break;
-        default:
-            cout << "That is not a valid grade." << endl;
-    }
-}        
+switch(grade){
+case 'a':
+case 'b':
+case 'c':
+cout << "You passed!" << endl;
+break;
+case 'd':
+cout << "You did not pass, but you were close." << endl;
+break;
+case 'f':
+cout << "You failed." << endl;
+break;
+default:
+cout << "That is not a valid grade." << endl;
+}
+}
 
 int main(){
-    checkGrade('b'); //Should output "You passed!"
-    checkGrade('d'); //Should output "You did not pass, but you were close."
-    checkGrade('f'); //Should output "You failed."
-    checkGrade('m'); //Should output "That is not a valid grade."
+checkGrade('b'); //Should output "You passed!"
+checkGrade('d'); //Should output "You did not pass, but you were close."
+checkGrade('f'); //Should output "You failed."
+checkGrade('m'); //Should output "That is not a valid grade."
 }
 {% endhighlight %}
 
-
-
 &nbsp;&nbsp;
+
 #### Testing Integer/Boolean Functions
 
 For non-void functions that return a `bool` or `int`, use an `assert` statement from the `cassert` header (`#include <cassert>`) with a conditional expression.
@@ -348,11 +331,9 @@ Your test will look something like this:
 
 `assert(<function call> == <value to compare to>);`
 
-
 1. `<function call>` is where you will call the function you want to test with its function parameters.
 1. `<value to compare to>` is the value you expect the function to return.
 1. `==` is the equality operator, and it compares the equality of both sides of itself.
-
 
 See the sample code below:
 
@@ -364,38 +345,38 @@ using namespace std;
 
 int addInts(int num1, int num2)
 {
-    // add num1 and num2 before returning
-    return num1 + num2;
+// add num1 and num2 before returning
+return num1 + num2;
 }
 
 int main()
 {
-    // test 1 for addInts
-    assert(addInts(5, 6) == 11);
-    // test 2 for addInts
-    assert(addInts(10, 10) == 20);
+// test 1 for addInts
+assert(addInts(5, 6) == 11);
+// test 2 for addInts
+assert(addInts(10, 10) == 20);
 }
 {% endhighlight %}
 
-
-
-
 &nbsp;&nbsp;
+
 #### Testing Double Functions
+
 For non-void functions that return a double, use an `assert` statement from the `cassert` header (`#include <cassert>`) with a conditional expression and include the following function in your program:
 
 {% highlight c++ %}
 // This is a required function to successfully test Double functions in C++:
-/**
- * doublesEqual will test if two doubles are equal to each 
- * other within two decimal places.
- */
-bool doublesEqual(double a, double b, const double epsilon = 1e-2)
-{
-    double c = a - b;
-    return c < epsilon && -c < epsilon;
-}
-{% endhighlight %}
+/\*\*
+
+- doublesEqual will test if two doubles are equal to each
+- other within two decimal places.
+  \*/
+  bool doublesEqual(double a, double b, const double epsilon = 1e-2)
+  {
+  double c = a - b;
+  return c < epsilon && -c < epsilon;
+  }
+  {% endhighlight %}
 
 Because the `double` type holds so much precision, it will be hard to compare the equality of a function that returns a `double` with another `double` value. To overcome this challenge, we can compare `double` values within a certain range of precision or decimal places. The function above compares the equality of two values `a` and `b` up to two decimal places. This function returns `true` if the values `a` and `b` are equal with each other up to two decimal places.
 
@@ -408,9 +389,7 @@ Your test will look something like this:
 1. `<function call>` is where you will call the function you want to test with its function parameters
 1. `<value to compare to>` is the double value you expect the function to return.
 
-
 See the sample code below:
-
 
 {% highlight c++ %}
 // This is code to test a function that finds the reciprocal of a value (i.e., divides 1 by that number).
@@ -418,117 +397,242 @@ See the sample code below:
 #include <cassert>
 using namespace std;
 
-/**
- * doublesEqual will test if two doubles are equal to each other within 
- * two decimal places.
- */
-bool doublesEqual(double a, double b, const double epsilon = 1e-2) {
-    double c = a - b;
-    return c < epsilon && -c < epsilon;
-}
+/\*\*
 
-/**
- * reciprocal returns the value of 1 divided by the number 
- * passed into the function.
- */
-double reciprocal(int num) {
-    return 1.0 / num;
-}
+- doublesEqual will test if two doubles are equal to each other within
+- two decimal places.
+  \*/
+  bool doublesEqual(double a, double b, const double epsilon = 1e-2) {
+  double c = a - b;
+  return c < epsilon && -c < epsilon;
+  }
+
+/\*\*
+
+- reciprocal returns the value of 1 divided by the number
+- passed into the function.
+  \*/
+  double reciprocal(int num) {
+  return 1.0 / num;
+  }
 
 int main() {
-    // test 1 for reciprocal
-    assert(doublesEqual(reciprocal(6), 0.16));
-    // test 2 for reciprocal
-    assert(doublesEqual(reciprocal(12), 0.083));
+// test 1 for reciprocal
+assert(doublesEqual(reciprocal(6), 0.16));
+// test 2 for reciprocal
+assert(doublesEqual(reciprocal(12), 0.083));
 }
 {% endhighlight %}
 
-
-
 &nbsp;&nbsp;
+
 #### General Testing Tips
-You will certainly come to a time in your coding career when your code does not work, and you just cannot figure out *why*.
+
+You will certainly come to a time in your coding career when your code does not work, and you just cannot figure out _why_.
 
 In these times, there are a few possible options. First, your algorithm may be incorrect. If that is the case no amount of code testing will help you, and you will need to go back and think through how to solve the problem. If your algorithm is correct but your code is not, here are three tips:
 
-1. If your code does not compile, start commenting out sections of your code. Keep going until it compiles, even if you have to go all the way back to an empty main function. Then, you can uncomment sections of your code until it fails to compile again. This will help you pinpoint *where* the issue is in your code, and once you know where it is you will be able to see *what* it is. 
+1. If your code does not compile, start commenting out sections of your code. Keep going until it compiles, even if you have to go all the way back to an empty main function. Then, you can uncomment sections of your code until it fails to compile again. This will help you pinpoint _where_ the issue is in your code, and once you know where it is you will be able to see _what_ it is.
 1. If your code compiles but has unexpected runtime errors, add output statements periodically throughout your code. When your program fails, you will know where your code stopped running based on which output statements failed to print.
 1. If your code compiles and runs completely but the output is incorrect, go back through your code and print out the significant variables at each step in your code. You can then compare this to the test cases you worked out by hand and see where the code output differs from your algorithm.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 &nbsp;&nbsp;&nbsp;&nbsp;
+
 ## PreQuiz
+
 TODO: this will be made into a canvas quiz. this webpage must be updated acccordingly. Unsure what that looks like at this time.
 
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 1
+
+Below is code that asks the user for their grade as a letter (A, B, C, D, or F) and prints a corresponding statement. Identify the error(s):
+
+{% highlight c++ %}
+char grade;
+cout << "Enter your grade (A, B, C, D, F): " << endl;
+cin >> grade;
+switch (grade) {
+case "A":
+cout << "Excellent work!" << endl;
+case 'B':
+cout << "Good job!" << endl;
+case 'C':
+cout << "You passed!" << endl;
+case 'D':
+cout << "You need to work harder." << endl;
+default:
+cout << "Invalid grade entered." << endl;
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 2
+
+Below is code that attempts to take in the day of the week as a user input and respond back to the user. Identify the error(s):
+
+{% highlight c++ %}
+int day = 4;
+switch (day)
+case 6:
+cout << "Today is Saturday";
+break;
+case 7:
+cout << "Today is Sunday";
+break;
+default
+cout << "Looking forward to the Weekend";
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 3
+
+The code below is meant to determine if an angle is acute, obtuse, or right. Spot the error(s):
+
+{% highlight c++ %}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int angle = 40;
+if (x<90) {
+cout<<"It is an acute angle." ;
+}
+else if(x=90) {
+cout<<"It is a right angle.";
+}
+els{
+cout<<"It is an obtuse angle.";
+}
+}
+
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 4
+
+The code below implements an exclusive OR logical operation, which evaluates to true only when one of the conditions may be true. Spot the error(s):
+
+{% highlight c++ %}
+// This program implements XOR
+#include iostream
+using namespace std;
+
+//Set the variable value to 1 when x or y is 1
+int main()
+{
+int x=1,y=0,value;
+if (x==1){
+if(y==0)
+value = 1;
+
+    else
+      y == 0;
+
+    if(x==0){
+      if(y==0)
+        value = 0;
+
+      else
+        value = 1;
+
+}
+
+cout < value < endl;
+return 0;
+
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Car Acceleration Based on Road Type - Problem 5
+
+Write a C++ program that will calculate the final speed of a car after 25 seconds. The program will ask the user for the initial speed (km/h) and the type of road (Highway, City, Off-road). The rate of acceleration will depend on the type of road and the initial speed.
+
+- If the initial speed is less than 20 km/h, then the acceleration rate for each road type is as follows:
+
+  - Highway → 8 (km/h) per second
+  - City → 5 (km/h) per second
+  - Off-road → 2 (km/h) per second
+
+- If the initial speed is between 20 and 60 km/h, then the acceleration rate for each road type is as follows:
+
+  - Highway → 10 (km/h) per second
+  - City → 7 (km/h) per second
+  - Off-road → 3 (km/h) per second
+
+- If the initial speed is greater than 60 km/h, then the acceleration rate for each road type is as follows:
+  - Highway → 5 (km/h) per second
+  - City → 3 (km/h) per second
+  - Off-road → 1(km/h) per second
+
+Below are some sample runs. User input is shown in **bold**.
+
+<div style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+  <p>Enter the initial speed:</p>
+  <p><strong style="color:red;">70</strong></p>
+  <p>Enter the road type:</p>
+  <p><strong style="color:red;">Highway</strong></p>
+  <p>The final velocity is 195 km/h.</p>
+</div>
+
+<div style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+  <p>Enter the initial speed:</p>
+  <p><strong style="color:red;">5</strong></p>
+  <p>Enter the road type:</p>
+  <p><strong style="color:red;">City</strong></p>
+  <p>The final speed is 130 km/h.</p>
+</div>
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Car Acceleration Based on Road Type - Problem 5.a.: algorithm
+
+Write out the steps you would use to solve this problem by hand as pseudocode.
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Car Acceleration Based on Road Type - Problem 5.b.: examples
+
+Pick possible inputs for your program. Follow the steps you wrote for these values to find your result, and verify it.
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Car Acceleration Based on Road Type - Problem 5.c.: boundary conditions
+
+Identify two possible values that are "boundaries" in this problem that you will have to test. What should happen for these values?
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Car Acceleration Based on Road Type - Problem 5.d.: implementation
+
+Translate your pseudocode into a c++ program to solve the above code.
+
 &nbsp;&nbsp;&nbsp;&nbsp;
-## Recitation
-ADVAIT: will update. (most of it is prepped in `<project>/docs/_ignoreForNow/week4fall.tex`)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework
 
 &nbsp;&nbsp;&nbsp;
+
 ### Homework Problem 1: Car switch
 
 Write a program that accepts a single character representing an automobile manufacturing company as input from the user. Then, the program should print out the text for the appropriate company
 
-
-1. Your program prompts the user with “Enter the first letter of the company: ”, which asks for a character input. 
+1. Your program prompts the user with “Enter the first letter of the company: ”, which asks for a character input.
 1. The input must be case sensitive, e.g., if the user enters ‘b’ instead of ‘B’, the output should be invalid and not “BMW”.
-    1. Your program prints output according to the following:
-        1. If the input is ‘B’, print “BMW”
-        1. If the input is ‘V’, print “Volkswagen”
-        1. If the input is ‘H’, print “Honda”
-        1. If the input is ‘T’, print “Tesla”
-        1. Any input value that is not ‘B’, ‘V’, ‘H’, or ‘T’ should print “Invalid”
+   1. Your program prints output according to the following:
+      1. If the input is ‘B’, print “BMW”
+      1. If the input is ‘V’, print “Volkswagen”
+      1. If the input is ‘H’, print “Honda”
+      1. If the input is ‘T’, print “Tesla”
+      1. Any input value that is not ‘B’, ‘V’, ‘H’, or ‘T’ should print “Invalid”
 
-**Note:** Code should NOT contain any  if-else statements and should only utilize Switch Statements
+**Note:** Code should NOT contain any if-else statements and should only utilize Switch Statements
 
 Below are a few examples of valid runs of the program. The examples include more formatting information:
 
@@ -546,7 +650,6 @@ Below are a few examples of valid runs of the program. The examples include more
 <p><span style="color:red">V</span></p>
  
 <p>Automobile manufacturer chosen: Volkswagen</p>
-
 
 </div>
 
@@ -567,33 +670,26 @@ Below are a few examples of valid runs of the program. The examples include more
 
 </div>
 
-
-
-
-
-
-
-
 &nbsp;&nbsp;&nbsp;
+
 ### Instrument Price
 
 You want to learn to play an instrument, but you need to know how much it will cost to buy it. The music store has the following table on their website:
 
 | **Category** | **Instrument** | **Price** |
-| --- | --- | --- |
-| Brass | Trumpet | $570 |
-| Brass | Trombone | $500 |
-| Woodwind | Flute | $425 |
-| Woodwind | Saxophone | $225 |
-| Percussion | Snare | $275 |
-| Percussion | Cymbals | $350 |
-
+| ------------ | -------------- | --------- |
+| Brass        | Trumpet        | $570      |
+| Brass        | Trombone       | $500      |
+| Woodwind     | Flute          | $425      |
+| Woodwind     | Saxophone      | $225      |
+| Percussion   | Snare          | $275      |
+| Percussion   | Cymbals        | $350      |
 
 Write a menu-driven program that asks the user to input an instrument category and then an instrument. The program should give the user the price.
 
-The user should input an integer in the range of the choices you give them (for example, a user cannot input 3 if you only have 2 choices). If the user inputs the correct range, the program should be prompted for the next set of choices. Once they make the final selection, the total should be printed to them as an integer with proper formatting, as shown in the sample run. 
+The user should input an integer in the range of the choices you give them (for example, a user cannot input 3 if you only have 2 choices). If the user inputs the correct range, the program should be prompted for the next set of choices. Once they make the final selection, the total should be printed to them as an integer with proper formatting, as shown in the sample run.
 
-**Note:** Code should NOT contain any  if-else statements and should only utilize Switch Statements
+**Note:** Code should NOT contain any if-else statements and should only utilize Switch Statements
 
 Below are a few examples of valid runs of the program. The examples include more formatting information:
 
@@ -643,20 +739,20 @@ Below are a few examples of valid runs of the program. The examples include more
  
 <p>Your instrument will be $425.</p>
 
-
 </div>
 
-
 &nbsp;&nbsp;&nbsp;
+
 ### Movie Night
 
-You are preparing a movie night with your friends. Create a C++ program that helps you determine which movie to select. 
+You are preparing a movie night with your friends. Create a C++ program that helps you determine which movie to select.
 
-Based on the given table, you, as the programmer, should give step-by-step choices to the user to proceed further and make a movie selection. Once the user has selected the movie, the program should display a message: "You have selected the movie: `<movie title>`" where "`<movie title>`" is the movie the user has selected. 
+Based on the given table, you, as the programmer, should give step-by-step choices to the user to proceed further and make a movie selection. Once the user has selected the movie, the program should display a message: "You have selected the movie: `<movie title>`" where "`<movie title>`" is the movie the user has selected.
 
-Additionally, ensure that the user's input is present in the range of choices. If the user inputs an invalid option, print "Please enter a valid input" and terminate the program. 
+Additionally, ensure that the user's input is present in the range of choices. If the user inputs an invalid option, print "Please enter a valid input" and terminate the program.
 
-[//]: # (https://www.tablesgenerator.com/html_tables#)
+[//]: # "https://www.tablesgenerator.com/html_tables#"
+
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -726,7 +822,6 @@ Additionally, ensure that the user's input is present in the range of choices. I
   </tr>
 </tbody></table>
 
-
 Below are a few examples of valid runs of the program. The examples include more formatting information:
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
@@ -786,21 +881,15 @@ Below are a few examples of valid runs of the program. The examples include more
 <p>You have reserved the movie: Elf</p>
 </div>
 
-
-
-
-
-
-
-
 &nbsp;&nbsp;&nbsp;
+
 ### Area of a room
 
 You work in a construction company and have been tasked to develop a reusable C++ function that will allow engineers to calculate the area of the room they wish to renovate. For simplicity, we'll imagine every room as a rectangle.
 
-The engineers will be asked to input the room's length and width in feet. Then, the dimensions will be passed into the function <tt>calculateRoomArea()</tt>, which will compute and return the area of the room. 
+The engineers will be asked to input the room's length and width in feet. Then, the dimensions will be passed into the function <tt>calculateRoomArea()</tt>, which will compute and return the area of the room.
 
-Complete and submit the <tt>calculateRoomArea()</tt> function and <tt>main()</tt> to coderunner. You do not need to include the header. 
+Complete and submit the <tt>calculateRoomArea()</tt> function and <tt>main()</tt> to coderunner. You do not need to include the header.
 
 {% highlight c++ %}
 double calculateRoomArea(double length, double width){
@@ -810,14 +899,13 @@ double calculateRoomArea(double length, double width){
 
 The following table includes the function details for calculateRoomArea
 
-| component | description |
-| --- | --- |
-| **Function:** | <tt>calculateRoomArea(double, double)</tt> <br /> <tt>double calculateRoomArea(double length, double width)</tt> |
-| **Purpose:** | To calculate the area of the room. |
-| **Parameters:** | **double** <span style="color:red"><tt>length</tt></span> - the length of the room. <br /> **double** <span style="color:blue"><tt>width</tt></span> - the width of the room. |
-| **Return Value:** | If successful, it returns the area of the room. |
+| component           | description                                                                                                                                                                                                                                          |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Function:**       | <tt>calculateRoomArea(double, double)</tt> <br /> <tt>double calculateRoomArea(double length, double width)</tt>                                                                                                                                     |
+| **Purpose:**        | To calculate the area of the room.                                                                                                                                                                                                                   |
+| **Parameters:**     | **double** <span style="color:red"><tt>length</tt></span> - the length of the room. <br /> **double** <span style="color:blue"><tt>width</tt></span> - the width of the room.                                                                        |
+| **Return Value:**   | If successful, it returns the area of the room.                                                                                                                                                                                                      |
 | **Error Handling:** | If <span style="color:red"><tt>length</tt></span> or <span style="color:blue"><tt>width</tt></span> is non-positive, `-1` is returned. Then, in <tt>main()</tt>, the program should display "Length or width is invalid. Area cannot be calculated." |
-
 
 Below are a few examples of valid runs of the program. The examples include more formatting information:
 
@@ -845,7 +933,6 @@ Below are a few examples of valid runs of the program. The examples include more
  
 <p>The area is: 1200 sq ft.</p>
 
-
 </div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
@@ -872,33 +959,30 @@ Below are a few examples of valid runs of the program. The examples include more
 
 </div>
 
-
-
-
 &nbsp;&nbsp;&nbsp;
+
 ### Estimate Sowing Time
+
 Write a C++ program with a function to estimate the time it takes to sow seeds on farmland. The farming company provides 4 different kinds of sowing machines. Each machine can sow seeds at a different speed per square foot, as shown below.
 
 | **Sowing Machine** | **Time taken per square foot** |
-| --- | --- |
-| W   | 8 sq ft per 12 minutes |
-| X   | 3 sq ft per 10 minutes  |
-| Y   | 2 sq ft per 7 minutes |
-| Z   | 7 sq ft per 8 minutes |
+| ------------------ | ------------------------------ |
+| W                  | 8 sq ft per 12 minutes         |
+| X                  | 3 sq ft per 10 minutes         |
+| Y                  | 2 sq ft per 7 minutes          |
+| Z                  | 7 sq ft per 8 minutes          |
 
-
-
-Your program should ask the user the area of the farm and the type of sowing machine the user intends to use in `main()`. Once the information is obtained, call the `calculateSowingTime()` function and pass in the appropriate values. 
+Your program should ask the user the area of the farm and the type of sowing machine the user intends to use in `main()`. Once the information is obtained, call the `calculateSowingTime()` function and pass in the appropriate values.
 
 For submission, please paste in the whole program into coderunner. Please make sure `calculateSowingTime()` function exists and takes in the two parameters in the same order. Below is the function specification for `calculateSowingTime()`:
 
-| component | description |
-| --- | --- |
-| **Function:** |  <tt>calculateSowingTime(double, char)</tt> <br /> <tt>double calculateSowingTime(double area, char machine\_type)</tt> |
-| **Purpose:** | To calculate the time taken to plant seeds all over the farmland. |
-| **Parameters:** | **double** <span style="color:red"><tt>area</tt></span>  - the area of the farmland. <br /> **char** <span style="color:blue"><tt>machine_type</tt></span> - the type of machine selected. |
-| **Return Value:** | If successful, it returns the time taken to plant seeds using a particular machine across the entire farmland. |
-| **Error Handling:** | - If <span style="color:red"><tt>area</tt></span> is non-positive, 0 is returned. <br /> - If <span style="color:blue"><tt>machine_type</tt></span> is invalid, 0 is returned. |
+| component           | description                                                                                                                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Function:**       | <tt>calculateSowingTime(double, char)</tt> <br /> <tt>double calculateSowingTime(double area, char machine_type)</tt>                                                                     |
+| **Purpose:**        | To calculate the time taken to plant seeds all over the farmland.                                                                                                                         |
+| **Parameters:**     | **double** <span style="color:red"><tt>area</tt></span> - the area of the farmland. <br /> **char** <span style="color:blue"><tt>machine_type</tt></span> - the type of machine selected. |
+| **Return Value:**   | If successful, it returns the time taken to plant seeds using a particular machine across the entire farmland.                                                                            |
+| **Error Handling:** | - If <span style="color:red"><tt>area</tt></span> is non-positive, 0 is returned. <br /> - If <span style="color:blue"><tt>machine_type</tt></span> is invalid, 0 is returned.            |
 
 Below are a few examples of valid runs of the program. The examples include more formatting information:
 
@@ -952,7 +1036,3 @@ Below are a few examples of valid runs of the program. The examples include more
 <p>The time taken is: 1143.37 minutes.</p>
 
 </div>
-
-
-
-
