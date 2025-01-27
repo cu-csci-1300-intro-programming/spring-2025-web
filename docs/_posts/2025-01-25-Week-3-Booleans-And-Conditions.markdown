@@ -325,7 +325,9 @@ if ( booleanExpression1 ) {
 &nbsp;&nbsp;&nbsp;
 ### Common Errors
 
-[//]: # (TODO: add a section about types of errors and some colloquial expressions for errors, such as "throwing an error")
+{% comment %}
+TODO: add a section about types of errors and some colloquial expressions for errors, such as "throwing an error"
+{% endcomment %}
 
 
 
@@ -970,7 +972,6 @@ EXAMPLE: Rent `A` for `6` days
 
 <p>Your total is $209.10</p>
 </div>
-\begin{sample}
 
 
 EXAMPLE: Rent `C` for `11` days
