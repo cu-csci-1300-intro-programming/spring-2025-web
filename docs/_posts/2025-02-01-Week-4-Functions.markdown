@@ -23,15 +23,19 @@ categories: jekyll update
 </div>
 
 **CONTENTS:**
-
-- Do not remove this line (it will not be displayed)
-  {:toc}
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-## Background
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Readings
+Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
+1. Monday: 5.1 - 5.9
+1. Wednesday: 5.1 - 5.9 (a re-read is recommended)
+1. Friday: 5.1 - 5.9
 
-SPWI: readings
+## Background
 
 &nbsp;&nbsp;&nbsp;
 
