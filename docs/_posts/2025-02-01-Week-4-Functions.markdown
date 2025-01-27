@@ -442,9 +442,9 @@ In these times, there are a few possible options. First, your algorithm may be i
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-## PreQuiz
+## PreQuiz Assignment (due Monday Feb 3 at 9am)
 
-TODO: this will be made into a canvas quiz. this webpage must be updated acccordingly. Unsure what that looks like at this time.
+{% include underConstruction.html caption='we are getting the prequiz ready now' %}
 
 &nbsp;&nbsp;&nbsp;
 
