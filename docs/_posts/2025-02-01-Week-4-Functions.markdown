@@ -441,10 +441,11 @@ In these times, there are a few possible options. First, your algorithm may be i
 1. If your code compiles and runs completely but the output is incorrect, go back through your code and print out the significant variables at each step in your code. You can then compare this to the test cases you worked out by hand and see where the code output differs from your algorithm.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-
 ## PreQuiz Assignment (due Monday Feb 3 at 9am)
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
-{% include underConstruction.html caption='we are getting the prequiz ready now' %}
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="">Recitation 4 Pre-quiz</a>
+</div>
 
 &nbsp;&nbsp;&nbsp;
 
