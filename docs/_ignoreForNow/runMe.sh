@@ -16,8 +16,7 @@ main() {
     src="${self}/../../tex/${fn}";
     dst="${self}/${fn}";
     tmp="${self}/${fn}.tmp";
-    cp "${src}" "${dst}"; # https://stackoverflow.com/questions/46082397/insert-newline-n-using-sed
-    # -Ei: will be edited in-place without creating a backup: https://www.gnu.org/software/sed/manual/html_node/Command_002dLine-Options.html#Command_002dLine-Options
+    cp "${src}" "${dst}";
    
     # HEADER INFO
     sed -E 's/\\chapter\*{(.*)}/---\nlayout: post\ntitle: "\1"\ndate: 2025-01-01 09:00:00 -0700\ncategories: jekyll update\n---/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
@@ -55,24 +54,16 @@ main() {
     sed -E 's/\\textcolor{cyan}{\\href{(.*)}{(.*)}}/<a href="\1" target="_blank">\2<\/a>/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
 
     # "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
-    #
-    # TODO: Spencer will update in week 5 prep, but you can add more comments for now
-    # EXAMPLE comment and move up a highlight
     # TEXTIT *x*
     # TEXTBF **x**
     # TEXTTT <tt>x</tt>
-    # TABLE
-    # ``
+    # \\mintinline{c\+\+}{x} `x`
+    perl -pe 's|\\mintinline{c\+\+}{(.*?)}|`\1`|g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    perl -pe 's|\\textit{(.*?)}|*\1*|g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    perl -pe 's|\\textbf{(.*?)}|**\1**|g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    perl -pe 's|\\texttt{(.*?)}|<tt>\1</tt>|g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
 
-
-
-    # .+? is the shortest string to meet the pattern
-    ## TODO: explor this futher... not yet working. Do in vim for now
-    # sed -E 's/\\mintinline{c\+\+}{(.+?)}/zzz\1zzz/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
-    
-    echo 'using vim run the following from command mode (esc :)';
-    echo '%s/\\mintinline{c++}{\(.*\)}/`\1`/g';
-
+    # TABLE?
 }
 
 main "$@";

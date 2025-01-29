@@ -1,0 +1,514 @@
+---
+layout: post
+title: "Week 6: Arrays"
+date: 2025-01-01 09:00:00 -0700
+categories: jekyll update
+---
+
+
+
+
+\begin{abstract}
+This week you will:
+\begin{enumerate}
+    1. Learn how to make arrays of any data type
+
+\end{enumerate}
+    
+\end{abstract}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Background
+
+An array is a data structure which can store other data types like double, int, char, and boolean, and string. Arrays have both a type and a size.
+
+&nbsp;&nbsp;&nbsp;
+### Making and Using Arrays
+
+**How to declare arrays**
+{% highlight c++ %}
+// data_type array_name[declared_size];
+bool myBooleans[10];
+string myStrings[15];
+int myInts[7];
+{% endhighlight %}
+
+**How to initialize arrays (method 1)**
+{% highlight c++ %}
+bool myBooleans[4] = {true, false, true, true};
+{% endhighlight %}
+
+If you do not declare the size inside the square brackets, the array size will be set to however many entries you provide on the right.
+
+{% highlight c++ %}
+bool myBooleans[] = {true, false, true}; // size = 3
+{% endhighlight %}
+
+Note: the size specified in the brackets needs to match the number of elements you wrote in the curly brackets.
+
+\begin{example}
+    When the specified size is larger than the actual number of elements, the elements provided in the curly brackets will be the first several elements in the array, while the additional elements will be filled with default values. If it’s an integer/double array, the default values are zero, while if it’s a string array, the default values are empty strings.
+    {% highlight c++ %}
+#include <iostream>
+using namespace std;
+int main()
+{
+    int intArray[5] = {1,2,3};
+    for (int i = 0; i < 5; i ++)
+    {
+        cout << intArray[i] << " ";
+    }
+}
+    {% endhighlight %}
+
+    Output:
+
+    `1 2 3 0 0`
+\end{example}
+
+\begin{example}
+    When the specified size is smaller than the actual number of elements, there will be a compilation error.
+
+    {% highlight c++ %}
+#include <iostream>
+using namespace std;
+int main()
+{
+    int intArray[3] = {1,2,3,4,5};
+}
+    {% endhighlight %}
+
+    Output:
+
+    {% highlight c++ %}
+error: excess elements in array initializer
+int intArray[3] = {1,2,3,4,5};
+                         ^
+1 error generated.
+    {% endhighlight %}
+\end{example}
+
+**How to Initialize Arrays (Method 2)** You can also initialize elements one by one using a for loop:
+
+{% highlight c++ %}
+int myInts[10];
+for (int i = 0; i < 10; i++)
+{
+    myInts[i] = i;
+}
+//{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+{% endhighlight %}
+
+**How to Access Elements in an Array** We have essentially already had practice with accessing elements in an array, as in C++, string is basically an array of characters. You can access elements in arrays using the same syntax you used for strings:
+
+{% highlight c++ %}
+string greetings[] = {"hello", "hi", "hey", "what’s up?"};
+cout << greetings[3] << endl;
+{% endhighlight %}
+
+Arrays and strings can also be iterated through in the same way.
+
+\begin{example}
+    Iterating through an array:
+    {% highlight c++ %}
+string greetings[] = {"hello", "hi", "hey", "what’s up?"};
+int size = 4;
+for (int i = 0; i < size; i++)
+{
+    cout << greetings[i] << endl;
+}
+    {% endhighlight %}
+
+    Iterating through a string:
+    {% highlight c++ %}
+string greeting = "Hello world!";
+for (int i = 0; i < greeting.length(); i++){
+    cout << greeting[i] << ", " << endl;
+}
+    {% endhighlight %}
+\end{example}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## PreQuiz
+
+\begin{problem}
+    How does a ``for" loop differ from a ``while" loop?
+\end{problem}
+
+\begin{problem}
+What kind of loop is this loop an example of? Hint: You don't want to run this code on your machine.
+{% highlight c++ %}
+#include <iostream>
+
+int main() {
+    while (true) {
+        std::cout << "We are in the loop!" << std::endl;
+    }
+    return 0;
+}
+{% endhighlight %}
+\end{problem}
+
+\begin{problem}
+    You have seen function tables designed to convey the information in a function on previous assignments. Now, given the code below, fill in the following table for the <tt>createPyramid()</tt> function. The function creates a pyramid pattern of asterisks (stars) with the given number of rows and returns the total number of stars printed.
+
+\begin{minted}[breaklines=true]{c++}
+#include <iostream>
+#include <cassert>
+using namespace std;
+
+int createPyramid(int rows)
+{
+    if (rows > 0)
+    {
+        int totalStars = 0;
+        for (int i = 1; i <= rows; i++)
+        {
+            // Print spaces
+            for (int j = i; j < rows; j++)
+                cout << "  ";
+            // Print stars
+            for (int k = 1; k <= (2 * i - 1); k++)
+            {
+                cout << "* ";
+                totalStars++;
+            }
+            cout << endl;
+        }
+        return totalStars;
+    }
+    return 0;
+}
+{% endhighlight %}
+
+\newpage
+
+\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
+    **Function:** \newline 
+    createPyramid(int) & \\ \hline
+    **Purpose:**  &  \\ \hline
+    **Parameters:** &   \\ \hline
+    **Return value:** &   \\ \hline
+    **Error handling/** \newline
+    **Boundary conditions:** & \\ \hline
+    **Example:** & 
+    \begin{exmaple}
+    {% highlight c++ %}    
+int main()
+{
+    int totalStars = createPyramid(3);
+    cout << "Total stars printed: " << totalStars << endl;
+    return 0;
+}
+    {% endhighlight %}
+    \end{example}
+
+    <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+        * 
+        
+      * * * 
+      
+    * * * * * 
+    
+    Total stars printed: 9
+    </div>
+         \\ \hline
+\end{longtable}
+\end{problem}
+
+\begin{problem}
+    Write 5 assert statements for the function shown in the previous question.
+\end{problem}
+
+\begin{problem} The program intends to count and display the number of days in a given month that fall on **Tuesdays or Thursdays**.
+
+
+1. How many iterations does the for loop perform?
+1. How many times does the if condition evaluate to true?
+
+
+{% highlight c++ %}
+#include <iostream>
+using namespace std;
+
+
+int countTuesdaysThursdays(int month_days)
+{
+    int count = 0;
+    for (int day = 1; day <= month_days; day++)
+    {
+        // Check if the day falls on a Tuesday or Thursday
+        if (day % 7 == 2 || day % 7 == 4)
+        {
+            count++;
+        }
+    }
+return count;
+}
+
+int main() {
+    int month_days = 31;
+    int count = countTuesdaysThursdays(month_days);
+    cout << "The number of Tuesdays and Thursdays in the month is: " << count << endl;
+    return 0;
+}
+{% endhighlight %}
+\end{problem}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation
+
+&nbsp;&nbsp;&nbsp;
+### Spot The Error
+\begin{multipart}
+The program intends to prints all even numbers from 2 to N (both inclusive). Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+    #include <iostream>
+    using namespace std;
+    
+    void printEvenNumbers(int N)
+    {
+        int i = 2;   
+        while (i <= N)
+        {
+            if (i % 2 == 0)
+            {
+                cout << i << " ";
+            }
+        }
+        j++;
+        return;
+    }
+    
+    int main()
+    {
+        int number;
+        cout << "Enter a number: " << endl;
+        cin >> number;
+        printEvenNumbers(number);
+        return 0;
+    }
+{% endhighlight %}
+
+\begin{multipart}
+    The program monitors the pump status and fills the liquid until the liquid level reaches the threshold. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int liquid_level = 5;
+    int threshold = 60;
+
+    while (liquid_level <= threshold)
+    {
+        cout << "Pump is running. Liquid level: " << liquid_level << " units." << endl;
+        liquid_level -= 5;
+    }
+
+    cout << "Pump stopped. Liquid level: " << liquid_level << " units." << endl;
+
+    return 0;
+}
+{% endhighlight %}
+
+\begin{multipart}
+The program intends to verify if two strings match, prompting the user to re-type the string until it matches the initial string. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() 
+{
+    string initial_string;
+    string retype_string;
+
+    cout << "Enter your string: ";
+    cin >> initial_string;
+
+    cout << "Enter your string again: ";
+    cin >> retype_string;
+
+    while (retype_string = initial_string) 
+    {
+        cout << "Your strings do not match. Try again: " << endl;
+        cin >> retype_string;
+    }
+
+    cout << "Your strings match!!!!" << endl;
+    return 0;
+}
+{% endhighlight %}
+
+\begin{multipart}
+The program intends to find the sum of all numbers from 1 to N (inclusive) and prints the result. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+#include <iostream>
+using namespace std;
+
+int totalSum(int n)
+{
+    int result = 1;
+    for(i = 1; i <= n; i + 1)
+    {
+        result += i;
+    }
+    return result;
+}
+
+int main() 
+{
+    int n;
+    cout << "Enter a positive integer (n): ";
+    cin >> n;
+
+    int result = totalSum(n);
+    cout << "Sum of numbers from 1 to " << n << " is: " << result << endl;
+
+    return 0;
+}
+{% endhighlight %}
+
+\begin{multipart}
+The program intends to calculate the sum of numbers entered by the user until a negative number is encountered. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+    int num;
+    int sum = 0;
+
+    do 
+    {
+        cout << "Enter a number (enter a negative number to stop): ";
+        cin >> number;
+        if (number >= 0) 
+        {
+            sum += number;
+        }
+
+    }while number >= 0;
+
+    cout << "Sum of the entered numbers: " << sum << endl;
+    return 0;
+}
+{% endhighlight %}
+
+\newpage 
+
+&nbsp;&nbsp;&nbsp;
+### Valid Double
+Design a function `validateDouble` that accepts a string input and determines if it represents a valid double by iterating through the string. Valid doubles can start with a negative and can have up to one decimal point. Your program should ask the user to input a double, store it as a string and then invoke the `validateDouble` function to check its validity. The program should then print whether the string is a valid double or not. (Negative double are also valid doubles. You can reuse some parts of your  `validateInt` function from recitation 5).
+    \begin{longtable}{|p{1.7in}|p{4.3in}|} \hline
+        **Function:** \newline 
+        validateDouble(string) & `bool validateDouble(string input)`\\ \hline
+        **Purpose:**  &Iterate through a string and verify if it is a valid double or not. \\ \hline
+        **Parameters:** &  \hangindent=1cm **input** - The string to be verified \\ \hline
+        **Return value:** &  It returns true is the string is a valid double. Otherwise returns false.  \\ \hline
+        **Error handling/** \newline
+        **Boundary conditions:** & If length of input = 0, false is returned  \\ \hline
+        **Example:** & 
+        \begin{example}
+\begin{minted}[breaklines=true]{c++}
+
+// Assume the proper libraries are included.
+// Assume the proper implementation of validateDouble() is included.
+
+int main()
+{
+    string number;
+    cout << "Enter the double : " << endl;
+    getline(cin, number);
+    if(!validateDouble(number))
+    {
+        cout << "The entered string is not a valid double!!" << endl;
+    }
+    else
+    {
+        cout << "The entered string is a valid double!!" << endl;
+    }
+    return 0;
+}
+            {% endhighlight %}
+        \end{example}
+
+        <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+    Enter the double :\\
+    -123.4\\
+    The entered string is a valid double!!
+        </div>
+             \\ \hline
+    \end{longtable}
+
+Here are a few additional sample runs:
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+Enter the double :
+
+**-12**
+
+The entered string is a valid double!!
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+Enter the double :
+
+**23.56e**
+
+The entered string is not a valid double!!
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+Enter the double :
+
+**32 56**
+
+The entered string is not a valid double!!
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+Enter the double :
+
+**-.**
+
+The entered string is not a valid double!!
+</div>
+
+\begin{multipart}
+Write out the steps you would use to solve this problem by hand as pseudocode. Stating your modifications to your validateInt is also sufficient.
+\end{multipart}
+
+\vspace{8cm}
+
+\begin{multipart}
+Pick three possible inputs for your program. Try to pick values that will test different aspects of your function. Follow the steps you wrote for these values to find your result, and verify it.
+\end{multipart}
+
+\vspace{10cm}
+
+\begin{multipart}
+Translate each of the sample inputs and expected outputs you created into assert statements.
+\end{multipart}
+
+\vspace{8cm} 
+
+\begin{multipart}
+ Implement your solution in C++ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make sure you test for the values used in your sample runs, and for the boundary conditions.
+\end{multipart}
+
+
+%no homework this week
