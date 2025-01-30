@@ -1,0 +1,222 @@
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## PreQuiz
+
+\begin{problem}
+    Select True or False:
+    \begin{enumerate}[label=\Alph*)]
+        1. \textbf{T/F:} When writing switch statements in C++ you must include a default case, otherwise your switch statement is not valid.
+        1. \textbf{T/F:} Switch statements can be built on integers, floats, and characters.
+        1. \textbf{T/F:} There is no difference between an if/else-if/else-if chain and an if/if/if chain in C++.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Given two conditions, `cond1} and \mintinline{c++}{cond2}, the expression if \mintinline{c++}{(cond1 && cond2)} will evaluate to true only if \textunderscore \textunderscore \textunderscore \textunderscore \textunderscore \mintinline{c++}{cond1} and \mintinline{c++}{cond2} are true. On the other hand, the expression if \mintinline{c++}{(cond1 || cond2)} will evaluate to true if \textunderscore \textunderscore \textunderscore \textunderscore \textunderscore \mintinline{c++}{cond1} or \mintinline{c++}{cond2` is true.
+\end{problem}
+
+\begin{problem}
+    How can you write a switch statement where multiple cases will execute the same block of code? Provide an example.
+\end{problem}
+
+\vspace{5cm}
+
+\begin{problem}
+    Fill in the blank(s) for the code below:
+    {% highlight c++ %}
+    int choice;
+    cout << "Help our adventurer discover what to do next! Enter 1, 2, or 3." << endl;
+    ______ >> choice;
+
+    switch(____________){
+        case ________:
+            cout << "You found a hidden treasure!" << endl;
+            break;
+        case 2:
+            cout << "You discovered a secret passage!" << endl;
+            ___________
+        case 3:
+            cout << "You found a mystical artifact!" << endl;
+            break;
+        ________:
+            cout << "That's not a valid case. Please try again." << endl;
+    }
+    {% endhighlight %}
+\end{problem}
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation
+
+&nbsp;&nbsp;&nbsp;
+### Spot The Error
+
+\begin{multipart}
+Below is code that asks the user for the day of the week as a number (Monday is 1, Sunday is 7) and then prints a corresponding statement. Identify the error(s):
+{% highlight c++ %}
+    int day;
+    cout << "What number day of the week is it?" << endl;
+    cin >> day;
+    switch (day) {
+      case '6':
+        cout << "Today is Saturday";
+        break;
+      case 7:
+        cout << "Today is Sunday";
+        
+      default:
+        cout << "Looking forward to the Weekend";
+    }
+{% endhighlight %}
+
+\end{multipart}
+
+\begin{multipart}
+    Below is code with the same goal as the previous question, but different error(s). Identify the error(s):
+    {% highlight c++ %}
+    int day = 4;
+    switch (day) 
+      case 6:
+        cout << "Today is Saturday";
+        break;
+      case 7:
+        cout << "Today is Sunday";
+        break;
+      default
+        cout << "Looking forward to the Weekend";
+        
+    {% endhighlight %}
+\end{multipart}
+
+\begin{multipart}
+    The code below is meant to determine if an angle is acute, obtuse, or right. Spot the error(s):
+    {% highlight c++ %}
+    #include <iostream>
+    using namespace std;
+    
+    int main()
+    {
+        int angle =40;
+        if (x<90) { 
+            cout<<"It is an acute angle." ;
+        }
+        else if(x=90) {
+            cout<<"It is a right angle.";
+        }
+        els{
+            cout<<"It is an obtuse angle.";
+        }
+    }
+    {% endhighlight %}
+\end{multipart}
+
+\begin{multipart}
+    The code below implements an exclusive OR logical operation, which means that only one of the conditions may be true. Spot the error(s):
+    {% highlight c++ %}
+    // This program implements XOR
+    #include iostream
+    using namespace std;
+    
+    //Set the variable value to 1 when x or y is 1
+    int main(){
+        int x = 1,y=0,value;
+        
+        if (x == 1){ 
+            if(y==0)
+            value = 1; 
+    
+            else
+            y == 0; 
+         
+        if(x==0){ 
+            if(y==0)
+            value = 0; 
+    
+            else
+            value = 1;
+        }
+        
+        cout < value < endl;
+        return 0;
+    }
+    {% endhighlight %}
+\end{multipart}
+
+&nbsp;&nbsp;&nbsp;
+### Final Velocity of a Rocket
+
+Write a C++ program that will calculate the final velocity of a rocket after 20 seconds. The program will ask the user for the initial velocity (m/s) and the fuel type (A, B, C). The rate of acceleration will depend on the type of fuel and the initial velocity.
+
+
+    1. If initial velocity is less than 10, then the acceleration rate for each fuel type is as follows
+    
+        1. Fuel type A $\rightarrow$ 5 (m/s) per second
+        1. Fuel type B $\rightarrow$ 10 (m/s) per second
+        1. Fuel type C $\rightarrow$ 20 (m/s) per second
+    
+   1. If initial velocity is greater than or equal to 10 and less than or equal to 40, then the acceleration rate
+   for each fuel type is as follows
+   
+        1. Fuel type A $\rightarrow$ 6 (m/s) per second
+        1. Fuel type B $\rightarrow$ 12 (m/s) per second
+        1. Fuel type C $\rightarrow$ 24 (m/s) per second
+   
+    1. If initial velocity is greater than 40, then the acceleration rate for each fuel type is as follows
+    
+        1. Fuel type A $\rightarrow$ 3 (m/s) per second
+        1. Fuel type B $\rightarrow$ 6 (m/s) per second
+        1. Fuel type C $\rightarrow$ 9 (m/s) per second 
+    
+
+
+Below are some sample runs. User input is shown in bold. 
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+    Enter the initial velocity:
+    
+    \textbf{70}
+    
+    Enter the fuel type:
+    
+    \textbf{C}
+    
+    The final speed is 250 m/s.
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+    Enter the initial velocity:
+    
+    \textbf{5}
+    
+    Enter the fuel type:
+    
+    \textbf{A}
+    
+    The final velocity is 105 m/s.
+</div>
+
+\newpage
+
+\begin{multipart}
+    Write out the steps you would use to solve this problem by hand as pseudocode. 
+\end{multipart}
+
+\vspace{10cm}
+
+\begin{multipart}
+    Pick possible inputs for your program. Follow the steps you wrote for these values to find your result, and verify it.
+\end{multipart}
+
+\vspace{3.5cm}
+
+\begin{multipart}
+     Identify two possible values that are ``boundaries" in this problem that you will have to test. What should happen for these values?
+\end{multipart}
+
+\vspace{3.5cm}
+
+\begin{multipart}
+    Translate your pseudocode into a c++ program to solve the above code.
+\end{multipart}
+
