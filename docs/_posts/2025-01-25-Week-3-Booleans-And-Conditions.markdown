@@ -138,6 +138,59 @@ Booleans can also be represented using integers, and will print that way by defa
 You can build if statements using boolean variables or boolean expressions.
 
 &nbsp;&nbsp;&nbsp;
+### Truthy/Falsy
+This section was added Jan 28 to help give more context for intersted students.
+
+It is important to note that computers work on values `1` and `0`. Accordingly the boolean value `true` is encoded as a `1` and can be used as a `1`. The expression `true + 5` s valid and evalutates to `6`. Likewise `false` is encoded as `0`. Don't take my word for it, compile and run the following program:
+
+{% highlight c++ %}
+#include<iostream>
+using namespace std;
+
+
+int main() {
+    cout << true + 5 << endl;
+}
+{% endhighlight %}
+
+Some things are actually booleans `true` and `false`, while some things are not booleans, but can be treated as booleans. We call these "truthy" and "falsy". Below is a table summarizing a few examples.
+
+| **type** | **truthy** examples | **falsy** examples |
+| --- | --- | --- |
+| int | 1 <br /> 1300 | 0 |
+| double | 12.3 <br /> -7.0 | 0.0  |
+
+We can show this with code as follows:
+
+{% highlight c++ %}
+#include<iostream>
+using namespace std;
+
+
+int main() {
+
+    int i0, i1, i2;
+    i0 = 0;
+    i1 = 1;
+    i2 = 1300;
+
+    double d0, d1, d2;
+    d0 = 0.0;
+    d1 = 12.3;
+    d2 = -7.0;
+
+    cout << "1 means truthy, 0 means falsy" << endl;
+    cout << i0 << ":: " << !!i0 << endl;
+    cout << i1 << ":: " << !!i1 << endl;
+    cout << i2 << ":: " << !!i2 << endl;
+    cout << d0 << ":: " << !!d0 << endl;
+    cout << d1 << ":: " << !!d1 << endl;
+    cout << d2 << ":: " << !!d2 << endl;
+}
+{% endhighlight %}
+
+
+&nbsp;&nbsp;&nbsp;
 ### Conditionals
 Conditional statements, also known as decision statements or branching statements, are used to make a decision based on condition. A condition is an expression that evaluates to a boolean value, either true or false. [Execution in C++](https://cal-linux.com/tutorials/conditionals.html) is a good online resource for learning about conditionals in C++.
 
