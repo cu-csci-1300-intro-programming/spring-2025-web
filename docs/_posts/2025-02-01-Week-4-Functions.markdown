@@ -55,14 +55,14 @@ An example of a simple switch statement:
 {% highlight c++ %}
 // Switch statement syntax:
 switch (n){
-case 1:
-// code to be executed if n == 1;
-break;
-case 2:
-// code to be executed if n == 2;
-break;
-default:
-// code to be executed if n doesn’t match any cases
+    case 1:
+        // code to be executed if n == 1;
+        break;
+    case 2:
+        // code to be executed if n == 2;
+        break;
+    default:
+        // code to be executed if n doesn’t match any cases
 }
 {% endhighlight %}
 
@@ -117,7 +117,7 @@ Here is the syntax for a function definition:
 {% highlight c++ %}
 returnType functionName(parameterList)
 {
-//function body
+    //function body
 }
 {% endhighlight %}
 
@@ -131,14 +131,14 @@ This may not immediately look like the functions you have seen in math, but they
 {% highlight c++ %}
 // The function `f(x) = x^2 + 5` written in C++:
 double f(double x){
-return ( x\*x + 5 );
+    return ( x\*x + 5 );
 }
 {% endhighlight %}
 
 {% highlight c++ %}
 // The function `g(x,y) = x^2+y^3` written in C++:
 double g(double x, double y){
-return ( x*x + y*y\*y );
+    return ( x*x + y*y\*y );
 }
 {% endhighlight %}
 
@@ -149,7 +149,7 @@ I used `double` for the parameters and the return type because these functions i
 #include<cmath>
 
 double f(double x){
-return pow(x, 2) +5;
+    return pow(x, 2) +5;
 }
 {% endhighlight %}
 
@@ -158,7 +158,7 @@ return pow(x, 2) +5;
 #include<cmath>
 
 double g(double x, double y){
-return pow(x, 2) + pow(y, 3);
+    return pow(x, 2) + pow(y, 3);
 }
 {% endhighlight %}
 
@@ -172,13 +172,13 @@ If you wanted to then use these functions to perform some calculations, you coul
 using namespace std;
 
 double g(double x, double y){
-return pow(x, 2) + pow(y, 3);
+    return pow(x, 2) + pow(y, 3);
 }
 
-int main(){
-double firstValue = g(4.0, 5.0);
-double secondValue = g(2, 3);
-double myX, myY;
+int main() {
+    double firstValue = g(4.0, 5.0);
+    double secondValue = g(2, 3);
+    double myX, myY;
 
     cout << "What value would you like for X?" << endl;
     cin >> myX;
@@ -202,15 +202,15 @@ using namespace std;
 //funtion to add two numbers
 int sum( int num_one, int num_two)
 {
-int result = num_one + num_two;
-return result;
+    int result = num_one + num_two;
+    return result;
 }
 
 //main function
 int main()
 {
-//declare parameter value
-int parameter_var = 1;
+    //declare parameter value
+    int parameter_var = 1;
 
     //call the function
     int sum_result = sum(parameter_var, 99);
@@ -233,15 +233,15 @@ using namespace std;
 
 int sum( int num_one, int num_two)
 {
-int result = num_one + num_two;
-return result;
+    int result = num_one + num_two;
+    return result;
 }
 
-//main function
+// main function
 int main()
 {
-// NOTE: a result variable set to 42 in main
-int result = 42;
+    // NOTE: a result variable set to 42 in main
+    int result = 42;
 
     int parameter_var = 1;
 
@@ -296,28 +296,29 @@ See the example code below:
 {% highlight c++ %}
 // This is testing a function that prints whether a grade is passing or not.
 void checkGrade(char grade){
-switch(grade){
-case 'a':
-case 'b':
-case 'c':
-cout << "You passed!" << endl;
-break;
-case 'd':
-cout << "You did not pass, but you were close." << endl;
-break;
-case 'f':
-cout << "You failed." << endl;
-break;
-default:
-cout << "That is not a valid grade." << endl;
-}
+    switch(grade) {
+        case 'a':
+        case 'b':
+        case 'c':
+            cout << "You passed!" << endl;
+            break;
+        case 'd':
+            cout << "You did not pass by some University standards"
+                 << ", but you were close." << endl;
+            break;
+        case 'f':
+            cout << "You failed." << endl;
+            break;
+        default:
+            cout << "That is not a valid grade." << endl;
+    }
 }
 
 int main(){
-checkGrade('b'); //Should output "You passed!"
-checkGrade('d'); //Should output "You did not pass, but you were close."
-checkGrade('f'); //Should output "You failed."
-checkGrade('m'); //Should output "That is not a valid grade."
+    checkGrade('b'); //Should output "You passed!"
+    checkGrade('d'); //Should output "You did not pass, but you were close."
+    checkGrade('f'); //Should output "You failed."
+    checkGrade('m'); //Should output "That is not a valid grade."
 }
 {% endhighlight %}
 
@@ -342,23 +343,23 @@ Your test will look something like this:
 See the sample code below:
 
 {% highlight c++ %}
-The below code shows examples of how to test integer functions with a simple addition function:
+// The below code shows examples of how to test integer functions with a simple addition function:
 #include <iostream>
 #include <cassert>
 using namespace std;
 
 int addInts(int num1, int num2)
 {
-// add num1 and num2 before returning
-return num1 + num2;
+    // add num1 and num2 before returning
+    return num1 + num2;
 }
 
 int main()
 {
-// test 1 for addInts
-assert(addInts(5, 6) == 11);
-// test 2 for addInts
-assert(addInts(10, 10) == 20);
+    // test 1 for addInts
+    assert(addInts(5, 6) == 11);
+    // test 2 for addInts
+    assert(addInts(10, 10) == 20);
 }
 {% endhighlight %}
 
@@ -370,17 +371,16 @@ For non-void functions that return a double, use an `assert` statement from the 
 
 {% highlight c++ %}
 // This is a required function to successfully test Double functions in C++:
-/\*\*
-
-- doublesEqual will test if two doubles are equal to each
-- other within two decimal places.
-  \*/
-  bool doublesEqual(double a, double b, const double epsilon = 1e-2)
-  {
-  double c = a - b;
-  return c < epsilon && -c < epsilon;
-  }
-  {% endhighlight %}
+/*
+  - doublesEqual will test if two doubles are equal to each
+  - other within two decimal places.
+*/
+bool doublesEqual(double a, double b, const double epsilon = 1e-2)
+{
+    double c = a - b;
+    return c < epsilon && -c < epsilon;
+}
+{% endhighlight %}
 
 Because the `double` type holds so much precision, it will be hard to compare the equality of a function that returns a `double` with another `double` value. To overcome this challenge, we can compare `double` values within a certain range of precision or decimal places. The function above compares the equality of two values `a` and `b` up to two decimal places. This function returns `true` if the values `a` and `b` are equal with each other up to two decimal places.
 
@@ -401,30 +401,28 @@ See the sample code below:
 #include <cassert>
 using namespace std;
 
-/\*\*
+/*
+  - doublesEqual will test if two doubles are equal to each other within
+  - two decimal places.
+*/
+bool doublesEqual(double a, double b, const double epsilon = 1e-2) {
+    double c = a - b;
+    return c < epsilon && -c < epsilon;
+}
 
-- doublesEqual will test if two doubles are equal to each other within
-- two decimal places.
-  \*/
-  bool doublesEqual(double a, double b, const double epsilon = 1e-2) {
-  double c = a - b;
-  return c < epsilon && -c < epsilon;
-  }
-
-/\*\*
-
-- reciprocal returns the value of 1 divided by the number
-- passed into the function.
-  \*/
-  double reciprocal(int num) {
-  return 1.0 / num;
-  }
+/*
+  - reciprocal returns the value of 1 divided by the number
+  - passed into the function.
+*/
+double reciprocal(int num) {
+    return 1.0 / num;
+}
 
 int main() {
-// test 1 for reciprocal
-assert(doublesEqual(reciprocal(6), 0.16));
-// test 2 for reciprocal
-assert(doublesEqual(reciprocal(12), 0.083));
+    // test 1 for reciprocal
+    assert(doublesEqual(reciprocal(6), 0.16));
+    // test 2 for reciprocal
+    assert(doublesEqual(reciprocal(12), 0.083));
 }
 {% endhighlight %}
 
@@ -444,8 +442,11 @@ In these times, there are a few possible options. First, your algorithm may be i
 ## PreQuiz Assignment (due Monday Feb 3 at 9am)
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="">Recitation 4 Pre-quiz</a>
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/455936">Recitation 4 Pre-quiz</a>
 </div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation
 
 &nbsp;&nbsp;&nbsp;
 
@@ -458,16 +459,16 @@ char grade;
 cout << "Enter your grade (A, B, C, D, F): " << endl;
 cin >> grade;
 switch (grade) {
-case "A":
-cout << "Excellent work!" << endl;
-case 'B':
-cout << "Good job!" << endl;
-case 'C':
-cout << "You passed!" << endl;
-case 'D':
-cout << "You need to work harder." << endl;
-default:
-cout << "Invalid grade entered." << endl;
+    case "A":
+        cout << "Excellent work!" << endl;
+    case 'B':
+        cout << "Good job!" << endl;
+    case 'C':
+        cout << "You passed!" << endl;
+    case 'D':
+        cout << "You need to work harder." << endl;
+    default:
+        cout << "Invalid grade entered." << endl;
 }
 {% endhighlight %}
 
@@ -480,14 +481,14 @@ Below is code that attempts to take in the day of the week as a user input and r
 {% highlight c++ %}
 int day = 4;
 switch (day)
-case 6:
-cout << "Today is Saturday";
-break;
-case 7:
-cout << "Today is Sunday";
-break;
-default
-cout << "Looking forward to the Weekend";
+    case 6:
+       cout << "Today is Saturday";
+        break;
+    case 7:
+        cout << "Today is Sunday";
+        break;
+    default
+        cout << "Looking forward to the Weekend";
 {% endhighlight %}
 
 &nbsp;&nbsp;&nbsp;
@@ -502,16 +503,19 @@ using namespace std;
 
 int main()
 {
-int angle = 40;
-if (x<90) {
-cout<<"It is an acute angle." ;
-}
-else if(x=90) {
-cout<<"It is a right angle.";
-}
-els{
-cout<<"It is an obtuse angle.";
-}
+    int angle = 40;
+    if ( x < 90 )
+    {
+        cout<<"It is an acute angle." ;
+    }
+    else if( x = 90 )
+    {
+        cout<<"It is a right angle.";
+    }
+    els 
+    {
+        cout<<"It is an obtuse angle.";
+    }
 }
 
 {% endhighlight %}
@@ -531,19 +535,19 @@ using namespace std;
 int main()
 {
 int x=1,y=0,value;
-if (x==1){
-if(y==0)
-value = 1;
+    if (x==1){
+  if(y==0)
+  value = 1;
 
-    else
-      y == 0;
+  else
+    y == 0;
 
-    if(x==0){
-      if(y==0)
-        value = 0;
+  if(x==0){
+    if(y==0)
+      value = 0;
 
-      else
-        value = 1;
+        else
+          value = 1;
 
 }
 
@@ -622,6 +626,11 @@ Translate your pseudocode into a c++ program to solve the above code.
 
 ## Homework
 
+{% include underConstruction.html caption='Please check back on Saturday. We will get you the homework then.' %}
+
+
+
+{% comment %} Must remove both this line and the line near the bottom about endcomment
 &nbsp;&nbsp;&nbsp;
 
 ### Homework Problem 1: Car switch
@@ -1041,3 +1050,4 @@ Below are a few examples of valid runs of the program. The examples include more
 <p>The time taken is: 1143.37 minutes.</p>
 
 </div>
+{% endcomment %}
