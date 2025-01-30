@@ -696,7 +696,7 @@ You want to learn to play an instrument, but you need to know how much it will c
 | Brass        | Trombone       | $500      |
 | Woodwind     | Flute          | $425      |
 | Woodwind     | Saxophone      | $225      |
-| Percussion   | Snare          | $275      |
+| Percussion   | Snare Drum     | $275      |
 | Percussion   | Cymbals        | $350      |
 
 Write a menu-driven program that asks the user to input an instrument category and then an instrument. The program should give the user the price.
