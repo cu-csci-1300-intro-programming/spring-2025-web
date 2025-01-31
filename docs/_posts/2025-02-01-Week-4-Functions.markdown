@@ -626,11 +626,7 @@ Translate your pseudocode into a c++ program to solve the above code.
 
 ## Homework
 
-{% include underConstruction.html caption='Please check back on Saturday. We will get you the homework then.' %}
 
-
-
-{% comment %} Must remove both this line and the line near the bottom about endcomment
 &nbsp;&nbsp;&nbsp;
 
 ### Homework Problem 1: Car switch
@@ -1050,4 +1046,3 @@ Below are a few examples of valid runs of the program. The examples include more
 <p>The time taken is: 1143.37 minutes.</p>
 
 </div>
-{% endcomment %}
