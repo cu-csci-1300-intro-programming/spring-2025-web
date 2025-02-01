@@ -631,7 +631,6 @@ Translate your pseudocode into a c++ program to solve the above code.
 <p>Accordingly, please author and test your code in VSCode thoroughly prior to using coderunner.</p>
 </div>
 
-
 &nbsp;&nbsp;&nbsp;
 
 ### Homework Problem 1: Car switch
