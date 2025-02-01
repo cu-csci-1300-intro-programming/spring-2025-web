@@ -716,7 +716,7 @@ Below are a few examples of valid runs of the program. The examples include more
 
 <p><span style="color:red">2</span></p>
  
-<p>Your instrument will be $500</p>
+<p>Your instrument will be $500.</p>
 
 </div>
 
@@ -729,7 +729,7 @@ Below are a few examples of valid runs of the program. The examples include more
 
 <p><span style="color:red">2</span></p>
  
-<p>Your instrument will be $350</p>
+<p>Your instrument will be $350.</p>
 
 </div>
 
@@ -1003,37 +1003,37 @@ Below are a few examples of valid runs of the program. The examples include more
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 <p>Enter area of the farmland in sq ft:</p>
 
-<p><span style="color:red">1200</span></p>
- 
-<p>Enter the type of sowing machine to be used:</p>
-
-<p><span style="color:red">W</span></p>
- 
-<p>The time taken is: 1800 minutes.</p>
-
-</div>
-
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<p>Enter area of the farmland in sq ft:</p>
-
-<p><span style="color:red">3244</span></p>
+<p><span style="color:red">1400</span></p>
  
 <p>Enter the type of sowing machine to be used:</p>
 
 <p><span style="color:red">X</span></p>
  
-<p>The time taken is: 10813.33 minutes.</p>
+<p>The time taken is: 4666.67 minutes.</p>
 
 </div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 <p>Enter area of the farmland in sq ft:</p>
 
-<p><span style="color:red">5000</span></p>
+<p><span style="color:red">756.98</span></p>
  
 <p>Enter the type of sowing machine to be used:</p>
 
-<p><span style="color:red">A</span></p>
+<p><span style="color:red">Y</span></p>
+ 
+<p>The time taken is: 2649.43 minutes.</p>
+
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter area of the farmland in sq ft:</p>
+
+<p><span style="color:red">-1000</span></p>
+ 
+<p>Enter the type of sowing machine to be used:</p>
+
+<p><span style="color:red">W</span></p>
  
 <p>Area or machine type is invalid. Time cannot be calculated.</p>
 </div>
@@ -1041,12 +1041,13 @@ Below are a few examples of valid runs of the program. The examples include more
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 <p>Enter area of the farmland in sq ft:</p>
 
-<p><span style="color:red">1000.45</span></p>
+<p><span style="color:red">2000</span></p>
  
 <p>Enter the type of sowing machine to be used:</p>
 
-<p><span style="color:red">Z</span></p>
- 
-<p>The time taken is: 1143.37 minutes.</p>
+<p><span style="color:red">y</span></p>
+
+<p>Area or machine type is invalid. Time cannot be calculated.</p> 
 
 </div>
+
