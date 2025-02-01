@@ -24,7 +24,12 @@ categories: jekyll update
 * Do not remove this line (it will not be displayed)
 {:toc}
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Readings
+Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
+1. Monday: Martin Luther King Jr. Day (classes canceled)
+1. Wednesday: 2.5, 7.3
+1. Friday: 3.1, 3.2, 3.7
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Background
