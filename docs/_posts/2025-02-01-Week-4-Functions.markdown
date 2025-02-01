@@ -626,6 +626,11 @@ Translate your pseudocode into a c++ program to solve the above code.
 
 ## Homework
 
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+<p>Please note, that starting here in homework 4, a penalty is applied for excessive use of the "Check" button on coderunner. For each question, you may "Check" the work on coderunner 25 times for free. After that a penalty applies as with percentages follows:  2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 45, 50.</p>
+<p>Accordingly, please author and test your code in VSCode thoroughly prior to using coderunner.</p>
+</div>
+
 
 &nbsp;&nbsp;&nbsp;
 
