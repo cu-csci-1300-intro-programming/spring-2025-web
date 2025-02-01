@@ -716,7 +716,7 @@ Below are a few examples of valid runs of the program. The examples include more
 
 <p><span style="color:red">2</span></p>
  
-<p>Your instrument will be $500</p>
+<p>Your instrument will be $500.</p>
 
 </div>
 
@@ -729,7 +729,7 @@ Below are a few examples of valid runs of the program. The examples include more
 
 <p><span style="color:red">2</span></p>
  
-<p>Your instrument will be $350</p>
+<p>Your instrument will be $350.</p>
 
 </div>
 
