@@ -1,0 +1,399 @@
+---
+layout: post
+title: "Week 7: Arrays"
+date: 2025-01-01 09:00:00 -0700
+categories: jekyll update
+---
+
+
+
+
+\begin{abstract}
+This week you will:
+\begin{enumerate}
+    1. Learn how to make multidimensional arrays
+    1. Learn how to use arrays in functions
+    1. Be able to distinguish between pass by reference and pass by value
+
+\end{enumerate}
+    
+\end{abstract}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Background
+
+&nbsp;&nbsp;&nbsp;
+### Passing Arrays By Reference
+Up until now, when calling functions, we have always **passed by value**. When a parameter is passed in a function call, a new variable is declared and initialized to the value passed in the function call.
+
+Observe that the variable `x` in `main` and variable `x` in `AddOne` are separate variables in memory. When `AddOne` is called with `x` on line 10, it is the value of `` (i.e. 5) that is passed to the function. This value is used to initialize a new variable `x` that exists only in `AddOne`'s scope. Thus the value of the variable `x` in main's scope remains unchanged even after the function `AddOne` has been called.
+
+\begin{example} 
+Pass by value:
+{% highlight c++ %}
+void AddOne(int x){
+    x = x + 1;
+    cout << x << endl;
+}
+
+int main(){
+    int x = 5;
+    cout << x << endl;
+    AddOne(x);
+    cout << x << endl;
+}
+{% endhighlight %}
+
+Output:
+
+{% highlight c++ %}
+5
+6
+5
+{% endhighlight %}
+\end{example}
+
+**Passing By Reference** Arrays, on the other hand, are passed by reference (a reference to the original array’s location in the computer’s memory). So, when an array is passed as a parameter, the original array is used by the function. Observe that there is only one array `X` in memory for the following example. When the function `AddOne` is called on line 10, a reference to the original array `X` is passed to `AddOne`. Because the array `X` is passed by reference, any modifications done to `X` in `AddOne` are done to the original array. These modifications persist and are visible even after the flow of control has exited the function and we return to main.
+
+\begin{example}
+    Pass by reference example:
+
+    {% highlight c++ %}
+void AddOne(int X[]){
+   X[0] = X[0] + 1;
+   cout << X[0] << endl;
+}
+
+int main(){
+    int X[4] = {1, 5, 3, 2};
+    cout << X[0] << endl;
+    AddOne(X);
+    cout << X[0] << endl;
+}
+    {% endhighlight %}
+
+    Output:
+
+    {% highlight c++ %}
+1
+2
+2
+    {% endhighlight %}
+\end{example}
+
+When we pass a one-dimensional array as an argument to a function we also provide its length. For two-dimensional arrays, in addition to providing the length (or number of rows), we will also assume that we know the length of each of the subarrays (or the number of columns). A function taking a two-dimensional array with 10 columns as an argument then might look something like this:
+
+{% highlight c++ %}
+    void TwoDimensionalFunction(int matrix[][10], int rows){...}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+### Multidimensional Arrays
+
+In C++ we can declare an array of arrays known as a multidimensional array. Multidimensional arrays store data in tabular form.
+
+**How to Declare Multidimensional Arrays**
+
+{% highlight c++ %}
+        // data_type array_name[dimension_1][dimension_2]....;
+        int myInts[7][5];
+        bool myBooleans[10][15][12];
+        string myStrings[15][10];
+{% endhighlight %}
+
+**How to Initialize Multidimensional arrays (Method 1)**
+
+{% highlight c++ %}
+        int myInts[2][2] = {1, 2, 3, 4};
+{% endhighlight %}
+
+The 2D array in this case will be filled from left to right from top to bottom.
+
+{% highlight c++ %}
+        int myInts[2][2] = {{1, 2}, {3, 4}};
+{% endhighlight %}
+
+You can also initialize a 2D array by explicitly separating the rows as shown above.
+
+**How to Initialize Multidimensional arrays (Method 2)** You can also initialize elements using nested loops:
+
+{% highlight c++ %}
+        int myInts[2][2];
+        for(int i=0; i < 2; i++)
+        {
+            for(int j=0; j < 2; j++)
+            {
+                myInts[i][j] = i + j;
+            }
+        }
+{% endhighlight %}
+
+The above code will create the following 2D array: {{0, 1}, {1, 2}}.
+
+**How to Access Elements in a Multidimensional array**
+You can use `myInts[i][j]` to access the ith row and jth column of a 2D array
+
+Multidimensional arrays can be iterated using nested loops as shown below:
+
+{% highlight c++ %}
+        int myInts[2][2] = {{0, 1}, {1, 2}};
+        int res = 0;
+        for(int i=0; i < 2; i++)
+        {
+            for(int j=0; j < 2; j++)
+            {
+                res = res + myInts[i][j];
+            }
+        }
+        cout << "Result is " << res;
+{% endhighlight %}
+
+Output: `Result is 4`
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## PreQuiz
+
+\begin{problem}
+    True or False: The following is valid C++ and will not return an error.
+{% highlight c++ %}
+#include <iostream>
+using namespace std;
+int main()
+{
+bool intArray[3] = {true,false,false,false,true};
+}
+{% endhighlight %}
+\end{problem}
+
+\begin{problem}
+    True or False: The following is valid C++ and will not return an error.
+{% highlight c++ %}
+#include <iostream>
+using namespace std;
+int main()
+{
+bool intArray[7] = {true,false,false,false,true};
+}
+{% endhighlight %}
+\end{problem}
+
+\begin{problem}
+    The program prints the contents of a string array. Fill in the blank accordingly:
+
+    \begin{minted}[breaklines=true]{c++}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // Create a character array of size 6 and initialize it with the characters 'h', 'e', 'l', 'l', 'o', '\0'
+    _____________________________ // FILL IN THIS LINE
+
+    cout << "The contents of the array are: ";
+    for(int i = 0; i < 5; i++)
+    {
+        cout << message[i] << " ";
+    }
+    return 0; 
+}
+
+{% endhighlight %}
+\end{problem}
+
+\begin{problem}
+The program below creates an array of strings and then prints the first letter of every string, the second letter of every string, so on and so forth. Fill in the blank accordingly.
+
+\begin{minted}[breaklines=true]{c++}
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    string fruits[] = {"Apple", "Banana", "Cherry", "Date", "Fig", "Grape", "Mango"};
+
+    int longest_string = fruits[0].length();
+    for (int i = 1; i < 7; i++){
+        if (______________){ //FILL IN THIS LINE
+            longest_string = fruits[i].length();
+        }
+    }
+
+    for (int i = 0; i < longest_string; i++){
+        for (int j = 0; j < 7; j++){ 
+            if (i < static_cast<int>(fruits[j].length())){
+                cout << ____________ << endl; // FILL IN THIS LINE
+            }
+        }
+    }
+
+}
+
+{% endhighlight %}
+\end{problem}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation
+
+&nbsp;&nbsp;&nbsp;
+### Spot The Error
+\begin{multipart}
+Given two positive integers `x` and `y`, this programs prints all the integer points (i, j) in the rectangle formed by (0, 0) and (x, y). Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+    #include <iostream>
+    using namespace std;
+    
+    int main() 
+    {
+        int x = 3, y = 4;
+    
+        for(int i = 0; i >= x; j++)
+        {
+            for(int j = 0; j <= y; j++)
+            {
+                cout << "(" << i << ", " << j << ")  ";
+            }
+            cout << endl;
+        }
+    
+    }
+{% endhighlight %}
+
+\begin{multipart}
+The program prints the contents of an array and then calculates the sum of all the elements. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+    #include <iostream>
+    using namespace std;
+    
+    int main()
+    {
+        int numbers[5] = {10, 20, 30, 40, 50};
+    
+        cout << "The contents of the array are: ";
+        for (int i = 0; i <= 5; i++)
+        {
+            cout << numbers << " ";
+        }
+        cout << endl;
+    
+        for (int i = 0; i <= 5; i++)
+        {
+            int sum = 0;
+            sum += numbers;
+        }
+    
+        cout << "Sum = " << sum << endl;
+        return 0;
+    }
+{% endhighlight %}
+
+\newpage
+
+\begin{multipart}
+The program finds and prints all prime factors of a given number `num`. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+    #include <iostream>
+    #include <cmath>
+    
+    using namespace std; 
+      
+    void primeFactors(int num)
+    { 
+        int n;
+        while (n % 2 == 0) 
+        { 
+            cout << 2; 
+            n = n / 2; 
+        } 
+    
+        for (int i = 3; i <= sqrt(n); i++)
+        { 
+            while (n % i == 0) 
+            { 
+                cout << i << " "; 
+                n = n / i; 
+            } 
+        } 
+      
+        if (n > 2) 
+        {
+            cout << n; 
+        }
+        cout<<endl;
+    } 
+    
+    int main() 
+    { 
+        int num = 315; 
+        primeFactors(num); 
+        return 0; 
+    }
+{% endhighlight %}
+
+\begin{multipart}
+ The program prints the product of the length of contents of a string array. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+    #include <iostream>
+    #include <string>
+    using namespace std;
+    
+    int main()
+    {
+        string languages[6] = {"C++","Python","Java","Matlab","Julia"};
+        int product = 0;
+        int total = languages.length();
+    
+        for(int i = 0; i <= total; i++)
+        {
+            product *= languages[i].length;
+        }
+    
+        cout << "Product of lengths = " << product << endl;
+        return 0;
+    }
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+### Combinations
+
+Create two integer arrays `set1` and `set2` in the `main()`. The length of `set1` and `set2` should be 5 and 2, respectively. Prompt the user to enter 5 integers that go into `set1`. Do the same with 2 integers for `set2`. Then use the arrays to print all the possible pairs of the elements in `set1` with the elements in `set2`.
+
+**Example output** (red is user input):
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+Please enter 5 integers for the first set: \\
+<span style="color:red">1 2 3 4 5</span>\\
+Please enter 2 integers for the second set: \\
+<span style="color:red">10 20</span>\\
+1-10 1-20\\
+2-10 2-20\\
+3-10 3-20\\
+4-10 4-20\\
+5-10 5-20
+</div>
+
+
+\begin{multipart}
+    Write out the steps you would use to solve this problem by hand as pseudocode. 
+\end{multipart}
+
+\newpage
+
+\begin{multipart}
+Pick possible inputs for your program. Choose as many inputs as you think you need to thoroughly test your program. Follow the steps you wrote for these values to find your result, and verify it.
+\end{multipart}
+
+\vspace{14cm}
+
+\begin{multipart}
+Implement your solution in C++ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make you sure you test for the values used in your sample runs, and for the boundary conditions.
+\end{multipart}
+
+%no homework this week
