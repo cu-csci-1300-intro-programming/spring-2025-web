@@ -200,12 +200,274 @@ Does your code compile?
 
 ## Recitation
 
-{% comment %}
-ADVAIT: please update the recitation details. sample in the _ignorForNow/week5fall.tex. Do me a favore and remind me that I need to update the prequiz thing.
-{% endcomment %}
+&nbsp;&nbsp;&nbsp;
 
-{% include uc.html caption='we are getting the recitation ready now' %}
+### Recitation Spot The Error - Problem 1
 
+The program below will display the average of three values by calling the function `findMean`. Identify the error(s) in the code below, and write the correct line(s).
+
+{% highlight c++ %}
+#include <iostream>
+
+using namespace std;
+
+double findMean(int a, int b, int c)
+{
+    int mean = a+b+c / 3
+    return mean;
+}
+
+int main()
+{
+    double average = avg(2,5,2);
+    assert(average == 3);
+    return 0;
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 2
+
+The program below checks if the two strings given are the same. Identify the error(s) in the code below, and write the correct line(s).
+
+{% highlight c++ %}
+#include <iostream>
+#include <string>
+using namespace std;
+
+string passcodeMatchCheck(string passcode, string confirmPasscode) 
+{
+    return passcode == confirmPasscode;
+}
+
+int main()
+{
+   bool passcodeMatch = passcodeMatchCheck(2158,"2158");
+   assert(passcodeMatch == true);
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 3
+
+The same company uses a member ID as the username for its employees. The employees all have a four digit member ID, and the member ID cannot start with a 0.
+
+{% highlight c++ %}
+#include <iostream>
+#include <cassert>
+using namespace std;
+
+bool idLengthCheck(int ID) 
+{
+    if (ID >= 999 || ID < 10000)
+    {
+        return true;
+    }
+    return false;
+}
+
+int main()
+{
+    assert(idLengthCheck(12345678));
+    assert(idLengthCheck("123456789") == False);
+    return 0;
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 4
+
+The program below will use two functions: one to check for password match and another to check if the ID is valid before registering the user. Assume the relevant functions have been defined successfully. Identify the error(s) in the code below, and write the correct line(s).
+
+{% highlight c++ %}
+#include <iostream>
+#include <string>
+#include <cassert>
+using namespace std;
+
+bool passwordMatchCheck(char, char);
+bool idLengthCheck(char);
+
+int main() {
+    int ID;
+    string password;
+    string confirmPassword;
+
+    cout << "Enter your member ID: ";
+    cin >> ID;
+    assert(idLengthCheck(ID));
+    
+    cout << "Enter your password: ";
+    cin >> password;
+
+    cout << "Confirm your password: ";
+    cin >> confirmPassword;
+
+    if (passwordMatchCheck(password, confirmPassword)) 
+    {
+        cout << "Password set successfully for " << username << "." << endl;
+    } 
+    else if (!passwordMatchCheck(password, confirmPassword)) 
+    {
+        cout << "Passwords do not match." << endl;
+    } 
+    else if(!idLengthCheck(ID)) 
+    {
+        cout << "ID is invalid." << endl;
+    }
+
+    return 0;
+}
+
+bool passwordMatchCheck(string password, string confirmPassword)
+{
+    // appropriate definitions
+}
+
+bool idLengthCheck(string password)
+{
+    // appropriate definitions
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error (Style Issues) - Problem 5
+
+The program below is a working program that uses the `getPrice` function to compute the price of a wall frame of a given area and color. This code does not contain any syntax or logical errors. However, it has multiple style errors making the code very difficult to read. These errors can range from usage of unintended whitespace to having extraneous variables or clauses in your code. Identify the style error(s) in the code below and rewrite the code to improve readability.
+
+{% highlight c++ %}
+#include <iostream>
+#include <string>
+#include <cassert>
+using namespace std;
+
+double getPrice(double area, string color){
+assert(area>=0); double cost = 0.0;
+if (color == "green"){
+    cost = 4; }
+    else if (color == "red")
+    { cost = 3; } 
+    else if (color == "orange")
+    {
+    cost = 2;
+    }
+    else if (color == "blue")
+    {
+        cost = 1;
+    } return area * cost;}
+
+int main()
+{
+    string color, shape;
+    int area_choice;
+    double radius;
+    double area = 0;
+
+cout << "Enter the area of the frame: (1) 5x5 (2) 4x6 (3) 8x10" << endl;
+cin >> area_choice;
+    assert(
+        area_choice == 1 || area_choice == 2 || area_choice == 3
+    );
+    if(area_choice == 1){area = 5*5; }
+    else if (area_choice == 2){area = 4*6; }
+    else if (area_choice == 3){area = 8*10; }
+
+cout << "Enter the color of the frame: (green, red, orange, blue): ";
+cin >> color;
+    assert(
+        color == "green" || color == "red" || color == "orange" || color == "blue"
+    );
+
+    double price = getPrice(area, color);
+
+    cout << "You will receive a "<< color << " color frame with a price of $" << price << ". ";
+    cout << "Thank you for your business."<<endl;
+
+    return 0;
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+
+### Recitation Pseudocode Analysis Problem 6
+
+What output does the following pseudocode produce?
+
+```plaintext
+Start
+  Declare an integer variable `m` and initialize it to -1.
+  Declare an integer variable `i` and initialize it to 0.
+  While `i` is less than 5, do:
+    Declare an integer variable `s` and initialize it to 1.
+    If `i` is not 0 and the remainder of `i` divided by 3 is 0, then:
+      Multiply `s` by -1 and assign the result back to `s`.
+      Print the product of `m` and `s`.
+    Else:
+      Increment `m` by 2.
+      Print the value of `m`.
+    Increment `i` by one.
+End
+```
+
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Valentine's Day! - Problem 7
+
+At the Violet Peak Cafe in CU Boulder, the arrival of valentine's week means it’s time to stock up on specialty coffee beans and syrups. To efficiently manage storage, the cafe uses two types of containers:
+
+1. Cylindrical Containers for large batches of coffee beans.  
+2. Spherical Containers for special red velvet mocha syrup.
+
+The manager wants to calculate the volume of each container to ensure they have enough storage capacity before the season begins. Your task is to help them by writing two functions that accurately calculate the volumes of the containers.
+
+{% include img.html src='formulas\week5.png'  caption='' %}
+
+{% highlight c++ %}
+/*
+@brief Calculates the volume of a cylindrical container
+@param radius Radius of the base
+@param height Height of the cylinder
+@return double - volume of the cylindrical container
+*/
+double calculateCylindricalVolume(double radius, double height) { /* Your code goes here. */ }
+
+/*
+@brief Calculates the volume of a spherical container
+@param radius Radius of the sphere
+@return double - volume of the spherical container
+*/
+double calculateSphericalVolume(double radius) { /* Your code goes here. */ }
+
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Valentine's Day! - Problem 7.a.: Algorithm
+
+Write out the steps you would use to solve this problem by hand as pseudocode.
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Valentine's Day! - Problem 7.b.: Examples
+
+Pick two possible inputs for each of your two functions (four total). Follow the steps you wrote for these values to find your result, and verify it.
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Valentine's Day! - Problem 7.c.: Assert Statements
+
+Translate your inputs and expected outputs into `assert` statements.
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Valentine's Day! - Problem 7.d.: Implementation
+
+Translate your pseudocode into a C++ program to solve the above code, using your assert statements in your `main` function to verify that your program works as expected.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework
