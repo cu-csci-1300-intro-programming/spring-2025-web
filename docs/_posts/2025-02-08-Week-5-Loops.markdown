@@ -478,7 +478,7 @@ The coderunner questions match these questions exactly. It will tell you what to
 &nbsp;&nbsp;&nbsp;
 ### Encrypting Lowercase Characters
 
-The <a href="https://en.wikipedia.org/wiki/Caesar_cipher" target="_blank">Caesar cipher</a>  shifts each letter by a fixed number of positions within the alphabet. The shift value can be positive or negative and should wrap around the alphabet if necessary. For example, with a shift of 3, `a’ would be replaced by `d’, `b’ would become `e’, and so on. If the shift is -3, `d’ would be replaced by `a’, `e’ would become `b’, etc. For simplicity, we are only encrypting lowercase letters in this question.
+The <a href="https://en.wikipedia.org/wiki/Caesar_cipher" target="_blank">Caesar cipher</a>  shifts each letter by a fixed number of positions within the alphabet. The shift value can be positive or negative and should wrap around the alphabet if necessary. For example, with a shift of 3, `a` would be replaced by `d`, `b` would become `e`, and so on. If the shift is -3, `d` would be replaced by `a`, `e` would become `b`, etc. For simplicity, we are only encrypting lowercase letters in this question.
 
 {% include img.html src='cipher.png' alt='X maps to A, Y maps to B, Z maps to C, A maps to D, highlighted in blue B maps to E, and so on.' caption='' %}
 
@@ -827,6 +827,25 @@ Develop and validate your solution in VS Code. Once you are happy with your solu
 <p>How many Pine Needles do you have?</p>
 <p><span style="color:red">27</span></p>
 <p>You can make 1 Health potion(s) and 1 Magic potion(s).</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Select a potion crafting priority:</p>
+<p>1. Health Potion</p>
+<p>2. Magic Potion</p>
+<p><span style="color:red">2</span></p>
+<p>How many Tealeaves do you have?</p>
+<p><span style="color:red">-1</span></p>
+<p>Invalid input. Please enter a non-negative integer.</p>
+<p>How many Tealeaves do you have?</p>
+<p><span style="color:red">8</span></p>
+<p>How many Sunflowers do you have?</p>
+<p><span style="color:red">12</span></p>
+<p>How many Toadstools do you have?</p>
+<p><span style="color:red">4</span></p>
+<p>How many Pine Needles do you have?</p>
+<p><span style="color:red">6</span></p>
+<p>You can make 0 Magic potion(s) and 0 Health potion(s).</p>
 </div>
 
 
