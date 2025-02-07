@@ -24,6 +24,20 @@ categories: jekyll update
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
+## Readings
+Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
+1. Monday: Familiarize yourself with Canvas, read the "Start Here" page, the "Syllabus", and the [VSCode Installation Guide](https://cu-csci-1300-intro-programming.github.io/spring-2025-web/jekyll/update/2025/01/10/Appendix-A.html)
+1. Wednesday: 1.2, 1.3, 1.4
+1. Friday: 2.1, 2.2, 2.3
+
+You might also find the videos in [this YouTube playlist](https://www.youtube.com/playlist?list=PL8ID6FG_UGW8Se5Z2JjGlbL2T4acyZ7Fp) helpful to guide your learning this week.
+
+{% comment %}
+NOTE that the VSCode Install guide is a term specific link
+{% endcomment %}
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
 ## Background
 This week will be an introduction to a variety of foundational material for computer science. You will need to learn how to navigate the required software, basic variables, user input, and algorithms/pseudocode. 
 
