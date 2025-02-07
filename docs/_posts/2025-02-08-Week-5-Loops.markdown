@@ -667,6 +667,7 @@ void testEncrypt( )
     // assert( 'y' == encryptLower('a' , -2));
 
     // // I am likely extra hard tests
+    // // consider an `unsigned char`
     // assert( 'u' == encryptLower('s', -50));
     // assert( 'v' == encryptLower('z', 22));
 }
