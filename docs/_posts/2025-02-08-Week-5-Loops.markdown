@@ -653,8 +653,6 @@ void testEncrypt( )
     // // uncomment me in blocks
     // assert( 'b' == encryptLower('c' , -1));
     // assert( 'a' == encryptLower('c' , -2));
-
-
     
     // // I'm a bit harder (consider using `%` as part of solution)
     // assert( 'a' == encryptLower('a' , 26));
@@ -667,8 +665,11 @@ void testEncrypt( )
     // assert( 'y' == encryptLower('a' , -2));
 
     // // I am likely extra hard tests
-    // // consider an `unsigned char`
     // assert( 'u' == encryptLower('s', -50));
+
+    // // ADVANCED: not on gradescope anymore
+    // // but you might look into the topic "char overflow"
+    // // consider an `unsigned char`
     // assert( 'v' == encryptLower('z', 22));
 }
 {% endhighlight %} 
