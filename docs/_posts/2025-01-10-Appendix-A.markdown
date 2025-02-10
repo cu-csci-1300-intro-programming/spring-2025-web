@@ -5,21 +5,26 @@ date:   2025-01-10 12:58:53 -0700
 categories: jekyll update
 ---
 
-## VS Code Set Up
 
 * Do not remove this line (it will not be displayed)
 {:toc}
 
+&nbsp;
+&nbsp;
+&nbsp;
+## Videos
+If you don't enjoy reading, here is a YouTube playlist of [helpful installation videos](https://www.youtube.com/playlist?list=PL8ID6FG_UGW8QJD0ygZQbBcStUn268Axi).
+
 
 &nbsp;
 &nbsp;
 &nbsp;
-### Windows Installation
+## Windows Installation
 **Important**: Before proceeding with this document, make sure that you have run Windows Update within your Windows 10 or 11 environment. You must have the latest updates installed. 
 
 &nbsp;
 &nbsp;
-#### Step 1: Install VS Code
+### Step 1: Install VS Code
 1. Go to the VS code download page, and download for Windows.
     1. {% include img.html src='windowsVSCodeSetup/image6.png' alt='windows downloads page. black.' caption='' %}
 1. Run the installer and accept all of the default settings.
@@ -27,7 +32,7 @@ categories: jekyll update
 
 &nbsp;
 &nbsp;
-#### Step 2: Installing MinGW
+### Step 2: Installing MinGW
 This section is based on [this guide from Microsoft](https://code.visualstudio.com/docs/cpp/config-mingw)
 
 MinGW is a Windows C/C++ compiler tool set that will allow us to compile our C/C++ code into a .exe file.
@@ -49,7 +54,7 @@ MinGW is a Windows C/C++ compiler tool set that will allow us to compile our C/C
 
 &nbsp;
 &nbsp;
-#### Step 3: Adding VS code extensions
+### Step 3: Adding VS code extensions
 
 1. After you Reboot open VScode and select the extensions tab. (5th from the top), and search for "C++". We need to install the "C/C++" and "C/C++ Extension Pack" both from Microsoft.
 1. {% include img.html src='windowsVSCodeSetup/image12.png' alt='Far left bottom boxes plugin icon, shows C++ written into search bar' caption='' %}
@@ -59,17 +64,17 @@ MinGW is a Windows C/C++ compiler tool set that will allow us to compile our C/C
 
 &nbsp;
 &nbsp;
-#### Step 4: Check your work Hello World
+### Step 4: Check your work Hello World
 Get the hello world program working. If you are reading this for recitation 1, you will need to follow directions from your TA to submit your work as proof that VSCode is working on your personal computer.
 
 &nbsp;
 &nbsp;
 &nbsp;
-### Mac Installation
+## Mac Installation
 
 &nbsp;
 &nbsp;
-#### Step 1: Installing VS Code
+### Step 1: Installing VS Code
 
 1. Go to [VS code download page](https://code.visualstudio.com/Download) , and download for Mac.
 1. {% include img.html src='macVSCodeSetup/image3.png' alt='windows icon, linux penguin icon, or apple icon' caption='' %}
@@ -86,7 +91,7 @@ Get the hello world program working. If you are reading this for recitation 1, y
 
 &nbsp;
 &nbsp;
-#### Step 2: Install g++
+### Step 2: Install g++
 1. Open a Terminal window.(One way is to press Command+Space, type Terminal in the search field, and press the Return key.)
 1. In the Terminal window type `g++` and press the Return key. We will see an alert box like this:
 1. {% include img.html src='macVSCodeSetup/image9.png' alt='a white terminal overlaid with error box stating The `g++` commmand requires the command line developer tools.  install button is highlighted.' caption='' %}
@@ -99,11 +104,11 @@ Get the hello world program working. If you are reading this for recitation 1, y
 
 &nbsp;
 &nbsp;
-#### Step 3: Check your work Hello World
+### Step 3: Check your work Hello World
 Get the hello world program working. If you are reading this for recitation 1, you will need to follow directions from your TA to submit your work as proof that VSCode is working on your personal computer.
 
 &nbsp;
 &nbsp;
-#### Step 4: Install XCode
+### Step 4: Install XCode
 Please install XCode on your computer now. This is done via the App Store. The download take a while. Having this ready and up to date prevents issues down the road.
 

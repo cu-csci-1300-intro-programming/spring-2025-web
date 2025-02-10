@@ -19,9 +19,15 @@ main() {
     cp "${src}" "${dst}"; # https://stackoverflow.com/questions/46082397/insert-newline-n-using-sed
     # -Ei: will be edited in-place without creating a backup: https://www.gnu.org/software/sed/manual/html_node/Command_002dLine-Options.html#Command_002dLine-Options
    
+    # HEADER INFO
+    sed -E 's/\\chapter\*{(.*)}/---\nlayout: post\ntitle: "\1"\ndate: 2025-01-01 09:00:00 -0700\ncategories: jekyll update\n---/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    sed -E 's/\\addcontentsline.*//g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    sed -E 's/\\setcounter.*//g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+
     # CODE
     sed -E 's/\\end{minted}/{% endhighlight %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     sed -E 's/\\begin{minted}{(.*)}/{% highlight \1 %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    sed -E 's/\\begin{minted}[breaklines=true]{(.*)}/{% highlight \1 %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
 
     # TITLES
     sed -E 's/\\section{(.*)}/\&nbsp;\&nbsp;\&nbsp;\&nbsp;\n\#\# \1/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
@@ -44,6 +50,9 @@ main() {
     # INCLUDEGRAPHICS
     sed -E 's/\\includegraphics.*{images\/(.*)}/{% include img.html src='"'"'\1'"'"' alt='"'"'TODO'"'"' caption='"'"''"'"' %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
 
+    # HREF
+    # target="_blank" means open it in a new tab
+    sed -E 's/\\textcolor{cyan}{\\href{(.*)}{(.*)}}/<a href="\1" target="_blank">\2<\/a>/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
 
     # "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     #

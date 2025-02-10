@@ -1,0 +1,349 @@
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## PreQuiz
+\begin{problem} Explain the difference between defining a function and calling a function in C++. Provide an example of each.
+\end{problem}
+
+\begin{problem} What does the keyword \texttt{void} signify when used as a function's return type? When would you use it?
+\end{problem}
+
+\begin{problem}
+In your own words, explain why testing your functions matters. Make sure to mention boundary conditions in your explanation.
+\end{problem}
+
+\vspace{5cm}
+
+\begin{problem}
+    Fill in the blank(s) for the code below so the function successfully returns the square of the number passed to the function:
+    {% highlight c++ %}
+    ______ floatSquare(____ number) {
+        return number * number;
+    }
+{% endhighlight %}
+
+\end{problem}
+
+\begin{problem}
+    Fill in the blank(s) for the code below such that the num1 is successfully divided by num2:
+    {% highlight c++ %}
+        int integerDivision(______ num1, _____ num2){
+            return num1/num2;
+        }
+    {% endhighlight %}
+\end{problem}
+
+\begin{problem}
+    Fill in the blank(s) for the code below so that computeArea is successfully called in the blank below, passing in the variables length and width:
+    {% highlight c++ %}
+    double computeArea(double length, double width) {
+        return length * width;
+    }
+    
+    int main() {
+        double length = 5.0;
+        double width = 3.0;
+    
+        // Fill in the blank to call computeArea and store the result
+        double area = ______________________________;
+    
+        cout << "The area is: " << area << endl;
+        return 0;
+    }
+    {% endhighlight %}
+
+\end{problem}
+
+\begin{problem}
+Identify the error in the error in our test for the isEven function implemented below:
+    {% highlight c++ %}
+    #include <iostream>
+    #include <cassert>
+    using namespace std;
+    
+    bool isEven(int num) {
+        return num % 2 == 0;
+    }
+    
+    int main() {
+        assert(isEven(4) = true);
+        return 0;
+    }
+    {% endhighlight %}
+\end{problem}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation
+
+&nbsp;&nbsp;&nbsp;
+### Spot The Error
+\begin{multipart}
+The program below will display the average of three values by calling the function `findMean`. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+    #include <iostream>
+    
+    using namespace std;
+    
+    double findMean(int a, int b, int c)
+    {
+        int mean = (a+b+c) / 3.0;
+        return mean;
+    }
+    
+    int main()
+    {
+        int average = avg(2,5,2);
+        assert(average == 3)
+        return 0;
+    }
+{% endhighlight %}
+
+\begin{multipart}
+The program below checks if the two strings given are the same. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+    #include <iostream>
+    #include <string>
+    using namespace std;
+    
+    string passwordMatchCheck(string password, string confirmPassword) 
+    {
+        return password = confirmPassword;
+    }
+    
+    int main()
+    {
+       bool passwordMatch = passwordMatchCheck('Good',"Morning");
+       cout << passwordMatch << endl;
+    }
+{% endhighlight %}
+
+\begin{multipart}
+ The same company uses a member ID as the username for its employees. The employees all have an eight digit member ID, and the member ID cannot start with a 0.
+\end{multipart}
+
+{% highlight c++ %}
+#include <iostream>
+#include <cassert>
+using namespace std;
+
+bool idLengthCheck(int ID) 
+{
+    if (ID >= 9999999 || ID < 100000000)
+    {
+        return true;
+    }
+    return false;
+}
+
+int main()
+{
+    assert(idLengthCheck(12345678));
+    assert(idLengthCheck("123456789") == False);
+    return 0;
+}
+{% endhighlight %}
+
+\begin{multipart}
+The program below will use two functions: one to check for password match and another to check if the ID is valid before registering the user. Assume the relevant functions have been defined successfully. Identify the error(s) in the code below, and write the correct line(s).
+\end{multipart}
+
+{% highlight c++ %}
+#include <iostream>
+#include <string>
+#include <cassert>
+using namespace std;
+
+bool passwordMatchCheck(char, char);
+bool idLengthCheck(char);
+
+int main() {
+    int ID;
+    string password;
+    string confirmPassword;
+
+    cout << "Enter your member ID: ";
+    cin >> ID;
+    assert(idLengthCheck(ID));
+    
+    cout << "Enter your password: ";
+    cin >> password;
+
+    cout << "Confirm your password: ";
+    cin >> confirmPassword;
+
+    if (passwordMatchCheck(password, confirmPassword)) 
+    {
+        cout << "Password set successfully for " << username << "." << endl;
+    } 
+    else if (!passwordMatchCheck(password, confirmPassword)) 
+    {
+        cout << "Passwords do not match." << endl;
+    } 
+    else if(!idLengthCheck(ID)) 
+    {
+        cout << "ID is invalid." << endl;
+    }
+
+    return 0;
+}
+
+bool passwordMatchCheck(string password, string confirmPassword)
+{
+    // appropriate definitions
+}
+
+bool idLengthCheck(string password)
+{
+    // appropriate definitions
+}
+{% endhighlight %}
+
+
+
+\begin{multipart}
+The program below is a working program that uses the `getPrice` function to compute the price of a wall frame of a given area and color. This code does not contain any syntax or logical errors. However, it has multiple style errors making the code very difficult to read. These errors can range from usage of unintended white space to having extraneous variables or clauses in your code. Identify the style error(s) in the code below and rewrite the below code to improve readability.
+
+
+\end{multipart}
+
+\begin{minted}[breaklines=true]{c++}
+#include <iostream>
+#include <string>
+#include <cassert>
+using namespace std;
+
+double getPrice(double area, string color){
+assert(area>=0); double cost = 0.0;
+if (color == "green"){
+    cost = 4; }
+    else if (color == "red")
+    { cost = 3; } 
+    else if (color == "orange")
+    {
+    cost = 2;
+    }
+    else if (color == "blue")
+    {
+        cost = 1;
+    } return area * cost;}
+
+int main()
+{
+    string color, shape;
+    int area_choice;
+    double radius;
+    double area = 0;
+
+cout << "Enter the area of the frame: (1) 5x5 (2) 4x6 (3) 8x10" << endl;
+cin >> area_choice;
+    assert(
+        area_choice == 1 || area_choice == 2 || area_choice == 3
+    );
+    if(area_choice == 1){area = 5*5; }
+    else if (area_choice == 2){area = 4*6; }
+    else if (area_choice == 3){area = 8*10; }
+
+cout << "Enter the color of the frame: (green, red, orange, blue): ";
+cin >> color;
+    assert(
+        color == "green" || color == "red" || color == "orange" || color == "blue"
+    );
+
+    double price = getPrice(area, color);
+
+    cout << "You will receive a "<< color << " color frame with a price of $" << price << ". ";
+    cout << "Thank you for your business."<<endl;
+
+    return 0;
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+### Halloween %maybe rework this to halloween candy?
+
+In the mysterious town of "Mathville", surrounded by eerie forests, the annual "Halloween Night" celebration is approaching. This town is renowned for blending mathematics with the art of candy making, creating unique candies adorned with mathematical designs.
+
+As the spooky mastermind behind this exciting venture, you're tasked with ensuring the success of Halloween Night by calculating the ingredients for your candies. To achieve this, you'll employ two specialized functions to accurately calculate candy volumes of the pumpkin-shaped candies and the witch's hat candies. 
+
+%update wording to be more clear about how the volume and ingredients are related
+
+%specifically instruct students to use the doublesEqual function from the background info for their assert statements
+
+
+1. Equation for pumpkin candy volume (approximated as an ellipsoid): \textit{Volume} $= \frac{4}{3}\pi a b c$, where $a$, $b$, and $c$ are the radii along the x, y, and z axes respectively.
+1. Equation for witch's hat candy volume (approximated as a cone): \textit{Volume} $= \frac{1}{3}\pi r^2 h$, where $r$ is the radius of the base, and $h$ is the height.
+
+
+
+\begin{minted}[breaklines=true]{c++}
+/**
+@brief Function to determine the volume of a pumpkin-shaped candy using its radii
+@param radiusX Radius along the x-axis
+@param radiusY Radius along the y-axis
+@param radiusZ Radius along the z-axis
+@return double - volume of the pumpkin-shaped candy
+*/ double calculateVolumeOfPumpkinCandy(double radiusX, double radiusY, double radiusZ) { // Your code goes here. }
+
+/**
+@brief Function to determine the volume of a witch's hat-shaped candy using its base radius and height
+@param radius Base radius of the witch's hat-shaped candy
+@param height Height of the witch's hat-shaped candy
+@return double - volume of the witch's hat-shaped candy
+*/ double calculateVolumeOfWitchHatCandy(double radius, double height) { // Your code goes here. }
+{% endhighlight %}
+
+\begin{multipart}
+    Write out the steps you would use to solve this problem by hand as pseudocode. 
+\end{multipart}
+
+\newpage
+
+\begin{multipart}
+    Pick two possible inputs for each of your two functions (four total). Follow the steps you wrote for these values to find your result, and verify it.
+\end{multipart}
+
+\vspace{8cm}
+
+\begin{multipart}
+Translate your inputs and expected outputs into assert statements.
+\end{multipart}
+
+\vspace{8cm}
+
+\begin{multipart}
+    Translate your pseudocode into a c++ program to solve the above code, using your assert statements in your main function to verify that your program works as expected.
+\end{multipart}
+
+
+\vspace{8cm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
