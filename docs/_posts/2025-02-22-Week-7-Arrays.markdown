@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Week 6: Arrays"
-date: 2025-02-02 09:00:00 -0700
+title: "Week 7: Arrays"
+date: 2025-02-10 09:00:00 -0700
 categories: jekyll update
 ---
 ## Learning Goals
@@ -214,10 +214,10 @@ int main()
 
 
 {% comment %}
-(due Monday Jan 27 at 9am)
+(due Monday Feb 24 at 9am)
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/454783">Recitation 3 Pre-quiz</a>
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="TODO">Recitation TODO Pre-quiz</a>
 </div>
 {% endcomment %}
 
@@ -231,7 +231,8 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Homework
-Please continue working on project 1
+Please continue working on project 1. It is due at the end of this week.
 {% comment %}
-SPWI: link the project
+TODO: link the project
 {% endcomment %}
+{% include underConstruction.html caption='We will link to the project here.' %}
