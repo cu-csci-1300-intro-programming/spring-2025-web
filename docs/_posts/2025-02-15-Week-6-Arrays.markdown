@@ -176,40 +176,6 @@ Translate your inputs and expected outputs into `assert` statements.
 
 Translate your pseudocode into a C++ program to solve the above code, using your assert statements in your `main` function to verify that your program works as expected.
 
-&nbsp;&nbsp;&nbsp;&nbsp;
-### Back to Basics... – Problem 5
-After a grueling tax season that left everyone sick of endless deductions and percentages, the folks in Boulder decided they'd had enough of the modern mess. They longed for the good old days when trading goods directly was the norm—when a bag of rice could be exchanged for cans of beans and bottles of juice without a single tax form in sight! Now, they’re reviving the ancient art of bartering.
-
-Bartering is the exchange of goods and services between parties without using money. In our revived system, the following conversion values apply:
-
-| **Items**            | **Conversion Value**                        |
-|----------------------|---------------------------------------------|
-| 1 bag of rice        |  5 cans of beans                           |
-| 1 can of beans       |  3 bottles of juice                        |
-| 1 bottle of juice    |  2 packages of pasta                       |
-
-Your program should take the number of packages of pasta as input (an integer) and convert its value to the maximum number of bags of rice, cans of beans, bottles of juice, and packages of pasta that can be obtained. The conversion should be done in such a way that you always trade for the highest-valued item first, then work your way down to lower-valued items using any remainder. 
-
-**E.g., 51 packages of pasta will be traded for 1 bag of rice, 3 cans of beans, 1 bottle of juice and we have a package of pasta leftover**
-
-&nbsp;&nbsp;&nbsp;
-
-#### Back to Basics... - Problem 5.a.: Algorithm
-
-Write out the steps you would use to solve this problem by hand as pseudocode.
-
-&nbsp;&nbsp;&nbsp;
-
-#### Back to Basics... - Problem 5.b.: Examples
-
-Pick two possible inputs. Follow the steps you wrote for these values to find your result, and verify it.
-
-&nbsp;&nbsp;&nbsp;
-
-#### Back to Basics... - Problem 5.c.: Implementation
-
-Translate your pseudocode into a C++ program to solve the bartering problem and verify your code outputs are consistent with your expectations form part (b).
-
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ### Recitation Submission Guidelines
