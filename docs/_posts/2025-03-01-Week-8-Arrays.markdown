@@ -20,6 +20,12 @@ Make arrays of any data type</li>
 * Do not remove this line (it will not be displayed)
 {:toc}
 
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Readings
+Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
+1. Monday: 6.1, 6.2, 6.4, 6.5, 6.6
+1. Wednesday: 2.5
+1. Friday: 6.4, 6.5
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Background
