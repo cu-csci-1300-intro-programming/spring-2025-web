@@ -25,6 +25,16 @@ Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
 1. Wednesday: 2.5
 1. Friday: 6.4, 6.5
 
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Background
+Due to the upcoming midterm and project 1, there is no background section for the week. Take this opportunity to go over previous modules 📚 and get upto speed!
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## PreQuiz
+Due to the upcoming midterm and project 1, there is no PreQuiz this week. Take this opportunity to go over previous modules and get upto speed! 💪
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ### Recitation Spot The Error - Problem 1
@@ -32,7 +42,6 @@ Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
 The code snippet below is intended to print the numbers from 1 through 10. Identify the error(s) in the code below, and write the correct line(s).
 
 {% highlight c++ %} 
-
 #include <iostream> 
 using namespace std;
 
@@ -55,7 +64,6 @@ int main() {
 The code snippet below is supposed to print even numbers less than 9. Identify the error(s) in the code below, and write the correct line(s).
 
 {% highlight c++ %} 
-
 #include <iostream> 
 using namespace std;
 
@@ -63,7 +71,7 @@ int main() {
 
   int even = 2;
 
-  while(even != 9) { 
+  while (even != 9) { 
     cout << even << " "; 
     even += 2; 
   } 
@@ -102,10 +110,12 @@ End
 &nbsp;&nbsp;&nbsp;&nbsp;
 ### Recitation Tax Season! – Problem 4
 
+**Note: The following scenario is entirely fictional and any resemblance to real life situations is purely coincidental. Provided numbers should not be interpreted as financial advice. CSCI 1300 is not liable for any misinterpretation of this information. 🤣**
+
 As spring semester unfolds at CU Boulder, **tax season** arrives for students who’ve had part-time jobs, internships, or side hustles. Many are filing taxes for the first time and want to get it right (and maybe even get a refund!). Your task: **create a C++ tax calculator** that applies a standard deduction, an optional dependent deduction, and then selects the correct tax bracket based on the remaining taxable income.
 
 
-1. **Standard Deduction:** \$2,000 (applies to everyone)  
+1. **Standard Deduction:** \$14,600 (applies to everyone)  
 2. **Dependent Deduction:** \$500 additional deduction if you have at least one dependent  
 
 After deductions are applied, the **taxable income** is determined and placed into one of **three brackets**:
