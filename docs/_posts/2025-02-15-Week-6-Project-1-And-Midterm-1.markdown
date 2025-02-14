@@ -306,11 +306,7 @@ Comparing DNA sequences allows researchers to identify similarities and differen
 
 For two DNA strands of equal length, the similarity score is calculated based on the number of matching bases at corresponding positions using the following formula:
 
-```
-$$
-\text{Similarity} = \frac{\text{total matches}}{\text{total positions}}
-$$
-```
+{% include img.html src='p1_formula.png' alt='Similarity is equal to total matches divided by total positions' caption='' %}
 
 **Example:**
 Let's compare the following two DNA strands:
