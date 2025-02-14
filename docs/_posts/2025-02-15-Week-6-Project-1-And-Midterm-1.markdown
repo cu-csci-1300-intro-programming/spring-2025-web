@@ -1,37 +1,22 @@
 ---
 layout: post
-title: "Week 6: Arrays"
+title: "Week 6: Project 1 And Midterm 1"
 date: 2025-01-27 09:00:00 -0700
 categories: jekyll update
 ---
-## Learning Goals
-
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #31708f; background-color: #d9edf7; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
-  <b>By the end of this week, you will be able to:</b>
-  <ol>
-    <li>Make arrays of any data type</li>
-  </ol>
-</div>
-
 
 **CONTENTS:**
 * Do not remove this line (it will not be displayed)
 {:toc}
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-## Readings
-Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
-1. Monday: 6.1, 6.2, 6.4, 6.5, 6.6
-1. Wednesday: 2.5
-1. Friday: 6.4, 6.5
+## Learning Goals, Readings, Background, and PreQuiz
+Due to the upcoming midterm and project 1, many sections are removed from this weeks workbook. Take this opportunity to go over previous modules 📚 and get upto speed, so you can perform your best on the exam 💪
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-## Background
-Due to the upcoming midterm and project 1, there is no background section for the week. Take this opportunity to go over previous modules 📚 and get upto speed!
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-## PreQuiz
-Due to the upcoming midterm and project 1, there is no PreQuiz this week. Take this opportunity to go over previous modules and get upto speed! 💪
+## Midterm Exam 1
+Your Exam is Wednesday February 19. See Canvas for more details
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
@@ -216,8 +201,9 @@ By following these steps, your submission will be clear, organized, and standard
  
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-
 ## Project 1
+The project is due Friday February 28. We strongly recommend that you pace yourself on the project and start early. You do not have to start the project prior to the midterm exam, however some students find that working on the project helps to improve their exam performance as it gives them more practice with the material.
+
 ### Introduction
 You have recently been employed by Rhonda Labs, a leading research institute working to uncover the secrets of rare genetic diseases. Your first task is to write a program that analyzes DNA from various species and individuals, compares their similarities, and performs analyses on the given sequences.
 
