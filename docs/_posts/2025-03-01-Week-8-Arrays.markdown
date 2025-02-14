@@ -432,7 +432,14 @@ A word is said to be most popular if it occurs more frequently than any other wo
 
 Note: You do not need sorting to solve this.
 
-| **Function:**  | `mostPopularWord(string[], const int)` <br /> `void mostPopularWord(string words[], const int WORDS_SIZE)` |
+{% highlight c++ %}
+void mostPopularWord(string words[], const int WORDS_SIZE)
+{
+    // ...
+}
+{% endhighlight %}
+
+| **Function:**  | `mostPopularWord(string[], const int)`|
 | **Purpose:**  | Print the word with the highest frequency, its count, and its index positions in the array. |
 | **Parameters:** | **string** <tt>words</tt>: Array of words <br />  **const int** <tt>WORDS\_SIZE</tt>: The size of word array |
 | **Return value:** | - The function should print the word with the highest frequency, its count, and its index positions in the array. <br />  - The function doesn't return any value to the main function. |
@@ -498,7 +505,17 @@ To help him, Bob needs two(2) functions written in C++ that will allow him to un
 
 **Function 1:**  Bob is curious about how his total step count has increased over time. This function will calculate the cumulative sum of his daily step count, showing him the total distance he's covered since he started tracking.
 
-| **Function:**  | `stepCountCumulativeSum( int[], const int, int[])` <br /> `void stepCountCumulativeSum(int daily_steps[], const int NUM_DAYS, int cumulative_steps[])` |
+{% highlight c++ %}
+void stepCountCumulativeSum( int daily_steps[], 
+                             const int NUM_DAYS, 
+                             int cumulative_steps[] )
+{
+    // ...
+}
+{% endhighlight %}
+
+
+| **Function:**  | `stepCountCumulativeSum( int[], const int, int[])` |
 | **Purpose:**  | Calculates the cumulative sum of the daily step counts and records the running total in the `cumulative_steps` array. The cumulative sum represents the total number of steps Bob has taken up to each respective day, providing a running total of his overall progress. The function should not print anything. |
 | **Parameters:** | **int** <tt>daily\_steps[]</tt>: array of Bob's daily step count. <br /> **const int** <tt>NUM\_DAYS</tt>: Size of `daily_steps` array and `cumulative_steps` array<br />**int** <tt>cumulative\_steps[]</tt>: Array to be filled with Bob's cumulative step count. |
 | **Return value:** |  The function doesn't return any value. |
@@ -529,62 +546,59 @@ int main()
 {% endhighlight %}
 
 
-{% comment %}
 
 
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
 {% highlight c++ %}
 const int NUM_DAYS = 3;
 int daily_steps[NUM_DAYS] = {10000, 2000, 6000};
 int cumulative_steps[NUM_DAYS];
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-10000
-12000
-18000
-{% endhighlight %}
-</div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
-\begin{minted}[breaklines=true]{c++}
+<p>10000</p>
+<p>12000</p>
+<p>18000</p>
+</div>
+
+<span style="color:red">Test code 2:</span>
+
+{% highlight c++ %}
 const int NUM_DAYS = 4;
 int daily_steps[NUM_DAYS] = {4000, 2000, 8000, 3000};
 int cumulative_steps[NUM_DAYS];
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-4000
-6000
-14000
-17000
-{% endhighlight %}
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>4000</p>
+<p>6000</p>
+<p>14000</p>
+<p>17000</p>
 </div>
 
+&nbsp;&nbsp;&nbsp;
+
 **Function 2:** Bob is also interested in how consistent he has been with his daily steps. This function will calculate the mean of his daily step count and return the deviation, showing him which days he was above or below his regular activity level.
-\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
-        **Function:** \newline 
-        stepCountDeviation( int[], const int, const int) & \mintinline[breaklines=true]{c++}{double stepCountDeviation(int daily_steps[], const int NUM_DAYS, const int OPTIMAL_STEP_COUNT)}
-        \\ \hline
-        **Purpose:**  & Calculates the mean of daily step counts and returns the deviation
-deviation =  mean - optimal step count \newline
-The function should not print anything.
 
-\\ \hline
-        **Parameters:** &  
-        **int** <tt>daily\_steps[]</tt>: array of Bob's daily step count. \newline
-        **const int** <tt>NUM\_DAYS</tt>: Size of daily\_steps array\newline
-        **const int** <tt>OPTIMAL\_STEP\_COUNT</tt>: Desired step count per day.
-\\ \hline
-        **Return value:** &  The function will return a `double`, which is the calculated deviation \newline 
+{% highlight c++ %}
+ double stepCountDeviation( int daily_steps[ ], 
+                            const int NUM_DAYS, 
+                            const int OPTIMAL_STEP_COUNT )
+{
+    // ...
+}
+{% endhighlight %}
 
-\\ \hline
-        **Example:** & 
-        \begin{example}
-        \begin{minted}[breaklines=true]{c++}
 
+
+| **Function:** | `stepCountDeviation( int[], const int, const int )` |
+| **Purpose:** | Calculates the mean of daily step counts and returns the deviation <br /> **deviation =  mean - optimal step count** <br /> The function should not print anything. |
+| **Parameters:** | **int** <tt>daily_steps[]</tt>: array of Bob's daily step count. <br /> **const int** <tt>NUM_DAYS</tt>: Size of `daily_steps` array <br /> **const int** <tt>OPTIMAL_STEP_COUNT</tt>: Desired step count per day. |
+| **Return value:** |  The function will return a `double`, which is the calculated deviation |
+
+
+**Example:**
+
+{% highlight c++ %}
 // Assume the proper libraries are included
 // Assume the proper implementation of stepCountDeviation() is included
 
@@ -598,43 +612,39 @@ int main()
     cout << fixed << setprecision(3) << deviation << endl;
     return 0;
 }
-        {% endhighlight %}
-        \end{example}
 
-        <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
--1000.000
-        </div>
-        Explanation: mean = (5000 + 4000 + 5000 + 2000 + 4000)/5 = 4000 \newline 
-deviation = mean - OPTIMAL\_STEP\_COUNT = 4000 - 5000 = -1000
-             \\ \hline
-\end{longtable}
+// OUTPUT:
+// -1000.000
+{% endhighlight %}
+
+
+<span style="color:red">**Explanation:**</span> 
+1. `mean` = (5000 + 4000 + 5000 + 2000 + 4000)/5 = 4000
+1. `deviation `= `mean` - `OPTIMAL_STEP_COUNT` = 4000 - 5000 = -1000
+
 
 **For Question 2, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste stepCountCumulativeSum(),  stepCountDeviation(), and any helper function(s) to the answer box!** 
 
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
+
+<span style="color:red">Test code 1:</span>
 {% highlight c++ %}
 const int NUM_DAYS = 3;
 int daily_steps[NUM_DAYS] = {10000, 2000, 6000};
 const int OPTIMAL_STEP_COUNT = 5000;
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-1000.000
-{% endhighlight %}
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>1000.000</p>
 </div>
 
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
-\begin{minted}[breaklines=true]{c++}
+
+<span style="color:red">Test code 2:</span>
+{% highlight c++ %}
 const int NUM_DAYS = 4;
 int daily_steps[NUM_DAYS] = {4000, 2000, 8000, 3000};
 const int OPTIMAL_STEP_COUNT = 750;
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-3500.000
-{% endhighlight %}
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>3500.000</p>
 </div>
 
 &nbsp;&nbsp;&nbsp;
@@ -642,26 +652,24 @@ const int OPTIMAL_STEP_COUNT = 750;
 
 As a pediatrician, you need to monitor newborns' heart rates, which should fall between 70 and 190 bpm. To simplify this task, write a function printNormalHeartRates() that takes two arrays: one with patient names and another with their heart rates. The function will print the names of patients with normal heart rates.
 
-\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
-        **Function:** \newline 
-        printNormalHeartRates (string, int, int) & \mintinline[breaklines=true]{c++}{void printNormalHeartRates(string patients[], int heart_rate[], const int NUM_PATIENTS)}
-        \\ \hline
-        **Purpose:**  & Prints out the patients with normal heart rates. Where normal heart rate is between 70 and 190, both inclusive. You may assume that both patients[] and heart\_rate[] arrays will be the same size. \\ \hline
-        **Parameters:** &  
-        **string** <tt>patients[]</tt>: Array of strings which contains the patient's names. \newline
-        **int** <tt>heart\_rate[]</tt>: Array of int which contains their heart rate \newline
-        **const int** <tt>NUM\_PATIENTS</tt>: An integer that gives the number of elements in the patient and heart rate arrays
-\\ \hline
-        **Return value:** &  
-        - The function doesn't return any value.\newline 
-        - Your function should print out all patients whose heart rate is within the range\\ \hline
-         **Error handling/ Boundary conditions:** &  
-         - You may assume that the patients[] array and heart\_rate[] array are non-empty\newline 
-        - You may also assume that the size of the patients[] array and heart\_rate[] array are always equal\\ \hline
-        **Example:** & 
-        \begin{example}
-        \begin{minted}[breaklines=true]{c++}
 
+ {% highlight c++ %}
+ void printNormalHeartRates(string patients[], 
+        int heart_rate[], 
+        const int NUM_PATIENTS)
+ {
+    // ...
+ }
+{% endhighlight %}
+
+| **Function:** | printNormalHeartRates (string, int, int) |
+| **Purpose:**  | Prints out the patients with normal heart rates. Where normal heart rate is between 70 and 190, both inclusive. You may assume that both `patients[]` and `heart_rate[]` arrays will be the same size. |
+| **Parameters:** | **string** <tt>patients[]</tt>: Array of strings which contains the patient's names.  <br /> **int** <tt>heart\_rate[]</tt>: Array of int which contains their heart rate  <br />  **const int** <tt>NUM\_PATIENTS</tt>: An integer that gives the number of elements in thepatient and heart rate arrays |
+| **Return value:** | - The function doesn't return any value. <br /> - Your function should print out all patients whose heart rate is within the range |
+| **Error handling/ Boundary conditions:** | - You may assume that the `patients[]` array and `heart_rate[]` array are non-empty <br /> - You may also assume that the size of the `patients[]` array and `heart_rate[]` array are always equal |
+
+**Example:** 
+{% highlight c++ %}
 // Assume the proper libraries are included
 // Assume the proper implementation of printNormalHeartRates() is included
 
@@ -675,48 +683,44 @@ int main()
         
     return 0;
 }
-        {% endhighlight %}
-        \end{example}
 
-        <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-
-Jamie 90 \newline
-Sebastien 70 \newline
-        </div>
-             \\ \hline
-\end{longtable}
+// OUTPUT
+// Jamie 90
+// Sebastien 70
+{% endhighlight %}
 
 **For Question 3, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste printNormalHeartRates() and any helper function(s) to the answer box!** 
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
+
+<span style="color:red">Test code 1:</span>
+
 {% highlight c++ %}
 string patients[4] = {"Joe", "Jack", "Amy", "Bob"};
 int heart_rate[4] = {70, 80, 190, 100};
 printNormalHeartRates(patients, heart_rate, 4);
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-Jack 80
-Amy 190
-Bob 100
-{% endhighlight %}
-</div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
-\begin{minted}[breaklines=true]{c++}
+<p>Jack 80</p>
+<p>Amy 190</p>
+<p>Bob 100</p>
+</div>
+
+<span style="color:red">Test code 2:</span>
+
+{% highlight c++ %}
 string patients[6] = {"Chloe Kim", "Rene Rinnekangas", "Shaun White", "A", "B", "C"};
 int heart_rate[6] = {190, 70, 191, 69, 71, 189};
 printNormalHeartRates(patients, heart_rate, 6);
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-Chloe Kim 190
-Rene Rinnekangas 70
-B 71
-C 189
-{% endhighlight %}
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Chloe Kim 190</p>
+<p>Rene Rinnekangas 70</p>
+<p>B 71</p>
+<p>C 189</p>
 </div>
+
+
 
 &nbsp;&nbsp;&nbsp;
 ### Best Time to Buy and Sell a House
@@ -724,24 +728,21 @@ C 189
 Flipping is a real estate strategy that involves buying homes and selling them for a profit in a short period of time. You want to maximize your profit by choosing a single day to buy a house and choosing a different day in the future to sell that house.
 
 
-\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
-        **Function:** \newline 
-        maxProfit(int[], const int) & \mintinline[breaklines=true]{c++}{int maxProfit(int prices[], const int NUM_MONTHS)}
-        \\ \hline
-        **Purpose:**  & Find the maximum profit achieved from buying and selling a house. The function should not print anything. \\ \hline
-        **Parameters:** &  
-        **int** <tt>prices[]</tt>: Array of prices of the house every month \newline
-        **const int** <tt>NUM\_MONTHS</tt>: The size of prices array
-\\ \hline
-        **Return value:** &  It should return the maximum profit achieved through one house flip. \\ \hline
-        **Error handling/** \newline
-        **Boundary conditions:** & - Return 0 if no profit can be achieved. 
-        \newline - You may assume that the <tt>prices[]</tt> array is always non-empty
-        \\ \hline 
-        **Example:** & 
-        \begin{example}
-        \begin{minted}[breaklines=true, frame = none]{c++}
-        
+{% highlight c++ %}
+int maxProfit( int prices[], const int NUM_MONTHS )
+{
+// ...
+}
+{% endhighlight %}
+
+| **Function:** | `maxProfit(int[], const int)` |
+| **Purpose:** | Find the maximum profit achieved from buying and selling a house. The function should not print anything. |
+| **Parameters:** | **int** <tt>prices[]</tt>: Array of prices of the house every month <br /> **const int** <tt>NUM_MONTHS</tt>: The size of prices array |
+| **Return value:** |  It should return the maximum profit achieved through one house flip. |
+| **Error handling/Boundary conditions:** | - Return 0 if no profit can be achieved. <br /> - You may assume that the <tt>prices[]</tt> array is always non-empty |
+
+**Example:** 
+{% highlight c++ %}
 // Assume the proper libraries are included
 // Assume the proper implementation of maxProfit() is included
 
@@ -753,87 +754,73 @@ int main()
     cout << "Maximum profit: " << profit << endl;
     return 0;
 }
-        {% endhighlight %}
-        \end{example}
 
-        <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-Maximum Profit: 500000
-        </div>
+// OUTPUT
+// Maximum Profit: 500000
+{% endhighlight %}
 
-        <span style="color:red">Explanation:</span> 
-        
-        Buy on month 2 (price = 100000) and sell on month 5 (price = 600000), profit = 600000-100000 = 500000.
-\newline Note: Buying on month 2 and selling on month 1 is not allowed because you must buy before you sell.
+<span style="color:red">Explanation:</span> 
+1. Buy on month 2 (price = 100000) and sell on month 5 (price = 600000)
+1. profit = 600000-100000 = 500000.
+1. Note: Buying on month 2 and selling on month 1 is not allowed because you must buy before you sell.
 
-             \\ \hline
-\end{longtable}
 
 **For Question 4, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste maxProfit() and any helper function(s) to the answer box!**  
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
+
+<span style="color:red">Test code 1:</span>
+
 {% highlight c++ %}
 const int NUM_MONTHS = 5;
 int prices[NUM_MONTHS] = {700000, 600000, 400000, 300000, 100000};
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-Maximum Profit: 0
-{% endhighlight %}
-<span style="color:red">Explanation:</span> 
-
-In this case, no profitable transactions are possible, and the max profit = 0.
-</div>
-
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
-\begin{minted}[breaklines=true]{c++}
+<p>Maximum Profit: 0</p>
+</div>
+
+<span style="color:red">Explanation:</span> In this case, no profitable transactions are possible, and the max profit = 0.
+
+<span style="color:red">Test code 2:</span>
+{% highlight c++ %}
 const int NUM_MONTHS = 6;
 int prices[NUM_MONTHS] = {700000, 300000, 400000, 100000, 400000, 100000};
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-Maximum Profit: 300000
-{% endhighlight %}
-<span style="color:red">Explanation:</span> 
 
-Buy on month 4 (price = 100000) and sell on month 5 (price = 400000), profit = 400000-100000 = 300000.
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Maximum Profit: 300000</p>
 </div>
+
+<span style="color:red">Explanation:</span> Buy on month 4 (price = 100000) and sell on month 5 (price = 400000), profit = 400000-100000 = 300000.
 
 
 
 &nbsp;&nbsp;&nbsp;
 ### Splitting a String
 
-When you're processing data, it's useful to break up a text string into pieces using a delimiter. Write a function split() that takes a string, splits it at every occurrence of a delimiter, and then populates an array of strings with the split pieces, up to the provided maximum number of pieces.
+When you're processing data, it's useful to break up a text string into pieces using a delimiter. Write a function `split()` that takes a string, splits it at every occurrence of a delimiter, and then populates an array of strings with the split pieces, up to the provided maximum number of pieces.
 
-\newpage
-\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
-        **Function:** \newline 
-        split(string, char, string[], const int) & \mintinline[breaklines=true]{c++}{int split(string input_string, char separator, string arr[], const int ARR_SIZE)}
-        \\ \hline
-        **Purpose:**  & Break a text string into pieces using the given delimiter and populate each piece in the array. The function does not print anything.\\ \hline
-        **Parameters:** &  
-        **string** <tt>input\_string</tt>: The text string containing data separated by a delimiter \newline
-        **char** <tt>separator</tt>: The delimiter marking the location where the string should be split up\newline
-        **string** <tt>arr[]</tt>: The array that will be used to store the input text string's individual string pieces\newline
-        **const int** <tt>ARR\_SIZE</tt>: The number of elements that can be stored in the array
-\\ \hline
-        **Return value:** &  
-        - The function returns an `int`, the number of pieces the input text string is split into. 
-        \newline
-        - Populate `arr[]` with the all the element.
-\\ \hline
-        **Error Handling/ Boundary Conditions:** & - Return 1 if the delimiter character is not found. Place the entire string in the array as the first element
-        \newline
-        - Return -1 if the string is split into more pieces than the size of the array. Fill the array with as many pieces of the split string as possible. \newline
-        - Return 0 if an empty string is provided.
-        \\ \hline
-        **Example:** & 
+
+ {% highlight c++ %}
+ int split( string input_string, 
+            char separator, 
+            string arr[], 
+            const int ARR_SIZE )
+ {
+    // ...
+ }
+ {% endhighlight %}
+
+| **Function:** | `split( string, char, string[], const int )` |
+| **Purpose:**  | Break a text string into pieces using the given delimiter and populate each piece in the array. The function does not print anything. |
+| **Parameters:** | **string** <tt>input_string</tt>: The text string containing data separated by a delimiter <br /> **char** <tt>separator</tt>: The delimiter marking the location where the string should be split up <br /> **string** <tt>arr[]</tt>: The array that will be used to store the input text string's individual string pieces <br /> **const int** <tt>ARR_SIZE</tt>: The number of elements that can be stored in the array |
+| **Return value:** | - The function returns an `int`, the number of pieces the input text string is split into. <br /> - Populate `arr[]` with the all the element. |
+| **Error Handling/ Boundary Conditions:** | - Return `1` if the delimiter character is not found. Place the entire string in the array as the first element <br />        - Return `-1` if the string is split into more pieces than the size of the array. Fill the array with as many pieces of the split string as possible. <br />        - Return `0` if an empty string is provided. |
+
+
+
+**Example:** 
                
-        \begin{example} 
-        \begin{minted}[breaklines=true, frame=none]{c++}
-
+{% highlight c++ %}
 // Assume the proper libraries are included
 // Assume the proper implementation of split() is included
 
@@ -864,25 +851,18 @@ int main()
     }
 }
 
-        {% endhighlight %}
-                \end{example} 
+// OUTPUT:
+// Function returned value: 1
+// arr[0]:ABCDEFG
+{% endhighlight %}
 
-\\ \hline
-        **Sample Run:** &  
-        <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-Function returned value: 1
 
-arr[0]:ABCDEFG
-        </div>
-
-             \\ \hline
-\end{longtable}
 
 
 **For Question 5, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste split() and any helper function(s) to the answer box!**
 
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
+
+<span style="color:red">Test code 1:</span>
 {% highlight c++ %}
 string testcase = "RST,UVW,XYZ";
 char separator = ',';
@@ -895,18 +875,18 @@ for (int i=0; i < ARR_SIZE; i++){
   cout << "arr["<< i << "]:" << arr[i] << endl;
 }
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-Function returned value: 3
-arr[0]:RST
-arr[1]:UVW
-arr[2]:XYZ
-{% endhighlight %}
-</div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
-\begin{minted}[breaklines=true]{c++}
+<p>Function returned value: 3</p>
+<p>arr[0]:RST</p>
+<p>arr[1]:UVW</p>
+<p>arr[2]:XYZ</p>
+</div>
+
+
+
+<span style="color:red">Test code 2:</span>
+{% highlight c++ %}
 string testcase = "Bangkok,Berlin,Birmingham,Bogota,Busan,Baton Rouge,Beaumont,Boise,Budapest";
 char separator = ',';
 const int ARR_SIZE = 5;
@@ -918,48 +898,47 @@ for (int i=0; i < ARR_SIZE; i++){
   cout << "arr["<< i << "]:" << arr[i] << endl;
 }
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-Function returned value: -1
-arr[0]:Bangkok
-arr[1]:Berlin
-arr[2]:Birmingham
-arr[3]:Bogota
-arr[4]:Busan
-{% endhighlight %}
 
-<span style="color:red">Explanation:</span>
-
-The string can be split into more pieces than the size of the array; thus, we returned -1 and filled the array with as many pieces as possible.
-
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Function returned value: -1</p>
+<p>arr[0]:Bangkok</p>
+<p>arr[1]:Berlin</p>
+<p>arr[2]:Birmingham</p>
+<p>arr[3]:Bogota</p>
+<p>arr[4]:Busan</p>
 </div>
+
+<span style="color:red">Explanation:</span>The string can be split into more pieces than the size of the array; thus, we returned -1 and filled the array with as many pieces as possible.
+
+
+
+
+
 
 &nbsp;&nbsp;&nbsp;
 ### School Exam Scores
 
-You’re helping your teacher analyze student exam scores across 10 subjects. Each row represents a student’s scores in these subjects. Your task is to identify the first student whose average score falls below a defined threshold. Write a function minAverg() that returns the index of the first student with an average score below the threshold.
+You’re helping your teacher analyze student exam scores across 10 subjects. Each row represents a student’s scores in these subjects. Your task is to identify the first student whose average score falls below a defined threshold. Write a function `minAverg` that returns the index of the first student with an average score below the threshold.
 
-\newpage
-\begin{longtable}[H]{|p{1.7in}|p{4.0in}|} \hline
-        **Function:** \newline 
-        minAverg(int, int, double) & \mintinline[breaklines=true]{c++}{int minAverg(int scores[][10], const int NUM_STUDENTS, double threshold)}
-        \\ \hline
-        **Purpose:**  & A function to return the index of a student whose average score is less than or equal to the threshold.\\ \hline
-        **Parameters:** &  
-        **int** <tt>scores[][10]</tt>: A 2D integer array with 10 columns for storing the scores for each of the 10 subjects \newline
-        **const int** <tt>NUM\_STUDENTS</tt>: An integer number of rows for each student \newline
-        **double** <tt>threshold</tt>: A floating number threshold for low average score. 
-\\ \hline
-        **Return value:** &  The function returns an `int` representing the index of the first student with a low average score that is less than or equal to the threshold. \\ \hline
-        \textbf{Error handling/
-Boundary conditions:} &  
-- The function returns -1 if there is no average score that is less than or equal to the threshold \newline 
-- You may assume that the score[] array is non-empty
-\\ \hline
-        **Example:** & 
-        \begin{example}
-        \begin{minted}[breaklines=true]{c++}
 
+ {% highlight c++ %}
+ int minAverg( int scores[][10], 
+               const int NUM_STUDENTS, 
+               double threshold )
+ {
+    // ...
+ }
+ {% endhighlight %}
+
+| **Function:** | `minAverg( int, int, double )` |
+| **Purpose:**  | A function to return the index of a student whose average score is less than or equal to the threshold. |
+| **Parameters:** | **int** <tt>scores[][10]</tt>: A 2D integer array with 10 columns for storing the scores for each of the 10 subjects <br /> **const int** <tt>NUM\_STUDENTS</tt>: An integer number of rows for each student <br /> **double** <tt>threshold</tt>: A floating number threshold for low average score. |
+| **Return value:** |  The function returns an `int` representing the index of the first student with a low average score that is less than or equal to the threshold. |
+| **Error handling/Boundary conditions:** | - The function returns `-1` if there is no average score that is less than or equal to the threshold <br /> - You may assume that the `score[][]` array is non-empty |
+
+**Example:** 
+
+{% highlight c++ %}
 // Assume the proper libraries are included
 // Assume the proper implementation of minAverg() is included
 
@@ -972,20 +951,16 @@ int main()
     cout << "returned student index: " <<  minAverg(scores, 2, 10.0);
     return 0;
 }
-        {% endhighlight %}
-        \end{example}
 
-        <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-returned student index: 1
-        </div>
-             \\ \hline
-\end{longtable}
+// OUTPUT:
+// returned student index: 1
+{% endhighlight %}
+   
 
 **For Question 6, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste minAverg() and any helper function(s) to the answer box!** 
 
-% Develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the whole program into the answer box! 
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
+<span style="color:red">Test code 1:</span>
+
 {% highlight c++ %}
 int scores[3][10] = {
       {10, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -994,15 +969,14 @@ int scores[3][10] = {
 };
 cout << "returned student index: " <<  minAverg(scores, 2, 25);
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-returned student index: 0
-{% endhighlight %}
-</div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
-\begin{minted}[breaklines=true]{c++}
+<p>returned student index: 0</p>
+</div>
+
+<span style="color:red">Test code 2:</span>
+
+{% highlight c++ %}
     int scores[4][10] = {
     {50, 60, 55, 65, 70, 60, 58, 62, 55, 65}, 
     {70, 80, 75, 85, 90, 65, 78, 82, 88, 74},
@@ -1011,15 +985,14 @@ returned student index: 0
 };
 cout << "returned student index: " <<  minAverg(scores, 5, 40);
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-returned student index: 2
-{% endhighlight %}
-</div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Test code:</span>
-\begin{minted}[breaklines=true]{c++}
+<p>returned student index: 2</p>
+</div>
+
+
+<span style="color:red">Test code 3:</span>
+{% highlight c++ %}
 int scores[5][10] = { 
     { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
     { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -1029,10 +1002,9 @@ int scores[5][10] = {
 };
 cout << "returned student index: " << minAverg(scores, 5, 9);
 {% endhighlight %}
-<span style="color:red">Output:</span>
-{% highlight c++ %}
-returned student index: 0
-{% endhighlight %}
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>returned student index: 0</p>
 </div>
 
 
@@ -1046,7 +1018,8 @@ returned student index: 0
 
 
 
-
+{% comment %}
+left for postarity this was commented out in the pdf... maybe a spring question?
 % &nbsp;&nbsp;&nbsp;
 ### Super Bowl Watch Party
 
