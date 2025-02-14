@@ -28,7 +28,7 @@ main() {
     # CODE
     sed -E 's/\\end{minted}/{% endhighlight %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     sed -E 's/\\begin{minted}{(.*)}/{% highlight \1 %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
-    sed -E 's/\\begin{minted}[breaklines=true]{(.*)}/{% highlight \1 %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    sed -E 's/\\begin{minted}\[.*breaklines=true.*\]{(.*)}/{% highlight \1 %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     # \begin{minted}[breaklines=true]{c++} THIS isn't working!
 
     # TITLES
