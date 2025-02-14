@@ -10,6 +10,10 @@ categories: jekyll update
   <b>By the end of this week, you will be able to:</b>
   <ol>
     <li>Make arrays of any data type</li>
+    <li>Learn how to make multidimensional arrays</li>
+    <li>Learn how to use arrays in functions</li>
+    <li>Be able to distinguish between pass by reference and pass by value
+Make arrays of any data type</li>
   </ol>
 </div>
 
@@ -139,10 +143,10 @@ string greetings[] = {"hello", "hi", "hey", "what’s up?"};
 cout << greetings[3] << endl;
 {% endhighlight %}
 
-Arrays and strings can also be iterated through in the same way.
+Arrays and strings can also be iterated through in the same way. See these two examples:
 
 {% highlight c++ %}
-// Iterating through an array:
+// Iterating through an array of many strings:
 string greetings[] = {"hello", "hi", "hey", "what’s up?"};
 int size = 4;
 for (int i = 0; i < size; i++)
@@ -152,7 +156,7 @@ for (int i = 0; i < size; i++)
 {% endhighlight %}
 
 {% highlight c++ %}
-// Iterating through a string:
+// Iterating through a single string:
 string greeting = "Hello world!";
 for (int i = 0; i < greeting.length(); i++){
     cout << greeting[i] << ", " << endl;
@@ -161,7 +165,7 @@ for (int i = 0; i < greeting.length(); i++){
 
 &nbsp;&nbsp;&nbsp;
 ### Code to Play With
-Here is some code to play with if you are interested. Note how it builds a testing function for us. Try to run that testing function with a larger array.
+Here is some code to play with if you are interested. Note how it builds a printing function for us. Exercise: run this code to exectue the printing function with a larger array.
 
 {% highlight c++ %}
 #include<iostream>
@@ -207,6 +211,140 @@ int main()
     return 0;
 }
 {% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+### Passing Arrays By Reference
+Up until now, when calling functions, we have always **passed by value**. When a parameter is passed in a function call, a new variable is declared and initialized to the value passed in the function call. This has likely led to many questions about why our function calls are not changing the values of variables in `main`.
+
+Observe that the variable `x` in `main` and variable `x` in `AddOne` are separate variables in memory. When `AddOne` is called with `x` on line 10, it is the value of `5` that is passed to the function. This value is used to initialize a new variable `x` that exists only in `AddOne`'s scope. Thus the value of the variable `x` in main's scope remains unchanged even after the function `AddOne` has been called. 
+
+{% highlight c++ linenos start=1 %}
+// Pass by value:
+void AddOne(int x){
+    x = x + 1;
+    cout << "AddOne" << x << endl;
+}
+
+int main(){
+    int x = 5;
+    cout << "main: " << x << endl;
+    AddOne(x);  /** LINE 10 */
+    cout << "main: " << x << endl;
+    cout << "Ask yourself, why doesn't the above line print main: 6?" << endl;
+}
+
+// OUTPUT:
+// main: 5
+// AddOne: 6
+// main: 5
+// Ask yourself, why doesn't the above line print main: 6?
+{% endhighlight %}
+
+
+
+**Passing By Reference**: Arrays, on the other hand, are **passed by reference** (a reference to the original array’s location in the computer’s memory). So, when an array is passed as a parameter, the original array is used by the function. Observe that there is only one array `X` in memory for the following example. When the function `AddOne` is called on line 10, a reference to the original array `X` is passed to `AddOne`. Because the array `X` is passed by reference, any modifications done to `X` in `AddOne` are done to the original array. These modifications persist and are visible even after the flow of control has exited the function and we return to main.
+
+
+{% highlight c++ linenos start=1%}
+// Pass by reference example:
+void AddOne(int X[]){
+   X[0] = X[0] + 1;
+   cout << "AddOne: " << X[0] << endl;
+}
+
+int main(){
+    int X[4] = {7, 5, 3, 2};
+    cout << "main: " << X[0] << endl;
+    AddOne(X);  /** LINE 10 */
+    cout << "main: " << X[0] << endl;
+    cout << "Ask yourself, why doesn't the above line print main: 7?" << endl;
+}
+
+// OUTPUT:
+// main: 7
+// AddOne: 8
+// main: 8
+// Ask yourself, why doesn't the above line print main: 7?
+{% endhighlight %}
+
+
+
+When we pass a one-dimensional array as an argument to a function we also provide its length. For two-dimensional arrays, in addition to providing the length (or number of rows), we will also assume that we know the length of each of the subarrays (or the number of columns). A function taking a two-dimensional array (somtimes called a `matrix`) with 3 rows and 10 columns as an paremeter might look something like this:
+
+{% highlight c++ %}
+void TwoDimensionalFunction( int matrix[3][10], int rows )
+{
+    // ...
+}
+{% endhighlight %}
+
+&nbsp;&nbsp;&nbsp;
+### Multidimensional Arrays
+
+In C++ we can declare an array of arrays known as a multidimensional array. Multidimensional arrays store data in tabular form.
+
+**How to Declare Multidimensional Arrays**
+
+{% highlight c++ %}
+// data_type array_name[dimension_1][dimension_2]....;
+int myInts[7][5];  // 7 rows, 5 columns
+bool myBooleans[10][15][12];  // 10 rows, 15 columns, 12 depths
+string myStrings[15][10];  // 15 rows, 10 columns
+{% endhighlight %}
+
+**How to Initialize Multidimensional arrays (Method 1)**
+
+{% highlight c++ %}
+int myInts[2][2] = {1, 2, 3, 4};
+{% endhighlight %}
+
+The 2D array in this case will be filled from left to right from top to bottom.
+
+{% highlight c++ %}
+int myInts[2][2] = { {1, 2}, {3, 4} };
+{% endhighlight %}
+
+You can also initialize a 2D array by explicitly separating the rows as shown above.
+
+**How to Initialize Multidimensional arrays (Method 2)** You can also initialize elements using nested loops:
+
+{% highlight c++ %}
+int myInts[2][2];
+for(int i=0; i < 2; i++)
+{
+    for(int j=0; j < 2; j++)
+    {
+        myInts[i][j] = i + j;
+    }
+}
+{% endhighlight %}
+
+The above code will create the following 2D array: `{ {0,1}, {1,2} }`.
+
+
+**How to Access Elements in a Multidimensional array**
+You can use `myInts[i][j]` to access the ith row and jth column of a 2D array
+
+Multidimensional arrays can be iterated using nested loops as shown below:
+
+{% highlight c++ %}
+int myInts[2][2] = { {0,1}, {1,2} };
+int res = 0;
+for(int i=0; i < 2; i++)
+{
+    for(int j=0; j < 2; j++)
+    {
+        res = res + myInts[i][j];
+    }
+}
+cout << "Result is " << res << endl;
+
+// OUTPUT:
+// Result is 4
+{% endhighlight %}
+
+
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## PreQuiz Assignment 
