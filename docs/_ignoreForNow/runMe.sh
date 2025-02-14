@@ -19,14 +19,17 @@ main() {
     cp "${src}" "${dst}";
    
     # HEADER INFO
-    sed -E 's/\\chapter\*{(.*)}/---\nlayout: post\ntitle: "\1"\ndate: 2025-01-01 09:00:00 -0700\ncategories: jekyll update\n---/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    sed -E 's/\\chapter\*{(.*)}/---\nlayout: post\ntitle: "\1"\ndate: 2025-01-01 09:00:00 -0700\ncategories: jekyll update\n---\n{% comment %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     sed -E 's/\\addcontentsline.*//g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     sed -E 's/\\setcounter.*//g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    # comment
+    echo "{% endcomment %}" >> "${dst}";
 
     # CODE
     sed -E 's/\\end{minted}/{% endhighlight %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     sed -E 's/\\begin{minted}{(.*)}/{% highlight \1 %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     sed -E 's/\\begin{minted}[breaklines=true]{(.*)}/{% highlight \1 %}/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    # \begin{minted}[breaklines=true]{c++} THIS isn't working!
 
     # TITLES
     sed -E 's/\\section{(.*)}/\&nbsp;\&nbsp;\&nbsp;\&nbsp;\n\#\# \1/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
@@ -62,6 +65,10 @@ main() {
     perl -pe 's|\\textit{(.*?)}|*\1*|g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     perl -pe 's|\\textbf{(.*?)}|**\1**|g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
     perl -pe 's|\\texttt{(.*?)}|<tt>\1</tt>|g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+
+    # {{ }}  causes liquid syntax errors, needs a space
+    sed -E 's/{{/{ {/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
+    sed -E 's/}}/} }/g' "${dst}" > "${tmp}" ; mv "${tmp}" "${dst}";
 
     # TABLE?
 }
