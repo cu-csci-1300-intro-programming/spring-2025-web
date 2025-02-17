@@ -258,7 +258,7 @@ All function names, return types, and parameters must precisely match those show
 One of the first steps when working with DNA sequences is to check whether the data is valid or corrupted. You must ensure the sequences you are working with consist only of valid DNA bases: A, C, G, and T. You will write a function, <tt>isValidBase()</tt>, that checks if a character is a valid DNA base.
 
 |   **Function:** <tt>isValidBase(char)</tt>    |   `bool isValidBase(char base) `  |
-|   **Purpose:**                                |   To calculate the area of the room.  |
+|   **Purpose:**                                |   The function will determine whether a given character is a valid DNA base. The function should not print anything.  |
 |   **Parameters:**                             |   **char** <tt>base</tt> - The character to validate  |
 |   **Return Value:**                           |   The function should return true if the character is a valid base (A, C, G, or T) and false otherwise.   |
 |   **Error handling/ Boundary conditions:**    |   - The function should be case sensitive, e.g., 'A' is a valid base, but 'a' is not. <br> - **Note:** True is represented by 1 and false by 0 when you `cout` boolean variables.   |
