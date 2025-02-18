@@ -627,7 +627,7 @@ Translate your pseudocode into a c++ program to solve the above code.
 **Important:** Follow these instructions carefully when preparing your recitation assignments. Your final submission should be in a single document, and the only action required on Canvas is uploading that document.
  
 1. **Documentation:**
-   - **Create a Word/Google doc** that includes your submission for all recitation questions. This is the doc you will upload to your canvas assignment.
+   - **Create a pdf** that includes your submission for all recitation questions. This is the pdf you will upload to your canvas assignment. Feel free to use Word/Google doc to create the pdf.
    - Clearly label each question with its corresponding number and include content as applicable (see #2).
  
 2. **Content to Include:**
@@ -638,13 +638,13 @@ Translate your pseudocode into a c++ program to solve the above code.
    - **Longer Recitation Questions (Multiple Parts):**
      - **Option A:**  
        - Comment your answers directly within your code file.(Spot the errors)
-       - Take screenshots of the commented code and paste them into your Word document.
+       - Take screenshots of the commented code and paste them into your document.
      - **Option B:**  
        - Take screenshots of the unmodified code.
-       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the Word document next to the corresponding screenshots.
+       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the pdf document next to the corresponding screenshots.
  
 3. **Submission:**
-   - **Upload the final Word document** to Canvas. This is the only action required on Canvas for your submission.
+   - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
  
 By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
  
