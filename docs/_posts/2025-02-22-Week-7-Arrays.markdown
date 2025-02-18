@@ -351,22 +351,192 @@ cout << "Result is " << res << endl;
 {% include uc.html caption='check back later' %}
 
 
-{% comment %}
-(due Monday Feb 24 at 9am)
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
-
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="TODO">Recitation TODO Pre-quiz</a>
-</div>
-{% endcomment %}
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 ## Recitation
-{% include underConstruction.html caption='check back later' %}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 1 
+
+Given two positive integers `x` and `y`, this program prints all the integer points (i, j) in the rectangle formed by (0, 0) and (x, y). Identify the error(s) in the code below, and write the correct line(s).
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int x = 3, y = 4;
+
+    for (int i = y; i >= 0; i--) {
+        for (int j = x; j >= 0; j--) {
+            cout << "(" << i << ", " << j << ")  ";
+        }
+        cout << endl;
+    }
+}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 2 
+
+The program prints the contents of an array and then calculates the sum of all the elements. Identify the error(s) in the code below, and write the correct line(s).
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    cout << "The contents of the array are: ";
+
+    for (int i = 0; i <= 5; i++) {
+        cout << numbers << " ";
+    }
+
+    cout << endl;
+
+    for (int i = 0; i <= 5; i++) {
+        int sum = 0;
+        sum += numbers;
+    }
+
+    cout << "Sum = " << sum << endl;
+    return 0;
+}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 3
+
+The following program determines if a given number `num` is a prime number. Identify the error(s) in the code and provide the corrected line(s).
+
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrime(int num) {
+
+    if (num <= 1) 
+        return false;
+
+    for (int i = 2; i < sqrt(num); i++) {
+        if (num % i = 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main(){
+
+    int num = 36;
+    if (isPrime(num)) {
+        cout << num << " is a prime number." << endl;
+    } else {
+        cout << num << " is not a prime number." << endl;
+    }
+
+    return 0;
+}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error - Problem 4
+
+The program prints the product of the lengths of the contents of a string array. Identify the error(s) in the code below, and write the correct line(s).
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string languages[6] = {"C++", "Python", "Java", "Matlab", "Julia"};
+    int product = 0;
+    int total = 5;
+
+    for (int i = 0; i <= total; i++){
+        product *= languages[i].length;
+    }
+
+    cout << "Product of lengths = " << product << endl;
+    return 0;
+}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+### Recitation Meal Combos - Problem 5
+
+**Problem:**  
+Create two integer arrays, `set1` and `set2`, in the `main()`. The length of `set1` should be 3, representing different main dishes, and `set2` should be 2, representing available drinks. Prompt the user to enter 3 integers for the main dishes (as their codes) and 2 integers for the drink options. Use these arrays to print all the possible meal combinations.
+
+**Example output** :
+
+```
+Please enter 3 codes for the main dishes:
+1 2 3
+Please enter 2 codes for the drinks:
+10 20
+Here are the available meal combinations:
+Dish 1 with Drink 10
+Dish 1 with Drink 20
+Dish 2 with Drink 10
+Dish 2 with Drink 20
+Dish 3 with Drink 10
+Dish 3 with Drink 20
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+#### Recitation Meal Combos - Problem 4.a.: Algorithm
+
+Write out the steps you would use to solve this problem by hand as pseudocode.
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Meal Combos - Problem 4.b.: Implementation
+
+Translate your pseudocode into a C++ program to solve the above code, using your assert statements in your `main` function to verify that your program works as expected.
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation Submission Guidelines
+ 
+**Important:** Follow these instructions carefully when preparing your recitation assignments. Your final submission should be in a single document, and the only action required on Canvas is uploading that document.
+ 
+1. **Documentation:**
+   - **Create a pdf** that includes your submission for all recitation questions. This is the pdf you will upload to your canvas assignment. Feel free to use Word/Google doc to create the pdf.
+   - Clearly label each question with its corresponding number and include content as applicable (see #2).
+ 
+2. **Content to Include:**
+   - **Screenshots of Your Code:**
+     - For each question, include a screenshot of your code.(corrected code in case of spot the errors)
+   - **Screenshots of Code Output (if applicable):**
+     - For some longer questions, it might be required to take a screenshot of the code’s output. Include these screenshots as part of your submission.
+   - **Longer Recitation Questions (Multiple Parts):**
+     - **Option A:**  
+       - Comment your answers directly within your code file.(Spot the errors)
+       - Take screenshots of the commented code and paste them into your document.
+     - **Option B:**  
+       - Take screenshots of the unmodified code.
+       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the pdf document next to the corresponding screenshots.
+ 
+3. **Submission:**
+   - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
+ 
+By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
+
+&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Homework
 Please continue working on project 1. It is due at the end of this week.
