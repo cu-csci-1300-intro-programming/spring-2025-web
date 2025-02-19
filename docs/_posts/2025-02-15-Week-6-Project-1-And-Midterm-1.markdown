@@ -334,6 +334,7 @@ The function `strandSimilarity()` compares two strands position by position, cou
 |   **Return Value:**                                       |   The function should return the similarity score between the two strands.    |
 |   **Error handling/ Boundary Condition:**                 |   - The parameters should be two strings of equal length. If they are not equal in length, your function should return 0. <br> - You may assume that the input to `strandSimilarity()` will always be a valid strand, i.e., you do not have to account for arbitrary strings. |
 
+**HINT**: to test the comarisons of doubled use the `doublesEqual` function described in week 4 of this workbook.
 
 **For Question 3, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the <tt>strandSimilarity()</tt> and any helper function(s) you used to the answer box!**
 
@@ -353,7 +354,7 @@ In `bestStrandMatch()`, the strands can be different lengths, therefore, you'll 
 
 
 |   **Function:** <tt>bestStrandMatch(string, string)</tt>  |   `int bestStrandMatch(string input_strand, string target_strand)`   
-|   **Purpose:**                                            |   The function will find the best similarity between two DNA strands. The function should print out the best similarity score.    |
+|   **Purpose:**                                            |   - The function will find the best similarity between two DNA strands.<br />- The function should print out the best similarity score.    |
 |   **Parameters:**                                         |   **string <tt>input\_strand</tt>** - The input DNA strand to be checked against the target\_strand (length greater than or equal to the target strand) <br> **string <tt>target\_strand</tt>** - The target DNA strand.
 |   **Return Value:**                                       |   If the parameters are valid, returns an `int` representing the starting index of the substring in the input strand where the best alignment with target strand occurs.  |
 |   **Error handling/ Boundary conditions:**                |   - If the input strand is shorter than the target strand, the function returns -1 as the alignment index and prints out "Best similarity score: 0.0". <br> - This function should make use of the `strandSimilarity()` function. <br> - You may assume that the input to <tt>bestStrandMatch()</tt> will always be a valid DNA sequence, i.e., you do not have to account for arbitrary strings.
