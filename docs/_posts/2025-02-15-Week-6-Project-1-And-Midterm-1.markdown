@@ -350,7 +350,10 @@ The function `strandSimilarity()` compares two strands position by position, cou
 &nbsp;&nbsp;&nbsp;
 #### Question 4: <tt>bestStrandMatch()</tt>
 
+
 In `bestStrandMatch()`, the strands can be different lengths, therefore, you'll want to compare overlapping sections and calculate similarity scores at each position, and to do that you'll slide the shorter strand along the longer strand. The maximum score across all positions indicates the best alignment between the two strands.
+
+
 
 
 |   **Function:** <tt>bestStrandMatch(string, string)</tt>  |   `int bestStrandMatch(string input_strand, string target_strand)`   
@@ -358,6 +361,18 @@ In `bestStrandMatch()`, the strands can be different lengths, therefore, you'll 
 |   **Parameters:**                                         |   **string <tt>input\_strand</tt>** - The input DNA strand to be checked against the target\_strand (length greater than or equal to the target strand) <br> **string <tt>target\_strand</tt>** - The target DNA strand.
 |   **Return Value:**                                       |   If the parameters are valid, returns an `int` representing the starting index of the substring in the input strand where the best alignment with target strand occurs.  |
 |   **Error handling/ Boundary conditions:**                |   - If the input strand is shorter than the target strand, the function returns -1 as the alignment index and prints out "Best similarity score: 0.0". <br> - This function should make use of the `strandSimilarity()` function. <br> - You may assume that the input to <tt>bestStrandMatch()</tt> will always be a valid DNA sequence, i.e., you do not have to account for arbitrary strings.
+
+
+**HINT**: For this problem, lookup the string method named `substr`. Given a string, a starting position and an length, it will find a smaller "sub-string" of the original. recall that strings index from `0`. Some examples below
+
+{% highlight c++ %}
+string x = "hello";
+cout << x << endl;  // prints "hello"
+string y = x.substr( 0, 2 );
+cout << y << endl;  // prints "he" start at 0, length 2
+string z = x.substr( 2, 3 );
+cout << z << endl;  // prints "llo" start at 2, length 3
+{% endhighlight %}
 
 **For Question 4, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the <tt>bestStrandMatch() and any helper function(s) you used to the answer box!</tt>**
 
