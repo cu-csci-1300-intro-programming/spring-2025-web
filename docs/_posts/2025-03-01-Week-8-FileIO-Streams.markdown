@@ -443,7 +443,7 @@ void mostPopularWord(string words[], const int WORDS_SIZE)
 | **Purpose:**  | Print the word with the highest frequency, its count, and its index positions in the array. |
 | **Parameters:** | **string** <tt>words</tt>: Array of words <br />  **const int** <tt>WORDS\_SIZE</tt>: The size of word array |
 | **Return value:** | - The function should print the word with the highest frequency, its count, and its index positions in the array. <br />  - The function doesn't return any value to the main function. |
-| **Error Handling/ Boundary Conditions:** |  - If two or more words have the same frequency, the word that appears last will be considered the most popular; see sample run 4.1.3. <br /> - You may assume the words[] array is always non-empty. |
+| **Error Handling/ Boundary Conditions:** |  - If two or more words have the same frequency, the word that appears last will be considered the most popular; see <span style="color:red">Test code 2</span> below <br /> - You may assume the words[] array is always non-empty. |
 
 **Example:** 
 
@@ -517,7 +517,7 @@ void stepCountCumulativeSum( int daily_steps[],
 
 | **Function:**  | `stepCountCumulativeSum( int[], const int, int[])` |
 | **Purpose:**  | Calculates the cumulative sum of the daily step counts and records the running total in the `cumulative_steps` array. The cumulative sum represents the total number of steps Bob has taken up to each respective day, providing a running total of his overall progress. The function should not print anything. |
-| **Parameters:** | **int** <tt>daily\_steps[]</tt>: array of Bob's daily step count. <br /> **const int** <tt>NUM\_DAYS</tt>: Size of `daily_steps` array and `cumulative_steps` array<br />**int** <tt>cumulative\_steps[]</tt>: Array to be filled with Bob's cumulative step count. |
+| **Parameters:** | **int** <tt>daily_steps[]</tt>: array of Bob's daily step count. <br /> **const int** <tt>NUM_DAYS</tt>: Size of `daily_steps` array and `cumulative_steps` array<br />**int** <tt>cumulative_steps[]</tt>: Array to be filled with Bob's cumulative step count. |
 | **Return value:** |  The function doesn't return any value. |
 
 
@@ -664,7 +664,7 @@ As a pediatrician, you need to monitor newborns' heart rates, which should fall 
 
 | **Function:** | printNormalHeartRates (string, int, int) |
 | **Purpose:**  | Prints out the patients with normal heart rates. Where normal heart rate is between 70 and 190, both inclusive. You may assume that both `patients[]` and `heart_rate[]` arrays will be the same size. |
-| **Parameters:** | **string** <tt>patients[]</tt>: Array of strings which contains the patient's names.  <br /> **int** <tt>heart\_rate[]</tt>: Array of int which contains their heart rate  <br />  **const int** <tt>NUM\_PATIENTS</tt>: An integer that gives the number of elements in thepatient and heart rate arrays |
+| **Parameters:** | **string** <tt>patients[]</tt>: Array of strings which contains the patient's names.  <br /> **int** <tt>heart_rate[]</tt>: Array of int which contains their heart rate  <br />  **const int** <tt>NUM_PATIENTS</tt>: An integer that gives the number of elements in the patient and heart rate arrays |
 | **Return value:** | - The function doesn't return any value. <br /> - Your function should print out all patients whose heart rate is within the range |
 | **Error handling/ Boundary conditions:** | - You may assume that the `patients[]` array and `heart_rate[]` array are non-empty <br /> - You may also assume that the size of the `patients[]` array and `heart_rate[]` array are always equal |
 
@@ -700,6 +700,7 @@ printNormalHeartRates(patients, heart_rate, 4);
 {% endhighlight %}
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Joe 70</p>
 <p>Jack 80</p>
 <p>Amy 190</p>
 <p>Bob 100</p>
@@ -796,6 +797,34 @@ int prices[NUM_MONTHS] = {700000, 300000, 400000, 100000, 400000, 100000};
 
 &nbsp;&nbsp;&nbsp;
 ### Splitting a String
+
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+Be advised that this funciton will likely be used again in future assignments.
+</div>
+
+**PROTIP:** for any string `x` the expression `x.length()` will evaulate to a type `size_t`. This is a very specific type of number. If you'd like, you can treat it like an `unsigned int` instead. e.g.
+{% highlight c++ %}
+string x;
+cout << "I can haz string without spaces?" << endl;
+cin >> x;
+for ( size_t i = 0 ; i < x.length() ; i++ )
+{
+    cout << "using size_t above: " << x[i] << endl;
+}
+
+
+for ( unsigned int i = 0 ; i < x.length() ; i++ )
+{
+    cout << "using unsigned int above: " << x[i] << endl;
+}
+
+// // COMPILER ERROR thanks to `-Werror`
+// for ( int i = 0 ; i < x.length() ; i++ )
+// {
+//   cout << "using int above: " << x[i] << endl;
+// }
+{% endhighlight %}
 
 When you're processing data, it's useful to break up a text string into pieces using a delimiter. Write a function `split()` that takes a string, splits it at every occurrence of a delimiter, and then populates an array of strings with the split pieces, up to the provided maximum number of pieces.
 
