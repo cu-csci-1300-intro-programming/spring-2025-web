@@ -518,8 +518,8 @@ You have successfully written functions to help your research team analyze DNA s
     2. Calculate the best similarity between two sequences of either equal or unequal length
     3. Identify mutations
     4. Transcribe DNA to RNA
-    5. Find the complement of a DNA sequence
-    6. Extract reading frames
+    5. Find the reverse complement of a DNA sequence
+    6. Extract coding frames
     7. Exit
 
 
