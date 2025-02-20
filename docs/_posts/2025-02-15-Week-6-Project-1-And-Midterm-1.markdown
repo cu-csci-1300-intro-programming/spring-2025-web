@@ -658,7 +658,7 @@ Your menu should run on a loop, continually offering the user each option until 
     <p>Please enter your choice (1 - 7): </p>
     <p><strong style="color:red;">3</strong></p>
     <p>Enter the first DNA sequence:</p>
-    <p><strong style="color:red;">ATTG</strong></p>
+    <p><strong style="color:red;">ATTTG</strong></p>
     <p>Enter the second DNA sequence:</p>
     <p><strong style="color:red;">ATCTG</strong></p>
     <p>Best similarity score: 0.8</p>
