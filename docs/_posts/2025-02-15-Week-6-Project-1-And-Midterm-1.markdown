@@ -321,9 +321,25 @@ Let's compare the following two DNA strands:
 
     
 
-The total number of matches is 4 out of 6 positions, resulting in a similarity score of \( \frac{4}{6} = 0.667 \).
+The total number of matches is 4 out of 6 positions, resulting in a similarity score of `4/6 = 0.667`. 
+
+**HINT**: recall from week 4s reading on "[Testing Double Functions](https://cu-csci-1300-intro-programming.github.io/spring-2025-web/jekyll/update/2025/01/22/Week-4-Functions.html#testing-double-functions)" that we need to be careful when compairing doubles. Consider adding and calling the following helper function for your testing:
+
+{% highlight c++ %}
+// This is a required function to successfully test Double functions in C++:
+/*
+  - doublesEqual will test if two doubles are equal to each
+  - other within two decimal places.
+*/
+bool doublesEqual(double a, double b, const double epsilon = 1e-2)
+{
+    double c = a - b;
+    return c < epsilon && -c < epsilon;
+}
+{% endhighlight %}
 
 
+&nbsp;&nbsp;
 
 The function `strandSimilarity()` compares two strands position by position, counting the number of positions where the bases are identical. This provides a direct measure of how similar the two sequences are.
 
