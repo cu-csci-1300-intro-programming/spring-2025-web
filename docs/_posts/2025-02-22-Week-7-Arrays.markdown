@@ -347,12 +347,21 @@ cout << "Result is " << res << endl;
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-## PreQuiz Assignment 
-{% include uc.html caption='check back later' %}
+## PreQuiz Assignment (due Monday Feb 24 at 9am)
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/457952">Recitation 7 Pre-quiz</a>
+</div>
 
 
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
 
+{% include underConstruction.html caption='We will link to the project here.' %}
+
+{% comment %}
 &nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -537,10 +546,9 @@ Translate your pseudocode into a C++ program to solve the above code, using your
 By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-
-## Homework
-Please continue working on project 1. It is due at the end of this week.
-{% comment %}
-TODO: link the project
 {% endcomment %}
-{% include underConstruction.html caption='We will link to the project here.' %}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Homework
+Please continue working on [project 1](https://cu-csci-1300-intro-programming.github.io/spring-2025-web/jekyll/update/2025/01/27/Week-6-Project-1-And-Midterm-1.html#project-1). It is due Friday February 28th.
