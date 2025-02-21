@@ -359,12 +359,8 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
 
-{% include underConstruction.html caption='We will have the recitation available soon.' %}
 
-{% comment %}
 &nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;
-
 ### Recitation Spot The Error - Problem 1 
 
 Given two positive integers `x` and `y`, this program prints all the integer points (i, j) in the rectangle formed by (0, 0) and (x, y). Identify the error(s) in the code below, and write the correct line(s).
@@ -545,8 +541,6 @@ Translate your pseudocode into a C++ program to solve the above code, using your
  
 By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
 
-&nbsp;&nbsp;&nbsp;&nbsp;
-{% endcomment %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;
