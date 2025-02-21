@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Appendix D: Debuger Guide"
+title:  "Appendix D: Debugger Guide"
 date:   2025-01-07 12:58:53 -0700
 categories: jekyll update
 ---
