@@ -359,7 +359,7 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
 
-{% include underConstruction.html caption='We will link to the project here.' %}
+{% include underConstruction.html caption='We will have the recitation available soon.' %}
 
 {% comment %}
 &nbsp;&nbsp;&nbsp;&nbsp;
