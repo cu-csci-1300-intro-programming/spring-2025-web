@@ -25,8 +25,8 @@ Make arrays of any data type</li>
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Readings
 Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
-1. Monday: 2.5
-1. Wednesday: 6.1, 6.2, 6.4, 6.5, 6.6
+1. Monday: 2.5, 6.1, 6.2
+1. Wednesday: 6.4, 6.5, 6.6
 1. Friday: 6.4, 6.5
 
 
