@@ -663,24 +663,22 @@ If invalid data is found in any line, the program should skip processing that li
  
 All function names, return types, and parameters must precisely match those shown. You may not use pass by reference or otherwise modify the function prototypes. You are welcome to create additional functions that may help streamline your code. 
 
-All files used in this assignment are in a zipped folder titled <tt>'homework\_7\_input\_files.zip'</tt> located in Canvas under the week 9 module.
+All files used in this assignment are in a zipped folder titled '<a targe="_blank" el="nofollow noopener noreferrer" href="https://github.com/cu-csci-1300-intro-programming/spring-2025-web/blob/main/docs/assets/zips/homework_7_input_files.zip">homework_7_input_files.zip</a>' also located in Canvas under the week 9 module.
 
 
 &nbsp;&nbsp;&nbsp;
 ### National Park 
-*This question may require the use of file streams, loops, and arrays.* \newline
+*This question may require the use of file streams, loops, and arrays.*
 
 Write a C++ program to read a file of national park names and print them to the console in the same order as they appear in the file.
 
-{% comment %}
 
 **Note:** There are 63 national parks in the USA, which is why our <tt>MAX\_SIZE</tt> is set to 63. \newline
 
 For this question, the answer box on the coderunner is preloaded with the following solution template. You are only required to fill in the appropriate blanks. Additionally, you may use the <tt>national\_parks\_1.txt</tt> file to test out your code. **All the files used in this assignment, including <tt>national\_parks\_1.txt**, are available in Canvas under week 10 module</tt>. You may also create more files for further testing.
-\begin{example}
+
+
 {% highlight c++ %}
-
-
 #include <iostream>
 #include <fstream>
 
@@ -736,46 +734,37 @@ int main()
     return 0;
 }
 {% endhighlight %}
-\end{example}
+
 
 **For Question 1, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and replace the blank with your solution. The answer box is preloaded with the template above.** 
 
+
 &nbsp;&nbsp;&nbsp;
-### Museum Attendance % the file io museum attendance sheet
-*This question may require the use of file streams, loops, and arrays.* \newline
+### Museum Attendance 
+*This question may require the use of file streams, loops, and arrays.* 
 
 Your former high school took students on a museum trip. Before boarding the bus, the teachers made a list of all the students' names. After visiting the museum, the teachers asked the students to board the bus and made a new list of all the students' names. Before leaving, the teachers wanted to compare the two lists to make sure no student was left behind. Write a C++ program to help them do this quickly and easily. Your program compares the two attendance sheets and reports if any student is still inside the museum.
 
 **Note:** The largest file has 24 names; therefore, declare your array with size 30 to ensure it accommodates all test cases.
 
-\newpage
-\begin{longtable}{|p{1.7in}|p{4.3in}|}
-\hline
-**Function:**  <tt>compareAttendanceSheet( string, string)</tt> 
-& `void compareAttendanceSheet(string first_attendance_file, ` \newline
-`string second_attendance_file)` \\ \hline
 
-**Purpose:** & Given two attendance sheets, the function will compare and print out any individuals who are present in the first sheet but missing in the second. \\ \hline
-
-**Parameters:** & 
-**string** <tt>first\_attendance\_file</tt> - The first attendance sheet. \newline
-**string** <tt>second\_attendance\_file</tt> - The second attendance sheet.
-\\ \hline
-
-**Return Value:** & 
-N/A. \\ \hline
-
-**Error Handling:** & 
-- If either file does not exist, print ``Failed to open attendance files". \newline
-- If a name exists in the second\_attendance\_file, it will also be present in the first\_attendance\_file. In other words, no new names are added to the second\_attendance\_file that were not in the first. \newline
-- Hint: The largest file has 24 names; therefore, declare your array with size 30 to ensure it accommodates all test cases.
-\\ \hline
-
-**Example:** & 
-\begin{example}
 {% highlight c++ %}
+void compareAttendanceSheet( string first_attendance_file, 
+                             string second_attendance_file )
+{
+    // ...
+}
+{% endhighlight %}
+
+| **Function:** | <tt>compareAttendanceSheet( string, string )</tt> |
+| **Purpose:** | Given two attendance sheets, the function will compare and print out any individuals who are present in the first sheet but missing in the second. |
+| **Parameters:** | **string** <tt>first\_attendance\_file</tt> - The first attendance sheet. <br /> **string** <tt>second\_attendance\_file</tt> - The second attendance sheet. |
+| **Return Value:** | N/A. |
+| **Error Handling:** | - If either file does not exist, print "Failed to open attendance files". <br />- If a name exists in the `second_attendance_file`, it will also be present in the `first_attendance_file`. In other words, no new names are added to the `second_attendance_file` that were not in the first. <br />- Hint: The largest file has 24 names; therefore, declare your array with size 30 to ensure it accommodates all test cases. |
 
 
+**Example:** 
+{% highlight c++ %}
 // This is only an example usage, and you should develop your own main function
 // Assume the proper libraries are included.
 // Assume the proper implementation of compareAttendanceSheet() is included.
@@ -785,112 +774,101 @@ int main() {
     return 0;
 }
 {% endhighlight %}
-\end{example}
-\\ \hline
 
-**Sample Input:** & 
+
+
+**Sample Input:**  
 
 Sample from example\_1.txt:
+{% highlight txt %}
 
-\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
-Jorden Owen \newline
-Waylon Mccoy \newline
-Dario Harding \newline
-Jameson Odonnell \newline
-Andrew Wilkinson
-\end{tcolorbox}
+{% endhighlight %}
+
 
 Sample from example\_2.txt:
-\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
-Jorden Owen \newline
-Waylon Mccoy \newline
-Jameson Odonnell \newline
-Andrew Wilkinson 
-\end{tcolorbox}
-\\ \hline
+{% highlight txt %}
 
-**Sample Output:** &
-Students yet to board the bus are \newline
-Dario Harding \newline
-\\ \hline
-\end{longtable}
+{% endhighlight %}
+
+
+**Sample Output:** 
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p><span style="color:green">Inputs:</span></p>
+<br />
+<p><span style="color:red">Example_1.txt:</span></p>
+<p><span style="color:red">Jorden Owen</span></p>
+<p><span style="color:red">Waylon Mccoy</span></p>
+<p><span style="color:red">Dario Harding</span></p>
+<p><span style="color:red">Jameson Odonnell</span></p>
+<p><span style="color:red">Andrew Wilkinson</span></p>
+<br />
+<p><span style="color:red">Example_2.txt:</span></p>
+<p><span style="color:red">Jorden Owen</span></p>
+<p><span style="color:red">Waylon Mccoy</span></p>
+<p><span style="color:red">Jameson Odonnell</span></p>
+<p><span style="color:red">Andrew Wilkinson </span></p>
+<br />
+
+<p><span style="color:green">OUTPUT:</span></p>
+<p>Students yet to board the bus are</p>
+<p>Dario Harding</p>
+</div>
+
 
 **For Question 2, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste compareAttendanceSheet() and any helper function(s) to the answer box!**
 
 
+
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 
-<span style="color:red">Inputs:</span>
-Example\_3.txt: \newline
-\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
-Anya Garcia \newline
-Oliver Jones \newline
-Sofia Smith
-\end{tcolorbox}
-
-Example\_4.txt:
-\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
-Anya Garcia \newline
-Sofia Smith \newline
-Oliver Jones
-\end{tcolorbox}
-
-<span style="color:red">Output:</span>
-
-Every student has boarded the bus. It's time to leave.
-
+<span style="color:green">Inputs:</span>
+<br />
+<p><span style="color:red">Example_3.txt:</span></p>
+<p><span style="color:red">Anya Garcia</span></p>
+<p><span style="color:red">Oliver Jones</span></p>
+<p><span style="color:red">Sofia Smith</span></p>
+<br />
+<p><span style="color:red">Example_4.txt:</span></p>
+<p><span style="color:red">Anya Garcia</span></p>
+<p><span style="color:red">Sofia Smith</span></p>
+<p><span style="color:red">Oliver Jones</span></p>
+<br />
+<p><span style="color:green">Output:</span></p>
+<p>Every student has boarded the bus. It's time to leave.</p>
 </div>
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Inputs:</span>
-
-does\_not\_exist\_1.txt
-
-does\_not\_exist\_2.txt
-
-<span style="color:red">Output:</span>
-
-Failed to open attendance files
-
+<span style="color:green">Inputs:</span>
+<br />
+<p><span style="color:red">does_not_exist_1.txt</span></p>
+<br />
+<p><span style="color:red">does_not_exist_2.txt</span></p>
+<br />
+<span style="color:green">Output:</span>
+<p>Failed to open attendance files</p>
 </div>
 
 &nbsp;&nbsp;&nbsp;
-### Compare Trails % a question that has to use stod and validateInt() or double
-*This question may require the use of file streams, split(), loops, and functions* \newline
+### Compare Trails 
+{% comment %}
+a question that has to use stod and validateInt() or double
+{% endcomment %}
 
-Today is your first day as a software engineering intern with the National Park Service. You've started on a busy day, and after the initial meetings, your boss asked you to develop a function to print some statistics about some of the long hikes around the world. You've been given a text file, which contains a list of different hikes. Each line includes the name of a long hike, its length (as a whole number) in miles, and its elevation gain (as a whole number) in feet, each separated by the delimiter ``|".
+*This question may require the use of file streams, split(), loops, and functions* 
 
-Hint: The split() function from homework 6 could be helpful. 
+Today is your first day as a software engineering intern with the National Park Service. You've started on a busy day, and after the initial meetings, your boss asked you to develop a function to print some statistics about some of the long hikes around the world. You've been given a text file, which contains a list of different hikes. Each line includes the name of a long hike, its length (as a whole number) in miles, and its elevation gain (as a whole number) in feet, each separated by the delimiter `|`.
 
-\begin{longtable}{|p{1.7in}|p{4.3in}|}
-\hline
-**Function:**  <tt>printHikeStats(string)</tt> 
-& `void printHikeStats(string file_name)` \\ \hline
+Hint: Your `split( )` function from homework 6 could be helpful. 
 
-**Purpose:** & Given a text file that contains information on the trails, the function will print the following: \newline
-- Number of valid lines read from the file. A valid line must contain exactly three fields: the hike name, length (as an integer), and elevation gain (as an integer). \newline
-- Name and the length of the longest hike. \newline
-- Name and the length of the shortest hike. \newline
-- Name and elevation gain per mile of the steepest hike. This number should be rounded to one decimal point (use setprecision). 
-\\ \hline
+| **Function:** | <tt>printHikeStats(string)</tt>  <br /> `void printHikeStats(string file_name)` |
+| **Purpose:** | Given a text file that contains information on the trails, the function will print the following:<br />- Number of valid lines read from the file. A valid line must contain exactly three fields: the hike name, length (as an integer), and elevation gain (as an integer).<br />- Name and the length of the longest hike.<br />- Name and the length of the shortest hike.<br />- Name and elevation gain per mile of the steepest hike. This number should be rounded to one decimal point (use setprecision). |
+| **Parameters:** | **string** <tt>file\_name</tt> - The file name of the text file. |
+| **Return Value:** | N/A. |
+| **Error Handling:** | - If the file does not exist, print ``Could not open file." <br />- If there is a tie, choose the first one.  |
 
-**Parameters:** & 
-**string** <tt>file\_name</tt> - The file name of the text file. 
-\\ \hline
 
-**Return Value:** & 
-N/A. \\ \hline
-
-**Error Handling:** & 
-- If the file does not exist, print ``Could not open file." \newline
-- If there is a tie, choose the first one. 
-\\ \hline
-
-**Example:** & 
-\begin{example}
+**Example:** 
 {% highlight c++ %}
-
-
 // This is only an example usage, and you should develop your own main function
 // Assume the proper libraries are included.
 // Assume the proper implementation of printHikeStats() is included.
@@ -900,123 +878,97 @@ int main() {
     return 0;
 }
 {% endhighlight %}
-\end{example}
-\\ \hline
 
-**Sample Input:** & 
-Content of long\_hikes.txt:
 
-\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
-The Appalachian Trail|2180|464500 \newline
-The South West Coast Path|630|115000 \newline
-Continental Divide Trail|3100|457000 \newline
-Great Himalayan Trail|1056|289000 \newline
-The Colorado Trail|578|89000 \newline
-The Pacific Crest Trail|2650|824370 
-\end{tcolorbox}
-\\ \hline
-
-**Sample Output:** &
-Number of lines read: 6. \newline
-Longest hike: Continental Divide Trail at 3100 miles. \newline
-Shortest hike: The Colorado Trail at 578 miles. \newline
-Steepest hike: The Pacific Crest Trail at 311.1 feet gained per mile.
-\\ \hline
-\end{longtable}
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<span style="color:green">INPUT:</span>
+<p><span style="color:red">Content of long_hikes.txt:</span></p>
+<p><span style="color:red">The Appalachian Trail|2180|464500</span></p>
+<p><span style="color:red">The South West Coast Path|630|115000</span></p>
+<p><span style="color:red">Continental Divide Trail|3100|457000</span></p>
+<p><span style="color:red">Great Himalayan Trail|1056|289000</span></p>
+<p><span style="color:red">The Colorado Trail|578|89000 </span></p>
+<p><span style="color:red">The Pacific Crest Trail|2650|824370 </span></p>
+<br />
+<span style="color:green">OUTPUT:</span>
+<p>Number of lines read: 6.</p>
+<p>Longest hike: Continental Divide Trail at 3100 miles.</p>
+<p>Shortest hike: The Colorado Trail at 578 miles.</p>
+<p>Steepest hike: The Pacific Crest Trail at 311.1 feet gained per mile.</p>
+</div>
 
 **For Question 3, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste printHikeStats() and any helper function(s) to the answer box!**
 
+
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-Content of hikes\_blanks1.txt:
-
-\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
-The South West Coast Path|630|115000 \newline
-\newline
-\newline
-Continental Divide Trail|3100|457000 \newline
-Great Himalayan Trail|1056|289000 \newline
-\newline
-\end{tcolorbox}
-
-<span style="color:red">Input</span>:
-
-hikes\_blanks1.txt
-
-<span style="color:red">Output</span>: 
-
-Longest hike: Continental Divide Trail at 3100 miles. \newline
-Shortest hike: The South West Coast Path at 630 miles. \newline
-Steepest hike: Great Himalayan Trail at 273.7 feet gained per mile. 
+<span style="color:green">INPUT:</span>
+<p><span style="color:red">Content of hikes_blanks1.txt:</span></p>
+<p><span style="color:red">The South West Coast Path|630|115000 </span></p>
+<br />
+<br />
+<p><span style="color:red">Continental Divide Trail|3100|457000 </span></p>
+<p><span style="color:red">Great Himalayan Trail|1056|289000</span></p>
+<br />
+<span style="color:green">Output</span>: 
+<p>Longest hike: Continental Divide Trail at 3100 miles.</p>
+<p>Shortest hike: The South West Coast Path at 630 miles.</p>
+<p>Steepest hike: Great Himalayan Trail at 273.7 feet gained per mile.</p>
 </div>
 
+
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 
-<span style="color:red">Input</span>:
+<p><span style="color:green">Input:</span></p>
 
-file\_does\_not\_exist.txt
+<p><span style="color:red">file_does_nots_exist.txt</span></p>
 
-<span style="color:red">Output</span>:
+<p><span style="color:green">Output:</span></p>
 
-Could not open file. 
-
+<p>Could not open file. </p>
 </div>
 
 
 &nbsp;&nbsp;&nbsp;
-### Restaurant Struct % struct question
-*This question may require the use of structs and functions.* \newline
+### Restaurant Struct 
+{% comment %} 
+struct question
+{% endcomment %}
+
+*This question may require the use of structs and functions.* 
 
 You are tasked with designing a program to evaluate restaurants based on a food quality rating, cleanliness rating, and wait time rating, ultimately providing an overall rating. Write a C++ program to accept the name of a restaurant, its food quality rating (0-10), cleanliness rating (0-10), and wait time rating (0-5). Use a function to calculate the overall rating using the function specification and formula given below:
 
-\begin{equation}
-\text{Overall Rating} = 
-0.5 \times \text{food quality} + 
-0.3 \times \text{cleanliness} + 
-0.2 \times \text{wait time}
-\end{equation}
+{% highlight c++ %}
+// Overall Rating =   0.5 * food_quality 
+//                  + 0.3 * cleanliness 
+//                  + 0.2 * wait_time
+{% endhighlight %}
 
 
 You must create a struct named Restaurant with the following attributes: the name of the restaurant, food quality rating, cleanliness rating, wait time rating, and overall rating. 
 
-\begin{center}
-\begin{tabular}{|l|l|l|}
-    \hline
-    **Member Type** & **Member Name** & **Description** \\ \hline
-    ****{string} & <tt>name</tt> & Restaurant's name \\ \hline
-    ****{int} & <tt>food\_quality</tt> & Restaurant's food quality rating (0-10) \\ \hline
-    ****{int} & <tt>cleanliness</tt> & Restaurant's cleanliness rating (0-10) \\ \hline
-    ****{int} & <tt>wait\_time</tt> & Restaurant's wait time rating (0-5) \\ \hline
-    ****{double} & <tt>overall</tt> & Restaurant's overall rating \\ \hline
-\end{tabular}
-\end{center}
 
-Next, create a function that will calculate the overall score of each restaurant. 
+| **Member Type** | **Member Name** | **Description** |
+| `string` | <tt>name</tt> | Restaurant's name |
+| `int` | <tt>food\_quality</tt> | Restaurant's food quality rating (0-10) |
+| `int` | <tt>cleanliness</tt> | Restaurant's cleanliness rating (0-10) |
+| `int` | <tt>wait\_time</tt> | Restaurant's wait time rating (0-5) |
+| `double` | <tt>overall</tt> | Restaurant's overall rating |
 
-\newpage
 
-\begin{longtable}{|p{1.7in}|p{4.3in}|}
-\hline
-**Function:**  <tt>getOverallRating(Restaurant)</tt> 
-& `double getOverallRating(Restaurant restaurant)` \\ \hline
 
-**Purpose:** & Given a object of type <tt>Restaurant</tt>, calculate its overall rating. \\ \hline
+Next, create a function that will calculate the overall score of each restaurant.
 
-**Parameters:** & 
-**Restaurant** <tt>restaurant</tt> - A <tt>Restaurant</tt> object that contains all the information of the object.
-\\ \hline
+| **Function:**  | <tt>getOverallRating(Restaurant)</tt>  <br /> `double getOverallRating(Restaurant restaurant)` |
+| **Purpose:** | Given a object of type <tt>Restaurant</tt>, calculate its overall rating. |
+| **Parameters:** | **Restaurant** <tt>restaurant</tt> <br />- A <tt>Restaurant</tt> object that contains all the information of the object.|
+| **Return Value:** | The overall rating of the restaurant. The function should not print anything. |
+| **Error Handling:** | - If any of the ratings in <tt>restaurant</tt> are not within its bound, return -1. The rating bounds are: food quality (0-10), cleanliness (0-10), wait time (0-5) |
 
-**Return Value:** & The overall rating of the restaurant. The function should not print anything.
-\\ \hline
 
-**Error Handling:** & 
-- If any of the ratings in <tt>restaurant</tt> are not within its bound, return -1. The rating bounds are: food quality (0-10), cleanliness (0-10), wait time (0-5) 
-\\ \hline
 
-**Example:** & 
-\begin{example}
+**Example:** 
 {% highlight c++ %}
-
-
 // This is only an example usage, and you should develop your own main function
 // Assume the proper libraries are included.
 // Assume the proper implementation of getOverallRating() and Restaurant struct is included.
@@ -1041,88 +993,78 @@ int main() {
     return 0;
 }
 {% endhighlight %}
-\end{example}
-\\ \hline
 
-**Sample Output:** &
-Restaurant: McDonalds Overall: 5.1
-\\ \hline
-\end{longtable}
+
+
+**Sample Output:** 
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Restaurant: McDonalds Overall: 5.1</p>
+</div>
 
 **For Question 4, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste Restaurant struct, getOverallRating(), and any helper function(s) to the answer box!**
 
+
+The sample inputs will be given in the order of name, food quality, cleanliness, and wait time, respectively.
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-The sample inputs will be given in the order of name, food quality, cleanliness, and wait time, respectively. \newline
-<span style="color:red">Input:</span> 
-
-Aloy Thai \newline
-9 \newline
-8 \newline
-3
-
-<span style="color:red">Output:</span>
-
-Restaurant: Aloy Thai Overall: 6.8
-
+<span style="color:green">Input:</span> 
+<p><span style="color:red">Aloy Thai</span></p>
+<p><span style="color:red">9</span></p>
+<p><span style="color:red">8</span></p>
+<p><span style="color:red">3</span></p>
+<br />
+<p><span style="color:green">Output:</span></p>
+<p>Restaurant: Aloy Thai Overall: 6.8</p>
 </div>
 
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+
 The sample inputs will be given in the order of name, food quality, cleanliness, and wait time, respectively. \newline
-<span style="color:red">Input:</span> 
-
-Invalid \newline
-2 \newline
-3 \newline
--1
-
-<span style="color:red">Output:</span>
-
-Invalid rating(s) entered.
-
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<span style="color:green">Input:</span> 
+<p><span style="color:red">Invalid</span></p>
+<p><span style="color:red">2</span></p>
+<p><span style="color:red">3</span></p>
+<p><span style="color:red">-1</span></p>
+<br />
+<p><span style="color:green">Output:</span></p>
+<p>Invalid rating(s) entered.</p>
 </div>
+
 
 &nbsp;&nbsp;&nbsp;
-### List of Restaurants % the restaurant
-*This question may require the use of file streams, split(), loops, arrays, and structs.* \newline
+### List of Restaurants 
+{% comment %} 
+the restaurant 
+{% endcomment %}
 
-In this question, we will use the same <tt>struct</tt> for <tt>Restaurant</tt> from Question 4. You will be given a file, which contains the name of the restaurant, followed by its food quality, cleanliness rating, and wait time rating, all separated by <tt>\textasciitilde</tt>. The task will be to evaluate the best restaurant from within the list.
+*This question may require the use of file streams, split(), loops, arrays, and structs.*
+
+In this question, we will use the same <tt>struct</tt> for <tt>Restaurant</tt> from Question 4. You will be given a file, which contains the name of the restaurant, followed by its food quality, cleanliness rating, and wait time rating, all separated by `~` The task will be to evaluate the best restaurant from within the list.
+
 
 &nbsp;&nbsp;
 #### Part A:
 First, write a function that reads the restaurant details from a file and populates the required array for further analysis. 
 
-Hint: The split() function from homework 6 could be helpful. 
+Hint: The `split( )` function from homework 6 could be helpful. 
 
-\newpage
-
-\begin{longtable}{|p{1.7in}|p{4.3in}|}
-\hline
-**Function:**  <tt>readRestaurantDetails( string, Restaurant[], const int)</tt> 
-& `int readRestaurantDetails(string filename, Restaurant ` \newline
-`restaurant[], const int MAX_RESTAURANTS)` \\ \hline
-
-**Purpose:** & Read all the restaurant details from a given file and calculate the overall rating for all restaurants. \\ \hline
-
-**Parameters:** & 
-**string** <tt>filename</tt> - The text file that contains all the details of the restaurants. \newline
-**Restaurant[]** <tt>restaurants</tt> - The array that will be populated with all the restaurant objects. \newline
-**const int** <tt>MAX\_RESTAURANTS</tt> - The maximum number of restaurants that can be present in the file containing restaurant details. 
-\\ \hline
-
-**Return Value:** & If successful (function parameters are correct), return the number of restaurants added to the array. \newline
-The function should not print anything. 
-\\ \hline
-
-**Error Handling:** & 
-- If the file does not exist, -1 is returned. \newline
-- If there is an incorrect number of attributes for a given line of the file, skip the line.
-\\ \hline
-
-**Example:** & 
-\begin{example}
 {% highlight c++ %}
+int readRestaurantDetails( string filename, 
+                           Restaurant restaurant[], 
+                           const int MAX_RESTAURANTS )
+{
+    // ...
+}
+{% endhighlight %}
 
 
+| **Function:**  | <tt>readRestaurantDetails( string, Restaurant[], const int )</tt> |
+| **Purpose:** | Read all the restaurant details from a given file and calculate the overall rating for all restaurants. |
+| **Parameters:** | **string** <tt>filename</tt> - The text file that contains all the details of the restaurants. <br />**Restaurant[]** <tt>restaurants</tt> - The array that will be populated with all the restaurant objects. <br />**const int** <tt>MAX\_RESTAURANTS</tt> - The maximum number of restaurants that can be present in the file containing restaurant details. |
+| **Return Value:** | If successful (function parameters are correct), return the number of restaurants added to the array. <br /> The function should not print anything. |
+| **Error Handling:** |- If the file does not exist, -1 is returned. <br />- If there is an incorrect number of attributes for a given line of the file, skip the line.|
+
+**Example:** 
+{% highlight c++ %}
 // This is only an example usage, and you should develop your own main function
 // Assume the proper libraries are included.
 // Assume the proper implementation of readRestaurantDetails(), getOverallRating(), and Restaurant struct is included.
@@ -1153,56 +1095,46 @@ int main()
     }
 }
 {% endhighlight %}
-\end{example}
-\\ \hline
 
-**Sample Output:** &
-Restaurant: Wendys Ratings: 6 3 2 Overall: 4.3 \newline
-Restaurant: Chick-fil-a Ratings: 9 5 5 Overall: 7 \newline
-Restaurant: Snarfburger Ratings: 10 4 3 Overall: 6.8 \newline
-Restaurant: Cosmo's Pizza Ratings: 7 3 2 Overall: 4.8
-\\ \hline
-\end{longtable}
+**Sample Output:**
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Restaurant: Wendys Ratings: 6 3 2 Overall: 4.3</p>
+<p>Restaurant: Chick-fil-a Ratings: 9 5 5 Overall: 7</p>
+<p>Restaurant: Snarfburger Ratings: 10 4 3 Overall: 6.8</p>
+<p>Restaurant: Cosmo's Pizza Ratings: 7 3 2 Overall: 4.8</p>
+</div>
 
-\newpage
+
 &nbsp;&nbsp;
 #### Part B:
-Then, create a feature where we can find the best restaurant according to your criteria. The possible options are: \newline \newline
-Option 1: ``Food Quality" \newline
-Option 2: ``Cleanliness" \newline
-Option 3: ``Wait Time" \newline
-Option 4: ``Overall"
+Then, create a feature where we can find the best restaurant according to your criteria. The possible options are:
 
-\begin{longtable}{|p{1.7in}|p{4.3in}|}
-\hline
-**Function:**  <tt>getBest(Restaurant[], int, string)</tt> 
-& `int getBest(Restaurant restaurants[], int arr_size, string metric)` \newline
- \\ \hline
+<ul>
+    <li>Option 1: "Food Quality"</li>
+    <li>Option 2: "Cleanliness"</li>
+    <li>Option 3: "Wait Time"</li>
+    <li>Option 4: "Overall"</li>
+</ul>
 
-**Purpose:** & Given an array, the function will find and return the index of the best restaurant according to the metric. \\ \hline
 
-**Parameters:** & 
-**Restaurant[]** <tt>restaurants</tt> - The array that has been populated with the details of all the restaurants. \newline
-**int** <tt>arr\_size</tt> - The maximum number of restaurants that are present in the restaurants array. \newline
-**string** <tt>metric</tt> - The metric used to find the best restaurant. 
-\\ \hline
-
-**Return Value:** & 
-If successful (function parameters are correct), return the index of the best restaurant according to the metric. The function should not print anything.
-\\ \hline
-
-**Error Handling:** & 
-- If the metric is not a valid option (not ``Food Quality," ``Cleanliness," ``Wait Time," or ``Overall"), -1 is returned. \newline
-- If the line does not have exactly four attributes—name, food quality, cleanliness, and wait time—skip the line. \newline
-- If there is a tie, choose the first one.  \newline
-- Note: in this assignment, a higher wait time rating means a shorter wait, which indicates better service. For example, a wait time rating of 5 indicates excellent service with minimal wait. 
-\\ \hline
-
-**Example:** & 
-\begin{example}
 {% highlight c++ %}
+int getBest( Restaurant restaurants[], 
+             int arr_size, 
+             string metric )
+{
+    // ...
+}
+{% endhighlight %}
 
 
+| **Function:**  | <tt>getBest(Restaurant[], int, string)</tt> |
+| **Purpose:** | Given an array, the function will find and return the index of the best restaurant according to the metric. |
+| **Parameters:** | **Restaurant[]** <tt>restaurants</tt> - The array that has been populated with the details of all the restaurants. <br />**int** <tt>arr\_size</tt> - The maximum number of restaurants that are present in the restaurants array. <br /> **string** <tt>metric</tt> - The metric used to find the best restaurant. |
+| **Return Value:** | If successful (function parameters are correct), return the index of the best restaurant according to the metric. The function should not print anything.|
+| **Error Handling:** | - If the metric is not a valid option (not "Food Quality," "Cleanliness," "Wait Time," or "Overall"), -1 is returned. <br /> - If the line does not have exactly four attributes—name, food quality, cleanliness, and wait time—skip the line. <br /> - If there is a tie, choose the first one.  <br /> - Note: in this assignment, a higher wait time rating means a shorter wait, which indicates better service. For example, a wait time rating of 5 indicates excellent service with minimal wait. |
+
+**Example:**
+{% highlight c++ %}
 // This is only an example usage, and you should develop your own main function
 // Assume the proper libraries are included.
 // Assume the proper implementation of getBest(), readRestaurantDetails(), getOverallRating(), and Restaurant struct is included.
@@ -1244,37 +1176,29 @@ int main()
     }
 }
 {% endhighlight %}
-\end{example}
-\\ \hline
 
-**Sample Output:** &
-Restaurant: Snarfburger Ratings: 10 4 3 Overall: 6.8
-\\ \hline
-\end{longtable}
+**Sample Output:**
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Restaurant: Snarfburger Ratings: 10 4 3 Overall: 6.8</p>
+</div>
 
 **For Question 5, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the Restaurant struct, getOverallRating(), readRestaurantDetails(), getBest(), and any helper function(s) to the answer box!**
 
+
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 
-The content of restaurants\_1.txt:
-\begin{tcolorbox}[colframe=blue, colback=white, boxrule=0.5mm, arc=5mm]
-Wendys~6~3~2 \newline
-Chick-fil-a~9~5~5 \newline
-McDonalds~2~2~2~2 \newline
-Snarfburger~10~4~3 \newline
-Cosmo's Pizza~7~3~2 \newline
-Pizza Hut~1~2
-\end{tcolorbox}
-
-<span style="color:red">Input</span>:
-
-restaurants\_1.txt \newline
-Cleanliness
-
-<span style="color:red">Output</span>:
-
-Restaurant: Chick-fil-a Ratings: 9 5 5 Overall: 7
-
+<p>The content of restaurants_1.txt:</p>
+<p>Wendys~6~3~2</p>
+<p>Chick-fil-a~9~5~5</p>
+<p>McDonalds~2~2~2~2</p>
+<p>Snarfburger~10~4~3</p>
+<p>Cosmo's Pizza~7~3~2</p>
+<p>Pizza Hut~1~2</p>
+<br />
+<span style="color:green">Input</span>:
+<p><span style="color:red">restaurants_1.txt</span></p>
+<p><span style="color:red">Cleanliness</span></p>
+<br />
+<span style="color:green">Output</span>:
+<p>Restaurant: Chick-fil-a Ratings: 9 5 5 Overall: 7</p>
 </div>
-
-{% endcomment %}
