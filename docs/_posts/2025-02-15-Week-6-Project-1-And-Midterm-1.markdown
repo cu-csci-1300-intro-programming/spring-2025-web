@@ -135,6 +135,8 @@ double calculateTax(double taxableIncome) {
 }
 
 /*
+HINT: call calculateTax and applyDeductions from inside of this function.
+
 @brief Computes the net income (gross - tax).
 @param grossIncome The original, pre-deduction income.
 @param numDependents The number of dependents for the taxpayer.
