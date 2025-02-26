@@ -66,6 +66,12 @@ CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course m
     - gem install --user-install bundler jekyll
     - from there you shouldn't need to follow the tutorial further. for the sake of using this tool locally (to the best of my knowledge, but if I'm wrong, please update the readme)
 
+### Install Windows
+- tutorial: https://www.geeksforgeeks.org/how-to-install-jekyll-on-windows/
+    - Note: the tutorial is dated, I just installed the recommended version of Ruby.
+    - Make sure to read ahead in instructions to save yourself time.
+    - Look at images as there is a step where a needed instruction is only in the image and not the written portion.
+
 
 ## Tutorials
 - https://jekyllrb.com/tutorials/video-walkthroughs/ these are a bit dated, but mostly acceptable
