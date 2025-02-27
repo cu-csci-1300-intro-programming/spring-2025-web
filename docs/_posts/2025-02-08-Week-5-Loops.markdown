@@ -103,17 +103,17 @@ Note that here we do not have to initialize user choice before the loop begins.
 
 &nbsp;&nbsp;&nbsp;
 ### For Loops
-You will frequently come across instances where you already know the number of iterations you would like your loop to complete, like the `while (i < 5)` example shown above. In these cases, there is a special loop that has a counter built in rather than needing to keep track on your own. For loops have three elements:
+You will frequently come across instances where you already know the number of iterations you would like your loop to complete, like the `while (i < 5)` example shown above. In these cases, there is a special loop that has a counter built in rather than needing to keep track on your own. For loops have three elements, which we call the "three Cs" **create, compare, change**:
 
-1. **Initialization**: It must initialize a counter variable to a starting value. Note: When initializing your counter, you can choose to either declare a new variable or use an existing variable. If you declare a new variable in your initialization, it will only exist in the **scope** of the loop; this means once the loop concludes, you cannot access that variable again. 
-1. **Condition**: If it is true, then the body of the loop is executed. If it is false, the body of the loop does not execute and jumps to the next statement(s) just after the loop.
-1. **Update**: Updates the counter variable during each iteration
+1. **CREATE**: It must create/"initialize" a counter variable to a starting value. Note: When initializing your counter, you can choose to either declare a new variable or use an existing variable. If you declare a new variable in your initialization, it will only exist in the **scope** of the loop; this means once the loop concludes, you cannot access that variable again. 
+1. **COMPARE**: many things as a logical expression. if the expressions value is true, then the body of the loop is executed. If it is false, the body of the loop does not execute and jumps to the next statement(s) just after the loop.
+1. **CHANGE**: Update the counter variable during each iteration
 
 
 The basic structure of a for loop looks like this:
 
 {% highlight c++ %}
-for (initialization; condition; update)
+for ( create ; compare ; change )
 {
     //code to execute
 }
@@ -124,7 +124,7 @@ Here, `for` is a C++ reserved word.
 {% highlight c++ %}
 // Here is a section of code that will 
 // print the word "hello" five times:
-for (int count = 0; count < 5; count++)
+for ( int count = 0 ; count < 5 ; count++ )
 {
     cout << "hello" << endl;
 }
@@ -132,9 +132,9 @@ for (int count = 0; count < 5; count++)
 
 Notice the following three parts of the for loop:
 
-1. count is initialized to 0,
-1. the conditional expression is count < 5
-1. count++ to increment the count value by one
+1. **CREATE**: count is initialized to 0,
+1. **COMPARE**: the conditional expression is count < 5
+1. **CHANGE**: count++ to increment the count value by one
     
 
 
