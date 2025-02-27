@@ -391,7 +391,7 @@ Unintended behavior when accidentally using assignment operation (= instead of =
  <br /><br />
  PROTIP: build using the `-Werror` flag to make this warning into an error
  <br /><br />
-e.g. `g++ -Wall -Werror -Wpedantic -std=c++17 FILE_NAME.cpp`
+e.g. `g++ -Wall -Werror -Wpedantic -Wsign-compare -std=c++17 FILE_NAME.cpp`
 </div>
 
 {% highlight c++ %}

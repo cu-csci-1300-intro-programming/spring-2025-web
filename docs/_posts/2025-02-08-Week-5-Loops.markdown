@@ -159,6 +159,15 @@ while (i < 5)
 
 
 &nbsp;&nbsp;&nbsp;
+### -Wsign-compare
+As we deal with loops it becomes particularly important that we add `-Wsign-compare` to our build commands.
+
+{% highlight bash %}
+g++ -Wall -Werror -Wpedantic -Wsign-compare -std=c++17 myCodeFile.cpp
+{% endhighlight %}
+
+
+&nbsp;&nbsp;&nbsp;
 ### Common Errors and Debugging Loops
 
 Unique errors with loops include:

@@ -244,8 +244,15 @@ For this task, the steps are outlined and divided into individual questions. By 
     4. Transcribe DNA to RNA and compute the reverse complement of a DNA strand
     5. Find open reading frames within a DNA strand
     6. Final step:  make it more accessible and user-friendly!
+   
     
+&nbsp;&nbsp;&nbsp;
+### g++ flags
+A point of particular frustration for many, to ensure that your local builds look like our autograder be sure to build using the following flags. Moving forward in the course, we expect this as your standard build procedure.
 
+{% highlight bash %}
+g++ -Wall -Werror -Wpedantic -Wsign-compare -std=c++17 myProjectFile.cpp
+{% endhighlight %}
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
