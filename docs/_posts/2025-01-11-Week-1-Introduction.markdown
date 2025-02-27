@@ -114,10 +114,11 @@ Additionally, you should begin compiling with flags that tell you more informati
 1. `-Wall`: Wall is short for "Warn All", which will turn on most of the warnings in C++. This will help identify various possible ways your code might go wrong, including array bounds errors and other helpful messages.
 1. `-Werror`: Werror will treat all warnings as errors. This will prevent you from skipping past the possible sources of error in your code, and you will need to make sure all warnings are resolved prior to compiling.
 1. `-Wpedantic`: This flag enables warnings that alert you about language constructs that are not ISO C or ISO C++ standard compliant. This is particularly helpful to identify constructs that may not be uniform in other compilers, which could cause problems with your code on other machines. This will help prevent instances where your code works on your personal computer, but does not work on CodeRunner or on the grader's computer. 
+1. `-Wsign-compare`: This flag enables warnings that alert you about type issues which can occur that are machine dependent. This particular command is crutical for MacOS users to have builds that look like our autograding system.
 
 All together, your command line prompt will look something like this:
 {% highlight bash %}
-g++ -Wall -Werror -Wpedantic -std=c++17 myCodeFile.cpp
+g++ -Wall -Werror -Wpedantic -Wsign-compare -std=c++17 myCodeFile.cpp
 {% endhighlight %}
 
 **Pro Tips**:
