@@ -803,28 +803,15 @@ int prices[NUM_MONTHS] = {700000, 300000, 400000, 100000, 400000, 100000};
 Be advised that this funciton will likely be used again in future assignments.
 </div>
 
-**PROTIP:** for any string `x` the expression `x.length()` will evaulate to a type `size_t`. This is a very specific type of number. If you'd like, you can treat it like an `unsigned int` instead. e.g.
-{% highlight c++ %}
-string x;
-cout << "I can haz string without spaces?" << endl;
-cin >> x;
-for ( size_t i = 0 ; i < x.length() ; i++ )
-{
-    cout << "using size_t above: " << x[i] << endl;
-}
+**HINT**: use `stringstream`.
 
+**PROTIP**: compile using `-Wsign-compare` e.g. if saved to file named <tt>foo.cpp</tt>, use 
 
-for ( unsigned int i = 0 ; i < x.length() ; i++ )
-{
-    cout << "using unsigned int above: " << x[i] << endl;
-}
-
-// // COMPILER ERROR thanks to `-Werror`
-// for ( int i = 0 ; i < x.length() ; i++ )
-// {
-//   cout << "using int above: " << x[i] << endl;
-// }
+{% highlight sh %}
+g++ -Wall -Werror -Wpedantic -Wsign-compare foo.cpp
 {% endhighlight %}
+
+&nbsp;
 
 When you're processing data, it's useful to break up a text string into pieces using a delimiter. Write a function `split()` that takes a string, splits it at every occurrence of a delimiter, and then populates an array of strings with the split pieces, up to the provided maximum number of pieces.
 
@@ -1006,7 +993,7 @@ cout << "returned student index: " <<  minAverg(scores, 2, 25);
 <span style="color:red">Test code 2:</span>
 
 {% highlight c++ %}
-    int scores[4][10] = {
+int scores[4][10] = {
     {50, 60, 55, 65, 70, 60, 58, 62, 55, 65}, 
     {70, 80, 75, 85, 90, 65, 78, 82, 88, 74},
     {10, 20, 15, 25, 12, 30, 18, 22, 17, 15},  
