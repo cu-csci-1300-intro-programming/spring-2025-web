@@ -207,28 +207,20 @@ RECALL: the `open()` function requires a correct path to the file. If the `myTex
 ## PreQuiz
  {% include uc.html caption='check back later' %}
 
-{% comment %}
-(due unkown at 9am)
+<!-- (due unkown at 9am)
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
 Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="TODO">Recitation TODO Pre-quiz</a>
-</div>
-{% endcomment %}
+</div> -->
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
 
-{% include underConstruction.html caption='check back later' %}
-
-{% comment %}
-
 &nbsp;&nbsp;&nbsp;
-### Spot The Error
-\begin{multipart}
+### Recitation Spot The Error- Problem 1
 The program below intends to prints average of the scores. Identify the error(s) in the code below, and write the correct line(s).
-\end{multipart}
 
-{% highlight c++ %}
+```cpp
     #include <iostream>
     #include <string> 
     using namespace std;
@@ -245,13 +237,13 @@ The program below intends to prints average of the scores. Identify the error(s)
         cout << "Average = " << avg << endl;
         return 0; 
     }
-{% endhighlight %}
+```
 
-\begin{multipart}
+&nbsp;&nbsp;&nbsp;
+### Recitation Spot The Error- Problem 2
 The program below displays transpose of a given matrix. The transpose of a matrix is simply a flipped version of the original matrix by switching its rows with its columns. Identify the error(s) in the code below, and write the correct line(s).
-\end{multipart}
 
-{% highlight c++ %}
+```cpp
     #include <iostream>
     using namespace std;
     
@@ -297,13 +289,13 @@ The program below displays transpose of a given matrix. The transpose of a matri
     
         return 0;
     }
-{% endhighlight %}
+```
 
-\begin{multipart}
+&nbsp;&nbsp;&nbsp;
+### Recitation Spot The Error- Problem 3
 The program below tries to print all the items specified in the item array. Identify the error(s) in the code below, and write the correct line(s).
-\end{multipart}
 
-{% highlight c++ %}
+```cpp
     #include <iostream>
     using namespace std;
     
@@ -319,13 +311,13 @@ The program below tries to print all the items specified in the item array. Iden
         }
         return 0;
     }
-{% endhighlight %}
+```
 
-\begin{multipart}
+&nbsp;&nbsp;&nbsp;
+### Recitation Spot The Error- Problem 4
 The program below prints the strings that have length equal to 4. Identify the error(s) in the code below, and write the correct line(s).
-\end{multipart}
 
-{% highlight c++ %}
+```cpp
     #include <iostream>
     #include <string>
     using namespace std;
@@ -343,42 +335,10 @@ The program below prints the strings that have length equal to 4. Identify the e
         }
         return 0;
     }
-{% endhighlight %}
+```
 
 &nbsp;&nbsp;&nbsp;
-### Coding Telephone
-
-For this activity, you will need to break into groups of approximately 6-8. The basic idea of the game is simple: We will give you some starting piece of code, with a short region of the code marked for "Coding Telephone". The first person in your group will have to translate the code entirely to comments, leaving no actual code in that region behind. They will pass this comment file on to the second person in your group, who will translate the comments back into code. Then the next person will translate the code to comments, so on and so forth until everyone in your group has participated. Then you will attempt to compile your code and run it, and see what happens. Think of it like the game Telephone, but with code.
-
-You will get the starting code from Canvas. The only person who should view this original code is the first person in your group. Make sure to keep the code secret at each stage so others cannot see it. You will each have five minutes to translate your code. During the time you are not coding, you are welcome to work on the other questions in this recitation assignment. 
-
-Once your group has completed the game, work together to answer the following questions:
-
-\begin{multipart}
-    Did your final code compile? If not, what error did it fail with? If this is an easy to fix error, fix it and move on to the next question.
-\end{multipart}
-
-\vspace{6cm}
-
-\begin{multipart}
-    If your code compiled, did it run? If not, what error did it fail with? If so, what did it print?
-\end{multipart}
-
-\vspace{6cm}
-
-\begin{multipart}
-    Compile and run the original code, and compare it with the code you ended with. How did it change? Where were some areas of miscommunication? 
-\end{multipart}
-
-\vspace{6cm}
-
-**Submit your answers to these questions along with your final Telephone code for this problem on Canvas.**
-
-%Can we get USBs from the department for this? Do students even know how to use USBs anymore, or would it be faster to have them email it to each other?
-
-
-&nbsp;&nbsp;&nbsp;
-### Matrix Sum
+### Recitation Matrix Sum - Problem 5
 The sum of two matrices is found by adding together corresponding entries in each matrix, as shown above. (For example, the numbers at (row 1, column 1) of each matrix are added together to get the (row 1, column 1) number of the sum matrix.)
 
 Write a function that accepts two 2x3 integer arrays as input parameters and displays the sum matrix (displayed in 2 rows). Example header:
@@ -388,36 +348,71 @@ Write a function that accepts two 2x3 integer arrays as input parameters and dis
 Then, create a main() function that asks the user to input the values for each matrix one row at a time. Store these in two arrays, and pass them to matrixSum. Example output (red is user input)
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-Enter values for matrix 1, one row at a time:\\
-<span style="color:red">1 2 3</span>\\
-<span style="color:red">4 5 6</span>\\
-Enter values for matrix 2, one row at a time:\\
-<span style="color:red">2 4 6</span>\\
-<span style="color:red">8 10 12</span>\\
-The sum is:\\
-3 6 9\\
-12 15 18\\
+<p>Enter values for matrix 1, one row at a time:</p>
+<p><strong style="color:red;">1 2 3</strong></p>
+<p><strong style="color:red;">4 5 6</strong></p>
+Enter values for matrix 2, one row at a time:
+<p><strong style="color:red;">2 4 6</strong></p>
+<p><strong style="color:red;">8 10 12</strong></p>
+The sum is:
+<p><strong style="color:green;">3 6 9</strong></p>
+<p><strong style="color:green;">12 15 18</strong></p>
 </div>
 
-\begin{multipart}
-    Write out the steps you would use to solve this problem by hand as pseudocode. 
-\end{multipart}
+#### Recitation Matrix Sum - Problem 5.a.: Algorithm
+Write out the steps you would use to solve this problem by hand as pseudocode. 
 
-\newpage
+#### Recitation Matrix Sum - Problem 5.b.: Implementation
+Translate your pseudocode into a C++ program to solve the above code, verify that your program works as expected.
 
-\begin{multipart}
-Pick possible inputs for your program. Choose as many inputs as you think you need to thoroughly test your program. Follow the steps you wrote for these values to find your result, and verify it.
-\end{multipart}
+&nbsp;&nbsp;&nbsp;
+### Recitation Coding Telephone
 
-\vspace{14cm}
+For this activity, you will need to break into groups of approximately 6-8. The basic idea of the game is simple: We will give you some starting piece of code, with a short region of the code marked for "Coding Telephone". The first person in your group will have to translate the code entirely to comments, leaving no actual code in that region behind. They will pass this comment file on to the second person in your group, who will translate the comments back into code. Then the next person will translate the code to comments, so on and so forth until everyone in your group has participated. Then you will attempt to compile your code and run it, and see what happens. Think of it like the game Telephone, but with code.
 
-\begin{multipart}
-Implement your solution in C++ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make you sure you test for the values used in your sample runs, and for the boundary conditions.
-\end{multipart}
-
-{% endcomment %}
+The only person who should view this <a href="/spring-2025-web/assets/files/codingTelephone.cpp" download>starting code</a> is the first person in your group. Make sure to keep the code secret at each stage so others cannot see it. You will each have five minutes to translate your code. During the time you are not coding, you are welcome to work on the other questions in this recitation assignment. 
 
 
+
+Once your group has completed the game, work together to answer the following questions:
+
+Did your final code compile? If not, what error did it fail with? If this is an easy to fix error, fix it and move on to the next question.
+
+If your code compiled, did it run? If not, what error did it fail with? If so, what did it print?
+
+Compile and run the original code, and compare it with the code you ended with. How did it change? Where were some areas of miscommunication?
+
+**Submit your answers to these questions along with your final Telephone code for this problem on Canvas.**
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation Submission Guidelines
+ 
+**Important:** Follow these instructions carefully when preparing your recitation assignments. Your final submission should be in a single document, and the only action required on Canvas is uploading that document.
+ 
+1. **Documentation:**
+   - **Create a pdf** that includes your submission for all recitation questions. This is the pdf you will upload to your canvas assignment. Feel free to use Word/Google doc to create the pdf.
+   - Clearly label each question with its corresponding number and include content as applicable (see #2).
+ 
+2. **Content to Include:**
+   - **Screenshots of Your Code:**
+     - For each question, include a screenshot of your code.(corrected code in case of spot the errors)
+   - **Screenshots of Code Output (if applicable):**
+     - For some longer questions, it might be required to take a screenshot of the code’s output. Include these screenshots as part of your submission.
+   - **Longer Recitation Questions (Multiple Parts):**
+     - **Option A:**  
+       - Comment your answers directly within your code file.(Spot the errors)
+       - Take screenshots of the commented code and paste them into your document.
+     - **Option B:**  
+       - Take screenshots of the unmodified code.
+       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the pdf document next to the corresponding screenshots.
+ 
+3. **Submission:**
+   - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
+ 
+By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework
 

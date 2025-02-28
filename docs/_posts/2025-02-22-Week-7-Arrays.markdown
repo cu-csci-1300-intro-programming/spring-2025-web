@@ -503,15 +503,15 @@ Dish 3 with Drink 20
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-#### Recitation Meal Combos - Problem 4.a.: Algorithm
+#### Recitation Meal Combos - Problem 5.a.: Algorithm
 
 Write out the steps you would use to solve this problem by hand as pseudocode.
 
 &nbsp;&nbsp;&nbsp;
 
-#### Recitation Meal Combos - Problem 4.b.: Implementation
+#### Recitation Meal Combos - Problem 5.b.: Implementation
 
-Translate your pseudocode into a C++ program to solve the above code, using your assert statements in your `main` function to verify that your program works as expected.
+Translate your pseudocode into a C++ program to solve the above code, verify that your program works as expected.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
