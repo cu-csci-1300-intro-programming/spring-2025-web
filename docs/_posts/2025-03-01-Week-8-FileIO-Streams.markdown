@@ -204,14 +204,11 @@ RECALL: the `open()` function requires a correct path to the file. If the `myTex
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-## PreQuiz
- {% include uc.html caption='check back later' %}
-
-<!-- (due unkown at 9am)
+## PreQuiz Assignment (due Monday March 3 at 9am)
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="TODO">Recitation TODO Pre-quiz</a>
-</div> -->
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/458640">Recitation 8 Pre-quiz</a>
+</div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
