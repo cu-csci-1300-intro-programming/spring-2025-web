@@ -27,7 +27,7 @@ categories: jekyll update
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Readings
 Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
-1. Monday: 8.3
+1. Monday: 8.3, 7.7
 1. Wednesday: 7.7
 1. Friday: 7.7, 9.1, 9.2, 9.3
 
