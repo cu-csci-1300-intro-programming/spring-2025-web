@@ -291,37 +291,30 @@ While structs and classes are similar, there are some key differences between th
 SPWI: TODO
 {% endcomment %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
-{% include uc.html caption="check back soon for the recitation information" %}
-
-{% comment %}
-NOTE for Advait: unsure which recitation you should use. we condensed two week here.
 
 &nbsp;&nbsp;&nbsp;
-### Spot The Error
-\begin{multipart}
-The program is supposed to flip the sign of all the numbers in an array. Identify the error(s) in the code below, and write the correct line(s).
-\end{multipart}
+### Recitation Spot The Error- Problem 1
+The program is supposed to square all the numbers in an array. Identify the error(s) in the code below, and write the correct line(s).
 
-{% highlight c++ %}
+```cpp
     #include <iostream>
     #include <string>
     using namespace std;
     
-    void flipSign(int numbers[]) 
+    void FindSquare(int numbers) 
     {
-        for (int i = 0; i < 14; i++) 
+        for (int i = 0; i < 4; i++) 
         {
-            numbers[i] = -1.0 * numbers[i];
+            numbers[i] *= numbers[i];
         }
-        return;
+        return numbers;
     }
     
     int main()
     {
         const int length = 4;
-        int numbers[] = {1, 2, 3, 4};
+        int numbers[] = {1, 2, -3, 4};
     
         cout << "The contents of the array before changing: ";
         for (int i = 0; i < length; i++)
@@ -330,7 +323,7 @@ The program is supposed to flip the sign of all the numbers in an array. Identif
         }
         cout << endl;
     
-        flipSign(numbers);
+        FindSquare(numbers);
     
         cout << "The contents of the array after changing: ";
         for (int i = 0; i < length; i++)
@@ -340,19 +333,17 @@ The program is supposed to flip the sign of all the numbers in an array. Identif
     
         return 0;
     }
-{% endhighlight %}
+```
 
-\newpage
-
-\begin{multipart}
-The program below reads a file visitors.txt and prints out the busiest day. Each line in the file has the format:
+&nbsp;&nbsp;&nbsp;
+### Recitation Spot The Error- Problem 2
+The Louvre Museum wants to determine its busiest day of the week so it can allocate more staff to assist with guided tours. The museum keeps a log of daily visitors in a file called 'visitors.txt'. Each line in the file has the following format:
 
 `dayOfWeek <space> visitor1,visitor2,..,visitorN.`
 
 Identify the error(s) in the code below and write the correct line(s).
-\end{multipart}
 
-{% highlight c++ %}
+```cpp
     #include <iostream>
     #include <string>
     using namespace std;
@@ -387,19 +378,17 @@ Identify the error(s) in the code below and write the correct line(s).
             }
             i++;
         }
-        cout << days[j] << " is the busiest day of the week at the motel." << endl;
+        cout << days[j] << " is the busiest day of the week at the mueseum." << endl;
     
         return 0;
     }
-{% endhighlight %}
+```
 
-\newpage
+&nbsp;&nbsp;&nbsp;
+### Recitation Spot The Error- Problem 3
+The program appends and prepends underscores for every word in the given message string. Assume the message is maximum 4 words. Identify the error(s) in the code below, and write the correct line(s). split() is a function from last week's Homework.
 
-\begin{multipart}
- The program appends and prepends underscores for every word in the given message string. Assume the message is maximum 4 words. Identify the error(s) in the code below, and write the correct line(s). Note, `split()` is a function from Homework 5.
-\end{multipart}
-
-{% highlight c++ %}
+```cpp
     #include <iostream>
     #include <string>
     #include <cassert>
@@ -410,17 +399,17 @@ Identify the error(s) in the code below and write the correct line(s).
         const int LENGTH = 4;
         string message_fragments[LENGTH] = {};
         string empty_word = "";
-        split(message, ' ', message_fragments[], LENGTH) 
-        assert(message_fragments[4] == empty_word) 
+        split(message, ' ', message_fragments[], LENGTH);
+        assert(message_fragments[4] == empty_word);
     
         string answer, word; 
-        for(int i == 0; i < LENGTH; i++)
+        for(int i = 0; i < LENGTH; i++)
         {
             answer += "_" + message + "_";
         }
         int first_word_length = message_fragments[0].length();
         int second_word_length = message_fragments[1].length();
-        assert(message_fragments[1] = answer.substr(first_word_length+3, second_word_length))
+        assert(message_fragments[1] == answer.substr(first_word_length+3, second_word_length));
     
         return answer;
     }
@@ -432,230 +421,115 @@ Identify the error(s) in the code below and write the correct line(s).
         getline(cin, message);
         cout << appendPrepend(message);
     }
-{% endhighlight %}
-
-\newpage 
-
+```
 &nbsp;&nbsp;&nbsp;
-### Center of Mass
+### Recitation Midterm Averages- Problem 4
 
-The file `coordinates1.txt` contains a list of comma-separated X, Y and Z coordinates for a given geometric body in each column respectively. Your goal is to find the center of mass of the body by computing the average of the X, the Y and the Z coordinates. In order to do this, you must:
+The file 'midterms.txt' contains a list of comma-separated scores for three midterms taken by each student in a class. Each line represents one student’s scores for all three midterms. Your task is to compute the average score for each midterm across all students.
 
-\begin{enumerate}
+To complete this task, you must:
+
     1. Read each line in as a string,
-    1. Use your `split()` function from Homework 5 to separate each line at the commas,
-    1. Use your `validateDouble()` function from Q2 to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
-\end{enumerate}
+    2. Use your `split()` function from previous homework to separate each line at the commas,
+    3. Use the provided `validateDouble()` function to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
 
-Report the average of your X coordinates, Y coordinates and Z coordinates as your center of mass.
+Examples runs:
 
-Example output (red is user input):
-
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-// If file contains two lines: \\
-// 3.25,4.19,-3.56 \\
-// 1.04,2.31,5.12 \\
-The center of mass is at: 2.145, 3.25, 0.78! \\
-// 2.145 = (3.25+1.04)/2.0 \\
-// 3.25 = (4.19+2.31)/2.0 \\
-// 0.78 = (-3.56+5.12)/2.0 \\
-</div>
-
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> %THIS ONE IS INCORRECT -- FIX FOR SPRING
-// If file contains these lines: \\
-// 5.00,0,-0.8 \\
-// -3,3.3,-0.75 \\
-// 1,-1.0,3.8 \\
-// 3.50,0.67,-2 \\
-The center of mass is at: 1, 1.65, -0.025!
-</div>
+If the file contains the following lines:
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-// If file contains these lines: \\
-// 0,5.00,-0.8 \\
-// -3,3.3,0.75 \\
-// abc,-1.0,2.8 \\
-Invalid value detected!
+<p><strong style="color:red;"> 85.5,90.2,78.6 </strong></p>
+<p><strong style="color:red;"> 92.0,88.5,79.8 </strong></p>
 </div>
 
-There are several coordinate files included in the week 9 module which you can use to test your code. You can also make your own input files.
+Expected output:
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p><strong style="color:Green;"> The average scores per midterm are: </strong></p>
+<p><strong style="color:Green;"> Midterm 1: 88.75 </strong></p>
+<p><strong style="color:Green;"> Midterm 2: 89.35 </strong></p>
+<p><strong style="color:Green;"> Midterm 3: 79.2 </strong></p>
+</div>
 
-\newpage
+If the file contains the following lines:
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p><strong style="color:red;">  100,98.2,95 </strong></p>
+<p><strong style="color:red;">  85.5,88,90 </strong></p>
+<p><strong style="color:red;">  75.5,85.2,80 </strong></p>
+</div>
 
-\begin{multipart}
+Expected output:
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p><strong style="color:Green;"> The average scores per midterm are: </strong></p>
+<p><strong style="color:Green;"> Midterm  1: 87.0 </strong></p>
+<p><strong style="color:Green;"> Midterm  2: 90.47 </strong></p>
+<p><strong style="color:Green;"> Midterm  3: 88.33 </strong></p>
+</div>
+
+If the file contains the following lines:
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p><strong style="color:red;"> 85.5,abc,78 </strong></p>
+<p><strong style="color:red;"> 90,88.5,79.8 </strong></p>
+</div>
+
+Expected output:
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p><strong style="color:Green;"> Invalid value detected in Student 1’s scores! </strong></p>
+</div>
+
+#### Recitation Midterm Averages- Problem 4.a. : Algorithm
 Write out the steps you would use to solve this problem by hand as pseudocode. 
-\end{multipart}
 
-\vspace{10cm}
+#### Recitation Midterm Averages- Problem 4.a. : Implementation
+Translate your pseudocode into a C++ program to solve the above code, verify that your program works as expected.
 
-\begin{multipart}
-Write three possible lines you can include in your file to later test your program. Try to pick values that will test different aspects of your program. Follow the steps you wrote for these values to find your result, and verify it.
-\end{multipart}
+Helper function:
+```cpp
+bool validateDouble(string input){
+    //if the string is empty return false
+    if (input.length() == 0){
+        return false;
+    }
+    
+    //the string must have at least one numerical digit, but it can also start with a minus sign
+    //it can have up to one decimal
+    
+    int numDecimals = 0;
+    bool seenDigit = false;
+    
+    //if the string is longer than 1, the first character can be a digit or a minus sign
+    switch(input[0]){
+        case '-':
+            break;
+        
+        case '.':
+            numDecimals++;
+            break;
 
-\vspace{5cm}
+        default:
+            if (isdigit(input[0])){
+                seenDigit = true;
+            }else{
+                return false;
+            }
+    }
 
-\begin{multipart}
-Implement your solution in C$++$ using VS Code. Revise your solution, save, compile and run it again. Are you getting the expected result and output? Keep revising until you do. Make sure you test for the values used in your sample runs, and for the boundary conditions. Use the coordinates files on github to test your code.
-\end{multipart}
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-## Recitation
-&nbsp;&nbsp;&nbsp;
-### Spot the Error
-\begin{multipart}
-The following code writes a string to the file output.txt. Identify and fix the error.
-\end{multipart}
-
-{% highlight c++ %}
-#include <iostream>
-#include <fstream>
-using namespace std;
-
-int main() {
-    ofstream file_out;
-    file_out.open("output.txt");
-
-    string message = "Hello, World!";
-    file_out << message << endl;
-
-    return 0;
+    //check if all other digits are valid for index 1 through the end
+    for (int i = 1; i < (int)input.length(); i++){
+        if (input[i] == '.'){ //if the character isn't a number return false
+            numDecimals++;
+        }else if (isdigit(input[i])){
+            seenDigit = true;
+        }else{
+            return false;
+        }
+    }
+    
+    if (numDecimals > 1)
+        return false;
+    
+    return seenDigit;
 }
-
-{% endhighlight %}
-
-
-\begin{multipart}
-The following code intends to write a sentence and a variable's content to a file. Identify and fix the error.
-\end{multipart}
-
-{% highlight c++ %}
-#include <iostream>
-#include <fstream>
-using namespace std;
-
-int main() {
-    ofstream file_out;
-    file_out.open("output.txt");
-
-    string test_string = "C++ file handling is fun!";
-    
-    file_out("Writing this sentence to the file") << endl;
-    file_out(test_string) << endl;
-
-    file_out.close();
-    return 0;
-}
-{% endhighlight %}
-
-\begin{multipart}
-The following code should open the file log.txt and write some data into it. Identify and fix the error.
-\end{multipart}
-
-{% highlight c++ %}
-#include <iostream>
-#include <fstream>
-using namespace std;
-
-int main() {
-    ofstream file_out.open("log.txt");
-
-    string log_message = "This is a log entry.";
-    file_out << log_message << endl;
-
-    file_out.close();
-    return 0;
-}
-{% endhighlight %}
-
-\newpage
-
-&nbsp;&nbsp;&nbsp;
-### Center of Mass with File Output
-For this assignment you should create a coordinates2.txt file with the following contents:
-\begin{verbatim}
-3.25,4.19,-3.56
-1.04,2.31,5.12
-abc,2.31,5.12
-5.00,0,-0.8
-2.35,7.45,1.22
-\end{verbatim}
-
-
-The file `coordinates2.txt` now contains a list of comma-separated X, Y, and Z coordinates for a given geometric body. Your goal is to find the center of mass of the body by computing the average of the X, the Y, and the Z coordinates. Additionally, you are required to log the results and handle invalid data entries using file I/O in C++.
-
-In order to do this, you must:
-\begin{enumerate}
-    1. Read each line in as a string from the file `coordinates2.txt`.
-    1. Use your `split()` function to separate each line at the commas.
-    1. Use your `validateDouble()` function to confirm that the pieces of each line translate into valid doubles.
-    1. Accumulate the valid X, Y, and Z values to compute the center of mass.
-    1. If any line is invalid (e.g., a non-numeric or incomplete coordinate set), log that line into the file `error_log.txt` and continue with the next line.
-    1. After processing all lines, calculate and display the center of mass. Additionally, write the center of mass, the number of valid entries, and a completion message to the file `summary.txt`.
-\end{enumerate}
-
-Expected contents of each file:
-\begin{enumerate}
-    1. summary.txt:
-    
-        1. Write the computed center of mass (average X, Y, and Z).
-        1. Write the number of valid coordinate entries processed.
-        1. Write a completion message indicating the process was successful.
-    
-    
-    1. error\_log.txt:
-    
-        1. Log each invalid line (if any) with the message `"Invalid entry: "` followed by the contents of the line.
-    
-\end{enumerate}
-
-For example, if the file `coordinates2.txt` contains:
-\begin{verbatim}
-3.25,4.19,-3.56
-1.04,2.31,5.12
-abc,2.31,5.12
-5.00,0,-0.8
-\end{verbatim}
-
-The contents of `summary.txt` will be:
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-Center of Mass:\\
-X: 3.095\\
-Y: 2.25\\
-Z: 0.92\\
-
-Number of valid entries: 3\\
-Process completed successfully!
-</div>
-
-The contents of `error_log.txt` will be:
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-Invalid entry: abc,2.31,5.12\\
-</div>
-
-If invalid data is found in any line, the program should skip processing that line and log it in `error_log.txt`. The program should still calculate the center of mass from all valid lines. If no valid coordinates are found, write the message `"No valid coordinates processed!"` to `summary.txt` and skip writing the center of mass.
-
-\begin{multipart}
-    Write out the steps you would use to solve this problem by hand as pseudocode.
-\end{multipart}
-
-\vspace{8cm}
-
-\begin{multipart}
-    Write three possible lines you can include in your file to later test your program. Try to pick values that will test different aspects of your program. Follow the steps you wrote for these values to find your result, and verify it.
-\end{multipart}
-
-\vspace{5cm}
-
-\begin{multipart}
-    Implement your solution in C++ using VS Code. Save, compile, and run it. Test the program with different input files, including boundary conditions.
-\end{multipart}
-
-\newpage
-
-{% endcomment %}
-
+```
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework 7
