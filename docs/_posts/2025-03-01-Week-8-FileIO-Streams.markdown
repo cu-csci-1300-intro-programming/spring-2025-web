@@ -194,7 +194,7 @@ int main( )
     }
 
     // closing the file
-    myTextFile.close( );
+    file_input.close( );
     return 0;
 }
 {% endhighlight %}
