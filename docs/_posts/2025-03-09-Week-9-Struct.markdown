@@ -295,48 +295,6 @@ SPWI: TODO
 
 &nbsp;&nbsp;&nbsp;
 ### Recitation Spot The Error- Problem 1
-The program is supposed to square all the numbers in an array. Identify the error(s) in the code below, and write the correct line(s).
-
-```cpp
-    #include <iostream>
-    #include <string>
-    using namespace std;
-    
-    void FindSquare(int numbers) 
-    {
-        for (int i = 0; i < 4; i++) 
-        {
-            numbers[i] *= numbers[i];
-        }
-        return numbers;
-    }
-    
-    int main()
-    {
-        const int length = 4;
-        int numbers[] = {1, 2, -3, 4};
-    
-        cout << "The contents of the array before changing: ";
-        for (int i = 0; i < length; i++)
-        {
-            cout << numbers[i] << " ";
-        }
-        cout << endl;
-    
-        FindSquare(numbers);
-    
-        cout << "The contents of the array after changing: ";
-        for (int i = 0; i < length; i++)
-        {
-            cout << numbers[i] << " ";
-        }
-    
-        return 0;
-    }
-```
-
-&nbsp;&nbsp;&nbsp;
-### Recitation Spot The Error- Problem 2
 The Louvre Museum wants to determine its busiest day of the week so it can allocate more staff to assist with guided tours. The museum keeps a log of daily visitors in a file called 'visitors.txt'. Each line in the file has the following format:
 
 `dayOfWeek <space> visitor1,visitor2,..,visitorN.`
@@ -385,7 +343,7 @@ Identify the error(s) in the code below and write the correct line(s).
 ```
 
 &nbsp;&nbsp;&nbsp;
-### Recitation Spot The Error- Problem 3
+### Recitation Spot The Error- Problem 2
 The program appends and prepends underscores for every word in the given message string. Assume the message is maximum 4 words. Identify the error(s) in the code below, and write the correct line(s). split() is a function from last week's Homework.
 
 ```cpp
@@ -422,6 +380,68 @@ The program appends and prepends underscores for every word in the given message
         cout << appendPrepend(message);
     }
 ```
+
+&nbsp;&nbsp;&nbsp;
+### Recitation Valid Double - Problem 3
+
+Design a function `validateDouble` that accepts a string input and determines if it represents a valid double by iterating through the string. Valid doubles can start with a minus sign and can have up to one decimal point. Your program should ask the user to input a double, store it as a string and then invoke `validateDouble` function to check its validity. The program should then print whether the string is a valid double or not. (Negative double are also valid doubles. You can reuse some parts of your  `validateInt` function from week 5 homework.
+
+| **Function:** | `validateDouble(string)` <br /> `bool validateDouble(string input)` |
+**Purpose:** |  Iterate through a string and verify if it is a valid double or not. The function should not print anything. |
+**Parameters:** |  `string input` - The string to be verified |
+**Return value:** |  It returns `true` if the string is a valid double. Otherwise, it returns `false`. |
+**Error handling && Boundary conditions:** | If length of input = 0, `false` is returned  |
+
+Expected input/output pairs:
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the double:</p>
+
+<p><span style="color:red">-123.4</span></p>
+
+<p>The entered string is a valid double!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the double:</p>
+
+<p><span style="color:red">23.56e</span></p>
+
+<p>The entered string is not a valid double!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the double:</p>
+
+<p><span style="color:red">23 56</span></p>
+
+<p>The entered string is not a valid double!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the double:</p>
+
+<p><span style="color:red">-.</span></p>
+
+<p>The entered string is not a valid double!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the double:</p>
+
+<p><span style="color:red">-</span></p>
+
+<p>The entered string is not a valid double!!</p>
+</div>
+
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
+<p>Enter the double
+ :</p>
+
+<p><span style="color:red">4567.8.9</span></p>
+
+<p>The entered string is not a valid double!!</p>
+</div>
+
 &nbsp;&nbsp;&nbsp;
 ### Recitation Midterm Averages- Problem 4
 
@@ -431,7 +451,7 @@ To complete this task, you must:
 
     1. Read each line in as a string,
     2. Use your `split()` function from previous homework to separate each line at the commas,
-    3. Use the provided `validateDouble()` function to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
+    3. Use the `validateDouble()` function from problem 3 to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
 
 Examples runs:
 
@@ -481,55 +501,6 @@ Write out the steps you would use to solve this problem by hand as pseudocode.
 
 #### Recitation Midterm Averages- Problem 4.a. : Implementation
 Translate your pseudocode into a C++ program to solve the above code, verify that your program works as expected.
-
-Helper function:
-```cpp
-bool validateDouble(string input){
-    //if the string is empty return false
-    if (input.length() == 0){
-        return false;
-    }
-    
-    //the string must have at least one numerical digit, but it can also start with a minus sign
-    //it can have up to one decimal
-    
-    int numDecimals = 0;
-    bool seenDigit = false;
-    
-    //if the string is longer than 1, the first character can be a digit or a minus sign
-    switch(input[0]){
-        case '-':
-            break;
-        
-        case '.':
-            numDecimals++;
-            break;
-
-        default:
-            if (isdigit(input[0])){
-                seenDigit = true;
-            }else{
-                return false;
-            }
-    }
-
-    //check if all other digits are valid for index 1 through the end
-    for (int i = 1; i < (int)input.length(); i++){
-        if (input[i] == '.'){ //if the character isn't a number return false
-            numDecimals++;
-        }else if (isdigit(input[i])){
-            seenDigit = true;
-        }else{
-            return false;
-        }
-    }
-    
-    if (numDecimals > 1)
-        return false;
-    
-    return seenDigit;
-}
-```
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework 7
