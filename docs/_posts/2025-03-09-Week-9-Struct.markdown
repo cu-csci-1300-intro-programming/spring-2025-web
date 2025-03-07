@@ -344,7 +344,7 @@ Identify the error(s) in the code below and write the correct line(s).
 
 &nbsp;&nbsp;&nbsp;
 ### Recitation Spot The Error- Problem 2
-The program appends and prepends underscores for every word in the given message string. Assume the message is maximum 4 words. Identify the error(s) in the code below, and write the correct line(s). split() is a function from last week's Homework.
+The program appends and prepends underscores for every word in the given message string. Assume the message is maximum 4 words. Identify the error(s) in the code below, and write the correct line(s). `split()` is a function from last week's Homework.
 
 ```cpp
     #include <iostream>
@@ -503,6 +503,34 @@ Write out the steps you would use to solve this problem by hand as pseudocode.
 Translate your pseudocode into a C++ program to solve the above code, verify that your program works as expected.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation Submission Guidelines
+ 
+**Important:** Follow these instructions carefully when preparing your recitation assignments. Your final submission should be in a single document, and the only action required on Canvas is uploading that document.
+ 
+1. **Documentation:**
+   - **Create a pdf** that includes your submission for all recitation questions. This is the pdf you will upload to your canvas assignment. Feel free to use Word/Google doc to create the pdf.
+   - Clearly label each question with its corresponding number and include content as applicable (see #2).
+ 
+2. **Content to Include:**
+   - **Screenshots of Your Code:**
+     - For each question, include a screenshot of your code.(corrected code in case of spot the errors)
+   - **Screenshots of Code Output (if applicable):**
+     - For some longer questions, it might be required to take a screenshot of the code’s output. Include these screenshots as part of your submission.
+   - **Longer Recitation Questions (Multiple Parts):**
+     - **Option A:**  
+       - Comment your answers directly within your code file.(Spot the errors)
+       - Take screenshots of the commented code and paste them into your document.
+     - **Option B:**  
+       - Take screenshots of the unmodified code.
+       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the pdf document next to the corresponding screenshots.
+ 
+3. **Submission:**
+   - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
+ 
+By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework 7
 **Warning: You are not allowed to use global variables for this assignment.**
  
@@ -512,15 +540,15 @@ All files used in this assignment are in a zipped folder titled '<a targe="_blan
 
 
 &nbsp;&nbsp;&nbsp;
-### National Park 
+### QUESTION 1: National Park 
 *This question may require the use of file streams, loops, and arrays.*
 
 Write a C++ program to read a file of national park names and print them to the console in the same order as they appear in the file.
 
 
-**Note:** There are 63 national parks in the USA, which is why our <tt>MAX\_SIZE</tt> is set to 63. \newline
+**Note:** There are 63 national parks in the USA, which is why our <tt>MAX\_SIZE</tt> is set to 63. 
 
-For this question, the answer box on the coderunner is preloaded with the following solution template. You are only required to fill in the appropriate blanks. Additionally, you may use the <tt>national\_parks\_1.txt</tt> file to test out your code. **All the files used in this assignment, including <tt>national\_parks\_1.txt**, are available in Canvas under week 10 module</tt>. You may also create more files for further testing.
+For this question, the answer box on the coderunner is preloaded with the following solution template. You are only required to fill in the appropriate blanks. Additionally, you may use the <tt>national\_parks\_1.txt</tt> file to test out your code. **All the files used in this assignment, including <tt>national\_parks\_1.txt</tt>, are available in Canvas under week 10 module**. You may also create more files for further testing.
 
 
 {% highlight c++ %}
@@ -536,7 +564,7 @@ void listNationalParks(string filename)
 
     if (file_in.fail())
     {
-        cout << "Failed to open file." << endl;
+        cout << "This file does not exist." << endl; // or something else went wrong opening the file
         return;
     }
 
@@ -585,7 +613,7 @@ int main()
 
 
 &nbsp;&nbsp;&nbsp;
-### Museum Attendance 
+###  QUESTION 2: Museum Attendance 
 *This question may require the use of file streams, loops, and arrays.* 
 
 Your former high school took students on a museum trip. Before boarding the bus, the teachers made a list of all the students' names. After visiting the museum, the teachers asked the students to board the bus and made a new list of all the students' names. Before leaving, the teachers wanted to compare the two lists to make sure no student was left behind. Write a C++ program to help them do this quickly and easily. Your program compares the two attendance sheets and reports if any student is still inside the museum.
@@ -694,16 +722,16 @@ Sample from example\_2.txt:
 </div>
 
 &nbsp;&nbsp;&nbsp;
-### Compare Trails 
+###  QUESTION 3: Compare Trails 
 {% comment %}
 a question that has to use stod and validateInt() or double
 {% endcomment %}
 
-*This question may require the use of file streams, split(), loops, and functions* 
+*This question may require the use of file streams, stringstream/split(), loops, and functions* 
 
 Today is your first day as a software engineering intern with the National Park Service. You've started on a busy day, and after the initial meetings, your boss asked you to develop a function to print some statistics about some of the long hikes around the world. You've been given a text file, which contains a list of different hikes. Each line includes the name of a long hike, its length (as a whole number) in miles, and its elevation gain (as a whole number) in feet, each separated by the delimiter `|`.
 
-Hint: Your `split( )` function from homework 6 could be helpful. 
+Hint: Your `split( )` function from homework 6 could be helpful. Alternatively you can use `stringstream` directly.
 
 | **Function:** | <tt>printHikeStats(string)</tt>  <br /> `void printHikeStats(string file_name)` |
 | **Purpose:** | Given a text file that contains information on the trails, the function will print the following:<br />- Number of valid lines read from the file. A valid line must contain exactly three fields: the hike name, length (as an integer), and elevation gain (as an integer).<br />- Name and the length of the longest hike.<br />- Name and the length of the shortest hike.<br />- Name and elevation gain per mile of the steepest hike. This number should be rounded to one decimal point (use setprecision). |
@@ -755,6 +783,7 @@ int main() {
 <p><span style="color:red">Great Himalayan Trail|1056|289000</span></p>
 <br />
 <span style="color:green">Output</span>: 
+<p>Number of lines read: 3.</p>
 <p>Longest hike: Continental Divide Trail at 3100 miles.</p>
 <p>Shortest hike: The South West Coast Path at 630 miles.</p>
 <p>Steepest hike: Great Himalayan Trail at 273.7 feet gained per mile.</p>
@@ -774,7 +803,7 @@ int main() {
 
 
 &nbsp;&nbsp;&nbsp;
-### Restaurant Struct 
+###  QUESTION 4: Restaurant Struct 
 {% comment %} 
 struct question
 {% endcomment %}
@@ -862,7 +891,7 @@ The sample inputs will be given in the order of name, food quality, cleanliness,
 </div>
 
 
-The sample inputs will be given in the order of name, food quality, cleanliness, and wait time, respectively. \newline
+The sample inputs will be given in the order of name, food quality, cleanliness, and wait time, respectively. 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 <span style="color:green">Input:</span> 
 <p><span style="color:red">Invalid</span></p>
@@ -876,7 +905,7 @@ The sample inputs will be given in the order of name, food quality, cleanliness,
 
 
 &nbsp;&nbsp;&nbsp;
-### List of Restaurants 
+###  QUESTION 5: List of Restaurants 
 {% comment %} 
 the restaurant 
 {% endcomment %}
@@ -976,7 +1005,7 @@ int getBest( Restaurant restaurants[],
 | **Purpose:** | Given an array, the function will find and return the index of the best restaurant according to the metric. |
 | **Parameters:** | **Restaurant[]** <tt>restaurants</tt> - The array that has been populated with the details of all the restaurants. <br />**int** <tt>arr\_size</tt> - The maximum number of restaurants that are present in the restaurants array. <br /> **string** <tt>metric</tt> - The metric used to find the best restaurant. |
 | **Return Value:** | If successful (function parameters are correct), return the index of the best restaurant according to the metric. The function should not print anything.|
-| **Error Handling:** | - If the metric is not a valid option (not "Food Quality," "Cleanliness," "Wait Time," or "Overall"), -1 is returned. <br /> - If the line does not have exactly four attributes—name, food quality, cleanliness, and wait time—skip the line. <br /> - If there is a tie, choose the first one.  <br /> - Note: in this assignment, a higher wait time rating means a shorter wait, which indicates better service. For example, a wait time rating of 5 indicates excellent service with minimal wait. |
+| **Error Handling:** | - If the metric is not a valid option (not "Food Quality," "Cleanliness," "Wait Time," or "Overall"), -1 is returned. <br /> - If there is a tie, choose the first one.  <br /> - Note: in this assignment, a higher wait time rating means a shorter wait, which indicates better service. For example, a wait time rating of 5 indicates excellent service with minimal wait. |
 
 **Example:**
 {% highlight c++ %}
@@ -986,16 +1015,37 @@ int getBest( Restaurant restaurants[],
 
 int main()
 {
+    // PART A
     Restaurant restaurants[30];
 
-    int arr_size = readRestaurantDetails("restaurants.txt", restaurants, 30);
+    int res_size = readRestaurantDetails("restaurants.txt", restaurants, 30);
 
     // Checking if the file was opened correctly
-    if (arr_size == -1)
+    if (res_size == -1)
     {
         cout << "Failed to open file." << endl;
     }
-    else if (arr_size == 0)
+    else
+    {
+        for (int i = 0; i < res_size; ++i) {
+            cout << "Restaurant: " << restaurants[i].name << " ";
+            cout << "Ratings: ";
+            cout << restaurants[i].food_quality << " ";
+            cout << restaurants[i].cleanliness<< " ";
+            cout << restaurants[i].wait_time << " ";
+            cout << "Overall: ";
+            cout << restaurants[i].overall << " ";
+            cout << endl;
+        }
+    }
+
+    // PART B
+    // Checking if the file was opened correctly
+    if (res_size == -1)
+    {
+        cout << "Failed to open file." << endl;
+    }
+    else if (res_size == 0)
     {
         cout << "Empty file." << endl;
     }
