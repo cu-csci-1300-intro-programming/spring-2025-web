@@ -9,6 +9,9 @@ CSCI 1300 webpage hosting the "course workbook". A one stop shop of the course m
 - launch it locally so you can watch it update: 
     - `cd <root/docs>;`
     - `bundle install && bundle update && bundle exec jekyll serve --livereload;`
+        - if an error occurs on bundle update try:
+            - `gem clean`
+            - move the `Gemfile.lock` somewhere else and restart. This shouldn't be in the version control but have had issues removing it.
 - create a new file in `_posts` with form `2025-<MM>-<DDSaturday>-Week-<n>-<title-parts>.markdown`
 - transpose the `tex/week<n>fall.tex` file to this new file. Use any previous week as a sample
     - PROTIP: Keep the tex info in separate doc. cut and paste as you go. If the markdown doc has tex in it that fails, then jekyll will fail out and you won't see any updates. The errors are hard to read. They're on the terminal running the webpage locally.
