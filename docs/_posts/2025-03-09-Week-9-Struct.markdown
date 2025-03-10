@@ -298,6 +298,7 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 ### Recitation Spot The Error- Problem 1
 The Louvre Museum wants to determine its busiest day of the week so it can allocate more staff to assist with guided tours. The museum keeps a log of daily visitors in a file called <a href="/spring-2025-web/assets/files/visitors.txt" download>'visitors.txt'</a>. Each line in the file has the following format:
 
+
 `dayOfWeek <space> visitor1,visitor2,..,visitorN.`
 
 Identify the error(s) in the code below and write the correct line(s).
@@ -355,6 +356,7 @@ Design a function `validateDouble` that accepts a string input and determines if
 **Error handling && Boundary conditions:** | If length of input = 0, `false` is returned  |
 
 Expected input/output pairs:
+
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 <p>Enter the double:</p>
