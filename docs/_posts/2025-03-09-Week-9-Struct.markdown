@@ -416,7 +416,7 @@ To complete this task, you must:
 
 1. Read each line in as a string,
 2. Use your `split()` function from previous homework to separate each line at the commas,
-3. Use the `validateDouble()` function from problem 3 to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
+3. Use the `validateDouble()` function from problem 2 to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
 
 Examples runs:
 
