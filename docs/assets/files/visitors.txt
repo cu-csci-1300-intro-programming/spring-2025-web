@@ -1,0 +1,5 @@
+Monday <space> Amy,Sam.
+Tuesday <space> Emma,Stephanie,Steven,Keith.
+Wednesday <space> Adam.
+Thursday <space> Shaun,Idris.
+Friday <space> Abbey,Michael,Peter,Joeseph,Rufus.

@@ -367,7 +367,7 @@ Translate your pseudocode into a C++ program to solve the above code, verify tha
 
 For this activity, you will need to break into groups of approximately 6-8. The basic idea of the game is simple: We will give you some starting piece of code, with a short region of the code marked for "Coding Telephone". The first person in your group will have to translate the code entirely to comments, leaving no actual code in that region behind. They will pass this comment file on to the second person in your group, who will translate the comments back into code. Then the next person will translate the code to comments, so on and so forth until everyone in your group has participated. Then you will attempt to compile your code and run it, and see what happens. Think of it like the game Telephone, but with code.
 
-The only person who should view this <a href="/spring-2025-web/assets/files/codingTelephone.cpp" download>starting code</a> is the first person in your group. Make sure to keep the code secret at each stage so others cannot see it. You will each have five minutes to translate your code. During the time you are not coding, you are welcome to work on the other questions in this recitation assignment. 
+The only person who should view this <a href="/spring-2025-web/assets/files/midterms.txt" download>starting code</a> is the first person in your group. Make sure to keep the code secret at each stage so others cannot see it. You will each have five minutes to translate your code. During the time you are not coding, you are welcome to work on the other questions in this recitation assignment. 
 
 
 
