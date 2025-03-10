@@ -414,9 +414,9 @@ The file 'midterms.txt' contains a list of comma-separated scores for three midt
 
 To complete this task, you must:
 
-    1. Read each line in as a string,
-    2. Use your `split()` function from previous homework to separate each line at the commas,
-    3. Use the `validateDouble()` function from problem 3 to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
+1. Read each line in as a string,
+2. Use your `split()` function from previous homework to separate each line at the commas,
+3. Use the `validateDouble()` function from problem 3 to confirm that the pieces of each line translate into doubles, and then you can use `stod` to translate those valid strings to doubles.
 
 Examples runs:
 
@@ -461,10 +461,10 @@ Expected output:
 <p><strong style="color:Green;"> Invalid value detected in Student 1’s scores! </strong></p>
 </div>
 
-#### Recitation Midterm Averages- Problem 4.a. : Algorithm
+#### Recitation Midterm Averages- Problem 3.a. : Algorithm
 Write out the steps you would use to solve this problem by hand as pseudocode. 
 
-#### Recitation Midterm Averages- Problem 4.a. : Implementation
+#### Recitation Midterm Averages- Problem 3.b. : Implementation
 Translate your pseudocode into a C++ program to solve the above code, verify that your program works as expected.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
