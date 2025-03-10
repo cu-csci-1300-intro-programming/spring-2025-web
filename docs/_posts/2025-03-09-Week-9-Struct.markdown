@@ -296,7 +296,8 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 
 &nbsp;&nbsp;&nbsp;
 ### Recitation Spot The Error- Problem 1
-The Louvre Museum wants to determine its busiest day of the week so it can allocate more staff to assist with guided tours. The museum keeps a log of daily visitors in a file called 'visitors.txt'. Each line in the file has the following format:
+The Louvre Museum wants to determine its busiest day of the week so it can allocate more staff to assist with guided tours. The museum keeps a log of daily visitors in a file called <a href="/spring-2025-web/assets/files/visitors.txt" download>'visitors.txt'</a>. Each line in the file has the following format:
+
 
 `dayOfWeek <space> visitor1,visitor2,..,visitorN.`
 
@@ -344,46 +345,7 @@ Identify the error(s) in the code below and write the correct line(s).
 ```
 
 &nbsp;&nbsp;&nbsp;
-### Recitation Spot The Error- Problem 2
-The program appends and prepends underscores for every word in the given message string. Assume the message is maximum 4 words. Identify the error(s) in the code below, and write the correct line(s). `split()` is a function from last week's Homework.
-
-```cpp
-    #include <iostream>
-    #include <string>
-    #include <cassert>
-    using namespace std;
-    
-    string appendPrepend(string message)
-    {
-        const int LENGTH = 4;
-        string message_fragments[LENGTH] = {};
-        string empty_word = "";
-        split(message, ' ', message_fragments[], LENGTH);
-        assert(message_fragments[4] == empty_word);
-    
-        string answer, word; 
-        for(int i = 0; i < LENGTH; i++)
-        {
-            answer += "_" + message + "_";
-        }
-        int first_word_length = message_fragments[0].length();
-        int second_word_length = message_fragments[1].length();
-        assert(message_fragments[1] == answer.substr(first_word_length+3, second_word_length));
-    
-        return answer;
-    }
-    
-    int main()
-    {
-        cout << "Please enter the string message:" << endl;
-        string message;
-        getline(cin, message);
-        cout << appendPrepend(message);
-    }
-```
-
-&nbsp;&nbsp;&nbsp;
-### Recitation Valid Double - Problem 3
+### Recitation Valid Double - Problem 2
 
 Design a function `validateDouble` that accepts a string input and determines if it represents a valid double by iterating through the string. Valid doubles can start with a minus sign and can have up to one decimal point. Your program should ask the user to input a double, store it as a string and then invoke `validateDouble` function to check its validity. The program should then print whether the string is a valid double or not. (Negative double are also valid doubles. You can reuse some parts of your  `validateInt` function from week 5 homework.
 
@@ -394,6 +356,8 @@ Design a function `validateDouble` that accepts a string input and determines if
 **Error handling && Boundary conditions:** | If length of input = 0, `false` is returned  |
 
 Expected input/output pairs:
+
+
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
 <p>Enter the double:</p>
 
@@ -444,7 +408,7 @@ Expected input/output pairs:
 </div>
 
 &nbsp;&nbsp;&nbsp;
-### Recitation Midterm Averages- Problem 4
+### Recitation Midterm Averages- Problem 3
 
 The file 'midterms.txt' contains a list of comma-separated scores for three midterms taken by each student in a class. Each line represents one student’s scores for all three midterms. Your task is to compute the average score for each midterm across all students.
 
