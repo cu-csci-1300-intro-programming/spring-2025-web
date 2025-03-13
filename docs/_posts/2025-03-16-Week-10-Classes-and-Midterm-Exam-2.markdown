@@ -23,14 +23,27 @@ categories: jekyll update
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Readings
 Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
-1. Monday: 9.4, 9.5, 9.6
-1. Wednesday: Prepare for midterm exam 2
+1. Monday: 9.1, 9.2, 9.3, 9.4, 9.5, 9.6
+1. Wednesday: 9.5, 9.6, Prepare for midterm exam 2
 1. Friday: midterm exam 2 in lecture
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Background - weeks 7 - 9
-By request we have copied the background sections from weeks 7 though 9 here for ease of search in advance of midterm exam 2. week 9 background will be the basis of this weeks lectures as we more deeply explore how to write `class` types and their associated `object`s in C++.
+By request we have copied the background sections from weeks 7 though 9 here for ease of search in advance of midterm exam 2. 
+
+Week 9 background will be the basis of this weeks lectures as we more deeply explore how to write `class` types and their associated `object`s in C++.
+
+Please also note the following information regarding your upcoming exam for what to prioritiz in your studies:
+<ol>
+    <li>Nested for loops</li>
+    <li>Arrays - definition, initialization, modification, out of bounds errors, partially filled, array algorithms, array operations, array limitations.</li>
+    <li>Functions and arrays - pass by reference</li>
+    <li>2D arrays - definition, initialization, algorithms, accessing all indices in a 2D array</li>
+    <li>File I/O - Opening a file for reading, reading words, lines, chars using <tt>getline</tt> and <tt>>></tt></li>
+    <li>Structs - creating, modifying, arrays of structs</li>
+    <li>In recitation this week, the TAs will host a practice exam and discuss the solutions.</li>
+</ol>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Background Week 7
@@ -766,44 +779,13 @@ While structs and classes are similar, there are some key differences between th
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-## PreQuiz (due Monday March 10 at 9am)
-<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
-
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/459554?module_item_id=6292862">Recitation 9 Pre-quiz</a>
-</div>
+## PreQuiz
+There is no prequiz this week
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
-ADVAIT: we'll have students take the practice exam, then we'll go over how to make a cheat-sheet as a recitation group. Please have something the students can reflect on and submit for their recitation for a grade. Thanks.
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;
-## Recitation Submission Guidelines
- 
-**Important:** Follow these instructions carefully when preparing your recitation assignments. Your final submission should be in a single document, and the only action required on Canvas is uploading that document.
- 
-1. **Documentation:**
-   - **Create a pdf** that includes your submission for all recitation questions. This is the pdf you will upload to your canvas assignment. Feel free to use Word/Google doc to create the pdf.
-   - Clearly label each question with its corresponding number and include content as applicable (see #2).
- 
-2. **Content to Include:**
-   - **Screenshots of Your Code:**
-     - For each question, include a screenshot of your code.(corrected code in case of spot the errors)
-   - **Screenshots of Code Output (if applicable):**
-     - For some longer questions, it might be required to take a screenshot of the code’s output. Include these screenshots as part of your submission.
-   - **Longer Recitation Questions (Multiple Parts):**
-     - **Option A:**  
-       - Comment your answers directly within your code file.(Spot the errors)
-       - Take screenshots of the commented code and paste them into your document.
-     - **Option B:**  
-       - Take screenshots of the unmodified code.
-       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the pdf document next to the corresponding screenshots.
- 
-3. **Submission:**
-   - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
- 
-By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
+In recitation this week, the TAs will host a practice exam and discuss the solutions. There is no submission for this weeks recitation.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Midterm Exam 2
-Please see canvas announcements and lectures for the time and location of midterm exam 2. Unless you have accommodations, the exam is during your scheduled classtime. Locations vary by course.
+Please see canvas announcements and lectures for the time and location of midterm exam 2. Unless you have accommodations, the exam is during your scheduled classtime. Locations vary by course time.
