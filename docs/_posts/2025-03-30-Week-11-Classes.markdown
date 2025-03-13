@@ -191,7 +191,7 @@ All function names, return types, and parameters must precisely match those show
 
 **Note:** Questions 1 through 3 are grouped together as Part I, and Questions 4 through 6 are grouped together as Part II.
 
-In Part I, you'll develop a basic Library System by creating a Library class to manage a collection of books. In Part II, you'll develop a Quest Style Game. 
+In Part I, you'll develop a basic Library System by creating a Library class to manage a collection of books. In Part II, you'll develop a Quest Style Game.
 
 &nbsp;&nbsp;&nbsp;
 ### QUESTION 1: Library Class 
@@ -861,7 +861,7 @@ Goblin|100|50|A
 Frog|80|100|A
 {% endhighlight %}
 
-Note: All files used in this problem are in a zipped folder titled <tt>'homework_8_input_files.zip'</tt> located in Canvas under the week 11 module. 
+Note: All files used in this problem are in a zipped folder titled <a href="/spring-2025-web/assets/zips/homework_8_input_files.zip" download><tt>'homework_8_input_files.zip'</tt></a> located in Canvas under the week 11 module. 
 
 Write a function `loadCharacters()` that reads data from a text file and fills an array of Character objects. The text file contains information about different characters, with each character's information separated by the character `|` and each character listed on a new line. The function specification is provided below. 
 
