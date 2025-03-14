@@ -41,6 +41,7 @@ Please also note the following information regarding your upcoming exam for what
     <li>Functions and arrays - pass by reference</li>
     <li>2D arrays - definition, initialization, algorithms, accessing all indices in a 2D array</li>
     <li>File I/O - Opening a file for reading, reading words, lines, chars using <tt>getline</tt> and <tt>>></tt></li>
+    <li>Stream - sstream (stringstream), fstream, input streams, output streams</li>
     <li>Structs - creating, modifying, arrays of structs</li>
     <li>In recitation this week, the TAs will host a practice exam and discuss the solutions.</li>
 </ol>
