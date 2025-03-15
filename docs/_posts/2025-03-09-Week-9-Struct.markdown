@@ -1016,7 +1016,7 @@ int main()
     }
     else
     {
-        int idx = getBest(restaurants, arr_size, "Food Quality");
+        int idx = getBest(restaurants, res_size, "Food Quality");
 
         if (idx == -1)
         {
