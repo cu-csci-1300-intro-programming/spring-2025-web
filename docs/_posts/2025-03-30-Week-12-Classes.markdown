@@ -1,12 +1,19 @@
 ---
 layout: post
+<<<<<<< HEAD
 title: "Week 12: Objects Continued"
+=======
+title: "Week 11: Objects Continued"
+>>>>>>> 152bf11 (file name fixed)
 date: 2025-03-12 09:00:00 -0700
 categories: jekyll update
 ---
 
+<<<<<<< HEAD
 Be advised, week 11 was Spring Break.
 
+=======
+>>>>>>> 152bf11 (file name fixed)
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #31708f; background-color: #d9edf7; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 This week you will:
     <ol>
@@ -115,12 +122,18 @@ cd project2/
 When compiling from the command line, you need to specify every `.cpp` file in your project. This means that when you call the g++ compiler, you need to explicitly name the files you’re compiling:
 
 {% highlight bash %}
+<<<<<<< HEAD
 # short
+=======
+>>>>>>> 152bf11 (file name fixed)
 g++ -std=c++17 file1.cpp file2.cpp main.cpp
 {% endhighlight %}
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 152bf11 (file name fixed)
 The compiling command results in the creation of an executable file. Note that header files (.h) are NOT included in compilation commands. If you did not specify a name for this executable, it will be named `a.out` by default. To execute this file, use the command:
 
 {% highlight bash %}
@@ -172,7 +185,11 @@ This flag enables warnings that alert you about language constructs that are not
 This flag ensures that you don't have issues across machines and their behavior on looping over a string.
 
 {% highlight bash %}
+<<<<<<< HEAD
 g++ -Wall -Werror -Wpedantic -Wsign-compare -o myName.out -std=c++17 file1.cpp file2.cpp main.cpp
+=======
+g++ -Wall -Werror -Wpedantic -o myName.out -std=c++17 file1.cpp file2.cpp main.cpp
+>>>>>>> 152bf11 (file name fixed)
 {% endhighlight %}
 
 {% comment %}
@@ -180,6 +197,7 @@ g++ -Wall -Werror -Wpedantic -Wsign-compare -o myName.out -std=c++17 file1.cpp f
 %add a section on arrays in objects?
 {% endcomment %}
 
+<<<<<<< HEAD
 ## PreQuiz  (due Monday March 31 at 9am)
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/462060">Recitation 12 Pre-quiz</a>
@@ -324,6 +342,17 @@ Implement your solution in C++ using VS Code. Save, compile, and run it. Make su
  
 3. **Submission:**
    - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
+=======
+## PreQuiz (due Monday March 31 at 9am)
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="TODO">Recitation 11 Pre-quiz</a>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Recitation
+TODO: Advait
+
+>>>>>>> 152bf11 (file name fixed)
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework 8
@@ -352,7 +381,11 @@ Create a class Library by splitting the code into the following files:
 </ol>
 
 
+<<<<<<< HEAD
 **For Question 1, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner and paste `Library.h` and `Library.cpp` files into the answer box. (Note: You are not expected to complete the implementation of `getAveragePageCount()` function for Q1, but do include the function declaration within the header file).** DO NOT include any #include <> lines.
+=======
+**For Question 1, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner and paste `Library.h` and `Library.cpp` files into the answer box. (Note: You are not expected to complete the implementation of `getAveragePageCount()` function for Q1, but do include the function declaration within the header file).** 
+>>>>>>> 152bf11 (file name fixed)
 
 
 &nbsp;&nbsp;
@@ -388,7 +421,11 @@ The Library class comprises the following attributes:
 &nbsp;&nbsp;
 **Function Specifications:**
 
+<<<<<<< HEAD
 | **Function:** | `Library(string, int[], int)` <br /> `Library(string name, int page_counts[], int arr_size)` |
+=======
+| **Function:** | `Library(string, int[], int)` & `Library(string name, int page_counts[], int arr_size)` |
+>>>>>>> 152bf11 (file name fixed)
 | **Purpose:** | This parameterized constructor creates a new instance of the `Library` class. <br /> - Sets `_name` to `name`. <br />- Sets `_current_books` to `arr_size` if `arr_size` doesn't exceed `_MAX_BOOKS`; otherwise, `_current_books` is set to `_MAX_BOOKS`. <br /> - Copies elements from `page_counts[]` into the `_page_counts[]` array, up to the size indicated by `_current_books`. |
 | **Parameters:** | `string` `name` - The name of the Library. <br />
 `int` `page_counts[]` - Array containing page counts of books in the library. <br /> `int` `arr_size` - The size of the `page_counts[]` array. |
@@ -404,7 +441,11 @@ The Library class comprises the following attributes:
 
 int main() {
     string name = "City Library";
+<<<<<<< HEAD
     const int arr_size = 5;
+=======
+    int arr_size = 5;
+>>>>>>> 152bf11 (file name fixed)
     int page_counts[arr_size] = {250, 300, 150, 500, 400};
     Library new_library = Library(name, page_counts, arr_size);
 }
@@ -507,8 +548,13 @@ string findLibraryWithLargestAveragePageCount(
 }
 {% endhighlight %}
 
+<<<<<<< HEAD
 | **Function:** | `findLibraryWithLargestAveragePageCount(Library[], const int)` |
 | **Purpose:** | Finds the name of the library in the `libraries` array with the largest average page count of the libraries. |
+=======
+| **Function:** | `findLibraryWithLargestAveragePageCount(Library[], const int)` <br /> `` | 
+| **Purpose:** | Finds the name of the library in the `libraries` array with the largest average page count of the libraries. \\ \hline
+>>>>>>> 152bf11 (file name fixed)
 | **Parameters:** | `Library` `libraries[]` - Array of Library objects. <br />`const int` `ARR_SIZE` - The size of the `libraries` array. |
 | **Return Value:** | `string` : The name of the library with the largest average page count. The function should not print anything. |
 | **Error Handling:** | - If multiple libraries have the same largest average page count, return the name of the first library with the largest average page count found in the array. <br />- All libraries[] array will be non-empty. |
@@ -554,7 +600,11 @@ Develop a class called Character that will represent either a player or a creatu
 </ol>
 
 
+<<<<<<< HEAD
 **For Question 4, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste `Character.h` and `Character.cpp` into the answer box.** DO NOT include any #include <> lines.
+=======
+**For Question 4, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste `Character.h` and `Character.cpp` into the answer box.** 
+>>>>>>> 152bf11 (file name fixed)
 
 &nbsp;&nbsp;
 **Data members (private)**
@@ -564,7 +614,11 @@ Develop a class called Character that will represent either a player or a creatu
 | `string` | `_name` | The characters name |
 | `double` | `_health` | The characters health points |
 | `int` | `_mana` | The amount of magical energy that the character has `_mana` |
+<<<<<<< HEAD
 | `char` | `_status` | Current status: <br />- `'A'` for Active<br />- `'C'` for Cursed<br />- `'F'` for Frozen |
+=======
+| `char` | `_status` | Current status: `A' for Active, `C' for Cursed, `F' for Frozen |
+>>>>>>> 152bf11 (file name fixed)
 | `bool` | `_isCreature` | Specifies if the character is a mystical creature |
 
 
@@ -587,12 +641,20 @@ not sure why, but these tables won't join for me. so changed titles and made two
 | `void setHealth(double health)` | Sets the amount of `_health` the character possesses to the given value health only if it is a non-negative value, else it is not changed |
 | `void setStatus(char status)` | Sets the status to one of the allowed characters (A, C, or F) to the given value status only if it is one among A, C or F, else it is not changed |
 | `void setMana(int mana)` | Sets the amount of `_mana` the character possesses to the given value mana only if it is a non-negative value, else it is not changed |
+<<<<<<< HEAD
 | `void setIsCreature(bool isCreature)` | Sets if the character is a creature |
+=======
+| `void setIsCreature(bool is_enemy)` | Sets if the character is a creature |
+>>>>>>> 152bf11 (file name fixed)
 | `void printStats()` | Prints out the character's stats See Function Specification table below for more details |
 
 | **Constructor** | **Description** |
 | --- | --- |
+<<<<<<< HEAD
 | <tt>Default constructor</tt> | Initializes `_mana` and `_health` to 0, `_name` to an empty string, `_status` to 'A', and `_isCreature` to false |
+=======
+| <tt>Default constructor</tt> | Initializes `_mana` and `_health` to 0, `_name` to an empty string, `_status` to `A', and `_isCreature` to false |
+>>>>>>> 152bf11 (file name fixed)
 | `Character(string, `<br />`double,`<br />`int, `<br />`char,`<br />` bool)` | Initializes the data members with the provided values. *See Function Specification in table below for more details.* |
 
 
@@ -612,9 +674,15 @@ Character( string name,
 {% endhighlight %}
 
 | **Purpose:** | This parameterized constructor creates a new instance of the `Character` class and sets the data members as provided. |
+<<<<<<< HEAD
 | **Parameters:** | `string name` - The name of the character. <br />`double health` - Health points of the character. <br />`int mana` - Amount of magical energy the character has. <br />`char status` - The current status of the character ('A' for Active, 'C' for Cursed, 'F' for Frozen).<br />`bool isCreature` - Specifies if the character is a mystical creature. |
 | **Return Value:** | N/A |
 | **Error Handling:** | `_health` is set to the value of `health` only if it is non-negative; otherwise, it is set to 0. <br />`_mana` is set to `mana` only if it is non-negative; otherwise, it is set to 0. <br />`_status` is set to `status` if it is 'A', 'C', or 'F'; otherwise, it is set to 'A'. |
+=======
+| **Parameters:** | `string name` - The name of the character. <br />`double health` - Health points of the character. <br />`int mana` - Amount of magical energy the character has. <br />`char status` - The current status of the character (`A' for Active, `C' for Cursed, `F' for Frozen).<br />`bool isCreature` - Specifies if the character is a mystical creature. |
+| **Return Value:** | N/A |
+| **Error Handling:** | `_health` is set to the value of `health` only if it is non-negative; otherwise, it is set to 0. <br />`_mana` is set to `mana` only if it is non-negative; otherwise, it is set to 0. <br />`_status` is set to `status` if it is `A', `C', or `F'; otherwise, it is set to `A'. |
+>>>>>>> 152bf11 (file name fixed)
 
 **Example:**
 Note: This is only an example usage of the function; you need to develop your own main function to fulfill the requirement for this problem.
@@ -683,8 +751,13 @@ Create a class Game by splitting the code into the following files:
 
 | **Member Type** | **Member Name** | **Description** |
 | --- | --- | --- |
+<<<<<<< HEAD
 | `Character[]` | `_players[2]` | Array storing player objects<br />That is our user defined `Character` type and not the standard C++ `char` datatype. |
 | `Character[]` | `_creatures[2]` | Array storing mystical creature characters<br />That is our user defined `Character` type and not the standard C++ `char` datatype. |
+=======
+| `Character` | `_players[2]` | Array storing player objects |
+| `Character` | `_creatures[2]` | Array storing mystical creature characters |
+>>>>>>> 152bf11 (file name fixed)
 | `int` | `_num_players` | Current number of players in the game |
 | `int` | `_num_creatures` | Current number of creatures in the game |
 
@@ -940,7 +1013,11 @@ void printAllStats()
 }
 {% endhighlight %}
 
+<<<<<<< HEAD
 | **Purpose:** | Prints the stats of all players and creatures in the game, see sample run below for exact format. Each character's stats are separated by a dashed line. You need the exact lenght dashed line for coderunner purposes. |
+=======
+| **Purpose:** | Prints the stats of all players and creatures in the game, see sample run below for exact format. Each character's stats are separated by a dashed line, "----------------------------------------------". |
+>>>>>>> 152bf11 (file name fixed)
 | **Parameters:** | This member function takes no parameters. |
 | **Return Value:** | `void` : The function does not return any value. |
 
@@ -1021,7 +1098,11 @@ Write a function `loadCharacters()` that reads data from a text file and fills a
 bool loadCharacters( string filename, 
                      Character characters[],
                      const int CHARACTERS_SIZE, 
+<<<<<<< HEAD
                      bool isCreature )
+=======
+                     bool is_creature )
+>>>>>>> 152bf11 (file name fixed)
 {
     // ...
 }
@@ -1046,12 +1127,20 @@ int main() {
     string filename = "characters.txt";
     const int CHARACTERS_SIZE = 5;
     Character characters[CHARACTERS_SIZE];
+<<<<<<< HEAD
     bool isCreature = false;
+=======
+    bool is_creature = false;
+>>>>>>> 152bf11 (file name fixed)
     cout << "Function returned value: " 
             << loadCharacters(filename, 
                     characters, 
                     CHARACTERS_SIZE, 
+<<<<<<< HEAD
                     isCreature) 
+=======
+                    is_creature) 
+>>>>>>> 152bf11 (file name fixed)
             << endl
             << endl;
     // Print the contents of the characters array
