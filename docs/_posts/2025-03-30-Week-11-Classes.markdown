@@ -106,7 +106,14 @@ cd project2/
 When compiling from the command line, you need to specify every `.cpp` file in your project. This means that when you call the g++ compiler, you need to explicitly name the files you’re compiling:
 
 {% highlight bash %}
+# short
 g++ -std=c++17 file1.cpp file2.cpp main.cpp
+{% endhighlight %}
+
+Of course, it's best to keep our old flags
+{% highlight bash %}
+# long
+g++ -Wall -Werror -Wpedantic -Wsign-compare -std=c++17 file1.cpp file2.cpp main.cpp
 {% endhighlight %}
 
 
@@ -120,7 +127,7 @@ The compiling command results in the creation of an executable file. Note that h
 You can add the \mintinline{bash}{-o} flag to your compiling command to give the output file a name:
 
 {% highlight bash %}
-g++ -o myName.out -std=c++17 file1.cpp file2.cpp main.cpp
+g++ -o myName.out -Wall -Werror -Wpedantic -Wsign-compare -std=c++17 file1.cpp file2.cpp main.cpp
 {% endhighlight %}
 
 
