@@ -173,16 +173,10 @@ g++ -Wall -Werror -Wpedantic -Wsign-compare -o myName.out -std=c++17 file1.cpp f
 %add a section on arrays in objects?
 {% endcomment %}
 
-## PreQuiz 
-{% include uc.html caption='We will have this ready before the break ends' %}
-
-
-{% comment %}
-(due Monday March 31 at 9am)
+## PreQuiz  (due Monday March 31 at 9am)
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="TODO">Recitation 11 Pre-quiz</a>
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/462060">Recitation 12 Pre-quiz</a>
 </div>
-{% endcomment %}
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
