@@ -179,10 +179,144 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 </div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
+
 ## Recitation
-{% include underConstruction.html caption='We will have this ready before the break ends' %}
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Discussion
+**Structures and classes can both be used to achieve similar functionalities. When would you use over the other. Why?**
+
+&nbsp;&nbsp;&nbsp;
+### Recitation Spot The Error - Problem 1
+The following code defines a class to track a temperature reading. Identify and fix the error.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Temperature {
+public:
+    Temperature(double t) { 
+        temp = t; 
+    }
+
+    double getTemp() { 
+        return temp; 
+    }
+
+private:
+    double temp;
+};
+
+int main() {
+    const Temperature todayTemp(98.6);
+    cout << "Today's temperature is: " << todayTemp.getTemp() << " degrees." << endl;
+    return 0;
+}
+```
 
 
+### Recitation Spot The Error - Problem 2
+The following code is supposed to define a class with a constructor to initialize a private data member representing an account balance. Identify and fix the error.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Account {
+public:
+    Account(double bal) {
+        amount = bal;
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+
+private:
+    double balance;
+};
+
+int main() {
+    Account myAcc(1000.0);
+    cout << "Current balance: " << myAcc.getBalance() << endl;
+    return 0;
+}
+```
+
+
+### Recitation Spot The Error - Problem 3
+The following code is supposed to define a class with a private data member and a setter method that updates it. Identify and fix the error.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+    int milesDriven;
+
+    void setMiles(int newMiles) {
+        milesDriven = newMiles;
+    }
+};
+
+int main() {
+    Car myCar;
+    myCar.setMiles(100);
+    return 0;
+}
+```
+
+### Recitation Pizza Shop Order System - Problem 4
+
+This exercise focuses on using structs and basic arrays in C++ to create a simple pizza shop ordering system. You will define structs to represent pizzas and orders, as well as functions to manage and calculate the order's total.
+
+To begin, define a struct called `Pizza`. The `Pizza` struct should have three fields: a string `name` for the pizza’s name (e.g., "Pepperoni" or "Veggie"), a string `size` for the pizza’s size ("small" "medium" or "large"), and a double `price` for the pizza’s cost. Next, create a function called `displayPizza` that takes a `Pizza` object as an argument and outputs its details in a readable format such as:
+
+`[Size] [Name]: [Price]`
+
+For example, a medium pepperoni pizza priced at \$8.50 should display as `Medium Pepperoni: $8.50`.
+
+Now, create a second struct called `Order` to represent a customer’s order. The `Order` struct should contain an array of `Pizza` objects and an integer `numPizzas` that tracks the number of pizzas in the order. To keep things simple, assume a maximum of 10 pizzas per order. Define `numPizzas` with an initial value of 0.
+
+Next, write a function called `addPizza` that takes an `Order` and a `Pizza` as arguments, adds the pizza to the order’s `pizzas` array, and increments `numPizzas`. If the order already has 10 pizzas, output an error message and prevent additional pizzas from being added.
+
+Now create a function called `calculateTotal` that takes an `Order` as a parameter and returns the total price of all pizzas in the order by summing the `price` of each `Pizza` in the `pizzas` array. Finally, implement a function called `displayOrder` that prints out each pizza in the order using `displayPizza` and then displays the total order cost.
+
+In the `main` function, test your structs and functions by creating a few `Pizza` structs, an `Order` struct, and adding the pizzas to the order. Finally, call `displayOrder` to print the details of the order and verify that the total is calculated correctly.
+
+#### Recitation Pizza Shop Order System - Problem 4.a. : Examples
+Write three possible assert statements to test your program. Try to pick values that will test different aspects of your program.
+
+#### Recitation Pizza Shop Order System - Problem 4.b. : Implementation
+Implement your solution in C++ using VS Code. Save, compile, and run it. Make sure you test for other boundary conditions not covered by your assert statements.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+## Recitation Submission Guidelines
+ 
+**Important:** Follow these instructions carefully when preparing your recitation assignments. Your final submission should be in a single document, and the only action required on Canvas is uploading that document.
+ 
+1. **Documentation:**
+   - **Create a pdf** that includes your submission for all recitation questions. This is the pdf you will upload to your canvas assignment. Feel free to use Word/Google doc to create the pdf.
+   - Clearly label each question with its corresponding number and include content as applicable (see #2).
+ 
+2. **Content to Include:**
+   - **Screenshots of Your Code:**
+     - For each question, include a screenshot of your code.(corrected code in case of spot the errors)
+   - **Screenshots of Code Output (if applicable):**
+     - For some longer questions, it might be required to take a screenshot of the code’s output. Include these screenshots as part of your submission.
+   - **Longer Recitation Questions (Multiple Parts):**
+     - **Option A:**  
+       - Comment your answers directly within your code file.(Spot the errors)
+       - Take screenshots of the commented code and paste them into your document.
+     - **Option B:**  
+       - Take screenshots of the unmodified code.
+       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the pdf document next to the corresponding screenshots.
+ 
+3. **Submission:**
+   - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework 8
