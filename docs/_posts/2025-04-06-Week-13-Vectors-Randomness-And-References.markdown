@@ -24,9 +24,9 @@ This week you will:
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Readings
 Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
-1. Monday: 2.5, 6.1, 6.2
-1. Wednesday: 6.4, 6.5, 6.6
-1. Friday: 6.4, 6.5
+1. Monday: 6.7
+1. Wednesday: 6.7
+1. Friday: 4.10, 5.9
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Background
