@@ -22,6 +22,15 @@ This week you will:
 {:toc}
 
 
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Readings
+Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
+1. Monday: 9.9, 9.11
+1. Wednesday: review chapters 9 and 6 as needed
+1. Friday: review chapters 9 and 6 as needed
+
+
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Background
@@ -111,7 +120,6 @@ When compiling from the command line, you need to specify every `.cpp` file in y
 # short
 g++ -std=c++17 file1.cpp file2.cpp main.cpp
 {% endhighlight %}
-
 
 
 The compiling command results in the creation of an executable file. Note that header files (.h) are NOT included in compilation commands. If you did not specify a name for this executable, it will be named `a.out` by default. To execute this file, use the command:
