@@ -22,6 +22,13 @@ This week you will:
 {:toc}
 
 
+&nbsp;&nbsp;&nbsp;&nbsp;
+## Readings
+Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
+1. Monday: 9.9, 9.11
+1. Wednesday: review chapters 6 (arrays) and 9 (classes) as needed
+1. Friday: review chapters 6 (arrays) and 9 (classes) as needed
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Background
