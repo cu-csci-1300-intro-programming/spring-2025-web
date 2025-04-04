@@ -205,7 +205,10 @@ Example of the Main Menu:
 &nbsp;&nbsp;
 #### **Step 1. Set Up the Initial Board Structure**
 
-1. Use the provided board files, `board.cpp` and `board.h`, to display the 52-tile trail on a 2-lane path (one lane for each path type, with a total of 104 tiles) (see Figure 1). 
+1. Use the provided board files, `board.cpp` and `board.h`, to display the 52-tile trail on a 2-lane path 
+    1. These files are available on Canvas in the Project 2 Module.
+    1. One lane for each path type, with a total of 104 tiles
+    1. See Figure 1
 1. Ensure that the Starting Tile (Gray Color) and Ending Tile(Orange Tile) are visible on both lane paths. You may want to label which path corresponds to Cub Training, and which path corresponds to Straight to the Pride Lands.
 1. Ensure that the board contains a minimum of 102 tiles in various colors (e.g., Pink, Green, Blue) to represent different tile types.
 1. **Randomize the tile arrangement**: The tiles on the map should be randomized each time the game starts. Additionally, ensure that the distribution rules for the tiles differ between the two paths (Cub Training and Straight to the Pride Lands), creating unique gameplay experiences for each path. You should design your own rules for the tile generation based on what you think makes sense and would create a well-balanced game. Should players who have advisors and went through Cub Training have fewer challenges right away, while those who went straight to the pride lands are more likely to struggle early on? You must **randomize each path**, and the distribution rules for each path **must be different**.
@@ -213,10 +216,10 @@ Example of the Main Menu:
 1. The Final Tile is named "Pride Rock." This tile signifies the game's endpoint and should convert the Leadership traits to Pride Points to determine and congratulate the winner!
 
 
- {% include img.html src='BoardExample.png' alt='various colors in two rows on a black background. each color tile is represented by vertical-bar, space, and another vertical-bar each row is a players state and board.' caption='Example of the 2-lane Board when players choose **different path types**' %}
+ {% include img.html src='BoardExample.png' alt='various colors in two rows on a black background. each color tile is represented by vertical-bar, space, and another vertical-bar each row is a players state and board.' caption='Figure 1: Example of the 2-lane Board when players choose **different path types**' %}
  
 
-{% include img.html src='BoardExample2.png' alt='various colors in two rows on a black background. each color tile is represented by vertical-bar, space, and another vertical-bar.' caption='Example of the 2-lane Board when players choose **the same path type**' %}
+{% include img.html src='BoardExample2.png' alt='various colors in two rows on a black background. each color tile is represented by vertical-bar, space, and another vertical-bar.' caption='Figure 2: Example of the 2-lane Board when players choose **the same path type**' %}
 
 
 &nbsp;&nbsp;
