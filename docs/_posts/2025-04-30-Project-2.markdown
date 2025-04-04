@@ -405,7 +405,7 @@ Here is an example of what this might look like:
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-## Point Distrobution
+## Point Distribution
 Project 2 is worth 200 points. Here is a summary of the points.
 
 | **Criteria** | **Points** |
