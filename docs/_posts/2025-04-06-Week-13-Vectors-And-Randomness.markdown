@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Week 13: Vectors, Randomness, and References"
+title: "Week 13: Vectors and Randomness"
 date: 2025-03-18 09:00:00 -0700
 categories: jekyll update
 ---
