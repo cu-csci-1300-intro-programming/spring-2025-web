@@ -295,13 +295,13 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation 
 
-### Recitation Map Class
+### Recitation Board Class
 
-This assignment is part of your final project. You will need to expand on the map class PROVIDED ON CANVAS. Take time to get familiar with the code and then begin modifying the class.
+This assignment is part of your final project. You will need to expand on the Board class PROVIDED ON CANVAS. Take time to get familiar with the code and then begin modifying the class.
 
-You are a player in the game tasked to explore the tiles on the map. Write a C++ program where you will generate a map that satisfies the minimum requirements specified in the project (see the Project 2 [section](https://cu-csci-1300-intro-programming.github.io/spring-2025-web/jekyll/update/2025/04/02/Project-2.html)). You will need to have two lanes: one to represent when a player goes to Cub Training, and one to represent when a player goes Straight to the Pride Lands. 
+You are a player in the game tasked to explore the tiles on the board. Write a C++ program where you will generate a board that satisfies the minimum requirements specified in the project (see the Project 2 [section](https://cu-csci-1300-intro-programming.github.io/spring-2025-web/jekyll/update/2025/04/02/Project-2.html)). You will need to have two lanes: one to represent when a player goes to Cub Training, and one to represent when a player goes Straight to the Pride Lands. 
 
-Write code to enable a user to navigate through one lane on the map and visit the tiles. You should print out placeholder information for each type of tile, but you do not have to fully implement all of the tile types just yet. Make sure that your map is randomized for each new game, and that the generation rules are different for the two paths. For example, you could do something like this:
+Write code to enable a user to navigate through one lane on the board and visit the tiles. You should print out placeholder information for each type of tile, but you do not have to fully implement all of the tile types just yet. Make sure that your board is randomized for each new game, and that the generation rules are different for the two paths. For example, you could do something like this:
 
 Straight to the Pridelands:
 1. 20 Grasslands tiles; 30 special tiles; 1 start and 1 end tile. There are more special tiles in this path, because they do not have an advisor to put them on the clearer path.

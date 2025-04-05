@@ -145,7 +145,7 @@ However, only players that chose to do cub training would be able to encounter "
 ### Core Concepts of the Game
 1. The game starts by selecting your preferred lion character from a list of available character names.
 1. Select a path type for your chosen Lion character from the two path types: Cub Training or Straight to the Pride Lands. Each of these paths differs in what they offer.
-1. The map is a two-lane path (one lane for each path type). Depending on the path type chosen, both players can be on the same path or on different paths (See Visual Board Representation for details). Players navigate by spinning a virtual spinner (players can land on any number from (1-6) to determine how far to move forward. You can do this by using a random number generator.
+1. The board is a two-lane path (one lane for each path type). Depending on the path type chosen, both players can be on the same path or on different paths (See Visual Board Representation for details). Players navigate by spinning a virtual spinner (players can land on any number from (1-6) to determine how far to move forward. You can do this by using a random number generator.
 1. Players alternate taking turns playing each round of the game.
 1. There are special tiles on the game board where unique events happen that can affect your Leadership Traits or other aspects of the game (please see Special Tiles section)
 1. The players must manage their total Stamina, Strength, Wisdom, and Pride Points throughout the game.
@@ -211,7 +211,7 @@ Example of the Main Menu:
     1. See Figure 1
 1. Ensure that the Starting Tile (Gray Color) and Ending Tile(Orange Tile) are visible on both lane paths. You may want to label which path corresponds to Cub Training, and which path corresponds to Straight to the Pride Lands.
 1. Ensure that the board contains a minimum of 102 tiles in various colors (e.g., Pink, Green, Blue) to represent different tile types.
-1. **Randomize the tile arrangement**: The tiles on the map should be randomized each time the game starts. Additionally, ensure that the distribution rules for the tiles differ between the two paths (Cub Training and Straight to the Pride Lands), creating unique gameplay experiences for each path. You should design your own rules for the tile generation based on what you think makes sense and would create a well-balanced game. Should players who have advisors and went through Cub Training have fewer challenges right away, while those who went straight to the pride lands are more likely to struggle early on? You must **randomize each path**, and the distribution rules for each path **must be different**.
+1. **Randomize the tile arrangement**: The tiles on the board should be randomized each time the game starts. Additionally, ensure that the distribution rules for the tiles differ between the two paths (Cub Training and Straight to the Pride Lands), creating unique gameplay experiences for each path. You should design your own rules for the tile generation based on what you think makes sense and would create a well-balanced game. Should players who have advisors and went through Cub Training have fewer challenges right away, while those who went straight to the pride lands are more likely to struggle early on? You must **randomize each path**, and the distribution rules for each path **must be different**.
 1. The provided example board currently displays starting tile, regular tile, special tile, and ending tile templates. You need to implement the functioning of each of these tile types on the board. For each lane, ensure there are at least 20 special tiles with unique characteristics spread randomly across the board. Each tile should have a distinct purpose; examples are detailed below in the "Tile Details/Descriptions" subsection.
 1. The Final Tile is named "Pride Rock." This tile signifies the game's endpoint and should convert the Leadership traits to Pride Points to determine and congratulate the winner!
 
@@ -348,7 +348,7 @@ This game is inspired by *The Lion King*, and you also have the flexibility to e
 1. **Alter the characters**: Instead of lions, you could have characters from another animal group, fantasy beings, or even human explorers, each with their own attributes.
 1. **Customize the challenges**: Introduce unique challenges that fit your new theme. Instead of solving riddles, you can compete in skills-based contests or games like rock-paper-scissors or tic-tac-toe.
 1. **Add unique interactions**: Think about different ways the players can interact with the game, such as special abilities or items that fit the new setting.
-1. **Modify the Game Board**: Increase the number of tiles or change tile colors, customize the name of the final tile, or change the player representations on the map to symbols rather than numbers. Make sure to stick to the requirements of the number of tiles and at least 2 lanes on the board.
+1. **Modify the Game Board**: Increase the number of tiles or change tile colors, customize the name of the final tile, or change the player representations on the board to symbols rather than numbers. Make sure to stick to the requirements of the number of tiles and at least 2 lanes on the board.
 1. **Create more classes/structs:** You can also add more classes and structs to represent the complexity you want to implement in your game.
 
 
