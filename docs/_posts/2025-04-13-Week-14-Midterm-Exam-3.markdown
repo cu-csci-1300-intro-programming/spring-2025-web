@@ -9,7 +9,7 @@ categories: jekyll update
 This week you will:
     <ol>
         <li>Complete midterm exam 3</li>
-        <li>Begin Project 2</li>
+        <li>Continue working on Project 2</li>
     </ol>
 </div>
 
@@ -654,13 +654,12 @@ int main( )
 ## PreQuiz
 There is no prequiz this week
 
+
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation
-TODO
+In recitation this week, the TAs will host a practice exam and discuss the solutions. There is no submission for this weeks recitation.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Midterm Exam 3
-Please see canvas announcements and lectures for the time and location of midterm exam 3. Unless you have accommodations, the exam is during your scheduled classtime. Locations vary by course time.
-
-
+Please see canvas announcements and lectures for the time and location of midterm exam 2. Unless you have accommodations, the exam is during your scheduled classtime. Locations vary by course time.
 
