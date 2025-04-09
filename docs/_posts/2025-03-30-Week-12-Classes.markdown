@@ -120,7 +120,6 @@ g++ -std=c++17 file1.cpp file2.cpp main.cpp
 {% endhighlight %}
 
 
-
 The compiling command results in the creation of an executable file. Note that header files (.h) are NOT included in compilation commands. If you did not specify a name for this executable, it will be named `a.out` by default. To execute this file, use the command:
 
 {% highlight bash %}
