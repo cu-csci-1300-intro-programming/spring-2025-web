@@ -44,7 +44,8 @@ Unlike previous assignments, this project has no answer key, prebuilt test cases
 This project will be worth more of your grade than any previous assignment. We recommend starting early to give yourself enough time to complete it. This is worth 10% of your final grade. 
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
-    <b>Warning:</b> You are not allowed to use global variables, pointers, or pass-by references for this assignment.
+    <p><b>Warning:</b> You are not allowed to use global variables, pointers, or pass-by references for this assignment.</p>
+    <p>yes, you may use arrays for this assignment which default to pass-by-reference, but we recommend using vectors instead.</p>
 </div>
 
 
@@ -90,7 +91,7 @@ Each player begins with 20,000 Pride Points before choosing their Path Type. The
 
 &nbsp;&nbsp;&nbsp;
 ### Path Types
-During game setup, ask each player to choose one of two path types. These path types will impact the starting stats for the player as well as the arrangement of the tiles they will follow on the game board. More details on how each path will impact the game board are available in section 3.2 (Visual Board Representation). 
+During game setup, ask each player to choose one of two path types. These path types will impact the starting stats for the player as well as the arrangement of the tiles they will follow on the game board. More details on how each path will impact the game board are available in the Visual Board Representation section. 
 
 The two path options are listed below:
 1. Cub Training
@@ -108,7 +109,7 @@ This path equips your lion character with essential Leadership Traits—Stamina,
 
 &nbsp;&nbsp;
 #### Straight to the Pride Lands: 
-This option lets your lion character jump directly into life on the Savannah with an immediate boost of +5,000 Pride Points from the starting number of Pride Points, allowing early progression and quick success in achieving intermediate goals. This path adds 200 Stamina Points, 200 Strength Points, and 200 Wisdom Points to the starting amount of your character's Leadership Traits before you start the journey, leaving your character with fewer resources to prepare for more difficult situations. Also, you do not get an initial Advisor if you choose this path. Although this path offers a strong head start, it lacks the long-term resilience and special abilities that could be gained through mentorship in Cub Training, making it a riskier approach to becoming a Pride Leader. 
+This option lets your lion character jump directly into life on the Savannah with an immediate boost of +5,000 Pride Points from the starting number of Pride Points, allowing early progression and quick success in achieving intermediate goals. This path only adds 200 Stamina Points, 200 Strength Points, and 200 Wisdom Points to the starting amount of your character's Leadership Traits before you start the journey, leaving your character with fewer resources to prepare for more difficult situations (compared to the 500 given if you choice Cub Training). Also, you do not get an initial Advisor if you choose this path. Although this path offers a strong head start, it lacks the long-term resilience and special abilities that could be gained through mentorship in Cub Training, making it a riskier approach to becoming a Pride Leader. 
 
 
 &nbsp;&nbsp;&nbsp;
@@ -361,16 +362,11 @@ This is a chance to make something truly your own while still meeting the requir
 
 The following extra credit opportunities are available for this project.
 
-{% comment %} NOT USING ANYMORE, but students can present at rectiation as detailed in the timeline  
-1. **Presentation (10 points):** Present your project during recitation or record a video of your presentation (3-5 minutes).
-% 
-%     1. Lecture: A sign-up sheet to present during lecture will be shared a week before class presentations
-%     1. Video explaining:
-%     
-%         1. The project idea
-%         1. Implementation and approach
-%         1. A demonstration of the working project
-{% endcomment %}
+1. **Presentation:** Present your project during recitation on April 28 or April 29. If you prefer, you may instead submit around a 5 minute video explaining the following parts of your project
+    1. The project idea
+    1. Implementation and approach
+    1. A demonstration of the working project
+    1. A reflection on where to improve this project and lessons learned
 1. **Unique Special Tiles for each Path Type (5 points):**  You can add more functionalities that allow each of the path types (cub training and straight to the pride lands) to have unique special tiles. These special tiles will only appear on the path lane of players who choose the path type.
 1. **Multiplayer game - More than 2 (5 points):** Implement functionalities in the game to allow for more than 2 players.
 1. **Extra Boost on Positive Random Event(5 points):** You can boost the number of pride points gained on positive random events. The boost should be specific to the advisor the player currently has.
@@ -396,7 +392,7 @@ Here is an example of what this might look like:
 1. **Friday, April 25th at 11:59 pm:** Interview Grading Sign-Up deadline. You must sign up for an interview grading timeslot no later than Friday, April 25th at 11:59 pm. The interviews will take place between May 1st and May 7th. If you do not sign up or miss your interview, then no points will be awarded for the project.
     1. During the interview grading, TAs will be playing your game and asking questions about it. They will also ask about your implementations and conceptual questions.
 1. **Wednesday, April 30th at 11:59 pm:** Final Deliverables. Your project will be due on Wednesday, April 30th, at 11:59 pm. You must submit a zip file to the Project 2 assignment on Canvas, including all `.h` and `.cpp` files. The submission should compile and run. **TAs will also be grading comments and code style.**
-1. **Monday or Tuesday, April 28th or 29th:** Project presentation. You may present your project during your recitation for extra credit. {% comment %}Presentation deadlines?{% endcomment %}
+1. **Monday or Tuesday, April 28th or 29th:** Project presentation. You may present your project during your recitation for extra credit. Alternative, you may submit around a 5 minute video presenting your project.
 1. **Saturday, May 3rd at 11:59 pm:** Project Report. Write a 1-2 page report containing the following reflection questions:
 
     1. How did you prepare for the project?
@@ -425,6 +421,9 @@ Note:
 <ol>
     <li>If your code does not compile, you cannot score above 50 points for the project</li>
     <li>The use of global variables, pointers, or pass-by-reference will result in a 0 on the entire project</li>
+    <ol>
+        <li>yes, you may use arrays for this assignment which default to pass-by-reference, but we recommend using vectors instead.</li>
+    </ol>
 </ol>
 </div>
 
