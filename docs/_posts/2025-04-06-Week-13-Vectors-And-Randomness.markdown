@@ -331,6 +331,6 @@ For your code skeleton you will need:
 <ol>
     <li>For each class you create, your .h files should be complete with all the data members and member functions you will be using for each class.</li>
     <li>For the class implementation .cpp files, you should fully implement simple functions like your getters, setters, and constructors. For more complex functions, you can include the function prototype with detailed comments.</li>
-    <li>For your game driver, you should have an approximate outline of how you will approach your main function's code. Pseudocode-like comments are fine for this. An example of expected comments is available in the code skeleton assignment on Canvas.</li>
+    <li>For your game driver, you should have an approximate outline of how you will approach your main function's code. Pseudocode-like comments are fine for this.</li>
 </ol>
 
