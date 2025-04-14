@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Week 14: Midterm Exm 3"
+title: "Week 14: Midterm Exam 3"
 date: 2025-04-01 09:00:00 -0700
 categories: jekyll update
 ---
