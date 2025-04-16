@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Week 15: Sorting Algorithms and Recursion"
-date: 2025-04-14 09:00:00 -0700
+date: 2025-04-01 09:00:00 -0700
 categories: jekyll update
 ---
 
@@ -10,7 +10,7 @@ categories: jekyll update
 This week you will:
     <ol>
         <li>Learn about pass by reference parameters</li>
-        <li>Learn about sorting algorithms and how to discuss the ``speed" of an algorithm</li>
+        <li>Learn about sorting algorithms and how to discuss the "speed" of an algorithm</li>
         <li>Learn how to use recursive functions</li>
     </ol>
 </div>
@@ -180,11 +180,15 @@ sumNumsRecursive(3) = 3 + sumNumsRecursive(2) // running the else statement
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## PreQuiz (due Monday April 21 at 9am)
-{% include underConstruction.html %}
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/464220
+">Recitation 15 Pre-quiz</a>. If the link is not working at the time that you read this, rest assured that it will go live ASAP.
+</div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation 
-{% include uc.html %}
+{% include underConstruction.html %}
 
 
 
@@ -194,6 +198,8 @@ sumNumsRecursive(3) = 3 + sumNumsRecursive(2) // running the else statement
 **Warning: You are not allowed to use global variables for this assignment.**
 
 This homework is extra credit, you will receive credit for the questions you have completed. Regardless of your completion of this extra credit homework assignment, sorting and recursion is fair game for the final exam. 
+
+This assignment is due Friday May 2. Prior to that, you have deadlines for Project 2. Please plan accordingly.
 
 All function names, return types, and parameters must precisely match those shown. You may not use pass by reference or otherwise modify the function prototypes. You are welcome to create additional functions that may help streamline your code.
 
@@ -368,10 +374,10 @@ Alex is a curious programmer who loves solving puzzles. One day, while tinkering
 
 Alex starts with an empty list. They ask a friend to keep entering positive integers, one at a time. The program will continuously prompt the user with "Please enter a number:" until -1 is entered and each number influences the list in some way:
 
-1. If the list is empty, Alex adds the number to the list immediately.
-1. If the number is divisible by both 3 and 5, Alex does both: remove the first and last numbers from the list (if there is a number). 
+1. If the list is empty, Alex adds the number to the list immediately and does not consider the remaining rules of the game
 1. If the number is divisible by 5, Alex removes the first number from the list (if there is one).
 1. If the number is divisible by 3, Alex removes the last number from the list (if there is one).
+1. NOTE: If the number is divisible by both 3 and 5, Alex does both: remove the first and last numbers from the list (if there is a number). 
 1. If none of the above applies, Alex simply adds the number to the end of the list.
 
 
