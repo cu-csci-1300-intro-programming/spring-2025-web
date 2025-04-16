@@ -104,7 +104,7 @@ Every recursive function includes two parts:
 
 
 1. **base case:** A simple non-recursive occurrence that can be solved directly. Sometimes, there are multiple base cases.
-1. **recursive case:** A more complex occurrence that can be described using smaller chunks of the problem, closer to the base case.
+1. **recursive case:** A more complex occurrence that can be described using smaller chunks of the problem, closer to the base case.. It is possible to have multiple recursive cases as well.
 
     
 To write a recursive function, we often use the following format:
@@ -251,7 +251,7 @@ int main()
 
 <span style="color:red">Output:</span>
 
-<p>Predicted reduction in carbon emissions: 444.204</p>
+<p>Predicted reduction in carbon emissions: 1650.62</p>
 
 <span style="color:red">Explanation:</span>
 
@@ -417,15 +417,12 @@ int main()
     }
     return 0;
 }
+
+// // OUTPUT
+// The elements in the vector are: 8
 {% endhighlight %}
 
 
-
-        <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-The elements in the vector are: \newline
-8
-        </div>\\ \hline
-\end{longtable}
  
 **For Question 3, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the processMagicalList() function into the answer box!**
 
@@ -657,7 +654,7 @@ int main() {
     double price = 1.1;
     Song new_song = Song(_title, _artist, _downloads);
 
-    cout << fixed<< setprecision(2) << new_song.grossRevenue(price) << endl;
+    cout << fixed << setprecision(2) << new_song.grossRevenue(price) << endl;
 }
 
 
@@ -683,7 +680,7 @@ You are part of a college admission board and have been requested to write a pro
 1. **Overall Score Calculation** Use the following formula to calculate each student’s score:
     1. `Score = (0.4 * GPA) + (0.3 * SAT/1600) + (0.2 * High School Quality) + (0.1 * Interest)`
     1. Students with a score of **2.5 or higher** are selected under the "score" criteria.
-1. **Outlier Detection** Flag students as "outliers" if the interest is 0 and they have a score of 1.5 or higher.
+1. **Outlier Detection** Flag students as "outlier" if the interest is 0 and they have a score of 1.5 or higher.
 1. **Grade Improvement Detection** Students are flagged for "grade improvement" if their semester grades show a consistent increase (i.e., `Sem1 < Sem2 < Sem3 < Sem4`) and they have a score of **1.5 or higher**.
 1. **Output** For each student, print their name, score (to 6 decimal places), and the criteria ("score", "outlier", or "grade improvement") if applicable. If no criteria are met, print just the name and score.
 
@@ -699,8 +696,8 @@ You are part of a college admission board and have been requested to write a pro
 | **Function:** | <tt>string processAdmission(string)</tt><br />`string processAdmission(string line)` |
 | **Purpose:** | To analyze a student's data, calculate their admission score, and determine whether they meet the criteria for admission based on score, outlier, or grade improvement. |
 | **Parameters:** | **string** <tt>line</tt> - A single line of comma-separated student data containing the student’s name, SAT, GPA, interest, high school quality, and semester grades. <br /> Note: we have skipped the header in `main( )`; therefore, you may assume that all `line` that are passed can be parsed (is formatted as expected). |
-| **Return Value:** | Returns a string formatted as: <tt>Name,Score,[criteria]</tt> |
-| **Error Handling:** | - Flag students as "outliers" if Interest = 0 and the score is 1.5 or higher. <br />- Flag students for "grade improvement" if the grade of each semester is higher than the previous semester and the student has a score of 1.5 or higher. <br />- Assumes valid input format for the line. The function does not handle cases where the line is improperly formatted or contains invalid data types. <br />- The function should not print anything. |
+| **Return Value:** | Returns a string formatted as: <tt>Name,Score,Criteria</tt>. |
+| **Error Handling:** | - Flag students as "outlier" if Interest = 0 and the score is 1.5 or higher (and "score" does not apply). <br />- Flag students for "grade improvement" if the grade of each semester is higher than the previous semester and the student has a score of 1.5 or higher (and "outlier" and "score" does not apply). <br />- Assumes valid input format for the line. The function does not handle cases where the line is improperly formatted or contains invalid data types. <br />- The function should not print anything.<br />- if no criteria are met, then the function returns a string formatted as: <tt>Name,Score</tt> |
 
 
 **Example:**
