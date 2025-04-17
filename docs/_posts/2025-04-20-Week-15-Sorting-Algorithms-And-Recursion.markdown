@@ -9,7 +9,6 @@ categories: jekyll update
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #31708f; background-color: #d9edf7; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 This week you will:
     <ol>
-        <li>Learn about pass by reference parameters</li>
         <li>Learn about sorting algorithms and how to discuss the "speed" of an algorithm</li>
         <li>Learn how to use recursive functions</li>
     </ol>
