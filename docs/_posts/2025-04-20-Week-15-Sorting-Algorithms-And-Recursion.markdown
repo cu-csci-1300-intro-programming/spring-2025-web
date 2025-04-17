@@ -180,11 +180,16 @@ sumNumsRecursive(3) = 3 + sumNumsRecursive(2) // running the else statement
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## PreQuiz (due Monday April 21 at 9am)
+{% include uc.html %}
+
+{% comment %}
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
 Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/464220
 ">Recitation 15 Pre-quiz</a>. If the link is not working at the time that you read this, rest assured that it will go live ASAP.
 </div>
+{% endcomment %}
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation 
@@ -433,9 +438,10 @@ int main()
 **For Question 3, develop and validate your solution in VS Code. Once you are happy with your solution, go to coderunner on Canvas and paste the processMagicalList() function into the answer box!**
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Inputs:</span>
 
+<span style="color:red">Inputs:</span>
 <p>3, 5, 15, 8, -1</p>
+<br />
 
 <span style="color:red">Output:</span>
 
@@ -444,25 +450,26 @@ int main()
 <p>Please enter a number: </p>
 <p>Please enter a number: </p>
 <p>Please enter a number: </p>
-<p>The elements in the vector are: </p>
-<p>8</p>
+<p>The elements in the vector are: 8</p>
+<br />
 
 <span style="color:red">Explanation:</span>
 <ol>
     <li><strong>3:</strong> The list is empty, so 3 is added to the list. Current list: [ 3 ]</li>
     <li><strong>5:</strong> The number is divisible by 5. The first number, 3, is removed from the list. Current list: [ ] (empty) </li>
-    <li><strong>15:</strong> The number is divisible by both 3 and 5. Since the list is empty, nothing is removed. 15 is added to the list. Current list: [ 15 ]</li>
+    <li><strong>15:</strong> The list is empty, so 15 is added to the list. Current list: [ 15 ]</li>
     <li><strong>8:</strong> The list is not empty, so 8 is added to the end of the list. Current list: [ 15, 8 ]</li>
-    <li><strong>-1:</strong> The game ends. The list contains numbers, so the program prints the elements: "The elements in the vector are: 8". Final list: [ ]</li>
+    <li><strong>-1:</strong> The game ends. The list contains numbers, so the program prints the elements: "The elements in the vector are: 15 8".</li>
 </ol>
 </div>
 
 
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Inputs:</span>
 
+<span style="color:red">Inputs:</span>
 <p>0,  -5,  6,  -1</p>
+<br />
 
 <span style="color:red">Output:</span>
 <p>Please enter a number: </p>
@@ -471,33 +478,60 @@ int main()
 <p>The number should be a positive integer or -1. </p>
 <p>Please enter a number: </p>
 <p>Please enter a number: </p>
-<p>The elements in the vector are: </p>
-<p>6</p>
+<p>The elements in the vector are: 6</p>
+<br />
+
+<span style="color:red">Explanation:</span>
+<ol>
+    <li><strong>0:</strong> This is a not a positive number, scold the player. Current list: [ ] (empty)</li>
+    <li><strong>-5:</strong> This is a not a positive number, scold the player. Current list: [ ] (empty)</li>
+    <li><strong>6:</strong> The list is empty, so 6 is added to the list. Current list: [ 6 ]</li>
+    <li><strong>-1:</strong> The game ends. The list contains numbers, so the program prints the elements: "The elements in the vector are: 6".</li>
+</ol>
 </div>
 
 
 
 
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color:rgb(6, 6, 6); border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;">
-<span style="color:red">Inputs:</span>
 
-<p>10, 9, 4, -1</p>
+<span style="color:red">Inputs:</span>
+<p>3, 4, 2, 15, 7, 0, 8, 6, 10, 30, 21, 22, -1</p>
+<br />
 
 <span style="color:red">Output:</span>
-
-<p>Please enter a number:</p>
-<p>Please enter a number:</p>
-<p>Please enter a number:</p>
-<p>Please enter a number:</p>
-<p>The elements in the vector are:</p>
-<p>4</p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>The number should be a positive integer or -1. </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>Please enter a number: </p>
+<p>The elements in the vector are: 21, 22</p>
+<br />
 
 <span style="color:red">Explanation:</span>
 <ol>
-    <li><strong>10:</strong> The number is divisible by 5. The first number in the list is removed. Since the list is empty, nothing happens. Current list: [ ] (empty)</li>
-    <li><strong>9:</strong> The number is divisible by 3. The last number in the list is removed. Since the list is empty, nothing happens. Current list: [ ] (empty)</li>
-    <li><strong>4:</strong> The number is not divisible by 3 or 5, so it is added to the end of the list. Current list: [ 4 ]</li>
-    <li><strong>-1:</strong> The game ends. The program prints: "The elements in the vector are: 4". Final list: [ 4 ]</li>
+    <li><strong>3:</strong> The list is empty, so 3 is added to the list. Current list: [ 3 ]</li>
+    <li><strong>4:</strong> The number is not divisible by 3 or 5. The number is added to the list. Current list: [ 3, 4 ]</li>
+    <li><strong>2:</strong> The number is not divisible by 3 or 5. The number is added to the list. Current list: [ 3, 4, 2 ]</li>
+    <li><strong>15:</strong> The number is divisible by both 3 and 5. The list has data that can be removed. The first and last number is removed.  Current list: [ 4 ]</li>
+    <li><strong>7:</strong> The number is not divisible by 3 or 5. The number is added to the list. Current list: [ 4, 7 ]</li>
+    <li><strong>0:</strong> This is a not a positive number, scold the player. Current list: [ 4, 7 ]</li>
+    <li><strong>8:</strong> The number is not divisible by 3 or 5. The number is added to the list. Current list: [ 4, 7, 8 ]</li>
+    <li><strong>6:</strong> The number is divisible by 3 but not 5. Remove the last number from the list. Current list: [ 4, 7 ]</li>
+    <li><strong>10:</strong> The number is divisible by 5 but not 3. Remove the first number from the list. Current list: [ 7 ]</li>
+    <li><strong>30:</strong> The number is divisible by both 3 and 5. The list has data that can be removed. The first and last number is removed. Current list: [ ] (empty)</li>
+    <li><strong>21:</strong> The list is empty, so 21 is added to the list. Current list: [ 21 ]</li>
+    <li><strong>22:</strong> The number is not divisible by 3 or 5. The number is added to the list. Current list: [ 21, 22 ]</li>
+    <li><strong>-1:</strong> The game ends. The list contains numbers, so the program prints the elements: "The elements in the vector are: 21 22".</li>
 </ol>
 </div>
 
