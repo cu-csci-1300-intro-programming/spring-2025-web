@@ -179,15 +179,10 @@ sumNumsRecursive(3) = 3 + sumNumsRecursive(2) // running the else statement
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## PreQuiz (due Monday April 21 at 9am)
-{% include uc.html %}
-
-{% comment %}
 <div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #ffffff; background-color: #ff2222; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
 
-Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/464220
-">Recitation 15 Pre-quiz</a>. If the link is not working at the time that you read this, rest assured that it will go live ASAP.
+Please complete your "pre-quiz" for the week on Canvas. This is due Monday morning at 9am. Here is a link to the quiz for Spring 2025: <a href="https://canvas.colorado.edu/courses/117869/quizzes/464390">Recitation 15 Pre-quiz</a>. If the link is not working at the time that you read this, rest assured that it will go live ASAP.
 </div>
-{% endcomment %}
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
