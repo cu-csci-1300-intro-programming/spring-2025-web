@@ -187,9 +187,154 @@ Please complete your "pre-quiz" for the week on Canvas. This is due Monday morni
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Recitation 
-{% include underConstruction.html %}
+
+### Recitation Spot The Error- Problem 1
+The following program attempts to erase the first number (0th index) from a vector. Identify the error(s) in the code and provide the corrected line(s).
+
+```cpp
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main() {
+    vector<int> v = {5, 6, 7, 8, 9};
+    v.erase(0);
+    
+    cout << v[0] << endl;
+    return 0;
+}
+```
+&nbsp;&nbsp;&nbsp;
 
 
+### Recitation Spot The Error- Problem 2
+The following program attempts to add an element to an empty vector. Identify the error(s) in the code and provide the corrected line(s).
+
+```cpp
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main() {
+    vector<int> v;
+    v.at(0) = 42;
+    cout << v.at(0) << endl;
+    return 0;
+}
+```
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Spot The Error- Problem 3
+The following program attempts to delete the even numbers from a vector. Identify the error(s) in the code and provide the corrected line(s).
+
+```cpp
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main() {
+    vector<int> v = {2, 4, 6, 8, 9};
+
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] % 2 == 0) {
+            v.erase(v.begin() + i);
+        }
+    }
+
+    // Print remaining elements
+    for (int i = 0; i < v.size(); i++) {
+        cout<< v[i] <<" ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+&nbsp;&nbsp;&nbsp;
+
+
+### Recitation Spot The Error- Problem 4
+The following program attempts to double every element in the vector and add it at the end of the cector. Identify the error(s) in the code and provide the corrected line(s).
+
+```cpp
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main() {
+    vector<int> v = {5, 6, 7, 8, 9};
+    
+    for(int i = 0; i < 5; i++){
+        v.push_back(v[i] * 2);
+    }
+    
+    for(int i=0; i<v.size(); i++){
+        cout<< v[i]<< endl;
+    }
+}
+```
+&nbsp;&nbsp;&nbsp;
+
+### Recitation Fibonacci Sequence - Problem 5
+The Fibonacci Sequence is on of the popular sequences that can be found in nature.
+
+Write a function to calculate the nth number in the Fibonacci Series. You can read all about Fibonacci numbers [here](https://en.wikipedia.org/wiki/Fibonacci_number).
+
+In summary, nth number in the series is the sum of (n-1)th and (n-2)th number i.e
+
+```
+fib(n) = fib(n-1) + fib(n-2)
+Given:
+    fib(0) = 0
+    fib(1) = 1
+    fib(2) = 1
+```
+
+Write a function that takes in an integer n and returns the 'n'th fibonacci number. Take an input from the user and print the nth fibonacci number using the function.
+
+*Hint: Recursion*
+&nbsp;&nbsp;&nbsp;
+
+
+#### Recitation Fibonacci Sequence- Problem 5.a. : Algorithm
+Write out the steps you would use to solve this problem by hand as pseudocode. 
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Fibonacci Sequence - Problem 5.b.: Examples
+Pick four possible inputs for each of your function. Follow the steps you wrote for these values to find your result, and verify it.
+
+&nbsp;&nbsp;&nbsp;
+
+#### Recitation Fibonacci Sequence- Problem 5.b. : Implementation
+Translate your pseudocode into a C++ program to solve the above code, verify that your program works as expected.
+
+&nbsp;&nbsp;&nbsp;
+
+## Recitation Submission Guidelines
+ 
+**Important:** Follow these instructions carefully when preparing your recitation assignments. Your final submission should be in a single document, and the only action required on Canvas is uploading that document.
+ 
+1. **Documentation:**
+   - **Create a pdf** that includes your submission for all recitation questions. This is the pdf you will upload to your canvas assignment. Feel free to use Word/Google doc to create the pdf.
+   - Clearly label each question with its corresponding number and include content as applicable (see #2).
+ 
+2. **Content to Include:**
+   - **Screenshots of Your Code:**
+     - For each question, include a screenshot of your code.(corrected code in case of spot the errors)
+   - **Screenshots of Code Output (if applicable):**
+     - For some longer questions, it might be required to take a screenshot of the code’s output. Include these screenshots as part of your submission.
+   - **Longer Recitation Questions (Multiple Parts):**
+     - **Option A:**  
+       - Comment your answers directly within your code file.(Spot the errors)
+       - Take screenshots of the commented code and paste them into your document.
+     - **Option B:**  
+       - Take screenshots of the unmodified code.
+       - Write your answers (Free Response/Pseudocode/Edge case identifictation) to the subquestions in the pdf document next to the corresponding screenshots.
+ 
+3. **Submission:**
+   - **Upload the final pdf document** to Canvas. This is the only action required on Canvas for your submission.
+ 
+By following these steps, your submission will be clear, organized, and standardized across all recitation assignments.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Homework 9
