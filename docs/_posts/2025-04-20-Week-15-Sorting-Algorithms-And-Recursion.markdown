@@ -263,7 +263,7 @@ using namespace std;
 int main() {
     vector<int> v = {5, 6, 7, 8, 9};
     
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < v.size(); i++){
         v.push_back(v[i] * 2);
     }
     
