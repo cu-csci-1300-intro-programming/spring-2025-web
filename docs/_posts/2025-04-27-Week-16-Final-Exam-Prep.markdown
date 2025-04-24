@@ -25,18 +25,22 @@ By request we have copied all background sections of the course here. The final 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 ## Readings
-Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:
-1. Chapter 1 subsections: 2 - 4
-1. Chapter 2 subsections: 1 - 3, 5
-1. Chapter 3 subsections: 1 - 7
-1. Chapter 4 subsections: 1 - 3, 5, 6, 8 - 10
-1. Chapter 5 subsections: 1 - 10
-1. Chapter 6 subsections: 1 - 7
-1. Chapter 7 subsections: 3, 7
-1. Chapter 8 subsections: 1 - 4
-1. Chapter 9 subsections: 1 - 6, 9, 11
-
-We strongly recommend reviewing the relevant sections of the textbook and it's embeded knowledge checks.
+<div markdown="ol" style="margin-bottom: 10px; margin-top: 10px; overflow: hidden; color: #000000; background-color: #eebb00; border-color: #bce8f1; padding: 15px; border: 1px solid transparent; border-radius: 4px;"> 
+    <section>
+        <p>Please note the advised readings of "Brief C++ Late Objects" - Cay Horstmann:</p>
+        <ol>
+            <li>Chapter 1 subsections: 2 - 4</li>
+            <li>Chapter 2 subsections: 1 - 3, 5</li>
+            <li>Chapter 3 subsections: 1 - 7</li>
+            <li>Chapter 4 subsections: 1 - 3, 5, 6, 8 - 10</li>
+            <li>Chapter 5 subsections: 1 - 10</li>
+            <li>Chapter 6 subsections: 1 - 7</li>
+            <li>Chapter 7 subsections: 3, 7</li>
+            <li>Chapter 8 subsections: 1 - 4</li>
+            <li>Chapter 9 subsections: 1 - 6, 9, 11</li>
+        </ol>
+    </section>
+</div>
 
 
 &nbsp;&nbsp;&nbsp;
