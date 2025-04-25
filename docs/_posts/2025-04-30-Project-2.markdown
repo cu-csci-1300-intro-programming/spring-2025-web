@@ -362,7 +362,7 @@ This is a chance to make something truly your own while still meeting the requir
 
 The following extra credit opportunities are available for this project.
 
-1. **Presentation:** Present your project during recitation on April 28 or April 29. If you prefer, you may instead submit around a 5 minute video explaining the following parts of your project
+1. **Presentation (10 points):** Present your project during recitation on April 28 or April 29. If you prefer, you may instead submit around a 5 minute video explaining the following parts of your project
     1. The project idea
     1. Implementation and approach
     1. A demonstration of the working project
